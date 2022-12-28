@@ -16,5 +16,16 @@ Once it has completed, exit your terminal, open a new one and run `nix --version
 nix --version
 nix (Nix) 2.12.0
 ```
-This concludes the installation of Nix Packages.
 
+### Nix Flake
+In order to use Nix Flakes we need to enable a few experimental features.
+
+Run the following command:
+
+```
+mkdir -p ~/.config/nix
+cat > ~/.config/nix/nix.conf << EOF
+experimental-features = nix-command flakes
+sandbox = true
+EOF
+```
