@@ -29,3 +29,28 @@ experimental-features = nix-command flakes
 sandbox = true
 EOF
 ```
+
+Next we run `nix flake init` using a community template to bootstrap our `flake.nix`.
+```
+nix flake init \
+--template github:the-nix-way/home-manager-config-template
+```
+
+We need to edit a few parameters in the new file i.e. subsitute our username and/or the architecture of the system with our current values.
+```
+username = "change-me-plz"; # $USER
+system = "aarch64-darwin";  # x86_64-linux, aarch64-multiplatform, etc.
+```
+You will have noticed a few more nix files in the directory that have been created as a result of running `nix flake init`...
+Before we run our first build we'll add the following to the `programs.nix`:
+```
+zsh = {
+  enable = true;
+};
+```
+
+Now we have a fairly basic Nix Flake and Home-Manager setup and are ready for the first build:
+```
+nix run '.#homeConfigurations.${USER}.activationPackage'
+```
+Once complete, relaunch your terminal.
