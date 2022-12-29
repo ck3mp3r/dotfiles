@@ -83,7 +83,7 @@ The structure I prefer is something similar to this:
 
 We'll get to the bin directory later, but for now lets change the reference to `home.nix` as follows: update line 32 of `flake.nix`:
 
-```
+```nix
       home = (import ./modules/home.nix {
 
 ```
