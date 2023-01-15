@@ -161,3 +161,50 @@ done
 
 Once the file has been edited and saved, you should now be able to just run `hm switch` to apply any changes you made to your nix files.
 We'll be adding more functionality to this utility script later.
+
+### New Terminal And Configuring ZSH
+
+Now we can spice up the terminal UI by adding oh-my-zsh and installing another terminal emulator.
+This setup is optional, but will show you how to go about adding other apps and configuring you favorite shell.
+
+Most use iTerm 2, so let us modify `nix/modules/packages.nix` to look like this:
+
+```nix
+{ pkgs }:
+
+let
+  packages = with pkgs; [
+    iterm2
+    nvim
+  ];
+in packages
+
+```
+
+After running `hm switch`, open `$HOME/Applications/Home Manager Apps`, you'll find iTerm 2 there ready to use.
+
+We could stop here but home-manager has another trick up its sleeve; programs, another way of managing applications.
+We'll now configure `Alacritty`, another terminal emulator.
+For starters we could just add it to `nix/modules/programs.nix` but as we'll be adding more bespoke configuration this file will just get to large to maintain if we keep on adding more programs this way.
+So in this case we'll create a new file: `nix/modules/alacritty.nix`
+
+```nix
+{...}:
+{
+  programs.alacritty = {
+    enable = true;
+  };
+}
+
+```
+
+We need to reference it in `flake.nix`:
+
+```nix
+modules = [
+  home
+  ./modules/alacritty.nix
+];
+```
+
+Git add `nix/modules/alacritty.nix` and `hm switch` after which Alacritty will be available in `$HOME/Applications/Home Manager Apps`.

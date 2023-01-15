@@ -39,6 +39,7 @@
 
         modules = [
           home
+          ./modules/alacritty.nix
         ];
       };
     };
