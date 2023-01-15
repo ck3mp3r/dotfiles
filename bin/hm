@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+_switch() {
+		home-manager switch -b backup --flake "$BASE_PATH/nix#$USER"
+}
+
+_print_help() {
+	cat <<EOF
+Usage: $CMD switch        # run home-manager switch
+       $CMD -h|help       # print this help message.
+EOF
+
+}
+
+# determine script base name
+CMD=$(basename "$0")
+
+# determine script base path
+BASE_PATH=$(dirname "$(dirname "$0")")
+
+# print help if no sub command was given
+if [[ "$#" -eq 0 ]]; then
+	_print_help
+fi
+
+while [[ "$#" -gt 0 ]]; do
+	case $1 in
+	switch) _switch ;;
+	-h | help) _print_help ;;
+	*)
+		_print_help
+		exit 1
+		;;
+	esac
+	shift
+done
