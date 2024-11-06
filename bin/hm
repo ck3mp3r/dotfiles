@@ -9,7 +9,7 @@ export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 # run home-manager switch
 #
 _switch() {
-	nix run home-manager \
+  nix run home-manager \
     --extra-experimental-features nix-command \
     --extra-experimental-features flakes -- \
     switch --flake ~/.config/dotfiles#"$USER"
@@ -19,14 +19,14 @@ _switch() {
 # run home-manager prune
 #
 _prune() {
-	nix run home-manager -- expire-generations "-1day" && nix-collect-garbage
+  nix run home-manager -- expire-generations "-1day" && nix-collect-garbage
 }
 
 ##
 # help
 #
 _print_help() {
-	cat <<EOF
+  cat <<EOF
 Usage: hm switch        # run home-manager switch
        hm prune         # run home-manager expire-generations "-1day"
                         #   and nix-collect-garbage
@@ -41,22 +41,22 @@ EOF
 BASE_PATH=$(dirname "$(dirname "$0")")
 
 if [[ "$#" -eq 0 ]]; then
-	_print_help
+  _print_help
 fi
 
 # figure out what needs to be run
 while [[ "$#" -gt 0 ]]; do
-	case $1 in
-	switch) _switch ;;
-	prune) _prune ;;
-	update) pushd "$BASE_PATH" && git pull origin main && popd || exit ;;
-	flake-update) pushd "$BASE_PATH" && nix flake update && popd || exit ;;
-	nix-fix-store) sudo nix-store --repair --verify --check-contents ;;
-	-h | help) _print_help ;;
-	*)
-		_print_help
-		exit 1
-		;;
-	esac
-	shift
+  case $1 in
+  switch) _switch ;;
+  prune) _prune ;;
+  update) pushd "$BASE_PATH" && git pull origin main && popd || exit ;;
+  flake-update) pushd "$BASE_PATH" && nix flake update && popd || exit ;;
+  nix-fix-store) sudo nix-store --repair --verify --check-contents ;;
+  -h | help) _print_help ;;
+  *)
+    _print_help
+    exit 1
+    ;;
+  esac
+  shift
 done
