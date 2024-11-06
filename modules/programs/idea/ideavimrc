@@ -1,0 +1,145 @@
+"" Plugins required:
+""
+"" IdeaVim
+"" IdeaVim-EasyMotion
+"" IdeaVim-Sneak
+"" Which-Key
+"" AceJump
+""
+"" To enable key repeat in ideavim:
+""
+"" defaults write com.jetbrains.intellij ApplePressAndHoldEnabled -bool false
+""
+""
+"" Base Settings
+"" ========================================================
+inoremap jk <Esc>
+nnoremap <C-s> :w<CR>
+
+set scrolloff=10
+set relativenumber
+set showmode
+set showcmd
+
+set smartcase
+set incsearch
+set hlsearch
+
+set visualbell
+
+" Use system clipboard
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+set which-key
+"set notimeout
+set timeoutlen=5000
+let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+let mapleader = " "
+
+let g:WhichKeyDesc_nohl = "<leader>h clear highlights"
+map <leader>h :nohl<CR>
+
+Plug 'easymotion/vim-easymotion'
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
+let g:WhichKeyDesc_easymotion_f = "<leader>jf Jump with Easymotion (forward)"
+let g:WhichKeyDesc_easymotion_s = "<leader>jb Jump with Easymotion (backward)"
+map <leader>jb <Plug>(easymotion-s)
+map <leader>jf <Plug>(easymotion-f)
+
+Plug 'preservim/nerdtree'
+let g:WhichKeyDesc_leader = "<leader>e Open file explorer"
+map <leader>e :NERDTree<CR>
+
+" Pane navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+
+" Tab navigation
+nmap <S-l> <Action>(NextTab)
+nmap <S-h> <Action>(PreviousTab)
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Search
+let g:WhichKeyDesc_search = "<leader>s Search"
+let g:WhichKeyDesc_search_goto_file = "<leader>sf Go to file"
+let g:WhichKeyDesc_search_goto_text = "<leader>st Search for file content"
+let g:WhichKeyDesc_search_show_recent_files = "<leader>sr Show recent files"
+let g:WhichKeyDesc_search_show_recent_locations = "<leader>sl Show recent locations"
+map <leader>sf :action GotoFile<CR>
+map <leader>sr :action RecentFiles<CR>
+map <leader>st :action FindInPath<CR>
+map <leader>sl :action RecentLocations<CR>
+map <leader>ss :action NewScratchFile<CR>
+
+ Window splits
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>w| Split vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>w- Split horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+
+map <leader>w\| :action SplitVertically<CR>
+map <leader>w- :action SplitHorizontally<CR>
+map <leader>wu :action Unsplit<CR>
+map <leader>wm :action MoveEditorToOppositeTabGroup<CR>
+
+" Display options
+let g:WhichKeyDesc_display = "<leader>d Display options"
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
+
+map <leader>dd :action ToggleDistractionFreeMode<CR>
+map <leader>dz :action ToggleZenMode<CR>
+map <leader>df :action ToggleFullScreen<CR>
+
+" Close active tab
+let g:WhichKeyDesc_close_tab = "<leader>c Close active tab"
+map <leader>c :action CloseContent<CR>
+
+" Language
+let g:WhichKeyDesc_language = "<leader>l Language"
+let g:WhichKeyDesc_language_rename = "<leader>ln Rename element"
+let g:WhichKeyDesc_language_method = "<leader>lm Extract method"
+let g:WhichKeyDesc_language_variable = "<leader>lv Introduce variable"
+let g:WhichKeyDesc_language_field = "<leader>lf Introduce field"
+let g:WhichKeyDesc_language_signature = "<leader>ls Change signature"
+let g:WhichKeyDesc_language_all = "<leader>lr Open refactorings list"
+map <leader>ln :action RenameElement<CR>
+map <leader>lm :action ExtractMethod<CR>
+map <leader>lv :action IntroduceVariable<CR>
+map <leader>lf :action IntroduceField<CR>
+map <leader>ls :action ChangeSignature<CR>
+map <leader>lr :action Refactorings.QuickListPopupAction<CR>
+
+" Folding
+let g:WhichKeyDesc_fold = "<leader>z Folding"
+let g:WhichKeyDesc_fold_all = "<leader>zc Fold all regions"
+let g:WhichKeyDesc_unfold_all = "<leader>zo Unfold all regions"
+map <leader>zc :action CollapseAllRegions<CR>
+map <leader>zo :action ExpandAllRegions<CR>
+
+" Jump between methods
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+" Git windows
+let g:WhichKeyDesc_git = "<leader>g Git operations"
+let g:WhichKeyDesc_git_commit = "<leader>gc Open Git commit dialog"
+let g:WhichKeyDesc_git_status = "<leader>gs Open Git status dialog"
+let g:WhichKeyDesc_git_branches = "<leader>gb Open Git branches list"
+map <leader>gc :action CheckinProject<CR>
+map <leader>gs :action ActivateVersionControlToolWindow<CR>
+map <leader>gb :action Git.Branches<CR>
+
+Plug 'tpope/vim-surround'
+Plug 'tommcdo/vim-exchange'
+Plug 'mg979/vim-visual-multi'

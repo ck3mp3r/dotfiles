@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
+##
+# run nix-darwin switch
+#
+_switch() {
+	nix run nix-darwin \
+		--extra-experimental-features nix-command \
+		--extra-experimental-features flakes -- \
+    switch --flake ~/.config/dotfiles#"${USER//./_}"
+}
+
+##
+# run nix-darwin prune
+#
+_prune() {
+	nix-collect-garbage
+}
+
+##
+# help
+#
+_print_help() {
+	cat <<EOF
+Usage: nd switch        # run nix-darwin switch
+       nd prune         # run nix-darwin expire-generations "-1day"
+       nd               #   and nix-collect-garbage
+       nd flake-update  # update flake lock
+       nd nix-upgrade   # upgrade to latest nix version
+       nd nix-fix-store # use this to fix a corrupted nix store
+       nd -h|help       # print this help message.
+EOF
+}
+
+# determine script base path
+BASE_PATH=$(dirname "$(dirname "$0")")
+
+if [[ "$#" -eq 0 ]]; then
+	_print_help
+fi
+
+# figure out what needs to be run
+while [[ "$#" -gt 0 ]]; do
+	case $1 in
+	switch) _switch ;;
+	prune) _prune ;;
+	update) pushd "$BASE_PATH" && git pull origin main && popd || exit ;;
+	flake-update) pushd "$BASE_PATH" && nix flake update && popd || exit ;;
+	nix-fix-store) sudo nix-store --repair --verify --check-contents ;;
+	-h | help) _print_help ;;
+	*)
+		_print_help
+		exit 1
+		;;
+	esac
+	shift
+done

@@ -1,0 +1,14 @@
+name: dotfiles
+
+path: .
+
+windows:
+  - name: code
+    panes:
+      - commands:
+          - $EDITOR
+
+  - name: misc
+    panes:
+      - flex: 1
+      - flex: 1
