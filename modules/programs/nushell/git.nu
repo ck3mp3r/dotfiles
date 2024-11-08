@@ -1,90 +1,68 @@
-# Basic Git Commands
-alias g = git
+# Status and Branch Management
 alias gst = git status
-alias ga = git add
-alias gaa = git add -A
-alias gap = git add -p
-alias gc = git commit -m
-alias gca = git commit --amend
-alias gcam = git commit -am
-alias gdca = git diff --cached  # Shows differences of staged changes
+alias gba = git branch --all
+alias gbD = git branch --delete --force
+alias gbr = git branch --remote           # Show remote branches
+alias gbnm = git branch --no-merged       # Show branches not yet merged
+alias gcb = git checkout -b               # Create a new branch and switch to it
+alias gbm = git branch --move             # Rename the current branch
+
+# Checkout
 alias gco = git checkout
-alias gcb = git checkout -b
-alias gcm = git checkout main
+alias gcor = git checkout --recurse-submodules  # Checkout with submodules
 
-# Git Branch Management
-alias gb = git branch
-alias gba = git branch -a
-alias gbd = git branch -d
-alias gbD = git branch -D
-alias gbr = git branch --remote
-alias gbl = git branch --list
-alias gbo = git branch --set-upstream-to=origin/
+# Diff
+alias gdca = git diff --cached
+alias gd = git diff                       # Show differences in working directory
+alias gds = git diff --staged             # Show differences in staged files
+alias gdw = git diff --word-diff          # Show diff with word-by-word changes
 
-# Git Merging & Rebasing
-alias gm = git merge
-alias gma = git merge --abort
-alias gmt = git mergetool
-alias grb = git rebase
-alias grbi = git rebase -i
-alias grbc = git rebase --continue
-alias grba = git rebase --abort
+# Fetch and Pull
+alias gf = git fetch                      # Fetch latest changes
+alias gfa = git fetch --all --prune --jobs=10
+def ggpull [] { git pull origin (git rev-parse --abbrev-ref HEAD) }
 
-# Git Pull & Push
-alias gp = git push
-alias gpf = git push --force
-alias gpl = git pull
-alias gpo = git push origin
-alias gpu = git push -u origin HEAD
+# Push
+def ggpush [] { git push origin (git rev-parse --abbrev-ref HEAD) }
+def gpsup [] { git push --set-upstream origin (git rev-parse --abbrev-ref HEAD) }  # Push current branch and set upstream
+def gpoat [] { git push origin --all ; git push origin --tags }       # Push all branches and tags
 
-# Git Diff
-alias gd = git diff
-alias gds = git diff --staged
-alias gdt = git difftool
+# Logging
+alias glola = git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all
+alias glol = git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"
+alias glg = git log --stat                    # Show log with file change statistics
+alias glgg = git log --graph                  # Show log graph
+alias glgp = git log --stat --patch           # Show log with detailed patch info
+alias glod = git log --graph --oneline --decorate  # Show concise, decorated log graph
 
-# Git Log & History
-alias gl = git log --oneline --graph --decorate
-alias glp = git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short
-alias glol = git log --graph --pretty='%C(yellow)%h%C(reset) - %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)' --abbrev-commit
-alias glola = git log --graph --pretty='%C(yellow)%h%C(reset) - %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)' --abbrev-commit --all
+# Work In Progress (WIP)
+def gwip [] {
+    git add -A
+    let deleted_files = (git ls-files --deleted)
+    if $deleted_files != "" {
+        git rm $deleted_files
+    }
+    git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]" 
+}
 
-# Git Remote Management
-alias gr = git remote
-alias gra = git remote add
-alias grv = git remote -v
-alias grm = git remote rm
-alias grs = git remote show
-
-# Git Stash Management
-alias gss = git stash save
-alias gsp = git stash pop
-alias gsa = git stash apply
-alias gsl = git stash list
-alias gsr = git stash drop
-alias gsts = git stash show -p
-
-# Git Clean-Up & Ignored Files
-alias gclean = git clean -fd
-alias gignored = git status --ignored
-
-# Branch Tracking and Syncing
-alias gbup = git branch --set-upstream-to=origin/$(git rev-parse --abbrev-ref HEAD)
-# alias gsync = git fetch origin and git rebase origin/$(git rev-parse --abbrev-ref HEAD)
-
-# Git Reset
-alias grs = git reset
-alias grsh = git reset --hard
-alias grss = git reset --soft
-
-# Additional Helpful Commands
-alias gcp = git cherry-pick
-alias gt = git tag
-alias gtl = git tag -l
-alias gtv = git tag -v
-alias gpo = git push origin
-alias gpom = git push origin main
-alias gplom = git pull origin main
-alias gwc = git whatchanged -p --abbrev-commit --pretty=medium
+# Additional Useful Aliases
+alias ga = git add
+alias gaa = git add --all
+alias gsta = git stash push                  # Stash changes
+alias gstaa = git stash apply                # Apply last stash without removing it
+alias gstl = git stash list                  # List stashes
+alias gstp = git stash pop                   # Apply last stash and remove it
+alias gstc = git stash clear                 # Clear all stashes
+alias gcl = git clone --recurse-submodules   # Clone a repository with submodules
+alias gclean = git clean -fd                 # Remove untracked files
+alias gcm = git commit -m                    # Commit with message
+alias gcm! = git commit -m --no-verify       # Commit with message and skip hooks
+alias gcs = git commit --signoff             # Sign off the commit
+alias gcp = git cherry-pick                  # Cherry-pick a specific commit
+alias gundo = git reset --soft HEAD~1        # Undo the last commit
+alias grb = git rebase                       # Start a rebase
+alias grhh = git reset --hard HEAD           # Hard reset to the current HEAD
+alias grbi = git rebase --interactive        # Start an interactive rebase
 
 def gu [] {
     glob -F **/.git | each { |gitdir|
