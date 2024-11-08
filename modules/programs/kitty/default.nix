@@ -16,6 +16,6 @@
         ## Window decorations
         hide_window_decorations = "titlebar-only";
       }
-      // import ./kitty/catppuccin-mocha.nix {};
+      // import ./catppuccin-mocha.nix {};
   };
 }

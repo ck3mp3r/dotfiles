@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  readYAML = pkgs.callPackage ../../util/read-yaml.nix {};
+  readYAML = pkgs.callPackage ../../../util/read-yaml.nix {};
 
   # nightfox = readYAML (pkgs.fetchFromGitHub
   #   {
@@ -18,7 +18,7 @@
     + "/catppuccin-mocha.yml");
 in {
   home.file.".config/alacritty/alacritty.toml".source =
-    ./alacritty/alacritty.toml;
+    ./alacritty.toml;
 
   programs.alacritty = {
     enable = false;

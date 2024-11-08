@@ -17,7 +17,7 @@
     sha256 = "jTxUrA0vA8JnQE1K6rZQcSg4woHtPiKg0yz4rNVMMlc=";
   };
 
-  localSrc = ./tmux/catppuccin;
+  localSrc = ./catppuccin;
 
   mergedSources = pkgs.stdenv.mkDerivation {
     name = "mergedSources";

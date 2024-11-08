@@ -2,18 +2,14 @@
   # Let Home Manager install and manage itself.
   #  home-manager.enable = true;
 
+  programs.carapace.enable = true;
+
   programs.direnv = {
     enable = true;
-    enableZshIntegration = true;
-    enableNushellIntegration = true;
     nix-direnv.enable = true;
   };
 
-  programs.fzf = {
-    enableZshIntegration = true;
-    enable = true;
-  };
-
+  programs.fzf.enable = true;
   programs.helix.enable = true;
 
   programs.htop = {
@@ -22,17 +18,9 @@
   };
 
   programs.lazygit.enable = true;
-
   programs.less.enable = true;
   programs.lesspipe.enable = true;
-
-  programs.nushell.enable = true;
-
-  programs.zoxide = {
-    enable = true;
-    enableNushellIntegration = true;
-    enableZshIntegration = true;
-  };
+  programs.zoxide.enable = true;
 
   programs.atuin = {
     enable = true;

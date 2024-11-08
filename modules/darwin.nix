@@ -11,6 +11,7 @@
     alacritty
     kitty
     mkalias
+    nushell
     obsidian
     utm
   ];

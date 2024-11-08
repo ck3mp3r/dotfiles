@@ -1,6 +1,6 @@
 {...}: {
   home.file.".config/zellij/layouts/standard.kdl".source =
-    ./zellij/standard.kdl;
+    ./standard.kdl;
 
   programs.zellij = {
     enable = false;

@@ -19,19 +19,19 @@
   imports = [
     sops-nix.homeManagerModules.sops
     ./programs.nix
-    (import ./programs/aichat.nix {
+    (import ./programs/aichat {
       inherit pkgs system;
     })
-    ./programs/alacritty.nix
-    ./programs/ghostty.nix
+    ./programs/alacritty
+    ./programs/ghostty
     ./programs/git.nix
-    ./programs/idea.nix
-    ./programs/k9s.nix
-    ./programs/kitty.nix
-    ./programs/nvim.nix
+    ./programs/idea
+    ./programs/k9s
+    ./programs/kitty
+    ./programs/nushell
     ./programs/starship.nix
-    ./programs/tmux.nix
-    ./programs/zellij.nix
+    ./programs/tmux
+    ./programs/zellij
     ./programs/zsh.nix
   ];
 
