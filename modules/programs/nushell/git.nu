@@ -85,3 +85,16 @@ alias gpo = git push origin
 alias gpom = git push origin main
 alias gplom = git pull origin main
 alias gwc = git whatchanged -p --abbrev-commit --pretty=medium
+
+def gu [] {
+    glob -F **/.git | each { |gitdir|
+        let repo_dir = ($gitdir | path dirname)
+        print $">> Starting sync for ($repo_dir) <<"
+        cd $repo_dir
+        git fetch --all
+        git pull --rebase
+        git push
+        cd -
+        print "\n=============================="
+    }
+}
