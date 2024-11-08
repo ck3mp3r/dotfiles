@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730831207,
-        "narHash": "sha256-3ODynjwbkIpurtiIYU0u4Bl4PO8KtwEbV1d88Ok19lA=",
+        "lastModified": 1731091652,
+        "narHash": "sha256-YAwYOlZz/hfPNHa0cxxIbnHSjtQGZY+0B0o+kJn4/Z4=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "6981f41396a4f49e6e7bfbf3c2e2f52ed0184afe",
+        "rev": "2a9bec71640427992837fbcd8e4537adba2c8b8b",
         "type": "github"
       },
       "original": {

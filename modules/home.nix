@@ -28,7 +28,7 @@
     ./programs/idea
     ./programs/k9s
     ./programs/kitty
-    ./programs/nushell
+    (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs/starship.nix
     ./programs/tmux
     ./programs/zellij
