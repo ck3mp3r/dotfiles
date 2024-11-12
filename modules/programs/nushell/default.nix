@@ -29,6 +29,18 @@
       }
       ${pkgs.laio}/bin/laio completion nushell | save --force ${homeDirectory}/.cache/laio/init.nu
 
+      $env.PATH = [
+        $"($env.HOME)/.nix-profile/bin"
+        $"/etc/profiles/per-user/($env.USER)/bin"
+        "/run/current-system/sw/bin"
+        "/nix/var/nix/profiles/default/bin"
+        "/usr/local/bin"
+        "/usr/bin"
+        "/usr/sbin"
+        "/bin"
+        "/sbin"
+      ]
+
     '';
 
     extraConfig = ''
