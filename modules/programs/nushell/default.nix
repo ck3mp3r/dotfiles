@@ -11,7 +11,7 @@
     configFile.source = ./config.nu;
 
     environmentVariables = pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-      DOCKER_HOST = "unix://$HOME/.colima/default/docker.sock";
+      DOCKER_HOST = "\"unix://${homeDirectory}/.colima/default/docker.sock\"";
     };
 
     shellAliases =

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -34,6 +35,7 @@
     home-manager,
     nix-darwin,
     nixpkgs,
+    nixpkgs-unstable,
     laio,
     sops-nix,
     sessionx,
@@ -44,10 +46,16 @@
       inherit (home-manager.lib) homeManagerConfiguration;
       stateVersion = "24.05";
 
+      upkgs = import nixpkgs-unstable{
+        inherit system;
+      };
+      
       overlays = [
         (final: next: {
           laio = laio.packages.${system}.default;
           sessionx = sessionx.packages.${system}.default;
+          nushell = upkgs.nushell;
+          starship = upkgs.starship;
         })
       ];
 
