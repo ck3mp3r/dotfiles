@@ -81,7 +81,7 @@
           inherit pkgs;
           modules = [
             (import ./modules/home.nix {
-              inherit username pkgs stateVersion sops-nix;
+              inherit username pkgs stateVersion system sops-nix;
               homeDirectory =
                 if pkgs.stdenv.isLinux
                 then "/home/${username}"

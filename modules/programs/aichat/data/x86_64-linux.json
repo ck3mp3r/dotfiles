@@ -1,0 +1,4 @@
+{
+  "url": "https://github.com/sigoden/aichat/releases/download/{{version}}/aichat-{{version}}-x86_64-unknown-linux-musl.tar.gz",
+  "hash": "sha256-pMWUvfSYCpyZhRLbsER1L1d35JZXTgJwhtHiJSc2WuU="
+}
