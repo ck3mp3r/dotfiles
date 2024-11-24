@@ -2,7 +2,10 @@
   # Let Home Manager install and manage itself.
   #  home-manager.enable = true;
 
-  programs.carapace.enable = true;
+  programs.carapace ={
+    enable = true;
+    enableZshIntegration = false;
+  };
 
   programs.direnv = {
     enable = true;
