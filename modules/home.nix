@@ -32,7 +32,7 @@
     ./programs/starship.nix
     ./programs/tmux
     ./programs/zellij
-    ./programs/zsh.nix
+    ./programs/zsh
   ];
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;

@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  home.file.".config/zsh/aliases.zsh".source = ./aliases.zsh;
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -31,20 +32,6 @@
 
     shellAliases =
       {
-        myip = "curl https://ipecho.net/plain; echo";
-        gu = "for n in `find . -name .git`; do pushd `dirname $n`; gfa; git pull origin \"$(git-branch-current 2> /dev/null)\"; popd; done;";
-        nix-shell-unstable = "nix-shell -I nixpkgs=channel:nixpkgs-unstable";
-
-        ls = "lsd";
-        lg = "lazygit";
-
-        k = "kubectl";
-        kx = "kubectx";
-
-        tree = "lsd --tree";
-        stree = "tree --depth 2";
-
-        ulid = "curl -s -X GET https://ulid.truestamp.com | jq -jr '.[0].ulid' | pbcopy";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         nd = "~/.config/dotfiles/bin/nd";
@@ -63,6 +50,7 @@
     historySubstringSearch = {enable = true;};
 
     initExtra = ''
+      source ~/.config/zsh/aliases.zsh
       source <(${pkgs.laio}/bin/laio completion zsh)
       source <(${pkgs.fh}/bin/fh completion zsh)
       source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
@@ -115,7 +103,7 @@
     };
 
     oh-my-zsh = {
-      enable = true;
+      enable = false;
       plugins = ["git" "fzf"];
     };
   };

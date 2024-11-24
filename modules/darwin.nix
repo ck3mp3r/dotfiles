@@ -9,7 +9,6 @@
 } @ inputs: let
   packages' = with pkgs; [
     alacritty
-    kitty
     mkalias
     nushell
     obsidian
