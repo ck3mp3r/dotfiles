@@ -31,9 +31,7 @@
     };
 
     shellAliases =
-      {
-      }
-      // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+      pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         nd = "~/.config/dotfiles/bin/nd";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
