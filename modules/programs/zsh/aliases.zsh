@@ -2,7 +2,7 @@
 alias myip='curl https://ipecho.net/plain; echo'
 
 # Git Utility
-alias gu='find . -name .git -exec sh -c '\''pushd "$(dirname "{}")" >/dev/null && gfa && git pull origin "$(git rev-parse --abbrev-ref HEAD)" && popd >/dev/null'\'' \;'
+alias gu='find . -name .git -exec sh -c '\''pushd "$(dirname "{}")" >/dev/null && git fetch --all && git pull origin "$(git rev-parse --abbrev-ref HEAD)" && popd >/dev/null'\'' \;'
 
 # Nix Shell
 alias nix-shell-unstable='nix-shell -I nixpkgs=channel:nixpkgs-unstable'
