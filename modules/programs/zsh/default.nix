@@ -101,8 +101,8 @@
     };
 
     oh-my-zsh = {
-      enable = false;
-      plugins = ["git" "fzf"];
+      enable = true;
+      plugins = ["fzf"];
     };
   };
 }
