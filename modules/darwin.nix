@@ -89,8 +89,9 @@ in {
 
       # Dock
       dock = {
-        orientation = "right";
-        largesize = 54;
+        orientation = "left";
+        tilesize = 16;
+        largesize = 34;
         persistent-apps = [
           "/System/Applications/Launchpad.app"
           "/Applications/Arc.app"
