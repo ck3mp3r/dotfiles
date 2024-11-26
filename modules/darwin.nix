@@ -38,7 +38,7 @@ in {
 
     # Necessary for using flakes on this system.
     settings = {
-      experimental-features = "nix-command flakes auto-allocate-uids";
+      experimental-features = "nix-command flakes pipe-operators auto-allocate-uids";
       trusted-users = [
         "root"
         "${username}"
