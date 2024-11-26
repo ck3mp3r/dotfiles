@@ -29,7 +29,7 @@ alias gbD='git branch --delete --force'
 alias gbr='git branch --remote'
 alias gbnm='git branch --no-merged'
 alias gcb='git checkout -b'
-alias gbm='git branch --move'
+alias gbm='git checkout main'
 
 # Checkout
 alias gco='git checkout'
