@@ -5,7 +5,7 @@ with pkgs;
       fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly" "Hack" "Terminus"];
     })
     # nerdfonts
-    _1password-cli
+    _1password
     bandwhich
     bat
     bottom
@@ -35,4 +35,4 @@ with pkgs;
     tree
     yazi
   ]
-  ++ lib.optionals stdenv.isDarwin [colima m-cli qemu]
+  ++ lib.optionals stdenv.isDarwin [colima m-cli]

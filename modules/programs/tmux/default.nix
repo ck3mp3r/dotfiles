@@ -38,10 +38,11 @@
   };
 in {
   programs.tmux = {
-    enable = true;
-    shortcut = "a";
     baseIndex = 1;
+    enable = true;
     keyMode = "vi";
+    shell = "/bin/zsh";
+    shortcut = "a";
 
     plugins = [
       pkgs.tmuxPlugins.battery

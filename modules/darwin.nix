@@ -12,7 +12,6 @@
     mkalias
     nushell
     obsidian
-    utm
   ];
 
   casks' = [
@@ -96,7 +95,7 @@ in {
           "/System/Applications/Launchpad.app"
           "/Applications/Arc.app"
           "/Applications/Ghostty.app"
-          "${pkgs.utm}/Applications/UTM.app"
+          # "${pkgs.utm}/Applications/UTM.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
           # "/Applications/Parallels Desktop.app"
           # "${pkgs.obsidian}/Applications/Obsidian.app"

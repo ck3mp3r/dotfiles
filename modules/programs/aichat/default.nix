@@ -11,7 +11,7 @@
   };
 in {
   # Install the generated script into your home directory
-  home.file.".config/aichat/config.yaml".source = ./config.yaml;
+  home.file."Library/Application\ Support/aichat/config.yaml".source = ./config.yaml;
 
   home.packages = [aichat];
 }

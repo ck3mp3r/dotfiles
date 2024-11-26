@@ -2,7 +2,7 @@
   description = "Darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
@@ -12,7 +12,7 @@
       url = "github:numtide/flake-utils";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     laio = {
@@ -44,7 +44,7 @@
     flake-utils.lib.eachDefaultSystem (system: let
       inherit (nix-darwin.lib) darwinSystem;
       inherit (home-manager.lib) homeManagerConfiguration;
-      stateVersion = "24.11";
+      stateVersion = "24.05";
 
       upkgs = import nixpkgs-unstable{
         inherit system;
