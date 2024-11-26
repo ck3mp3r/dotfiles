@@ -2,10 +2,15 @@
 with pkgs;
   [
     (nerdfonts.override {
-      fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly" "Hack" "Terminus"];
+      fonts = [
+        "JetBrainsMono"
+        "NerdFontsSymbolsOnly"
+        "Hack"
+        "Terminus"
+      ];
     })
     # nerdfonts
-    _1password
+    _1password-cli
     bandwhich
     bat
     bottom

@@ -42,13 +42,13 @@ in {
     enable = true;
     keyMode = "vi";
     shell = "/bin/zsh";
+    sensibleOnTop = false;
     shortcut = "a";
 
     plugins = [
       pkgs.tmuxPlugins.battery
       pkgs.tmuxPlugins.copycat
       pkgs.tmuxPlugins.pain-control
-      pkgs.tmuxPlugins.sensible
       pkgs.tmuxPlugins.yank
       {
         plugin = tmux-catppuccin;
