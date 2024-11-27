@@ -7,7 +7,7 @@
   aichat = pkgs.callPackage ../../../util/github-release.nix {
     inherit pkgs data;
     name = "aichat";
-    version = "v0.22.0";
+    version = "v0.23.0";
   };
 in {
   # Install the generated script into your home directory
