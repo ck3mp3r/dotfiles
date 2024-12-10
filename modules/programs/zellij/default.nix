@@ -3,7 +3,7 @@
     ./standard.kdl;
 
   programs.zellij = {
-    enable = false;
+    enable = true;
 
     settings = {
       copy_command = "pbcopy";
