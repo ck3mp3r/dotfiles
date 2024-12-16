@@ -31,7 +31,10 @@
     };
 
     shellAliases =
-      pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+      {
+        lazy = "nix run \"github:ck3mp3r/xvim?ref=refs/heads/lazyvim-setup#nvim\" $@";
+      }
+      // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
         nd = "~/.config/dotfiles/bin/nd";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
