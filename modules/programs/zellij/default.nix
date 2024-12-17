@@ -8,10 +8,6 @@
     settings = {
       copy_command = "pbcopy";
 
-      pane_frames = false;
-
-      default_layout = "standard";
-
       ui = {
         pane_frames = {
           rounded_corners = true;
