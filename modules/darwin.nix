@@ -89,6 +89,7 @@ in {
       # Dock
       dock = {
         orientation = "left";
+        autohide = true;
         tilesize = 16;
         largesize = 34;
         persistent-apps = [
