@@ -6,7 +6,7 @@ windows:
   - name: code
     panes:
       - commands:
-          - $EDITOR
+          - command: $EDITOR
 
   - name: misc
     panes:
