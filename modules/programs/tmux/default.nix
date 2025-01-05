@@ -86,6 +86,11 @@ in {
       set -g default-terminal "tmux-256color"
       set -g popup-border-lines "rounded"
 
+      # pane styling
+      set -g pane-border-lines double
+      set -g pane-border-status bottom
+      set -g pane-border-format " #{pane_title} (#{pane_index}) "
+
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
