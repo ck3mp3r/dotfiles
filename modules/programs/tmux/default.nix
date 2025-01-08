@@ -87,7 +87,7 @@ in {
       set -g popup-border-lines "rounded"
 
       # pane styling
-      set -g pane-border-lines double
+      set -g pane-border-lines heavy
       set -g pane-border-status bottom
       set -g pane-border-format " #{pane_title} (#{pane_index}) "
 
