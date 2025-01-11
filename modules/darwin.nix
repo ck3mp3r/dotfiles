@@ -20,7 +20,7 @@
     "firefox"
     "ghostty"
     "ollama"
-    "parallels"
+    # "parallels"
     "pop"
   ];
 in {
