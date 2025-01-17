@@ -23,10 +23,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sessionx = {
-      url = "github:omerxx/tmux-sessionx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -38,7 +34,6 @@
     nixpkgs-unstable,
     laio,
     sops-nix,
-    sessionx,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (system: let
@@ -46,14 +41,13 @@
       inherit (home-manager.lib) homeManagerConfiguration;
       stateVersion = "24.11";
 
-      upkgs = import nixpkgs-unstable{
+      upkgs = import nixpkgs-unstable {
         inherit system;
       };
-      
+
       overlays = [
         (final: next: {
           laio = laio.packages.${system}.default;
-          sessionx = sessionx.packages.${system}.default;
           nushell = upkgs.nushell;
           starship = upkgs.starship;
         })

@@ -75,7 +75,6 @@ in {
         '';
       }
       tmux-cpu
-      pkgs.sessionx
     ];
 
     extraConfig = ''
