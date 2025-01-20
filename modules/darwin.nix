@@ -22,6 +22,7 @@
     "ollama"
     # "parallels"
     "pop"
+    "zen-browser"
     "zoom"
   ];
 in {
