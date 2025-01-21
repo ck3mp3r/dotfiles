@@ -2,7 +2,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    enableNushellIntegration = false;
+    enableNushellIntegration = true;
     settings = {
       format = "$all";
       palette = "catppuccin_mocha";
