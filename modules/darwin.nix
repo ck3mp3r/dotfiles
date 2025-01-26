@@ -8,17 +8,17 @@
   ...
 } @ inputs: let
   packages' = with pkgs; [
-    alacritty
     mkalias
     nushell
-    obsidian
   ];
 
   casks' = [
     "1password"
+    "alacritty"
     "arc"
     "ghostty"
     "ollama"
+    "obsidian"
     # "parallels"
     "pop"
     "zen-browser"
@@ -100,9 +100,8 @@ in {
           "/Applications/Arc.app"
           "/Applications/Ghostty.app"
           # "${pkgs.utm}/Applications/UTM.app"
-          "${pkgs.obsidian}/Applications/Obsidian.app"
+          "/Applications/Obsidian.app"
           # "/Applications/Parallels Desktop.app"
-          # "${pkgs.obsidian}/Applications/Obsidian.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"
         ];
