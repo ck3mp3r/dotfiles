@@ -17,7 +17,6 @@
   casks' = [
     "1password"
     "arc"
-    "firefox"
     "ghostty"
     "ollama"
     # "parallels"
