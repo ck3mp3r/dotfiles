@@ -9,9 +9,25 @@
     name = "aichat";
     version = "v0.26.0";
   };
+  modelVersion = "llama3.1:8b";
 in {
-  # Install the generated script into your home directory
-  home.file.".config/aichat/config.yaml".source = ./config.yaml;
+  home.file.".config/aichat/config.yaml".text = ''
+    model: "ollama:${modelVersion}"
+    clients:
+      - type: "openai-compatible"
+        name: "ollama"
+        api_base: "http://localhost:11434/v1"
+        api_key: null
+        models:
+          - name: "ollama:${modelVersion}"
+  '';
+
+  home.activation = {
+    ollama-pull = ''
+      echo "Pulling model ollama:${modelVersion} using Ollama..."
+      /opt/homebrew/bin/ollama pull "${modelVersion}"
+    '';
+  };
 
   home.packages = [aichat];
 }
