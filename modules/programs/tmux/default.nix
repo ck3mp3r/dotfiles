@@ -5,16 +5,16 @@
     src = pkgs.fetchFromGitHub {
       owner = "tmux-plugins";
       repo = "tmux-cpu";
-      rev = "98d787191bc3e8f19c3de54b96ba1caf61385861";
-      sha256 = "ymmCI6VYvf94Ot7h2GAboTRBXPIREP+EB33+px5aaJk=";
+      rev = "bcb110d754ab2417de824c464730c412a3eb2769";
+      sha256 = "OrQAPVJHM9ZACyN36tlUDO7l213tX2a5lewDon8lauc=";
     };
   };
 
   catppucinSrc = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "tmux";
-    rev = "1612a23174a6771ac466312eb156f83b8b89d907";
-    sha256 = "jTxUrA0vA8JnQE1K6rZQcSg4woHtPiKg0yz4rNVMMlc=";
+    rev = "320e184a31d0825cb4f4af550492cbdff2fc3ffc";
+    sha256 = "gMBpINeHS+5TCsbJBHhXKEF+fG58FmJrIJoQWYdQqc0=";
   };
 
   localSrc = ./catppuccin;
@@ -53,24 +53,18 @@ in {
       {
         plugin = tmux-catppuccin;
         extraConfig = ''
-          set -g @catppuccin_window_left_separator ""
-          set -g @catppuccin_window_right_separator " "
-          set -g @catppuccin_window_middle_separator " █"
-          set -g @catppuccin_window_number_position "right"
+          set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_window_status_style "rounded"
+          set -g @catppuccin_status_background "#242638"
 
-          set -g @catppuccin_window_default_fill "number"
-          set -g @catppuccin_window_default_text "#W"
-
-          set -g @catppuccin_window_current_fill "number"
-          set -g @catppuccin_window_current_text "#W"
-
-          set -g @catppuccin_status_modules_left "session"
-          set -g @catppuccin_status_modules_right "directory cpu ram host"
-          set -g @catppuccin_status_left_separator  " "
-          set -g @catppuccin_status_right_separator ""
-          set -g @catppuccin_status_right_separator_inverse "no"
-          set -g @catppuccin_status_fill "icon"
-          set -g @catppuccin_status_connect_separator "no"
+          set -g status-justify 'absolute-centre'
+          set -ogq @catppuccin_window_number_position "right"
+          set -ogq @catppuccin_window_text "#W"
+          set -ogq @catppuccin_window_current_text "#W"
+          set -g status-left-length 150
+          set -g status-right-length 150
+          set -g status-left "#{E:@catppuccin_status_session} "
+          set -g status-right "#{E:@catppuccin_status_directory}#{E:@catppuccin_status_host}"
 
         '';
       }
