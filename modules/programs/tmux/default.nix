@@ -46,7 +46,6 @@ in {
     shortcut = "a";
 
     plugins = [
-      pkgs.tmuxPlugins.battery
       pkgs.tmuxPlugins.copycat
       pkgs.tmuxPlugins.pain-control
       pkgs.tmuxPlugins.yank
@@ -57,18 +56,36 @@ in {
           set -g @catppuccin_window_status_style "rounded"
           set -g @catppuccin_status_background "#242638"
 
-          set -g status-justify 'absolute-centre'
+          set -g status-justify 'centre'
           set -ogq @catppuccin_window_number_position "right"
           set -ogq @catppuccin_window_text "#W"
           set -ogq @catppuccin_window_current_text "#W"
+
+          set -ogq @catppuccin_pane_status_enabled "yes"
+          set -ogq @catppuccin_pane_border_status "yes"
+          set -ogq @catppuccin_pane_default_text "##{b:pane_title}"
+          set -ogq @catppuccin_pane_number_position "right"
+
           set -g status-left-length 150
           set -g status-right-length 150
           set -g status-left "#{E:@catppuccin_status_session} "
+          # set -g status-right "#{E:@catppuccin_status_cpu}#{E:@catppuccin_status_ram}#{E:@catppuccin_status_host}"
           set -g status-right "#{E:@catppuccin_status_directory}#{E:@catppuccin_status_host}"
+
+          # pane styling
+          set -g pane-border-lines heavy
+          set -g pane-border-status bottom
+
 
         '';
       }
-      tmux-cpu
+      pkgs.tmuxPlugins.battery
+      {
+        plugin = tmux-cpu;
+        extraConfig = ''
+          source -F "${tmux-catppuccin}/share/tmux-plugins/catppuccin/status/ram.conf"
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -79,10 +96,6 @@ in {
       set -g default-terminal "tmux-256color"
       set -g popup-border-lines "rounded"
 
-      # pane styling
-      set -g pane-border-lines heavy
-      set -g pane-border-status bottom
-      set -g pane-border-format " #{pane_title} (#{pane_index}) "
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
