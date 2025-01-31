@@ -1,15 +1,4 @@
 {pkgs, ...}: let
-  tmux-cpu = pkgs.tmuxPlugins.mkTmuxPlugin {
-    name = "tmux-cpu";
-    pluginName = "cpu";
-    src = pkgs.fetchFromGitHub {
-      owner = "tmux-plugins";
-      repo = "tmux-cpu";
-      rev = "bcb110d754ab2417de824c464730c412a3eb2769";
-      sha256 = "OrQAPVJHM9ZACyN36tlUDO7l213tX2a5lewDon8lauc=";
-    };
-  };
-
   catppucinSrc = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "tmux";
@@ -17,17 +6,16 @@
     sha256 = "gMBpINeHS+5TCsbJBHhXKEF+fG58FmJrIJoQWYdQqc0=";
   };
 
-  localSrc = ./catppuccin;
+  catppuccinStatusSrc = ./plugins/catppuccin;
 
   mergedSources = pkgs.stdenv.mkDerivation {
     name = "mergedSources";
     buildInputs = with pkgs; [rsync];
 
     buildCommand = ''
-      # Create the $out directory explicitly
       mkdir -p $out
       rsync -a ${catppucinSrc}/. $out/
-      rsync -a ${localSrc}/. $out/
+      rsync -a ${catppuccinStatusSrc}/. $out/
     '';
   };
 
@@ -35,6 +23,11 @@
     name = "catppuccin";
     pluginName = "catppuccin";
     src = mergedSources;
+  };
+  tmux-cpu = pkgs.tmuxPlugins.mkTmuxPlugin {
+    name = "cpu";
+    pluginName = "cpu";
+    src = ./plugins/cpu;
   };
 in {
   programs.tmux = {
@@ -56,7 +49,6 @@ in {
           set -g @catppuccin_window_status_style "rounded"
           set -g @catppuccin_status_background "#242638"
 
-          set -g status-justify 'centre'
           set -ogq @catppuccin_window_number_position "right"
           set -ogq @catppuccin_window_text "#W"
           set -ogq @catppuccin_window_current_text "#W"
@@ -66,16 +58,15 @@ in {
           set -ogq @catppuccin_pane_default_text "##{b:pane_title}"
           set -ogq @catppuccin_pane_number_position "right"
 
+          set -g status-justify 'centre'
           set -g status-left-length 150
           set -g status-right-length 150
+
           set -g status-left "#{E:@catppuccin_status_session} "
-          # set -g status-right "#{E:@catppuccin_status_cpu}#{E:@catppuccin_status_ram}#{E:@catppuccin_status_host}"
-          set -g status-right "#{E:@catppuccin_status_directory}#{E:@catppuccin_status_host}"
-
-          # pane styling
-          set -g pane-border-lines heavy
-          set -g pane-border-status bottom
-
+          set -g status-right ""
+          set -agF status-right "#{E:@catppuccin_status_cpu}"
+          set -agF status-right "#{E:@catppuccin_status_ram}"
+          set -agF status-right "#{E:@catppuccin_status_battery}"
 
         '';
       }
@@ -95,7 +86,13 @@ in {
       set -g status-position top
       set -g default-terminal "tmux-256color"
       set -g popup-border-lines "rounded"
+      set -g renumber-window on
 
+      # pane styling
+      set -g pane-border-lines heavy
+      set -g pane-border-status bottom
+
+      set -g status-interval 5
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
@@ -118,6 +115,10 @@ in {
       bind-key -T copy-mode-vi 'C-\' select-pane -l
 
       bind -n C-M-k send-keys C-l \; send-keys -R \; clear-history
+
+      bind-key r run-shell "tmux source-file ~/.config/tmux/tmux.conf; tmux refresh-client -S"
+
+      set-hook -g after-new-session "run-shell 'tmux source-file ~/.config/tmux/tmux.conf'"
 
       # end additional user settings
     '';
