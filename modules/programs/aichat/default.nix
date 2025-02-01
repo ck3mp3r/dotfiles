@@ -9,7 +9,7 @@
     name = "aichat";
     version = "v0.26.0";
   };
-  modelVersion = "llama3.1:8b";
+  modelVersion = "deepseek-r1:8b";
 in {
   home.file.".config/aichat/config.yaml".text = ''
     model: "ollama:${modelVersion}"
