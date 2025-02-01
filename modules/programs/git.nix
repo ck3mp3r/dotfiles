@@ -27,7 +27,7 @@
   '';
 
   fuzzyCommit = pkgs.writeShellScriptBin "fuzzy-commit" ''
-    n=5
+    n=3
     messages=""
 
     for ((i=1; i<=n; i++)); do
@@ -35,7 +35,13 @@
       messages="$messages$commit_message"$'\n'
     done
 
-    selected_message=$(echo "$messages" | grep -v '^$' | fzf --height=10 --border --multi --bind 'enter:accept')
+    selected_message=$(echo "$messages" | grep -v '^$' | fzf \
+    --height=10 \
+    --border \
+    --multi \
+    --bind 'esc:change-query(),i:toggle+change-query()' \
+    --bind 'j:down,k:up,space:toggle' \
+    --bind 'enter:accept')
 
     if [ -n "$selected_message" ]; then
       commit_msg_file=$(mktemp)
