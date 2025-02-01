@@ -29,7 +29,7 @@ _print_help() {
   cat <<EOF
 Usage: nd switch        # run nix-darwin switch
        nd prune         # run nix-darwin expire-generations "-1day"
-       nd               #   and nix-collect-garbage
+                        #   and nix-collect-garbage
        nd flake-update  # update flake lock
        nd nix-upgrade   # upgrade to latest nix version
        nd nix-fix-store # use this to fix a corrupted nix store
