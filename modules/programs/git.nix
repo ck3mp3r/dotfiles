@@ -6,7 +6,8 @@
 
         Here are detailed instructions:
         - If the prefix is present, use it to preceed the commit message, e.g. <prefix>: <message>
-        - If the prefix is not applicable, omit using a prefix, also don't use branch name.
+        - If the prefix is not applicable, omit using a prefix
+        - DO NOT use branch name.
         - Use only information from the diff and branch name provided.
         - The commit message should be a concise summary of the changes in the diff and should not include the diff itself or code.
         - Don't give any advice or explain the technology used etc.
