@@ -10,6 +10,7 @@
   packages' = with pkgs; [
     mkalias
     nushell
+    ollama
   ];
 
   casks' = [
@@ -17,7 +18,6 @@
     "alacritty"
     "arc"
     "ghostty"
-    "ollama"
     "obsidian"
     # "parallels"
     "pop"
@@ -25,10 +25,22 @@
     # "zoom"
   ];
 in {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
   environment.systemPackages = packages';
-  # Auto upgrade nix package and the daemon service.
+  launchd = {
+    user = {
+      agents = {
+        ollama-serve = {
+          command = "${pkgs.ollama}/bin/ollama serve";
+          serviceConfig = {
+            KeepAlive = true;
+            RunAtLoad = true;
+            StandardOutPath = "/tmp/ollama.out.log";
+            StandardErrorPath = "/tmp/ollama.err.log";
+          };
+        };
+      };
+    };
+  };
   services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nixVersions.latest;

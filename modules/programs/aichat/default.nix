@@ -25,7 +25,7 @@ in {
   home.activation = {
     ollama-pull = ''
       echo "Pulling model ollama:${modelVersion} using Ollama..."
-      /opt/homebrew/bin/ollama pull "${modelVersion}"
+      ${pkgs.ollama}/bin/ollama pull "${modelVersion}"
     '';
   };
 
