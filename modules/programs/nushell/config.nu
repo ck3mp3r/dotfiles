@@ -26,5 +26,8 @@ alias nix-shell-unstable = nix-shell -I nixpkgs=channel:nixpkgs-unstable
 alias lg = lazygit
 alias k = kubectl
 alias kx = kubectx
+def tkl [] {
+    tsh kube login (tsh kube ls -f yaml | yq -r ".[].kube_cluster_name" | fzf)
+}
 
 source ~/.config/nushell/git.nu

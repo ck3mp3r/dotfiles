@@ -80,3 +80,5 @@ alias gundo='git reset --soft HEAD~1'
 alias grb='git rebase'
 alias grhh='git reset --hard HEAD'
 alias grbi='git rebase --interactive'
+
+alias tkl='tsh kube login $(tsh kube ls -f yaml | yq -r ".[].kube_cluster_name" | fzf)'
