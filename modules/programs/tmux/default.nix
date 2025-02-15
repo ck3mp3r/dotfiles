@@ -34,7 +34,7 @@ in {
     baseIndex = 1;
     enable = true;
     keyMode = "vi";
-    shell = "/bin/zsh";
+    shell = "${pkgs.nushell}/bin/nu";
     sensibleOnTop = false;
     shortcut = "a";
 

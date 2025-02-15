@@ -2,7 +2,7 @@
   # Let Home Manager install and manage itself.
   #  home-manager.enable = true;
 
-  programs.carapace ={
+  programs.carapace = {
     enable = true;
     enableZshIntegration = false;
   };
@@ -23,7 +23,9 @@
   programs.lazygit.enable = true;
   programs.less.enable = true;
   programs.lesspipe.enable = true;
-  programs.zoxide.enable = true;
+  programs.zoxide = {
+    enable = true;
+  };
 
   programs.atuin = {
     enable = true;

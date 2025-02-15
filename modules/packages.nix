@@ -27,7 +27,7 @@ with pkgs;
     kdash
     kubectl
     kubectx
-    laio
+    # laio
     lsd
     neofetch
     nix-tree
