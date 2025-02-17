@@ -1,0 +1,9 @@
+#!/usr/bin/env nu
+
+def main [word: string] {
+  let wl = ($word | str length)
+  let first = ($word |  str substring 0..0 )
+  let last = ($word | str substring ($wl - 1)..$wl)
+  let ml = ($wl - 2)
+  [$first, $ml, $last] | str join ""
+}

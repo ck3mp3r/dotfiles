@@ -2,11 +2,14 @@ load-env {
   config:{
     show_banner: false
   },
+  XDG_CONFIG_HOME: $"($env.HOME)/.config",
+  XDG_CACHE_HOME: $"($env.HOME)/.cache",
+  XDG_DATA_HOME: $"($env.HOME)/.local/share",
   STARSHIP_SHELL: "nu",
   DOCKER_HOST: $"unix://($env.HOME)/.config/colima/default/docker.sock",
   TERM: "xterm-256color",
   EDITOR: "nvim",
-  TESTCONTAINERS_RYUK_DISABLED: "true",
+  TESTCONTAINERS_RYUK_DISABLED: "true"
   PATH: [
         $"($env.HOME)/.nix-profile/bin"
         $"($env.HOME)/.config/dotfiles/bin"
