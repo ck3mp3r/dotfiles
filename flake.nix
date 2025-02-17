@@ -50,6 +50,7 @@
           laio = laio.packages.${system}.default;
           nushell = upkgs.nushell;
           starship = upkgs.starship;
+          zoxide = upkgs.zoxide;
         })
       ];
 
