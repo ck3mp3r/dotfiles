@@ -1,4 +1,4 @@
-let integrations = ["laio", "atuin"]
+let integrations = ["laio"]
 
 for integration in $integrations {
   let cache_path = $"($env.HOME)/.cache/($integration)"
@@ -9,9 +9,6 @@ for integration in $integrations {
   match $integration {
     "laio" => {
       laio completion nushell | save --force $"($cache_path)/init.nu"
-    }
-    "atuin" => {
-      atuin init nu | save --force $"($cache_path)/init.nu"
     }
     _ => {}
   }
@@ -29,4 +26,3 @@ def tkl [] {
 
 source ~/.config/nushell/git.nu
 source ~/.cache/laio/init.nu
-source ~/.cache/atuin/init.nu
