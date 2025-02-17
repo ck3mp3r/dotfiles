@@ -13,6 +13,7 @@ load-env {
         $"/etc/profiles/per-user/($env.USER)/bin"
         "/run/current-system/sw/bin"
         "/nix/var/nix/profiles/default/bin"
+        "/opt/homebrew/bin"
         "/usr/local/bin"
         "/usr/bin"
         "/usr/sbin"
