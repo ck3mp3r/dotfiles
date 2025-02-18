@@ -3,10 +3,10 @@
 # run nix-darwin switch
 def 'main switch' [] {
   let user = ($env.USER | str replace "." "_" )
-    (nix run nix-darwin
-    --extra-experimental-features nix-command
-    --extra-experimental-features flakes --
-    switch --flake ~/.config/dotfiles#$"($user)")
+  (nix run nix-darwin
+  --extra-experimental-features nix-command
+  --extra-experimental-features flakes --
+  switch --flake ~/.config/dotfiles#$"($user)")
 }
 
 # prune unnused derivations
@@ -18,6 +18,13 @@ def 'main prune' [] {
 def 'main flake-update' [] {
   cd ($env.FILE_PWD | path dirname)
   nix flake update
+  cd -
+}
+
+# update dotfiles
+def 'main update' [] {
+  cd ($env.FILE_PWD | path dirname)
+  git pull origin main
   cd -
 }
 
