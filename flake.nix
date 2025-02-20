@@ -51,6 +51,7 @@
           nushell = upkgs.nushell;
           starship = upkgs.starship;
           zoxide = upkgs.zoxide;
+          topiary = upkgs.topiary;
         })
       ];
 

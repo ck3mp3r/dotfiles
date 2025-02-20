@@ -2,11 +2,13 @@
 
 # run nix-darwin switch
 def 'main switch' [] {
-  let user = ($env.USER | str replace "." "_" )
-  (nix run nix-darwin
-  --extra-experimental-features nix-command
-  --extra-experimental-features flakes --
-  switch --flake ~/.config/dotfiles#$"($user)")
+  let user = ($env.USER | str replace "." "_")
+  (
+    nix run nix-darwin
+    --extra-experimental-features nix-command
+    --extra-experimental-features flakes --
+    switch --flake $"($env.HOME)/.config/dotfiles#($user)"
+  )
 }
 
 # prune unnused derivations

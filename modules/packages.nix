@@ -37,6 +37,7 @@ with pkgs;
     sops
     speedtest-cli
     tldr
+    topiary
     tree
     yazi
   ]

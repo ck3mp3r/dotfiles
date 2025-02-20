@@ -29,5 +29,8 @@ load-env {
   PROMPT_INDICATOR_VI_INSERT: "❯ ",
   PROMPT_INDICATOR_VI_NORMAL: "❮ ",
   PROMPT_MULTILINE_INDICATOR: "❯❯ ",
+
+  TOPIARY_CONFIG_FILE: ($"($env.HOME)/.config" | path join topiary languages.ncl),
+  TOPIARY_LANGUAGE_DIR: ($"($env.HOME)/.config" | path join topiary languages),
 }
 
