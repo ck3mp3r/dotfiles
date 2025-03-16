@@ -23,7 +23,13 @@ alias gfa = git fetch --all --prune --jobs=10
 def ggpull [] { git pull origin (git rev-parse --abbrev-ref HEAD) }
 
 # Push
-def ggpush [] { git push origin (git rev-parse --abbrev-ref HEAD) }
+def ggpush [--force] {
+  mut cmd = [git push origin (git rev-parse --abbrev-ref HEAD)]
+  if $force {
+    $cmd = $cmd ++ [--force]
+  }
+  run-external ...($cmd)
+}
 def gpsup [] { git push --set-upstream origin (git rev-parse --abbrev-ref HEAD) }  # Push current branch and set upstream
 def gpoat [] { git push origin --all ; git push origin --tags }       # Push all branches and tags
 
@@ -36,13 +42,17 @@ alias glgp = git log --stat --patch           # Show log with detailed patch inf
 alias glod = git log --graph --oneline --decorate  # Show concise, decorated log graph
 
 # Work In Progress (WIP)
-def gwip [] {
-    git add -A
-    let deleted_files = (git ls-files --deleted)
-    if $deleted_files != "" {
-        git rm $deleted_files
-    }
-    git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]" 
+def gwip [--amend] {
+  git add -A
+  let deleted_files = (git ls-files --deleted)
+  if $deleted_files != "" {
+      git rm $deleted_files
+  }
+  mut cmd = [git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"]
+  if $amend {
+    $cmd = $cmd ++ [--amend]
+  }
+  run-external ...($cmd)
 }
 
 # Additional Useful Aliases

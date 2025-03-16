@@ -2,10 +2,20 @@ name: dotfiles
 
 path: .
 
+startup:
+  - command: sh
+    args:
+      - -c
+      - 'echo "hello again"'
+
 windows:
   - name: code
     panes:
       - commands:
+          - command: sh
+            args:
+              - -c
+              - "hello again"
           - command: nvim
 
   - name: misc
