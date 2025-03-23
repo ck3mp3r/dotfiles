@@ -43,7 +43,7 @@ in {
   };
   services.nix-daemon.enable = true;
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.nixVersions.nix_2_26;
     gc = {
       automatic = true;
       interval.Day = 7;
