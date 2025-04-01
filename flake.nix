@@ -8,9 +8,6 @@
       url = "github:lnl7/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +24,6 @@
 
   outputs = {
     self,
-    flake-utils,
     home-manager,
     nix-darwin,
     nixpkgs,
@@ -35,66 +31,68 @@
     laio,
     sops-nix,
     ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      inherit (nix-darwin.lib) darwinSystem;
-      inherit (home-manager.lib) homeManagerConfiguration;
-      stateVersion = "24.11";
+  }: let
+    system =
+      builtins.currentSystem
+      or (import <nixpkgs> {}).stdenv.hostPlatform.system;
+    inherit (nix-darwin.lib) darwinSystem;
+    inherit (home-manager.lib) homeManagerConfiguration;
+    stateVersion = "24.11";
 
-      upkgs = import nixpkgs-unstable {
-        inherit system;
+    upkgs = import nixpkgs-unstable {
+      inherit system;
+    };
+
+    overlays = [
+      (final: next: {
+        laio = laio.packages.${system}.default;
+        nushell = upkgs.nushell;
+        starship = upkgs.starship;
+        zoxide = upkgs.zoxide;
+        topiary = upkgs.topiary;
+      })
+    ];
+
+    pkgs = import nixpkgs {
+      inherit system overlays;
+      config = {allowUnfree = true;};
+    };
+
+    makeDarwinConfiguration = username:
+      darwinSystem {
+        inherit pkgs;
+        modules = [
+          home-manager.darwinModules.home-manager
+          (import ./modules/darwin.nix {
+            inherit system pkgs username stateVersion sops-nix;
+            revision = self.rev or self.dirtyRev or null;
+          })
+        ];
       };
 
-      overlays = [
-        (final: next: {
-          laio = laio.packages.${system}.default;
-          nushell = upkgs.nushell;
-          starship = upkgs.starship;
-          zoxide = upkgs.zoxide;
-          topiary = upkgs.topiary;
-        })
-      ];
-
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config = {allowUnfree = true;};
+    makeHomemanagerConfiguration = username:
+      homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          (import ./modules/home.nix {
+            inherit username pkgs stateVersion system sops-nix;
+            homeDirectory =
+              if pkgs.stdenv.isLinux
+              then "/home/${username}"
+              else "/Users/${username}";
+          })
+        ];
       };
+  in {
+    darwinConfigurations = {
+      "christian" = makeDarwinConfiguration "christian";
+      "christian_kemper" = makeDarwinConfiguration "christian.kemper";
+    };
 
-      makeDarwinConfiguration = username:
-        darwinSystem {
-          inherit pkgs;
-          modules = [
-            home-manager.darwinModules.home-manager
-            (import ./modules/darwin.nix {
-              inherit system pkgs username stateVersion sops-nix;
-              revision = self.rev or self.dirtyRev or null;
-            })
-          ];
-        };
+    formatter.${system} = pkgs.alejandra;
 
-      makeHomemanagerConfiguration = username:
-        homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            (import ./modules/home.nix {
-              inherit username pkgs stateVersion system sops-nix;
-              homeDirectory =
-                if pkgs.stdenv.isLinux
-                then "/home/${username}"
-                else "/Users/${username}";
-            })
-          ];
-        };
-    in {
-      packages.darwinConfigurations = {
-        "christian" = makeDarwinConfiguration "christian";
-        "christian_kemper" = makeDarwinConfiguration "christian.kemper";
-      };
-
-      formatter = pkgs.alejandra;
-
-      packages.homeConfigurations = {
-        christian = makeHomemanagerConfiguration "christian";
-      };
-    });
+    homeConfigurations = {
+      christian = makeHomemanagerConfiguration "christian";
+    };
+  };
 }
