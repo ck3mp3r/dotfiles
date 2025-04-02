@@ -5,6 +5,7 @@
   username,
   stateVersion,
   sops-nix,
+  casks,
   ...
 } @ inputs: let
   packages' = with pkgs; [
@@ -13,17 +14,17 @@
     ollama
   ];
 
-  casks' = [
-    "1password"
-    "alacritty"
-    "arc"
-    "ghostty"
-    "obsidian"
-    # "parallels"
-    "pop"
-    "zen-browser"
-    # "zoom"
-  ];
+  casks' =
+    [
+      "1password"
+      "alacritty"
+      "arc"
+      "ghostty"
+      "obsidian"
+      "pop"
+      "zen-browser"
+    ]
+    ++ casks;
 in {
   environment.systemPackages = packages';
   launchd = {

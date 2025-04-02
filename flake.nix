@@ -50,6 +50,7 @@
         starship = upkgs.starship;
         zoxide = upkgs.zoxide;
         topiary = upkgs.topiary;
+        ollama = upkgs.ollama;
       })
     ];
 
@@ -58,41 +59,61 @@
       config = {allowUnfree = true;};
     };
 
-    makeDarwinConfiguration = username:
+    makeDarwinConfiguration = args: let
+      defaults = {
+        casks = [];
+      };
+      config = defaults // args;
+    in
       darwinSystem {
         inherit pkgs;
         modules = [
           home-manager.darwinModules.home-manager
           (import ./modules/darwin.nix {
-            inherit system pkgs username stateVersion sops-nix;
+            inherit system pkgs stateVersion sops-nix;
+            inherit (config) username casks;
             revision = self.rev or self.dirtyRev or null;
           })
         ];
       };
 
-    makeHomemanagerConfiguration = username:
+    makeHomemanagerConfiguration = args: let
+      defaults = {
+        casks = [];
+      };
+      config = defaults // args;
+    in
       homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (import ./modules/home.nix {
-            inherit username pkgs stateVersion system sops-nix;
+            inherit pkgs stateVersion system sops-nix;
+            inherit (config) username;
             homeDirectory =
               if pkgs.stdenv.isLinux
-              then "/home/${username}"
-              else "/Users/${username}";
+              then "/home/${config.username}"
+              else "/Users/${config.username}";
           })
         ];
       };
   in {
     darwinConfigurations = {
-      "christian" = makeDarwinConfiguration "christian";
-      "christian_kemper" = makeDarwinConfiguration "christian.kemper";
+      "christian" = makeDarwinConfiguration {
+        username = "christian";
+        casks = [
+          "parallels"
+        ];
+      };
+      "christian_kemper" = makeDarwinConfiguration {
+        username = "christian.kemper";
+        casks = ["utm"];
+      };
     };
 
     formatter.${system} = pkgs.alejandra;
 
     homeConfigurations = {
-      christian = makeHomemanagerConfiguration "christian";
+      christian = makeHomemanagerConfiguration {username = "christian";};
     };
   };
 }
