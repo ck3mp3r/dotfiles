@@ -42,24 +42,27 @@ in {
       };
     };
   };
-  services.nix-daemon.enable = true;
-  nix = {
-    package = pkgs.nixVersions.nix_2_26;
-    gc = {
-      automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
-    };
 
-    # Necessary for using flakes on this system.
-    settings = {
-      experimental-features = "nix-command flakes pipe-operators auto-allocate-uids";
-      trusted-users = [
-        "root"
-        "${username}"
-      ];
-    };
-  };
+  nix.enable = false;
+
+  # services.nix-daemon.enable = true;
+  # nix = {
+  #   package = pkgs.nixVersions.nix_2_26;
+  #   gc = {
+  #     automatic = true;
+  #     interval.Day = 7;
+  #     options = "--delete-older-than 7d";
+  #   };
+  #
+  #   # Necessary for using flakes on this system.
+  #   settings = {
+  #     experimental-features = "nix-command flakes pipe-operators auto-allocate-uids";
+  #     trusted-users = [
+  #       "root"
+  #       "${username}"
+  #     ];
+  #   };
+  # };
 
   users.users.${username} = {
     home =
