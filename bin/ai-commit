@@ -1,0 +1,81 @@
+#!/usr/bin/env nu
+
+def make_prompt [diff: string] {
+  let prompt = $"
+  You are an expert AI commit message generator specialized in creating concise, informative commit messages that follow best practices in version control.
+
+  Your ONLY task is to generate a well-structured commit message based on the provided diff. The commit message must:
+  1. Use a clear, descriptive title in the imperative mood \(50 characters max\)
+  2. Provide a detailed explanation of changes in bullet points
+  3. Focus solely on the technical changes in the code
+  4. Use present tense and be specific about modifications
+
+  Key Guidelines:
+  - Analyze the entire diff comprehensively, separate additions and deletions
+  - Capture the essence of only MAJOR changes
+  - Use technical, precise languages
+  - Avoid generic or vague descriptions
+  - Avoid quoting any word or sentences
+  - Avoid adding description for minor changes with not much context
+  - Return just the commit message, no additional text
+  - Don't return more bullet points than required
+  - Generate a single commit message
+
+  Output Format:
+  Concise Title Summarizing Changes
+
+  - Specific change description
+  - Another specific change description
+  - Rationale for key modifications
+  - Impact of changes
+
+  Diff:
+  ($diff)
+  "
+  $prompt
+}
+
+def commit [selected_message: string] {
+  let commit_msg_file = $"/tmp/commit-msg-(random uuid).tmp"
+
+  $selected_message | save -f $commit_msg_file
+
+  GIT_EDITOR=$env.EDITOR git commit --edit --file $commit_msg_file
+
+  rm $commit_msg_file
+}
+
+def main [] {
+
+  let branch = git rev-parse --abbrev-ref HEAD
+  let prefix = $branch | parse -r '(?P<id>[A-Za-z]+-[0-9]+)' | get id.0? | default ""
+  let diff = git diff --cached
+  let prompt = make_prompt $diff
+  mut message = ""
+  if $prefix != "" {
+    $message = $"($prefix): (aichat $prompt)"
+  } else {
+    $message = (aichat $prompt)
+  }
+
+  print "Generated Commit Message:\n"
+  print $message
+
+  print "Choose an action: [c]ommit, [r]etry, [a]bort"
+  let choice = input "Enter your choice: "
+
+  match $choice {
+    "c" => {
+      commit $message
+    }
+    "r" => {
+      main
+    }
+    "a" => {
+      echo "Operation aborted."
+    }
+    _ => {
+      echo "Invalid choice. Operation aborted."
+    }
+  }
+}
