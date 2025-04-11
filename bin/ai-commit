@@ -58,11 +58,11 @@ def main [] {
     $message = (aichat $prompt)
   }
 
-  print "Generated Commit Message:\n"
+  print "\nGenerated Commit Message:\n"
   print $message
 
-  print "Choose an action: [c]ommit, [r]etry, [a]bort"
-  let choice = input "Enter your choice: "
+  print "\nChoose an action: [c]ommit, [r]etry, [a]bort"
+  let choice = input "\nEnter your choice: "
 
   match $choice {
     "c" => {
