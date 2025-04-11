@@ -11,7 +11,7 @@ def make_prompt [diff: string] {
   4. Use present tense and be specific about modifications
 
   Key Guidelines:
-  - Analyze the entire diff comprehensively, separate additions and deletions
+  - Analyze the entire diff comprehensively, consider both additions and deletions
   - Capture the essence of only MAJOR changes
   - Use technical, precise languages
   - Avoid generic or vague descriptions
@@ -46,10 +46,13 @@ def commit [selected_message: string] {
 }
 
 def main [] {
-
   let branch = git rev-parse --abbrev-ref HEAD
   let prefix = $branch | parse -r '(?P<id>[A-Za-z]+-[0-9]+)' | get id.0? | default ""
-  let diff = git diff --cached
+  let diff = git diff --cached | str trim
+  if $diff == "" {
+    print "No changes staged!"
+    exit 1
+  }
   let prompt = make_prompt $diff
   mut message = ""
   if $prefix != "" {
