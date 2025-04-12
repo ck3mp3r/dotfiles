@@ -65,7 +65,7 @@ def main [] {
   print $message
 
   print "\nChoose an action: [c]ommit, [r]etry, [a]bort\n"
-  let choice = input -n 1 "Enter your choice: "
+  let choice = input -n 1 -d a "Enter your choice: "
 
   match $choice {
     "c" => {
