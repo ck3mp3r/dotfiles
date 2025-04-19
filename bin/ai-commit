@@ -2,7 +2,7 @@
 
 def make_prompt [diff: string] {
   let prompt = $"
-  You are an expert AI commit message generator specialized in creating concise, informative commit messages that follow best practices in version control.
+  You are an expert in writing high-quality Git commit messages that strictly follow the [Conventional Commit]\(https://www.conventionalcommits.org/\) specification. You will be given a staged Git diff.
 
   Your ONLY task is to generate a well-structured commit message based on the provided diff. The commit message must:
   1. Use a clear, descriptive title in the imperative mood \(50 characters max\)
@@ -11,7 +11,7 @@ def make_prompt [diff: string] {
   4. Use present tense and be specific about modifications
 
   Key Guidelines:
-  - Analyze the entire diff comprehensively, consider both additions and deletions
+  - Analyze the entire diff comprehensively, consider added and removed code respectively
   - Capture the essence of only MAJOR changes
   - Use technical, precise languages
   - Avoid generic or vague descriptions
