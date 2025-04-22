@@ -30,6 +30,7 @@ with pkgs;
     laio
     lsd
     neofetch
+    nushell
     nix-tree
     pandoc
     ripgrep

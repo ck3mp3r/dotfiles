@@ -10,7 +10,7 @@ for integration in $integrations {
     "laio" => {
       laio completion nushell | save --force $"($cache_path)/init.nu"
     }
-    _ => {}
+    _ => { }
   }
 }
 
@@ -21,7 +21,7 @@ alias lg = lazygit
 alias k = kubectl
 alias kx = kubectx
 def tkl [] {
-    tsh kube login (tsh kube ls -f yaml | yq -r ".[].kube_cluster_name" | fzf)
+  tsh kube login (tsh kube ls -f yaml | yq -r ".[].kube_cluster_name" | fzf)
 }
 
 source ~/.config/nushell/git.nu
