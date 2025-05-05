@@ -10,8 +10,9 @@
     version = "v0.29.0";
   };
   # modelVersion = "deepseek-r1:8b";
-  modelVersion = "gemma3:12b";
+  # modelVersion = "gemma3:12b";
   # modelVersion = "llama3.1:8b";
+  modelVersion = "qwen3:4b";
 in {
   home.file.".config/aichat/config.yaml".text = ''
     model: "ollama:${modelVersion}"
