@@ -22,7 +22,6 @@
       "ghostty"
       "obsidian"
       "pop"
-      "zen-browser"
     ]
     ++ casks;
 in {
