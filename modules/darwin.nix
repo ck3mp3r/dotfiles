@@ -22,6 +22,7 @@
       "ghostty"
       "obsidian"
       "pop"
+      "zen"
     ]
     ++ casks;
 in {
