@@ -83,6 +83,7 @@ in {
 
   # Set Git commit hash for darwin-version.
   system = {
+    primaryUser = username;
     stateVersion = 5;
     configurationRevision = revision;
 

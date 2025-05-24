@@ -1,14 +1,9 @@
 {pkgs, ...}:
 with pkgs;
   [
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "NerdFontsSymbolsOnly"
-        "Hack"
-        "Terminus"
-      ];
-    })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    nerd-fonts.hack
     # nerdfonts
     _1password-cli
     bandwhich

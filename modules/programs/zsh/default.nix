@@ -47,7 +47,7 @@
 
     historySubstringSearch = {enable = true;};
 
-    initExtra = ''
+    initContent = ''
       source ~/.config/zsh/aliases.zsh
       source <(${pkgs.laio}/bin/laio completion zsh)
       source <(${pkgs.fh}/bin/fh completion zsh)
