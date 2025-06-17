@@ -1,13 +1,26 @@
 default-model: "claude-3.7-sonnet"
 
 apis:
+  ollama:
+    base-url: "http://localhost:11434"
+    models:
+      "gemma3:12b":
+        aliases: ["gemma3"]
+        max-input-chars: 650000
+      "llama3.2:3b":
+        aliases: ["llama3"]
+        max-input-chars: 650000
+      "qwen3:4b":
+        aliases: ["qwen3"]
+        max-input-chars: 650000
+
   copilot:
     base-url: "https://api.githubcopilot.com"
     models:
       gpt-4o:
         aliased:
           - "4"
-        max-input-chars: 64000
+        max-input-chars: 680000
       claude-3.7-sonnet:
         aliases:
           - "claude3.7-sonnet"
