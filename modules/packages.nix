@@ -4,6 +4,7 @@ with pkgs;
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     nerd-fonts.hack
+    nodejs_24
     # nerdfonts
     _1password-cli
     bandwhich

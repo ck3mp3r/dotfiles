@@ -1,46 +1,37 @@
-{...}: {
-  programs.mods = {
-    enable = true;
-    settings = {
-      default-model = "claude-3.7-sonnet";
-      apis = {
-        copilot = {
-          base-url = "https://api.githubcopilot.com";
-          models = {
-            "gpt-4o" = {
-              aliased = ["4"];
-              "max-input-chars" = 64000;
-            };
-            "claude-3.7-sonnet" = {
-              aliases = ["claude3.7-sonnet" "sonnet-3.7" "claude-3-7-sonnet"];
-              "max-input-chars" = 680000;
-            };
-            "claude-sonnet-4" = {
-              aliases = ["sonnet-4" "claude-4-sonnet"];
-              "max-input-chars" = 680000;
-            };
-          };
-        };
-      };
-      mcp-servers = {
-        context7 = {
-          command = "npx";
-          args = ["@context7/mcp-server"];
-          env = {};
-        };
-        github = {
-          command = "npx";
-          args = ["@modelcontextprotocol/server-github"];
-          env = {
-            GITHUB_PERSONAL_ACCESS_TOKEN = "$GITHUB_TOKEN";
-          };
-        };
-        kubernetes = {
-          command = "npx";
-          args = ["@modelcontextprotocol/server-kubernetes"];
-          env = {};
-        };
-      };
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  mods = pkgs.buildGoModule rec {
+    pname = "mods";
+    version = "unstable-${lib.substring 0 8 src.rev}";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "charmbracelet";
+      repo = "mods";
+      rev = "main";
+      hash = "sha256-dCNVDf05wRvs84eVChMGtRtg5fOWhiz1I/L8F/9Rw/Q=";
+    };
+
+    vendorHash = "sha256-nnXvmuyv25AKf1Jh3bA1J8f/hg6NREZNE2BG/sISv5U=";
+
+    # Let Nix handle vendoring automatically
+    proxyVendor = true;
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X=main.Version=${version}"
+    ];
+
+    meta = with lib; {
+      description = "AI on the command line";
+      homepage = "https://github.com/charmbracelet/mods";
+      license = licenses.mit;
     };
   };
+in {
+  home.file.".config/mods/mods.yml".source = ./mods.yml;
+  home.packages = [mods];
 }
