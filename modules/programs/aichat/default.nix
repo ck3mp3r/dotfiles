@@ -27,15 +27,11 @@ in {
         name: "copilot"
         api_base: "https://api.githubcopilot.com"
         models:
-          - name: "copilot:claude-sonnet-4"
+          - name: "claude-3.7-sonnet"
             type: "chat"
             max_input_tokens: 200000
             max_output_tokens: 8192
-          - name: "copilot:claude-3-5-sonnet-20241022"
-            type: "chat"
-            max_input_tokens: 200000
-            max_output_tokens: 8192
-          - name: "copilot:gpt-4o"
+          - name: "gpt-4o"
             type: "chat"
             max_input_tokens: 128000
             max_output_tokens: 16384

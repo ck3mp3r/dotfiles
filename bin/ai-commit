@@ -44,7 +44,7 @@ def commit [selected_message: string] {
   rm $commit_msg_file
 }
 
-def main [ --model (-m): string = "gemma3:12b"] {
+def main [ --model (-m): string = "sonnet-4"] {
   let branch = git rev-parse --abbrev-ref HEAD
   let prefix = $branch | parse -r '(?P<id>[A-Za-z]+-[0-9]+)' | get id.0? | default ""
   let diff = git diff --cached | str trim
@@ -55,9 +55,9 @@ def main [ --model (-m): string = "gemma3:12b"] {
   let prompt = make_prompt $diff
   mut message = ""
   if $prefix != "" {
-    $message = $"($prefix): (aichat --model ollama:($model) $prompt)"
+    $message = $"($prefix): (mods --model $model --quiet --raw --no-cache $prompt)"
   } else {
-    $message = $"(aichat --model ollama:($model) $prompt)"
+    $message = $"(mods --model $model --quiet --raw --no-cache $prompt)"
   }
 
   $message = $message | split row "</think>" | last | str trim
