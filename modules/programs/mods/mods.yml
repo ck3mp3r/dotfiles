@@ -34,3 +34,5 @@ mcp-servers:
     args:
       - "-y"
       - "mcp-server-kubernetes"
+    env:
+      - ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true
