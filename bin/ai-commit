@@ -8,7 +8,8 @@ def make_prompt [diff: string] {
   1. Use a clear, descriptive title in the imperative mood \(50 characters max\)
   2. Provide a detailed explanation of changes in bullet points
   3. Focus solely on the technical changes in the code
-  4. Use present tense and be specific about modifications
+  4. Don't focus on differences in markdown files
+  5. Use present tense and be specific about modifications
 
   Key Guidelines:
   - Analyze the entire diff comprehensively, consider added and removed code respectively
@@ -24,10 +25,7 @@ def make_prompt [diff: string] {
   Output Format:
   Concise Title Summarizing Changes
 
-  - Specific change description
-  - Another specific change description
-  - Rationale for key modifications
-  - Impact of changes
+  - Specific change descriptions as bullet points
 
   Diff:
   ($diff)
