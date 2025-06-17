@@ -1,4 +1,5 @@
-default-model: "claude-3.7-sonnet"
+default-api: copilot
+default-model: claude-sonnet-4
 
 apis:
   ollama:
