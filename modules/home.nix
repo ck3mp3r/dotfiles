@@ -4,7 +4,6 @@
   homeDirectory,
   stateVersion,
   sops-nix,
-  system,
   ...
 }: {
   # fix for manuals not compiling...
@@ -19,9 +18,6 @@
   imports = [
     sops-nix.homeManagerModules.sops
     ./programs.nix
-    (import ./programs/aichat {
-      inherit pkgs system;
-    })
     ./programs/alacritty
     ./programs/ghostty
     ./programs/git.nix
