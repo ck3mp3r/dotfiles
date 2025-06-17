@@ -22,6 +22,25 @@
           };
         };
       };
+      mcp-servers = {
+        context7 = {
+          command = "npx";
+          args = ["@context7/mcp-server"];
+          env = {};
+        };
+        github = {
+          command = "npx";
+          args = ["@modelcontextprotocol/server-github"];
+          env = {
+            GITHUB_PERSONAL_ACCESS_TOKEN = "$GITHUB_TOKEN";
+          };
+        };
+        kubernetes = {
+          command = "npx";
+          args = ["@modelcontextprotocol/server-kubernetes"];
+          env = {};
+        };
+      };
     };
   };
 }
