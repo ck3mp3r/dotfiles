@@ -20,6 +20,8 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    mods.url = "github:ck3mp3r/flakes?dir=mods";
   };
 
   outputs = {
@@ -28,6 +30,7 @@
     nix-darwin,
     nixpkgs,
     nixpkgs-unstable,
+    mods,
     laio,
     sops-nix,
     ...
@@ -46,6 +49,7 @@
     overlays = [
       (final: next: {
         laio = laio.packages.${system}.default;
+        mods = mods.packages.${system}.default;
         nushell = upkgs.nushell;
         starship = upkgs.starship;
         zoxide = upkgs.zoxide;
