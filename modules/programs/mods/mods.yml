@@ -1,5 +1,6 @@
 default-api: copilot
 default-model: claude-sonnet-4
+max-retries: 5
 
 apis:
   ollama:
