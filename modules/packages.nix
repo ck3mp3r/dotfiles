@@ -1,11 +1,6 @@
 {pkgs, ...}:
 with pkgs;
   [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
-    nerd-fonts.hack
-    nodejs_24
-    # nerdfonts
     _1password-cli
     bandwhich
     bat
@@ -26,8 +21,12 @@ with pkgs;
     laio
     lsd
     neofetch
-    nushell
+    nerd-fonts.hack
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
     nix-tree
+    nodejs_24
+    nushell
     pandoc
     ripgrep
     rsync
@@ -36,6 +35,7 @@ with pkgs;
     tldr
     topiary
     tree
+    uv
     yazi
   ]
   ++ lib.optionals stdenv.isDarwin [colima m-cli]

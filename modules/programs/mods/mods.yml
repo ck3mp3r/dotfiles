@@ -44,6 +44,10 @@ mcp-servers:
     command: "npx"
     args:
       - "@modelcontextprotocol/server-github"
+  git-tools:
+    command: "uvx"
+    args:
+      - mcp-server-git
   kubernetes:
     command: "npx"
     args:
