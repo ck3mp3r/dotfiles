@@ -15,9 +15,6 @@ with pkgs;
     gum
     jq
     jqp
-    kdash
-    kubectl
-    kubectx
     laio
     lsd
     neofetch
@@ -33,9 +30,8 @@ with pkgs;
     sops
     speedtest-cli
     tldr
-    topiary
     tree
     uv
     yazi
   ]
-  ++ lib.optionals stdenv.isDarwin [colima m-cli]
+  ++ lib.optionals stdenv.isDarwin [m-cli]
