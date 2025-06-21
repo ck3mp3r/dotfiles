@@ -12,6 +12,7 @@ def make_prompt [diff: string] {
   5. Use present tense and be specific about modifications
 
   Key Guidelines:
+  - Don't use any git MCP functionality as the diff will be provided.
   - Analyze the entire diff comprehensively, consider added and removed code respectively
   - Capture the essence of only MAJOR changes
   - Use technical, precise languages
