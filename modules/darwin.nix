@@ -19,6 +19,7 @@
       "1password"
       "alacritty"
       "arc"
+      "cleanshot"
       "ghostty"
       "obsidian"
       "pop"
