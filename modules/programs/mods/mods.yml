@@ -1,5 +1,5 @@
 default-api: copilot
-default-model: claude-sonnet-4
+default-model: gpt-4.1
 max-retries: 5
 
 apis:
