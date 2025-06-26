@@ -45,7 +45,7 @@ def commit [selected_message: string] {
   rm $commit_msg_file
 }
 
-def main [ --model (-m): string = "sonnet-4"] {
+def main [ --model (-m): string = "gpt-4.1"] {
   let branch = git rev-parse --abbrev-ref HEAD
   let prefix = $branch | parse -r '(?P<id>[A-Za-z]+-[0-9]+)' | get id.0? | default ""
   let diff = git diff --cached | str trim

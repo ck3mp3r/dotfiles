@@ -19,7 +19,11 @@ apis:
   copilot:
     base-url: "https://api.githubcopilot.com"
     models:
-      gpt-4o:
+      gpt-4.1:
+        aliased:
+          - "4.1"
+        max-input-chars: 680000
+      gpt-4:
         aliased:
           - "4"
         max-input-chars: 680000
