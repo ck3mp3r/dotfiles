@@ -1,4 +1,4 @@
-let integrations = ["laio"]
+let integrations = ["laio" "carapace"]
 
 for integration in $integrations {
   let cache_path = $"($env.HOME)/.cache/($integration)"
@@ -9,6 +9,9 @@ for integration in $integrations {
   match $integration {
     "laio" => {
       laio completion nushell | save --force $"($cache_path)/init.nu"
+    }
+    "carapace" => {
+      carapace _carapace nushell | save --force $"($cache_path)/init.nu"
     }
     _ => { }
   }

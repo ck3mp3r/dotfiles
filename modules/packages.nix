@@ -5,6 +5,7 @@ with pkgs;
     bandwhich
     bat
     bottom
+    carapace
     delta
     docker
     fd
