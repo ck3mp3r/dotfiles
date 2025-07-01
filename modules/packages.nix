@@ -7,6 +7,7 @@ with pkgs;
     bottom
     carapace
     delta
+    direnv
     docker
     fd
     fh
