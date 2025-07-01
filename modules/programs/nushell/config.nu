@@ -28,4 +28,5 @@ def tkl [] {
 }
 
 source ~/.config/nushell/git.nu
+source ~/.config/nushell/direnv.nu
 source ~/.cache/laio/init.nu
