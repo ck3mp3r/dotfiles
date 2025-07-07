@@ -11,6 +11,7 @@ for integration in $integrations {
       laio completion nushell | save --force $"($cache_path)/init.nu"
     }
     "carapace" => {
+      $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
       carapace _carapace nushell | save --force $"($cache_path)/init.nu"
     }
     _ => { }
@@ -30,3 +31,4 @@ def tkl [] {
 source ~/.config/nushell/git.nu
 source ~/.config/nushell/direnv.nu
 source ~/.cache/laio/init.nu
+source ~/.cache/carapace/init.nu
