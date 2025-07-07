@@ -48,6 +48,7 @@
 
     overlays = [
       (final: next: {
+        carapace = upkgs.carapace;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
         nushell = upkgs.nushell;
