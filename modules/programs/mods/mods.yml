@@ -59,3 +59,9 @@ mcp-servers:
       - "mcp-server-kubernetes"
     env:
       - ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true
+  filesystem:
+    command: "npx"
+    args:
+      - "-y"
+      - "@modelcontextprotocol/server-filesystem"
+      - "."
