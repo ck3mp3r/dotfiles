@@ -32,6 +32,7 @@
       keymap_mode = "vim-normal";
       history_filter = [
         "^cd"
+        "^mods"
       ];
     };
   };
