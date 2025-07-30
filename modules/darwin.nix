@@ -22,7 +22,7 @@
       "cleanshot"
       "ghostty"
       "obsidian"
-      "pop-app"
+      "pop"
       "zen"
     ]
     ++ casks;
