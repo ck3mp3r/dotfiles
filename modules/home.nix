@@ -24,6 +24,7 @@
     ./programs/idea
     ./programs/k9s
     ./programs/mods
+    ./programs/crush
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs/starship.nix
     ./programs/tmux

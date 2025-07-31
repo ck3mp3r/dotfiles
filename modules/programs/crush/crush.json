@@ -1,0 +1,69 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "copilot": {
+      "type": "openai",
+      "base_url": "https://api.githubcopilot.com",
+      "models": [
+        {
+          "id": "GPT-4.1",
+          "name": "GPT-4.1",
+          "context_window": 64000,
+          "default_max_tokens": 5000
+        }
+      ]
+    }
+  },
+  "permissions": {
+    "allowed_tools": [
+      "view",
+      "ls",
+      "grep",
+      "edit",
+      "mcp_context7_get-library-doc"
+    ]
+  },
+  "mcp": {
+    "context7": {
+      "command": "npx",
+      "type": "http",
+      "args": [
+        "@upstash/context7-mcp"
+      ]
+    },
+    "github": {
+      "command": "npx",
+      "type": "http",
+      "args": [
+        "@modelcontextprotocol/server-github"
+      ]
+    },
+    "git-tools": {
+      "command": "uvx",
+      "type": "http",
+      "args": [
+        "mcp-server-git"
+      ]
+    },
+    "kubernetes": {
+      "command": "npx",
+      "type": "http",
+      "args": [
+        "-y",
+        "mcp-server-kubernetes"
+      ],
+      "env": {
+        "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true"
+      }
+    },
+    "filesystem": {
+      "type": "http",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "."
+      ]
+    }
+  }
+}

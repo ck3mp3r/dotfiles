@@ -22,6 +22,7 @@
     };
 
     mods.url = "github:ck3mp3r/flakes?dir=mods";
+    crush.url = "github:ck3mp3r/flakes?dir=crush";
   };
 
   outputs = {
@@ -31,6 +32,7 @@
     nixpkgs,
     nixpkgs-unstable,
     mods,
+    crush,
     laio,
     sops-nix,
     ...
@@ -51,6 +53,7 @@
         carapace = upkgs.carapace;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
+        crush = crush.packages.${system}.default;
         nushell = upkgs.nushell;
         starship = upkgs.starship;
         zoxide = upkgs.zoxide;
