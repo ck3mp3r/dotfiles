@@ -40,6 +40,8 @@ apis:
         max-input-chars: 680000
 
 mcp-servers:
+  nu-mcp:
+    command: nu-mcp
   context7:
     command: "npx"
     args:

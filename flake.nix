@@ -23,6 +23,7 @@
 
     mods.url = "github:ck3mp3r/flakes?dir=mods";
     crush.url = "github:ck3mp3r/flakes?dir=crush";
+    nu-mcp.url = "github:ck3mp3r/nu-mcp";
   };
 
   outputs = {
@@ -31,6 +32,7 @@
     nix-darwin,
     nixpkgs,
     nixpkgs-unstable,
+    nu-mcp,
     mods,
     crush,
     laio,
@@ -55,6 +57,7 @@
         mods = mods.packages.${system}.default;
         crush = crush.packages.${system}.default;
         nushell = upkgs.nushell;
+        nu-mcp = nu-mcp.packages.${system}.default;
         starship = upkgs.starship;
         zoxide = upkgs.zoxide;
         topiary = upkgs.topiary;
