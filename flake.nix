@@ -21,9 +21,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    mods.url = "github:ck3mp3r/flakes?dir=mods";
-    crush.url = "github:ck3mp3r/flakes?dir=crush";
-    nu-mcp.url = "github:ck3mp3r/nu-mcp";
+    mods = {
+      url = "github:ck3mp3r/flakes?dir=mods";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    crush = {
+      url = "github:ck3mp3r/flakes?dir=crush";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nu-mcp = {
+      url = "github:ck3mp3r/nu-mcp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
