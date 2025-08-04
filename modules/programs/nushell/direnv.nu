@@ -16,8 +16,8 @@ $env.config.hooks.pre_prompt = (
           }
         }
         | merge ($env.ENV_CONVERSIONS? | default {})
-        | get -i ([[value optional insensitive]; [$key false true]] | into cell-path)
-        | get -i from_string
+        | get -o ([[value optional insensitive]; [$key false true]] | into cell-path)
+        | get -o from_string
         | if ($in | is-empty) { {|x| $x } } else { $in }
       ) $value
       return [$key $value]

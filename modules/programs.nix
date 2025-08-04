@@ -22,18 +22,4 @@
   programs.zoxide = {
     enable = true;
   };
-
-  programs.atuin = {
-    enable = true;
-    flags = ["--disable-up-arrow"];
-    settings = {
-      filter_mode = "host";
-      enter_accept = false;
-      keymap_mode = "vim-normal";
-      history_filter = [
-        "^cd"
-        "^mods"
-      ];
-    };
-  };
 }

@@ -18,6 +18,7 @@
   imports = [
     sops-nix.homeManagerModules.sops
     ./programs.nix
+    ./programs/atuin
     ./programs/alacritty
     ./programs/ghostty
     ./programs/git.nix

@@ -63,6 +63,7 @@
 
     overlays = [
       (final: next: {
+        atuin = upkgs.atuin;
         carapace = upkgs.carapace;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
