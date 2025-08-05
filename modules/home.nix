@@ -29,7 +29,7 @@
     ./programs/k9s
     ./programs/laio
     ./programs/mods
-    ./programs/opencode
+    # ./programs/opencode
     ./programs/starship.nix
     ./programs/tmux
     ./programs/zellij
