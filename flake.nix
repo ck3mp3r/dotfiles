@@ -65,15 +65,16 @@
       (final: next: {
         atuin = upkgs.atuin;
         carapace = upkgs.carapace;
+        crush = crush.packages.${system}.default;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
-        crush = crush.packages.${system}.default;
-        nushell = upkgs.nushell;
         nu-mcp = nu-mcp.packages.${system}.default;
-        starship = upkgs.starship;
-        zoxide = upkgs.zoxide;
-        topiary = upkgs.topiary;
+        nushell = upkgs.nushell;
         ollama = upkgs.ollama;
+        opencode = upkgs.opencode;
+        starship = upkgs.starship;
+        topiary = upkgs.topiary;
+        zoxide = upkgs.zoxide;
       })
     ];
 

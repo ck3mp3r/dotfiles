@@ -1,0 +1,59 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "copilot/GPT-4.1",
+  "mcp": {
+    "context7": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@upstash/context7-mcp"
+      ],
+      "enabled": true
+    },
+    "nu-mcp": {
+      "type": "local",
+      "command": [
+        "nu-mcp"
+      ],
+      "enabled": false
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@modelcontextprotocol/server-github"
+      ],
+      "enabled": true
+    },
+    "git-tools": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "mcp-server-git"
+      ],
+      "enabled": true
+    },
+    "kubernetes": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "mcp-server-kubernetes"
+      ],
+      "enabled": true,
+      "environment": {
+        "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true"
+      }
+    },
+    "filesystem": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "."
+      ],
+      "enabled": true
+    }
+  }
+}

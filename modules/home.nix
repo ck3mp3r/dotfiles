@@ -17,18 +17,19 @@
   };
   imports = [
     sops-nix.homeManagerModules.sops
+    (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix
-    ./programs/atuin
     ./programs/alacritty
+    ./programs/atuin
     ./programs/carapace
+    ./programs/crush
     ./programs/ghostty
     ./programs/git.nix
     ./programs/idea
     ./programs/k9s
     ./programs/laio
     ./programs/mods
-    ./programs/crush
-    (import ./programs/nushell {inherit pkgs homeDirectory;})
+    ./programs/opencode
     ./programs/starship.nix
     ./programs/tmux
     ./programs/zellij
