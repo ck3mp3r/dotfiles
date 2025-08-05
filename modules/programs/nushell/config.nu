@@ -28,8 +28,8 @@ def tkl [] {
   tsh kube login (tsh kube ls -f yaml | yq -r ".[].kube_cluster_name" | fzf)
 }
 
-source ~/.config/atuin/init.nu
+source ~/.config/nushell/atuin.nu
 source ~/.config/nushell/git.nu
 source ~/.config/nushell/direnv.nu
-source ~/.cache/laio/init.nu
-source ~/.cache/carapace/init.nu
+source ~/.config/nushell/laio.nu
+source ~/.config/nushell/carapace.nu

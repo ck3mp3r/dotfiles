@@ -21,5 +21,5 @@ in {
     };
   };
 
-  home.file.".config/atuin/init.nu".source = "${atuinConfig}/init.nu";
+  home.file.".config/nushell/atuin.nu".source = "${atuinConfig}/init.nu";
 }

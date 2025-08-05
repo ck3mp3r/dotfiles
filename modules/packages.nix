@@ -5,7 +5,6 @@ with pkgs;
     bandwhich
     bat
     bottom
-    carapace
     delta
     docker
     fd
@@ -16,7 +15,6 @@ with pkgs;
     gum
     jq
     jqp
-    laio
     lsd
     neofetch
     nerd-fonts.hack
