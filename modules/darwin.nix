@@ -11,7 +11,7 @@
   packages' = with pkgs; [
     mkalias
     nushell
-    ollama
+    # ollama
   ];
 
   casks' =
@@ -31,15 +31,15 @@ in {
   launchd = {
     user = {
       agents = {
-        ollama-serve = {
-          command = "${pkgs.ollama}/bin/ollama serve";
-          serviceConfig = {
-            KeepAlive = true;
-            RunAtLoad = true;
-            StandardOutPath = "/tmp/ollama.out.log";
-            StandardErrorPath = "/tmp/ollama.err.log";
-          };
-        };
+        # ollama-serve = {
+        #   command = "${pkgs.ollama}/bin/ollama serve";
+        #   serviceConfig = {
+        #     KeepAlive = true;
+        #     RunAtLoad = true;
+        #     StandardOutPath = "/tmp/ollama.out.log";
+        #     StandardErrorPath = "/tmp/ollama.err.log";
+        #   };
+        # };
       };
     };
   };
@@ -114,7 +114,6 @@ in {
         tilesize = 16;
         largesize = 34;
         persistent-apps = [
-          "/System/Applications/Launchpad.app"
           "/Applications/Arc.app"
           "/Applications/Ghostty.app"
           # "${pkgs.utm}/Applications/UTM.app"

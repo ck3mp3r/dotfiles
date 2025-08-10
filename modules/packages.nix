@@ -21,7 +21,7 @@ with pkgs;
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     nix-tree
-    nodejs_24
+    nodejs
     nushell
     pandoc
     ripgrep

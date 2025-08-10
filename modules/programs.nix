@@ -19,7 +19,5 @@
   programs.lazygit.enable = true;
   programs.less.enable = true;
   programs.lesspipe.enable = true;
-  programs.zoxide = {
-    enable = true;
-  };
+  programs.zoxide.enable = true;
 }
