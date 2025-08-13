@@ -11,7 +11,7 @@
   packages' = with pkgs; [
     mkalias
     nushell
-    # ollama
+    ollama
   ];
 
   casks' =
@@ -31,15 +31,15 @@ in {
   launchd = {
     user = {
       agents = {
-        # ollama-serve = {
-        #   command = "${pkgs.ollama}/bin/ollama serve";
-        #   serviceConfig = {
-        #     KeepAlive = true;
-        #     RunAtLoad = true;
-        #     StandardOutPath = "/tmp/ollama.out.log";
-        #     StandardErrorPath = "/tmp/ollama.err.log";
-        #   };
-        # };
+        ollama-serve = {
+          command = "${pkgs.ollama}/bin/ollama serve";
+          serviceConfig = {
+            KeepAlive = true;
+            RunAtLoad = true;
+            StandardOutPath = "/tmp/ollama.out.log";
+            StandardErrorPath = "/tmp/ollama.err.log";
+          };
+        };
       };
     };
   };

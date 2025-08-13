@@ -1,14 +1,14 @@
 default-api: copilot
 default-model: gpt-4.1
 max-retries: 5
-
+theme: catppuccin
 apis:
-  # ollama:
-  #   base-url: "http://localhost:11434"
-  #   models:
-  #     "devstral:24b":
-  #       aliases: ["devstral"]
-  #       max-input-chars: 650000
+  ollama:
+    base-url: "http://localhost:11434"
+    models:
+      "qwen3:8b":
+        aliases: ["qwen3"]
+        max-input-chars: 650000
 
   copilot:
     base-url: "https://api.githubcopilot.com"
