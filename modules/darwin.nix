@@ -40,6 +40,18 @@ in {
             StandardErrorPath = "/tmp/ollama.err.log";
           };
         };
+        copilot-api = {
+          command = "${pkgs.nodejs}/bin/npx copilot-api@latest start";
+          serviceConfig = {
+            KeepAlive = true;
+            RunAtLoad = true;
+            StandardOutPath = "/tmp/copilot-api.log";
+            StandardErrorPath = "/tmp/copilot-api-error.log";
+            EnvironmentVariables = {
+              PATH = "${pkgs.nodejs}/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+            };
+          };
+        };
       };
     };
   };
