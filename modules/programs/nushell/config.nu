@@ -1,3 +1,5 @@
+ulimit --file-descriptor-count 8192
+
 let integrations = ["laio" "carapace"]
 
 for integration in $integrations {

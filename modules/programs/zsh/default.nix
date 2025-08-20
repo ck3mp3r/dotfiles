@@ -48,6 +48,7 @@
     historySubstringSearch = {enable = true;};
 
     initContent = ''
+      ulimit -n 8192
       source ~/.config/zsh/aliases.zsh
       source <(${pkgs.laio}/bin/laio completion zsh)
       source <(${pkgs.fh}/bin/fh completion zsh)
