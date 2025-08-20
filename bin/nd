@@ -35,6 +35,12 @@ def 'main fix-store' [] {
   sudo nix-store --repair --verify --check-contents
 }
 
+# backup existing zsh config files before nix-darwin setup
+def 'main backup-zsh' [] {
+  sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+  sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
+}
+
 def main [] {
   help main
 }
