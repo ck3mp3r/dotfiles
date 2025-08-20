@@ -45,29 +45,29 @@
   },
   "mcp": {
     "context7": {
+      "type": "stdio",
       "command": "npx",
-      "type": "http",
       "args": [
         "@upstash/context7-mcp"
       ]
     },
     "github": {
+      "type": "stdio",
       "command": "npx",
-      "type": "http",
       "args": [
         "@modelcontextprotocol/server-github"
       ]
     },
     "git-tools": {
+      "type": "stdio",
       "command": "uvx",
-      "type": "http",
       "args": [
         "mcp-server-git"
       ]
     },
     "kubernetes": {
+      "type": "stdio",
       "command": "npx",
-      "type": "http",
       "args": [
         "-y",
         "mcp-server-kubernetes"
@@ -77,7 +77,7 @@
       }
     },
     "filesystem": {
-      "type": "http",
+      "type": "stdio",
       "command": "npx",
       "args": [
         "-y",
