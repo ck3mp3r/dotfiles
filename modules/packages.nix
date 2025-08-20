@@ -16,6 +16,7 @@ with pkgs;
     jq
     jqp
     lsd
+    mitmproxy
     neofetch
     nerd-fonts.hack
     nerd-fonts.jetbrains-mono
