@@ -19,6 +19,7 @@
       "1password"
       "alacritty"
       "arc"
+      "claude-code"
       "cleanshot"
       "ghostty"
       "obsidian"
