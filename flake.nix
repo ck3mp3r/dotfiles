@@ -79,6 +79,7 @@
         starship = upkgs.starship;
         topiary = upkgs.topiary;
         zoxide = upkgs.zoxide;
+        nodejs = upkgs.nodejs_24.overrideAttrs {doCheck = false;};
       })
     ];
 
