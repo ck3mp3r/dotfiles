@@ -15,6 +15,7 @@ load-env {
   TESTCONTAINERS_RYUK_DISABLED: "true"
   PATH: [
     $"($env.HOME)/.nix-profile/bin"
+    $"($env.HOME)/.local/bin"
     $"($env.HOME)/.config/dotfiles/bin"
     $"/etc/profiles/per-user/($env.USER)/bin"
     "/run/current-system/sw/bin"
