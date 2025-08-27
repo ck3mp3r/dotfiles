@@ -109,14 +109,20 @@ def gu [] {
       git branch -r | lines | any { |line| $line | str trim | str ends-with $"origin/$curr_branch" }
     )
     if $remote_branch_exists {
-      git pull origin $curr_branch --rebase
+      if $curr_branch != "main" {
+        git pull origin $curr_branch --rebase
+      } else {
+        git pull
+      }
     } else {
       git switch main
     }
     if $stash_needed {
       git stash pop
     }
-    git push --set-upstream origin $curr_branch
+    if $curr_branch != "main" {
+      git push --set-upstream origin $curr_branch
+    }
     cd -
     print "\n=============================="
   }
