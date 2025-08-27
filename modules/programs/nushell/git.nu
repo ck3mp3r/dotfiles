@@ -116,6 +116,7 @@ def gu [] {
       }
     } else {
       git switch main
+      git pull
     }
     if $stash_needed {
       git stash pop
