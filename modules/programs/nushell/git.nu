@@ -76,8 +76,23 @@ alias grhh = git reset --hard HEAD # Hard reset to the current HEAD
 alias grbi = git rebase --interactive # Start an interactive rebase
 
 def gu [] {
-  glob -F **/.git | each {|gitdir|
-    let repo_dir = ($gitdir | path dirname)
+  # Find all .git dirs, sort them, and filter out nested ones
+  let all_gitdirs = (glob -F **/.git | sort | each {|x| $x | path dirname })
+  let all_gitdirs = if ($all_gitdirs | describe) == 'string' {
+    [$all_gitdirs]
+  } else if ($all_gitdirs | describe) == 'nothing' {
+    []
+  } else {
+    $all_gitdirs
+  }
+  mut top_level_gitdirs = ([])
+  for repo_dir in $all_gitdirs {
+    let is_nested = $top_level_gitdirs | any {|parent| $repo_dir | str starts-with ($parent + '/') }
+    if not $is_nested {
+      $top_level_gitdirs = $top_level_gitdirs ++ [$repo_dir]
+    }
+  }
+  for repo_dir in ($top_level_gitdirs | where {|x| ($x | describe) == 'string' and ($x != '') }) {
     print $">> Starting sync for ($repo_dir) <<"
     cd $repo_dir
     let changes = (git status --porcelain)
@@ -89,11 +104,19 @@ def gu [] {
       }
     }
     git fetch --all
-    git pull --rebase
+    let curr_branch = (git rev-parse --abbrev-ref HEAD)
+    let remote_branch_exists = (
+      git branch -r | lines | any { |line| $line | str trim | str ends-with $"origin/$curr_branch" }
+    )
+    if $remote_branch_exists {
+      git pull origin $curr_branch --rebase
+    } else {
+      git switch main
+    }
     if $stash_needed {
       git stash pop
     }
-    git push
+    git push --set-upstream origin $curr_branch
     cd -
     print "\n=============================="
   }
