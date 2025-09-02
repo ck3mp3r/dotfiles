@@ -20,7 +20,16 @@ alias gdw = git diff --word-diff # Show diff with word-by-word changes
 # Fetch and Pull
 alias gf = git fetch # Fetch latest changes
 alias gfa = git fetch --all --prune --jobs=10
-def ggpull [] { git pull origin (git rev-parse --abbrev-ref HEAD) }
+
+# Pull
+def ggpull [ --rebase] {
+  mut cmd = [git pull origin (git rev-parse --abbrev-ref HEAD)]
+  if $rebase {
+    $cmd = $cmd ++ [--rebase]
+  }
+  run-external ...($cmd)
+  ""
+}
 
 # Push
 def ggpush [ --force] {
@@ -78,14 +87,14 @@ alias grbi = git rebase --interactive # Start an interactive rebase
 def gu [] {
   # Helper function to find top-level git repositories
   def find_top_level_git_repos [] {
-    let all_repos = glob **/.git 
-      | each { path dirname } 
-      | sort
-      | uniq
-    
+    let all_repos = glob **/.git
+    | each { path dirname }
+    | sort
+    | uniq
+
     mut top_level = []
     for repo in $all_repos {
-      let is_nested = $top_level | any {|parent| 
+      let is_nested = $top_level | any {|parent|
         ($repo | str starts-with $"($parent)/")
       }
       if not $is_nested {
@@ -94,73 +103,73 @@ def gu [] {
     }
     $top_level
   }
-  
+
   # Helper function to check if directory is a git repo
   def is_git_repo [] {
     (git rev-parse --git-dir | complete).exit_code == 0
   }
-  
+
   # Helper function to handle uncommitted changes
   def handle_uncommitted_changes [] {
     let status = git status --porcelain
     if ($status | str trim) == "" {
       return false
     }
-    
+
     print "  Stashing uncommitted changes..."
     let stash_result = git stash push -m "gu script auto-stash"
     not ($stash_result | str contains "No local changes to save")
   }
-  
+
   # Helper function to restore stashed changes
   def restore_stashed_changes [] {
     print "  Restoring stashed changes..."
     git stash pop
   }
-  
+
   # Helper function to get current branch
   def get_current_branch [] {
     git rev-parse --abbrev-ref HEAD
   }
-  
+
   # Helper function to get default branch
   def get_default_branch [] {
     # Try to get the default branch from remote
     let remote_default = git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null
-      | complete
-      | get stdout
-      | str replace "refs/remotes/origin/" ""
-      | str trim
-    
+    | complete
+    | get stdout
+    | str replace "refs/remotes/origin/" ""
+    | str trim
+
     if $remote_default != "" {
       return $remote_default
     }
-    
+
     # Fallback to common default branch names
-    let common_defaults = ["main", "master", "develop"]
+    let common_defaults = ["main" "master" "develop"]
     for branch in $common_defaults {
       if (branch_exists_remotely $branch) {
         return $branch
       }
     }
-    
-    "main"  # Ultimate fallback
+
+    "main" # Ultimate fallback
   }
-  
+
   # Helper function to check if branch exists remotely
   def branch_exists_remotely [branch: string] {
     git ls-remote --heads origin $branch
-      | complete
-      | get stdout
-      | str trim
-      | str length
-      | $in > 0
+    | complete
+    | get stdout
+    | str trim
+    | str length
+    | $in > 0
   }
-  
+
   # Helper function to sync a specific branch
-  def sync_branch [current: string, default: string] {
+  def sync_branch [current: string default: string] {
     let remote_exists = branch_exists_remotely $current
-    
+
     if $remote_exists {
       print $"  Pulling latest changes for branch '($current)'..."
       if $current == $default {
@@ -176,15 +185,15 @@ def gu [] {
       git pull --rebase
     }
   }
-  
+
   # Helper function to sync a single repository
   def sync_repository [repo_path: string] {
     print $">> Syncing repository: ($repo_path) <<"
     let original_dir = pwd
-    
+
     try {
       cd $repo_path
-      
+
       # Check if we're in a valid git repository
       if not (is_git_repo) {
         print $"  Warning: ($repo_path) is not a valid git repository"
@@ -192,51 +201,50 @@ def gu [] {
         print "==============================\n"
         return
       }
-      
+
       # Handle uncommitted changes
       let stash_applied = handle_uncommitted_changes
-      
+
       # Fetch latest changes
       print "  Fetching latest changes..."
       git fetch --all --prune
-      
+
       # Get current branch info
       let current_branch = get_current_branch
       let default_branch = get_default_branch
-      
+
       # Sync based on branch status
       sync_branch $current_branch $default_branch
-      
+
       # Restore stashed changes if any
       if $stash_applied {
         restore_stashed_changes
       }
-      
+
       print $"  ✓ Successfully synced ($repo_path)"
       cd $original_dir
-      
     } catch {|error|
       print $"  ✗ Error syncing ($repo_path): ($error.msg)"
       cd $original_dir
     }
-    
+
     print "==============================\n"
   }
-  
+
   # Main logic starts here
   let git_repos = find_top_level_git_repos
-  
+
   if ($git_repos | is-empty) {
     print "No git repositories found."
     return
   }
-  
+
   print $"Found ($git_repos | length) git repositories to sync...\n"
-  
+
   # Process each repository
   for repo in $git_repos {
     sync_repository $repo
   }
-  
+
   print "All repositories synced!"
 }
