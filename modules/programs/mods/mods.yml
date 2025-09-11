@@ -40,24 +40,3 @@ mcp-servers:
     command: "npx"
     args:
       - "@upstash/context7-mcp"
-  github:
-    command: "npx"
-    args:
-      - "@modelcontextprotocol/server-github"
-  git-tools:
-    command: "uvx"
-    args:
-      - mcp-server-git
-  kubernetes:
-    command: "npx"
-    args:
-      - "-y"
-      - "mcp-server-kubernetes"
-    env:
-      - ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS=true
-  filesystem:
-    command: "npx"
-    args:
-      - "-y"
-      - "@modelcontextprotocol/server-filesystem"
-      - "."

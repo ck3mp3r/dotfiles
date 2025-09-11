@@ -22,7 +22,6 @@
     ./programs/alacritty
     ./programs/atuin
     ./programs/carapace
-    ./programs/crush
     ./programs/ghostty
     ./programs/git.nix
     ./programs/idea

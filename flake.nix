@@ -30,11 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    crush = {
-      url = "github:ck3mp3r/flakes?dir=crush";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nu-mcp = {
       url = "github:ck3mp3r/nu-mcp";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +44,6 @@
     nixpkgs-unstable,
     nu-mcp,
     mods,
-    crush,
     laio,
     sops-nix,
     ...
@@ -69,7 +63,6 @@
       (final: next: {
         atuin = upkgs.atuin;
         carapace = upkgs.carapace;
-        crush = crush.packages.${system}.default;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;
