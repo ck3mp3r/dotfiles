@@ -34,6 +34,11 @@
       url = "github:ck3mp3r/nu-mcp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    context7 = {
+      url = "github:ck3mp3r/flakes?dir=context7";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -43,6 +48,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nu-mcp,
+    context7,
     mods,
     laio,
     sops-nix,
@@ -66,6 +72,7 @@
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;
+        context7-mcp = context7.packages.${system}.default;
         nushell = upkgs.nushell;
         ollama = upkgs.ollama;
         opencode = upkgs.opencode;

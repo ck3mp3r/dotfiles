@@ -37,6 +37,4 @@ mcp-servers:
   nu-mcp:
     command: nu-mcp
   context7:
-    command: "npx"
-    args:
-      - "@upstash/context7-mcp"
+    command: "context7-mcp"
