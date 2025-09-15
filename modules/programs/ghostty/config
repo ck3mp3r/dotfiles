@@ -4,7 +4,7 @@ font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 15
 font-thicken = true
 macos-option-as-alt = true
-theme = "catppuccin-mocha"
+theme = "catppuccin-mocha.conf"
 
 keybind = ctrl+alt+h=goto_split:left
 keybind = ctrl+alt+l=goto_split:right
