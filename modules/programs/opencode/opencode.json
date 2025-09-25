@@ -5,8 +5,7 @@
     "context7": {
       "type": "local",
       "command": [
-        "npx",
-        "@upstash/context7-mcp"
+        "c67-mcp",
       ],
       "enabled": true
     },

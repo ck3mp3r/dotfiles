@@ -37,4 +37,4 @@ mcp-servers:
   nu-mcp:
     command: nu-mcp
   context7:
-    command: "context7-mcp"
+    command: c67-mcp
