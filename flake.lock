@@ -11,11 +11,11 @@
         "rustix": "rustix"
       },
       "locked": {
-        "lastModified": 1758832917,
-        "narHash": "sha256-NJAHbVyaI0gBmO3Nh80qvWkSNjrowX7D/vuR+RKRndo=",
+        "lastModified": 1758997625,
+        "narHash": "sha256-HtXFep3hyQNv0CHzRX8PQBF/Xrc9++P3EurJYttb/64=",
         "owner": "ck3mp3r",
         "repo": "c67-mcp",
-        "rev": "d3ee8a90b3dd6100bfbfda8a0b07bcc2a4eb5eaa",
+        "rev": "0861134e59d313ff9a5c463f42ba6b97fed07576",
         "type": "github"
       },
       "original": {
