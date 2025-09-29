@@ -422,11 +422,11 @@
         "rustix": "rustix_2"
       },
       "locked": {
-        "lastModified": 1759091509,
-        "narHash": "sha256-XTmMY7isXmpwtEdKcMBS9tbbRGJY2LB/9UCCN5pgBUk=",
+        "lastModified": 1759180059,
+        "narHash": "sha256-cKDYNjxh6FbVvNnzJDQA5S9aoX74iAZNsZepCDOO8OA=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "dfba29059dd921981050837ffbe46a7d8d16b106",
+        "rev": "0760952d069ffaceaf61ad71b44ffa5aea1f04ec",
         "type": "github"
       },
       "original": {
