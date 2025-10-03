@@ -6,8 +6,14 @@ apis:
   ollama:
     base-url: "http://localhost:11434"
     models:
+      "devstral:latest":
+        aliases: ["devstral"]
+        max-input-chars: 650000
       "qwen3:8b":
         aliases: ["qwen3"]
+        max-input-chars: 650000
+      "llama3.2:latest":
+        aliases: ["llama3"]
         max-input-chars: 650000
 
   copilot:

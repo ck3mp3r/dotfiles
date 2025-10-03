@@ -312,11 +312,11 @@
       },
       "locked": {
         "dir": "mods",
-        "lastModified": 1758831791,
-        "narHash": "sha256-8D22KQUrp6S3psOINnNyi5h5k1wicaJwSHSEhMtxaTE=",
+        "lastModified": 1759522755,
+        "narHash": "sha256-dPIFF4J8DDVn1fPoMqDdhG2LQ46hKsWBDANxEiaEq2U=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "45dcfa341c0e126f4b5bec79cd69205e51228d21",
+        "rev": "d531abf2039dd4dece4a8bae81890eb0e78cb5ed",
         "type": "github"
       },
       "original": {
