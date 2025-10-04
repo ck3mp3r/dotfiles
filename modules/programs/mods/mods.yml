@@ -42,5 +42,10 @@ apis:
 mcp-servers:
   nu-mcp:
     command: nu-mcp
+  example-mcp:
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/.nix-profile/nushell/tools/examples/
   context7:
     command: c67-mcp
