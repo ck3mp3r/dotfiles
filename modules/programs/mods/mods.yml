@@ -42,6 +42,16 @@ apis:
 mcp-servers:
   nu-mcp:
     command: nu-mcp
+  tmux:
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/.local/share/nushell/mcp-tools/tmux/
+  k8s:
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/Projects/ck3mp3r/flakes/k8s-utils/mcp-tools
   example-mcp:
     command: nu-mcp
     args:

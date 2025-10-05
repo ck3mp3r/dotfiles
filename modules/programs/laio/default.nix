@@ -7,5 +7,6 @@
   '';
 in {
   home.file.".config/nushell/laio.nu".source = "${laioConfig}/init.nu";
-  home.packages = [pkgs.laio];
+  home.packages = [pkgs.laio pkgs.tmux-mcp-tools];
+  home.file.".local/share/nushell/mcp-tools/tmux/tmux.nu".source = "${pkgs.tmux-mcp-tools}/share/nushell/mcp-tools/tmux/tmux.nu";
 }
