@@ -5,6 +5,7 @@ with pkgs;
     bandwhich
     bat
     bottom
+    cachix
     delta
     docker
     fd
