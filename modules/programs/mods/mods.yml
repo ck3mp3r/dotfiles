@@ -46,6 +46,7 @@ mcp-servers:
     command: nu-mcp
     args:
       - --tools-dir
+      #- /Users/christian/Projects/ck3mp3r/laio-cli/mcp-tools/
       - /Users/christian/.local/share/nushell/mcp-tools/tmux/
   k8s:
     command: nu-mcp
