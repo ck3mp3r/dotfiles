@@ -25,7 +25,6 @@ with pkgs;
     nix-tree
     nodejs
     nushell
-    opencode
     pandoc
     ripgrep
     rsync

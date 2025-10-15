@@ -4,5 +4,6 @@
     pkgs.c67-mcp
     pkgs.mods
     pkgs.nu-mcp
+    pkgs.tmux-mcp-tools
   ];
 }

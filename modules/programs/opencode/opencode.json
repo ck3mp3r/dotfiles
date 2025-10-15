@@ -14,45 +14,34 @@
       "command": [
         "nu-mcp"
       ],
-      "enabled": false
-    },
-    "github": {
-      "type": "local",
-      "command": [
-        "npx",
-        "@modelcontextprotocol/server-github"
-      ],
       "enabled": true
     },
-    "git-tools": {
+    "weather": {
       "type": "local",
       "command": [
-        "uvx",
-        "mcp-server-git"
-      ],
-      "enabled": true
-    },
-    "kubernetes": {
-      "type": "local",
-      "command": [
-        "npx",
-        "-y",
-        "mcp-server-kubernetes"
+        "nu-mcp",
+        "--tools-dir",
+        "/Users/christian/.local/share/nushell/mcp-tools/weather"
       ],
       "enabled": true,
-      "environment": {
-        "ALLOW_ONLY_NON_DESTRUCTIVE_TOOLS": "true"
-      }
     },
-    "filesystem": {
+    "finance": {
       "type": "local",
       "command": [
-        "npx",
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "."
+        "nu-mcp",
+        "--tools-dir",
+        "/Users/christian/.local/share/nushell/mcp-tools/finance"
       ],
-      "enabled": true
-    }
+      "enabled": true,
+    },
+    "tmux": {
+      "type": "local",
+      "command": [
+        "nu-mcp",
+        "--tools-dir",
+        "/Users/christian/.local/share/nushell/mcp-tools/tmux"
+      ],
+      "enabled": true,
+    },
   }
 }

@@ -46,17 +46,21 @@ mcp-servers:
     command: nu-mcp
     args:
       - --tools-dir
-      #- /Users/christian/Projects/ck3mp3r/laio-cli/mcp-tools/
       - /Users/christian/.local/share/nushell/mcp-tools/tmux/
+  finance:
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/.local/share/nushell/mcp-tools/finance/
+  weather:
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/.local/share/nushell/mcp-tools/weather/
   k8s:
     command: nu-mcp
     args:
       - --tools-dir
       - /Users/christian/Projects/ck3mp3r/flakes/k8s-utils/mcp-tools
-  example-mcp:
-    command: nu-mcp
-    args:
-      - --tools-dir
-      - /Users/christian/.nix-profile/nushell/tools/examples/
   context7:
     command: c67-mcp

@@ -70,7 +70,9 @@
         atuin = upkgs.atuin;
         carapace = upkgs.carapace;
         laio = laio.packages.${system}.default;
-        tmux-mcp-tools = laio.packages.${system}.tmux-mcp-tools;
+        tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
+        finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
+        weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
         mods = mods.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;
         c67-mcp = c67-mcp.packages.${system}.default;
