@@ -484,11 +484,11 @@
         "rustnix": "rustnix_3"
       },
       "locked": {
-        "lastModified": 1760564430,
-        "narHash": "sha256-U/YFe/amYeoamz2J8YvqOVs8Wt3Dx6auSnairzgVg70=",
+        "lastModified": 1760712648,
+        "narHash": "sha256-vD5fzTvXl/WpMYmV7LFW0p2q1Enj51g+CbLBUjLIHI8=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "954fac3fc9ead6794a938361cbd3c84f818f40cf",
+        "rev": "d7b4674a471190e70de22944971cc08ada317041",
         "type": "github"
       },
       "original": {
