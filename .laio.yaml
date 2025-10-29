@@ -12,7 +12,7 @@ windows:
   - name: code
     panes:
       - commands:
-          - command: nvim
+          - command: ^$env.EDITOR
 
   - name: misc
     panes:

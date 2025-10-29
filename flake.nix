@@ -68,21 +68,21 @@
     overlays = [
       (final: next: {
         atuin = upkgs.atuin;
-        carapace = upkgs.carapace;
-        laio = laio.packages.${system}.default;
-        tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
-        finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
-        weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
-        mods = mods.packages.${system}.default;
-        nu-mcp = nu-mcp.packages.${system}.default;
         c67-mcp = c67-mcp.packages.${system}.default;
+        carapace = upkgs.carapace;
+        finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
+        laio = laio.packages.${system}.laio;
+        mods = mods.packages.${system}.default;
+        nodejs = upkgs.nodejs_24;
+        nu-mcp = nu-mcp.packages.${system}.default;
         nushell = upkgs.nushell;
         ollama = upkgs.ollama;
         opencode = upkgs.opencode;
         starship = upkgs.starship;
+        tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
         topiary = upkgs.topiary;
+        weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
         zoxide = upkgs.zoxide;
-        nodejs = upkgs.nodejs_24;
       })
     ];
 
