@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   home.file.".config/nushell/git.nu".source = ./git.nu;
   home.file.".config/nushell/direnv.nu".source = ./direnv.nu;
 
@@ -6,5 +6,16 @@
     enable = true;
     configFile.source = ./config.nu;
     envFile.source = ./env.nu;
+
+    extraConfig = ''
+      const NU_LIB_DIRS = [
+          "${pkgs.ai}/share/nushell/modules"
+      ]
+
+      use ai
+    '';
   };
+  home.packages = [
+    pkgs.ai
+  ];
 }

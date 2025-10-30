@@ -15,29 +15,34 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nu-mods = {
+      url = "github:ck3mp3r/nu-mods/feature/ai-git-operations";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     laio = {
       url = "github:ck3mp3r/laio-cli";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     mods = {
       url = "github:ck3mp3r/flakes?dir=mods";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nu-mcp = {
       url = "github:ck3mp3r/nu-mcp";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     c67-mcp = {
       url = "github:ck3mp3r/c67-mcp";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -48,6 +53,7 @@
     nixpkgs,
     nixpkgs-unstable,
     nu-mcp,
+    nu-mods,
     c67-mcp,
     mods,
     laio,
@@ -67,6 +73,7 @@
 
     overlays = [
       (final: next: {
+        ai = nu-mods.packages.${system}.ai;
         atuin = upkgs.atuin;
         c67-mcp = c67-mcp.packages.${system}.default;
         carapace = upkgs.carapace;
