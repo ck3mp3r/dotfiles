@@ -12,7 +12,7 @@
           "${pkgs.ai}/share/nushell/modules"
       ]
 
-      use ai
+      use ai *
     '';
   };
   home.packages = [
