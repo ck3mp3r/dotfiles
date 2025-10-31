@@ -1324,11 +1324,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761901400,
-        "narHash": "sha256-yTol+e8VaDsT1OusgcSWxOiVO6jAYE5jLL/0Zf5SxRo=",
+        "lastModified": 1761916145,
+        "narHash": "sha256-tg/c47YGcmYWRxi6bb2tJl03z8xeU2kOLRAvG4iYF3I=",
         "owner": "ck3mp3r",
         "repo": "nu-mods",
-        "rev": "9e24610918e4837df248b74b7a108ab8b54f3f9f",
+        "rev": "17e9af358f6ff83d5e40c5b56193c23695481eef",
         "type": "github"
       },
       "original": {
