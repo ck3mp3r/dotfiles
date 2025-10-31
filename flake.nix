@@ -78,7 +78,7 @@
         c67-mcp = c67-mcp.packages.${system}.default;
         carapace = upkgs.carapace;
         finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
-        laio = laio.packages.${system}.laio;
+        laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
         nodejs = upkgs.nodejs_24;
         nu-mcp = nu-mcp.packages.${system}.default;
