@@ -16,7 +16,7 @@
     };
 
     nu-mods = {
-      url = "github:ck3mp3r/nu-mods/feature/ai-git-operations";
+      url = "github:ck3mp3r/nu-mods";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
