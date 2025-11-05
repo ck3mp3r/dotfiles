@@ -23,6 +23,7 @@
     ./programs/atuin
     ./programs/carapace
     ./programs/ghostty
+    ./programs/goose
     ./programs/git.nix
     ./programs/idea
     ./programs/k9s
