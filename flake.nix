@@ -81,6 +81,7 @@
         goose-cli = upkgs.goose-cli;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
+        nerdfonts = upkgs.nerdfonts;
         nodejs = upkgs.nodejs_24;
         nu-mcp = nu-mcp.packages.${system}.default;
         nushell = upkgs.nushell;
