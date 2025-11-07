@@ -6,13 +6,13 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nu-mods = {
@@ -50,7 +50,6 @@
     self,
     home-manager,
     nix-darwin,
-    nixpkgs,
     nixpkgs-unstable,
     nu-mcp,
     nu-mods,
@@ -67,36 +66,25 @@
     inherit (home-manager.lib) homeManagerConfiguration;
     stateVersion = "25.05";
 
-    upkgs = import nixpkgs-unstable {
-      inherit system;
-    };
-
     overlays = [
-      (final: next: {
+      (final: prev: {
+        # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
-        atuin = upkgs.atuin;
         c67-mcp = c67-mcp.packages.${system}.default;
-        carapace = upkgs.carapace;
         finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
-        git = upkgs.git;
-        goose-cli = upkgs.goose-cli;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
-        nerdfonts = upkgs.nerdfonts;
-        nodejs = upkgs.nodejs_24;
         nu-mcp = nu-mcp.packages.${system}.default;
-        nushell = upkgs.nushell;
-        ollama = upkgs.ollama;
-        opencode = upkgs.opencode;
-        starship = upkgs.starship;
         tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
-        topiary = upkgs.topiary;
         weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
-        zoxide = upkgs.zoxide;
+
+        # Override Python packages to use Python 3.13
+        mitmproxy = final.python313Packages.toPythonApplication final.python313Packages.mitmproxy;
+        speedtest-cli = final.python313Packages.toPythonApplication final.python313Packages.speedtest-cli;
       })
     ];
 
-    pkgs = import nixpkgs {
+    pkgs = import nixpkgs-unstable {
       inherit system overlays;
       config = {allowUnfree = true;};
     };

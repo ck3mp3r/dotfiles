@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       core = {
         whitespace = "trailing-space,space-before-tab";
         editor = "nvim";
@@ -31,16 +31,18 @@
       mergetool.nvimdiff.cmd = "nvim -d $LOCAL $REMOTE $MERGED";
       diff = {colorMoved = "default";};
     };
-    delta = {
-      enable = true;
-      options = {
-        navigate = true;
-        light = false;
-        side-by-side = true;
-        line-numbers = true;
-        syntax-theme = "Nord";
-        true-color = "always";
-      };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
+      light = false;
+      side-by-side = true;
+      line-numbers = true;
+      syntax-theme = "Nord";
+      true-color = "always";
     };
   };
 }
