@@ -24,6 +24,7 @@
     ./programs.nix
     ./programs/alacritty
     ./programs/atuin
+    ./programs/bat
     ./programs/carapace
     ./programs/ghostty
     ./programs/goose

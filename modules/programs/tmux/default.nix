@@ -2,8 +2,8 @@
   catppucinSrc = pkgs.fetchFromGitHub {
     owner = "catppuccin";
     repo = "tmux";
-    rev = "320e184a31d0825cb4f4af550492cbdff2fc3ffc";
-    sha256 = "gMBpINeHS+5TCsbJBHhXKEF+fG58FmJrIJoQWYdQqc0=";
+    rev = "8b0b9150f9d7dee2a4b70cdb50876ba7fd6d674a";
+    sha256 = "godCgBMgqzim+W3O2sHcgw91h7sHsKHjd02BdLuazZ8=";
   };
 
   catppuccinStatusSrc = ./plugins/catppuccin;

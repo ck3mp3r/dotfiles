@@ -33,10 +33,20 @@
     };
   };
 
+  catppuccin.lazygit = {
+    enable = true;
+    flavor = "mocha";
+  };
+
+  programs.lazygit = {
+    enable = true;
+  };
+
   catppuccin.delta = {
     enable = true;
     flavor = "mocha";
   };
+
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
