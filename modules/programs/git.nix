@@ -33,6 +33,10 @@
     };
   };
 
+  catppuccin.delta = {
+    enable = true;
+    flavor = "mocha";
+  };
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
@@ -41,7 +45,6 @@
       light = false;
       side-by-side = true;
       line-numbers = true;
-      syntax-theme = "Nord";
       true-color = "always";
     };
   };

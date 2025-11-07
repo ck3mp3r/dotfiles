@@ -3,7 +3,6 @@ with pkgs;
   [
     _1password-cli
     bandwhich
-    bat
     bottom
     cachix
     delta

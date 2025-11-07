@@ -216,6 +216,26 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762510976,
+        "narHash": "sha256-KGoSj8qMOOPaNE48RTtuNBbqOvKLTeklnRHWWvE/TXo=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "728cb0a667ce37bb0c68557dba819c7fb54ff1c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "devenv": {
       "inputs": {
         "cachix": "cachix",
@@ -1589,6 +1609,7 @@
     "root": {
       "inputs": {
         "c67-mcp": "c67-mcp",
+        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "laio": "laio",
         "mods": "mods",

@@ -2,6 +2,14 @@
   # Let Home Manager install and manage itself.
   #  home-manager.enable = true;
 
+  catppuccin.bat = {
+    enable = true;
+    flavor = "mocha";
+  };
+  programs.bat = {
+    enable = true;
+  };
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

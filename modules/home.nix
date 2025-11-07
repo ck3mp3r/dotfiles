@@ -4,6 +4,7 @@
   homeDirectory,
   stateVersion,
   sops-nix,
+  catppuccin,
   ...
 }: {
   # fix for manuals not compiling...
@@ -17,6 +18,8 @@
   };
   imports = [
     sops-nix.homeManagerModules.sops
+    catppuccin.homeModules.catppuccin
+
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix
     ./programs/alacritty

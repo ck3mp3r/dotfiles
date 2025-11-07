@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -48,6 +51,7 @@
 
   outputs = {
     self,
+    catppuccin,
     home-manager,
     nix-darwin,
     nixpkgs-unstable,
@@ -100,7 +104,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           (import ./modules/darwin.nix {
-            inherit system pkgs stateVersion sops-nix;
+            inherit system pkgs stateVersion catppuccin sops-nix;
             inherit (config) username casks;
             revision = self.rev or self.dirtyRev or null;
           })
@@ -117,7 +121,7 @@
         inherit pkgs;
         modules = [
           (import ./modules/home.nix {
-            inherit pkgs stateVersion system sops-nix;
+            inherit pkgs stateVersion system catppuccin sops-nix;
             inherit (config) username;
             homeDirectory =
               if pkgs.stdenv.isLinux
