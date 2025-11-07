@@ -14,7 +14,7 @@ load-env {
   EDITOR: "nvim"
   TESTCONTAINERS_RYUK_DISABLED: "true"
   PATH: (
-    $env.PATH | append [
+    $env.PATH | prepend [
       $"($env.HOME)/.nix-profile/bin"
       $"($env.HOME)/.local/bin"
       $"($env.HOME)/.config/dotfiles/bin"
