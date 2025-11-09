@@ -22,6 +22,7 @@ load-env {
       "/run/current-system/sw/bin"
       "/nix/var/nix/profiles/default/bin"
       "/opt/homebrew/bin"
+      "/usr/local/bin"
     ]
   )
   PROMPT_COMMAND: {|| starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)' }
