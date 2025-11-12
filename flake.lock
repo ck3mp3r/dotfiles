@@ -631,6 +631,24 @@
         "type": "github"
       }
     },
+    "flake-parts_13": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_6"
+      },
+      "locked": {
+        "lastModified": 1762810396,
+        "narHash": "sha256-dxFVgQPG+R72dkhXTtqUm7KpxElw3u6E+YlQ2WaDgt8=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "0bdadb1b265fb4143a75bd1ec7d8c915898a9923",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
@@ -1512,13 +1530,28 @@
         "type": "github"
       }
     },
+    "nixpkgs-lib_6": {
+      "locked": {
+        "lastModified": 1761765539,
+        "narHash": "sha256-b0yj6kfvO8ApcSE+QmA6mUfu8IYG6/uU28OFn4PaC8M=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "719359f4562934ae99f5443f20aa06c2ffff91fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "type": "github"
+      }
+    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1762361079,
-        "narHash": "sha256-lz718rr1BDpZBYk7+G8cE6wee3PiBUpn8aomG/vLLiY=",
+        "lastModified": 1762604901,
+        "narHash": "sha256-Pr2jpryIaQr9Yx8p6QssS03wqB6UifnnLr3HJw9veDw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ffcdcf99d65c61956d882df249a9be53e5902ea5",
+        "rev": "f6b44b2401525650256b977063dbcf830f762369",
         "type": "github"
       },
       "original": {
@@ -1546,11 +1579,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1762642337,
-        "narHash": "sha256-gIWp/YbeOrB5pGboptdkRdKc4f47Cxh4siOa0E/0BQw=",
+        "lastModified": 1762969366,
+        "narHash": "sha256-t3tgTf39fDhlB/OK9qLCrWIollHLUxvSgSCq4EPXvuA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d9e07ab24902c43e4b4f54781eba52e0a6ae2cda",
+        "rev": "13bf1bae0eb389c7b593ccbbe44f37cd49095eca",
         "type": "github"
       },
       "original": {
@@ -1606,6 +1639,32 @@
         "type": "github"
       }
     },
+    "opencode": {
+      "inputs": {
+        "flake-parts": "flake-parts_13",
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "tui-darwin-arm64": "tui-darwin-arm64",
+        "tui-linux-arm64": "tui-linux-arm64",
+        "tui-linux-x64": "tui-linux-x64"
+      },
+      "locked": {
+        "dir": "opencode",
+        "lastModified": 1762942474,
+        "narHash": "sha256-p+Sfq+jgjibnHftuIMZbwQg5QCLElXQp2gXM1LAPHgA=",
+        "owner": "ck3mp3r",
+        "repo": "flakes",
+        "rev": "75a503b9ad28c6ab6cde56867e1e2a5740fa72fb",
+        "type": "github"
+      },
+      "original": {
+        "dir": "opencode",
+        "owner": "ck3mp3r",
+        "repo": "flakes",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "c67-mcp": "c67-mcp",
@@ -1618,6 +1677,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nu-mcp": "nu-mcp",
         "nu-mods": "nu-mods",
+        "opencode": "opencode",
         "sops-nix": "sops-nix"
       }
     },
@@ -1809,6 +1869,45 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "tui-darwin-arm64": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762892008,
+        "narHash": "sha256-kmY8roava/y4FbYiwFlGH3ra+iercayG3aPLv3oOFaQ=",
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-darwin-arm64.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-darwin-arm64.zip"
+      }
+    },
+    "tui-linux-arm64": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762891999,
+        "narHash": "sha256-l3WPGIW1kDiM+5MtfU/snKb/bsKGQUqHvU3xIR4qfgg=",
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-linux-arm64.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-linux-arm64.zip"
+      }
+    },
+    "tui-linux-x64": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762892000,
+        "narHash": "sha256-m+XrIts3ENs9B94ZjqnIBJYXvPwKDb762cBCzlMpX34=",
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-linux-x64.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.58/opencode-linux-x64.zip"
       }
     }
   },

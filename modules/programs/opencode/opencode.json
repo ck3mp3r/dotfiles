@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "copilot/GPT-4.1",
+  "model": "anthropic/claude-sonnet-4.5",
   "autoupdate": false,
   "mcp": {
     "context7": {

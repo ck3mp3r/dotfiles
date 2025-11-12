@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    opencode = {
+      url = "github:ck3mp3r/flakes?dir=opencode";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nu-mcp = {
       url = "github:ck3mp3r/nu-mcp";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -59,6 +64,7 @@
     nu-mods,
     c67-mcp,
     mods,
+    opencode,
     laio,
     sops-nix,
     ...
@@ -78,6 +84,7 @@
         finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
+        opencode = opencode.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;
         tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
         weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
