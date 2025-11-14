@@ -352,11 +352,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1761743296,
-        "narHash": "sha256-I2u3Cg4/b6TFy6DREoA4IxaXOuo/UwrqUK4/T0HVVQU=",
+        "lastModified": 1762645230,
+        "narHash": "sha256-R01IFAvCQAxgVKoA7tQm5BVyCKuvmkUJnI6/F9Hzm4s=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "60a3443eef7bfacbbcf017caa0a0fb3c86ebe43b",
+        "rev": "ec912ab6ad9803707ede117020654fffd30d9815",
         "type": "github"
       },
       "original": {
@@ -618,11 +618,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760948891,
-        "narHash": "sha256-TmWcdiUUaWk8J4lpjzu4gCGxWY6/Ok7mOK4fIFfBuU4=",
+        "lastModified": 1762440070,
+        "narHash": "sha256-xxdepIcb39UJ94+YydGP221rjnpkDZUlykKuF54PsqI=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "864599284fc7c0ba6357ed89ed5e2cd5040f0c04",
+        "rev": "26d05891e14c88eb4a5d5bee659c0db5afb609d8",
         "type": "github"
       },
       "original": {
@@ -1626,11 +1626,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762092643,
-        "narHash": "sha256-+pxq87EKvd2z3JiknP4xcTZpXWmmDloXVcVI/ygzhq4=",
+        "lastModified": 1763150437,
+        "narHash": "sha256-2hGZ5ZidPV+gE6E/gBhaAydbAzhFbwA8f/xLbzyrJcU=",
         "owner": "ck3mp3r",
         "repo": "nu-mods",
-        "rev": "b31be73ca45d4fb8024c072209c80006fcd031c9",
+        "rev": "4fec57816c1b5c66904387c0fd399a7a90ec2427",
         "type": "github"
       },
       "original": {
