@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    mergiraf
+  ];
+
   programs.git = {
     enable = true;
     settings = {
