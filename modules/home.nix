@@ -32,6 +32,7 @@
     ./programs/idea
     ./programs/k9s
     ./programs/laio
+    ./programs/leader-key
     ./programs/mods
     ./programs/opencode
     ./programs/starship.nix

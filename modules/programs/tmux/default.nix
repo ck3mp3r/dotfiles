@@ -94,6 +94,18 @@ in {
 
       set -g status-interval 5
 
+      # Clipboard integration
+      set -s set-clipboard on
+      set -g set-clipboard on
+
+      # Vi-mode clipboard bindings
+      bind-key -T copy-mode-vi v send-keys -X begin-selection
+      bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+
+      # Prefix + a to switch to last window (C-a a)
+      bind-key a last-window
+
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \

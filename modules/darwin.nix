@@ -23,6 +23,7 @@
       "claude-code"
       "cleanshot"
       "ghostty"
+      "leader-key"
       "obsidian"
       "pop-app"
       "zen"
