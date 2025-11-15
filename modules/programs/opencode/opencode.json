@@ -3,13 +3,6 @@
   "model": "anthropic/claude-sonnet-4.5",
   "autoupdate": false,
   "mcp": {
-    "context7": {
-      "type": "local",
-      "command": [
-        "c67-mcp",
-      ],
-      "enabled": true
-    },
     "nu-mcp": {
       "type": "local",
       "command": [
@@ -41,6 +34,15 @@
         "nu-mcp",
         "--tools-dir",
         "/Users/christian/.local/share/nushell/mcp-tools/tmux"
+      ],
+      "enabled": true,
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "nu-mcp",
+        "--tools-dir",
+        "/Users/christian/.local/share/nushell/mcp-tools/c67"
       ],
       "enabled": true,
     },

@@ -4,4 +4,5 @@
   home.file.".local/share/nushell/mcp-tools/tmux".source = "${pkgs.tmux-mcp-tools}/share/nushell/mcp-tools/tmux";
   home.file.".local/share/nushell/mcp-tools/weather".source = "${pkgs.weather-mcp-tools}/share/nushell/mcp-tools/weather";
   home.file.".local/share/nushell/mcp-tools/finance".source = "${pkgs.finance-mcp-tools}/share/nushell/mcp-tools/finance";
+  home.file.".local/share/nushell/mcp-tools/c67".source = "${pkgs.c67-mcp-tools}/share/nushell/mcp-tools/c67";
 }

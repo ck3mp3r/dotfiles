@@ -63,4 +63,7 @@ mcp-servers:
       - --tools-dir
       - /Users/christian/Projects/ck3mp3r/flakes/k8s-utils/mcp-tools
   context7:
-    command: c67-mcp
+    command: nu-mcp
+    args:
+      - --tools-dir
+      - /Users/christian/.local/share/nushell/mcp-tools/c67/

@@ -47,11 +47,6 @@
       url = "github:ck3mp3r/nu-mcp";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    c67-mcp = {
-      url = "github:ck3mp3r/c67-mcp";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
   };
 
   outputs = {
@@ -62,7 +57,6 @@
     nixpkgs-unstable,
     nu-mcp,
     nu-mods,
-    c67-mcp,
     mods,
     opencode,
     laio,
@@ -80,12 +74,12 @@
       (final: prev: {
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
-        c67-mcp = c67-mcp.packages.${system}.default;
+        c67-mcp-tools = nu-mcp.packages.${system}.c67-mcp-tools;
         finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
-        opencode = opencode.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;
+        opencode = opencode.packages.${system}.default;
         tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
         weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
 
