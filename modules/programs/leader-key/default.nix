@@ -1,4 +1,6 @@
 {...}: let
+  aerospace = "/opt/homebrew/bin/aerospace";
+
   config = {
     type = "group";
     actions = [
@@ -48,38 +50,38 @@
           {
             key = "h";
             type = "command";
-            value = "aerospace move left";
+            value = "${aerospace} move left";
           }
           {
             key = "l";
             type = "command";
-            value = "aerospace move right";
+            value = "${aerospace} move right";
           }
           {
             key = "k";
             type = "command";
-            value = "aerospace move up";
+            value = "${aerospace} move up";
           }
           {
             key = "j";
             type = "command";
-            value = "aerospace move down";
+            value = "${aerospace} move down";
           }
           {
             key = "f";
             type = "command";
-            value = "aerospace fullscreen";
+            value = "${aerospace} fullscreen";
           }
           # Layout modes
           {
             key = "t";
             type = "command";
-            value = "aerospace layout tiles";
+            value = "${aerospace} layout tiles";
           }
           {
             key = "a";
             type = "command";
-            value = "aerospace layout accordion";
+            value = "${aerospace} layout accordion";
           }
           # Mission Control
           {
