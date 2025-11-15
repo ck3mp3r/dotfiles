@@ -24,6 +24,7 @@
       "cleanshot"
       "ghostty"
       "leader-key"
+      "nikitabobko/tap/aerospace"
       "obsidian"
       "pop-app"
       "zen"

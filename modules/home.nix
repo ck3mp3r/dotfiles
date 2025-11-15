@@ -22,6 +22,7 @@
 
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix
+    ./programs/aerospace
     ./programs/alacritty
     ./programs/atuin
     ./programs/bat
