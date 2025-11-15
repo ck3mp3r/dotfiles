@@ -120,6 +120,7 @@ in {
 
       NSGlobalDomain.AppleICUForce24HourTime = true;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      NSGlobalDomain._HIHideMenuBar = true;
 
       # Dock
       dock = {
