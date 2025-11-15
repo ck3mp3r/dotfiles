@@ -3,6 +3,11 @@
     type = "group";
     actions = [
       {
+        key = "a";
+        type = "application";
+        value = "/Applications/Arc.app";
+      }
+      {
         key = "g";
         type = "application";
         value = "/Applications/Ghostty.app";
@@ -22,9 +27,9 @@
             value = "/System/Applications/Messages.app";
           }
           {
-            key = "a";
+            key = "t";
             type = "application";
-            value = "/Applications/Arc.app";
+            value = "/Applications/Telegram.app";
           }
         ];
       }
