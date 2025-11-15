@@ -32,6 +32,11 @@
             type = "application";
             value = "/Applications/Telegram.app";
           }
+          {
+            key = "w";
+            type = "application";
+            value = "/Applications/WhatsApp.app";
+          }
         ];
       }
       # Window Management - Aerospace
