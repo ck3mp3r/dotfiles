@@ -30,6 +30,11 @@
             value = "/System/Applications/Messages.app";
           }
           {
+            key = "s";
+            type = "application";
+            value = "/Applications/Signal.app";
+          }
+          {
             key = "t";
             type = "application";
             value = "/Applications/Telegram.app";
