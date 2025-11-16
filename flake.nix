@@ -76,6 +76,7 @@
         ai = nu-mods.packages.${system}.ai;
         c67-mcp-tools = nu-mcp.packages.${system}.c67-mcp-tools;
         finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
+        k8s-mcp-tools = nu-mcp.packages.${system}.k8s-mcp-tools;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
         nu-mcp = nu-mcp.packages.${system}.default;

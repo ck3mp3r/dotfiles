@@ -47,6 +47,18 @@
         ];
         enabled = true;
       };
+      k8s = {
+        type = "local";
+        command = [
+          nuMcp
+          "--tools-dir"
+          "${pkgs.k8s-mcp-tools}/share/nushell/mcp-tools/k8s"
+        ];
+        # environment = {
+        #   "MCP_K8S_MODE" = "destructive";
+        # };
+        enabled = true;
+      };
     };
   };
 in {

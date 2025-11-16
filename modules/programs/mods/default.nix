@@ -81,6 +81,13 @@
           "${pkgs.c67-mcp-tools}/share/nushell/mcp-tools/c67"
         ];
       };
+      k8s = {
+        command = nuMcp;
+        args = [
+          "--tools-dir"
+          "${pkgs.k8s-mcp-tools}/share/nushell/mcp-tools/k8s"
+        ];
+      };
     };
   };
 in {
