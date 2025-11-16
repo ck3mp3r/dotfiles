@@ -149,7 +149,7 @@ in {
       env = pkgs.buildEnv {
         name = "system-applications";
         paths = packages';
-        pathsToLink = "/Applications";
+        pathsToLink = [ "/Applications" ];
       };
     in
       pkgs.lib.mkForce ''
