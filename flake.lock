@@ -1222,11 +1222,11 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1763330315,
-        "narHash": "sha256-XhoUl1FxQR6Bv2xCmsBahlQCKoqViJ6ROnGDmo8HOUc=",
+        "lastModified": 1763414146,
+        "narHash": "sha256-bdOL1BvnSkVeLRcuU8lg/FAaK07O+KeiFPx+MYoEQ3E=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "5e3184ca9098f0d736ebdf2ae2c2f654bef73aeb",
+        "rev": "4ce0499c43d1c40ea1960eb3a2a6e3e02ef14cfd",
         "type": "github"
       },
       "original": {

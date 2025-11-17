@@ -16,7 +16,7 @@
         command = [
           nuMcp
           "--tools-dir"
-          "${pkgs.weather-mcp-tools}/share/nushell/mcp-tools/weather"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
         ];
         enabled = true;
       };
@@ -25,7 +25,7 @@
         command = [
           nuMcp
           "--tools-dir"
-          "${pkgs.finance-mcp-tools}/share/nushell/mcp-tools/finance"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/finance"
         ];
         enabled = true;
       };
@@ -34,7 +34,7 @@
         command = [
           nuMcp
           "--tools-dir"
-          "${pkgs.tmux-mcp-tools}/share/nushell/mcp-tools/tmux"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/tmux"
         ];
         enabled = true;
       };
@@ -43,7 +43,7 @@
         command = [
           nuMcp
           "--tools-dir"
-          "${pkgs.c67-mcp-tools}/share/nushell/mcp-tools/c67"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c67"
         ];
         enabled = true;
       };
@@ -52,7 +52,7 @@
         command = [
           nuMcp
           "--tools-dir"
-          "${pkgs.k8s-mcp-tools}/share/nushell/mcp-tools/k8s"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/k8s"
         ];
         # environment = {
         #   "MCP_K8S_MODE" = "destructive";
@@ -63,5 +63,5 @@
   };
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON config;
-  home.packages = [pkgs.opencode pkgs.tmux-mcp-tools];
+  home.packages = [pkgs.opencode pkgs.nu-mcp-tools];
 }

@@ -57,35 +57,35 @@
         command = nuMcp;
         args = [
           "--tools-dir"
-          "${pkgs.tmux-mcp-tools}/share/nushell/mcp-tools/tmux"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/tmux"
         ];
       };
       finance = {
         command = nuMcp;
         args = [
           "--tools-dir"
-          "${pkgs.finance-mcp-tools}/share/nushell/mcp-tools/finance"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/finance"
         ];
       };
       weather = {
         command = nuMcp;
         args = [
           "--tools-dir"
-          "${pkgs.weather-mcp-tools}/share/nushell/mcp-tools/weather"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
         ];
       };
       context7 = {
         command = nuMcp;
         args = [
           "--tools-dir"
-          "${pkgs.c67-mcp-tools}/share/nushell/mcp-tools/c67"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c67"
         ];
       };
       k8s = {
         command = nuMcp;
         args = [
           "--tools-dir"
-          "${pkgs.k8s-mcp-tools}/share/nushell/mcp-tools/k8s"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/k8s"
         ];
       };
     };
@@ -95,6 +95,6 @@ in {
   home.packages = [
     pkgs.mods
     pkgs.nu-mcp
-    pkgs.tmux-mcp-tools
+    pkgs.nu-mcp-tools
   ];
 }

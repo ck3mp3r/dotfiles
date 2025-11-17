@@ -74,15 +74,11 @@
       (final: prev: {
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
-        c67-mcp-tools = nu-mcp.packages.${system}.c67-mcp-tools;
-        finance-mcp-tools = nu-mcp.packages.${system}.finance-mcp-tools;
-        k8s-mcp-tools = nu-mcp.packages.${system}.k8s-mcp-tools;
         laio = laio.packages.${system}.default;
         mods = mods.packages.${system}.default;
+        nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;
-        tmux-mcp-tools = nu-mcp.packages.${system}.tmux-mcp-tools;
-        weather-mcp-tools = nu-mcp.packages.${system}.weather-mcp-tools;
 
         # Override Python packages to use Python 3.13
         mitmproxy = final.python313Packages.toPythonApplication final.python313Packages.mitmproxy;
