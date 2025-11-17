@@ -119,5 +119,8 @@
     ];
   };
 in {
-  home.file.".config/leader-key/config.json".text = builtins.toJSON config;
+  home.file.".config/leader-key/config.json" = {
+    text = builtins.toJSON config;
+    force = true;
+  };
 }
