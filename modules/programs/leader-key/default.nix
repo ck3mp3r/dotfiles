@@ -114,6 +114,65 @@
             value = "osascript -e 'tell application \"System Events\" to key code 103'";
             label = "Show Desktop";
           }
+          # Resize windows
+          {
+            key = "r";
+            type = "group";
+            actions = [
+              {
+                key = "h";
+                type = "command";
+                value = "${aerospace} resize smart -100";
+                label = "Shrink";
+              }
+              {
+                key = "l";
+                type = "command";
+                value = "${aerospace} resize smart +100";
+                label = "Grow";
+              }
+              {
+                key = "=";
+                type = "command";
+                value = "${aerospace} balance-sizes";
+                label = "Balance";
+              }
+            ];
+          }
+          # Join windows
+          {
+            key = "v";
+            type = "command";
+            value = "${aerospace} join-with down";
+            label = "Join Down";
+          }
+          {
+            key = "s";
+            type = "command";
+            value = "${aerospace} join-with right";
+            label = "Join Right";
+          }
+          # Close window
+          {
+            key = "c";
+            type = "command";
+            value = "${aerospace} close";
+            label = "Close Window";
+          }
+          # Flatten workspace
+          {
+            key = "F";
+            type = "command";
+            value = "${aerospace} flatten-workspace-tree";
+            label = "Flatten Workspace";
+          }
+          # Reload config
+          {
+            key = "R";
+            type = "command";
+            value = "${aerospace} reload-config";
+            label = "Reload Config";
+          }
         ];
       }
     ];
