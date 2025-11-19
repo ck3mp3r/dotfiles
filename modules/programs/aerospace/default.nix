@@ -69,5 +69,9 @@
     [[on-window-detected]]
     if.app-id = 'com.1password.1password'
     run = 'layout floating'
+
+    [[on-window-detected]]
+    if.app-id = 'us.zoom.xos'
+    run = 'layout floating'
   '';
 }
