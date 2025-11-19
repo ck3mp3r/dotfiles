@@ -4,7 +4,29 @@
   config = {
     "$schema" = "https://opencode.ai/config.json";
     model = "anthropic/claude-sonnet-4.5";
+    small_model = "anthropic/claude-haiku-3.5";
     autoupdate = false;
+
+    # Prefer Nushell over Bash
+    tools = {
+      bash = false;
+    };
+
+    # Task agent configuration - uses small_model for speed and token efficiency
+    agent = {
+      general = {
+        description = "General-purpose agent for research and focused tasks with limited tools";
+        tools = {
+          bash = false;
+          write = true;
+          edit = true;
+          read = true;
+          "nu-mcp_run_nushell" = true;
+          "context7_resolve_library_id" = true;
+          "context7_get_library_docs" = true;
+        };
+      };
+    };
     mcp = {
       nu-mcp = {
         type = "local";
