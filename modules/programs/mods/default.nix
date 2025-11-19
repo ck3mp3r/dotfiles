@@ -81,6 +81,17 @@
           "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c67"
         ];
       };
+      argocd = {
+        command = nuMcp;
+        args = [
+          "--tools-dir"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/argocd"
+        ];
+        environment = {
+          "MCP_READ_ONLY" = "false";
+        };
+        enabled = true;
+      };
       k8s = {
         command = nuMcp;
         args = [

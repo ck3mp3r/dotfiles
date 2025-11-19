@@ -1241,11 +1241,11 @@
         "topiary-nu": "topiary-nu"
       },
       "locked": {
-        "lastModified": 1763587864,
-        "narHash": "sha256-WT9mzdz1IcvFOB7w865uuJgQKt4oiQC/CR4PSZ+PrGQ=",
+        "lastModified": 1763592163,
+        "narHash": "sha256-Po8c1+mvOAu+Gy7V2BkiUrrc0H1f3HbO+ns5KmBja7s=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "50c05881173f60aab51f2fbe48e1a400a99d02df",
+        "rev": "7b07432d734eaf3863071bdd0879035859d74331",
         "type": "github"
       },
       "original": {
