@@ -87,6 +87,9 @@
           "--tools-dir"
           "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/k8s"
         ];
+        environment = {
+          "MCP_K8S_MODE" = "non-destructive";
+        };
       };
     };
   };
