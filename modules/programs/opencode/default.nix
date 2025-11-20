@@ -135,7 +135,7 @@
   config = {
     "$schema" = "https://opencode.ai/config.json";
     model = "anthropic/claude-sonnet-4.5";
-    small_model = "anthropic/claude-haiku-3.5";
+    small_model = "anthropic/claude-haiku-4.5";
     autoupdate = false;
 
     # Prefer Nushell over Bash
