@@ -26,6 +26,46 @@
     **Example**: If you need to apply 3 different manifests, you must ask permission 3 separate times, once before each apply operation.
 
     Preferred approach: Use the Kubernetes MCP tools (k8s_kube_*) when possible, as they provide better error handling and output formatting.
+
+    ## ArgoCD Management
+
+    ### Read-only Operations
+    You may use ArgoCD read-only commands directly without asking permission:
+    - `argocd app list`
+    - `argocd app get`
+    - `argocd app diff`
+    - `argocd app logs`
+    - `argocd app manifests`
+    - `argocd app resources`
+    - `argocd app history`
+    - Any other read-only operations
+
+    You may also use any argocd_* MCP tools for read-only operations without permission:
+    - argocd_list_applications
+    - argocd_get_application
+    - argocd_get_application_resource_tree
+    - argocd_get_application_managed_resources
+    - argocd_get_application_workload_logs
+    - argocd_get_application_events
+    - argocd_get_resource_events
+    - argocd_get_resources
+    - argocd_get_resource_actions
+
+    ### Write/Destructive Operations
+    NEVER use ArgoCD write or destructive commands without explicit permission **FOR EACH EXECUTION**:
+
+    1. **ALWAYS ASK** the user for explicit permission before **EVERY SINGLE** write operation
+    2. Clearly state what changes will be made for THIS specific operation
+    3. Wait for confirmation before proceeding
+    4. Permission is NEVER implied from previous approvals - you MUST ask again for each new operation
+
+    This applies to:
+    - ArgoCD CLI commands via bash/nushell: `argocd app create`, `argocd app delete`, `argocd app sync`, `argocd app set`, `argocd app patch`, `argocd app rollback`, etc.
+    - ArgoCD MCP tools that modify resources: argocd_create_application, argocd_update_application, argocd_delete_application, argocd_sync_application, argocd_run_resource_action, etc.
+
+    **Example**: If you need to sync 3 different applications, you must ask permission 3 separate times, once before each sync operation.
+
+    Preferred approach: Use the ArgoCD MCP tools (argocd_*) when possible, as they provide better error handling and output formatting.
   '';
 
   config = {
