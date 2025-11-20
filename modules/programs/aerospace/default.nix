@@ -73,5 +73,17 @@
     [[on-window-detected]]
     if.app-id = 'us.zoom.xos'
     run = 'layout floating'
+
+    [[on-window-detected]]
+    if.app-id = 'ru.keepcoder.Telegram'
+    run = 'layout floating'
+
+    [[on-window-detected]]
+    if.app-id = 'net.whatsapp.WhatsApp'
+    run = 'layout floating'
+
+    [[on-window-detected]]
+    if.app-id = 'org.whispersystems.signal-desktop'
+    run = 'layout floating'
   '';
 }
