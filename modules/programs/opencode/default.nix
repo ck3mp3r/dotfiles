@@ -4,6 +4,70 @@
   agentsRules = ''
     # Personal Rules
 
+    ## Initial Research and Context Gathering
+
+    Before making ANY changes to a project, you MUST:
+
+    1. **Read project documentation** - Check for and read (in order of preference):
+       - `/llms.txt` - Project-specific LLM instructions
+       - `/AGENTS.md` or `/.opencode/AGENTS.md` - Agent-specific rules
+       - `/README.md` - General project overview
+       - Any other relevant documentation files
+
+    2. **Research dependencies and libraries** - Use Context7 to:
+       - Understand the APIs and best practices for libraries used in the project
+       - Check current documentation for frameworks being modified
+       - Verify correct usage patterns before implementing changes
+
+    3. **Understand the codebase** - Use the Task tool to:
+       - Explore the project structure
+       - Understand existing patterns and conventions
+       - Identify related code that might be affected
+
+    **Only after completing this research** should you proceed with branch creation and changes.
+
+    ## Git Branch Management
+
+    ### Protected Branches
+    NEVER commit directly to the `main` or `master` branch under any circumstances.
+
+    ### Branch Creation Workflow
+    Before making ANY code changes, you MUST:
+
+    1. **Check current branch** - Verify what branch you're currently on
+    2. **Switch to main if needed** - If not already on main/master, switch to it first
+    3. **Pull latest changes** - Ensure main branch is up to date with `git pull`
+    4. **Create a feature branch from main** - ALWAYS branch from main/master, never from another feature branch. Use a descriptive name (e.g., `feature/add-logging`, `fix/broken-auth`, `refactor/cleanup-utils`)
+    5. **Ask for permission** - Clearly state:
+       - The branch name you've created (branched from main)
+       - What changes you plan to make
+       - Wait for explicit confirmation before proceeding
+    6. **Make changes** - Only after receiving permission, proceed with the changes
+    7. **Never auto-commit** - Always ask before committing changes
+
+    **Example workflow**:
+    ```
+    Assistant: I need to add a new feature. Let me check the current branch first.
+    [checks branch - currently on feature/old-feature]
+    Assistant: I'm currently on a feature branch. I'll switch to main first.
+    [switches to main]
+    Assistant: Now on main. Pulling latest changes...
+    [git pull]
+    Assistant: Main is up to date. Creating a new feature branch 'feature/add-metrics-export' from main.
+    [creates branch from main]
+    Assistant: I've created and switched to branch 'feature/add-metrics-export' (branched from main).
+
+    I plan to make the following changes:
+    - Add metrics collection system
+    - Implement CSV export functionality
+    - Add tests for new features
+
+    May I proceed with these changes?
+    [waits for user confirmation]
+    ```
+
+    This applies to ALL repositories, not just dotfiles.
+
     ## Kubernetes Management
 
     ### Read-only Operations
