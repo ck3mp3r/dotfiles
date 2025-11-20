@@ -1,6 +1,19 @@
 {pkgs, ...}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
 
+  agentsRules = ''
+    # Personal Rules
+
+    ## Kubernetes Management
+
+    NEVER use the kubectl CLI command directly through bash or nushell. If you need to perform Kubernetes operations:
+    1. First ASK the user for explicit permission to use kubectl
+    2. Wait for confirmation before proceeding
+    3. Only after receiving permission, you may use kubectl commands
+
+    Preferred approach: Use the Kubernetes MCP tools (k8s_kube_*) instead, which don't require permission.
+  '';
+
   config = {
     "$schema" = "https://opencode.ai/config.json";
     model = "anthropic/claude-sonnet-4.5";
@@ -97,5 +110,6 @@
   };
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON config;
+  home.file.".config/opencode/AGENTS.md".text = agentsRules;
   home.packages = [pkgs.opencode pkgs.nu-mcp-tools];
 }
