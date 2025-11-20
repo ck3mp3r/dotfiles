@@ -89,6 +89,7 @@
         ];
         environment = {
           "MCP_READ_ONLY" = "false";
+          "MCP_TOON" = "true";
         };
         enabled = true;
       };
@@ -100,6 +101,7 @@
         ];
         environment = {
           "MCP_K8S_MODE" = "non-destructive";
+          "MCP_TOON" = "true";
         };
       };
     };
