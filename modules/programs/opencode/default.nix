@@ -6,12 +6,26 @@
 
     ## Kubernetes Management
 
-    NEVER use the kubectl CLI command directly through bash or nushell. If you need to perform Kubernetes operations:
-    1. First ASK the user for explicit permission to use kubectl
-    2. Wait for confirmation before proceeding
-    3. Only after receiving permission, you may use kubectl commands
+    ### Read-only Operations
+    You may use kubectl read-only commands directly (get, describe, logs, explain, api-resources, etc.) without asking permission.
 
-    Preferred approach: Use the Kubernetes MCP tools (k8s_kube_*) instead, which don't require permission.
+    You may also use any k8s_kube_* MCP tools for read-only operations without permission.
+
+    ### Write/Destructive Operations
+    NEVER use kubectl write or destructive commands (apply, create, delete, patch, scale, rollout, edit, replace, etc.) without explicit permission **FOR EACH EXECUTION**:
+
+    1. **ALWAYS ASK** the user for explicit permission before **EVERY SINGLE** write operation
+    2. Clearly state what changes will be made for THIS specific operation
+    3. Wait for confirmation before proceeding
+    4. Permission is NEVER implied from previous approvals - you MUST ask again for each new operation
+
+    This applies to:
+    - kubectl commands via bash/nushell
+    - k8s MCP tools that modify resources (k8s_kube_apply, k8s_kube_create, k8s_kube_patch, k8s_kube_scale, k8s_kube_rollout, etc.)
+
+    **Example**: If you need to apply 3 different manifests, you must ask permission 3 separate times, once before each apply operation.
+
+    Preferred approach: Use the Kubernetes MCP tools (k8s_kube_*) when possible, as they provide better error handling and output formatting.
   '';
 
   config = {
