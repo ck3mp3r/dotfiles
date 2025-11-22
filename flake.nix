@@ -2,50 +2,48 @@
   description = "Darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-25.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    base-nixpkgs.url = "github:ck3mp3r/flakes?dir=base-nixpkgs";
+    nixpkgs-unstable.follows = "base-nixpkgs/unstable";
+    nixpkgs-stable.follows = "base-nixpkgs/stable";
+
     catppuccin = {
       url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
+
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     nu-mods = {
       url = "github:ck3mp3r/nu-mods";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     laio = {
       url = "github:ck3mp3r/laio-cli";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    mods = {
-      url = "github:ck3mp3r/flakes?dir=mods";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     opencode = {
       url = "github:ck3mp3r/flakes?dir=opencode";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
     nu-mcp = {
       url = "github:ck3mp3r/nu-mcp";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
   };
 
@@ -55,9 +53,9 @@
     home-manager,
     nix-darwin,
     nixpkgs-unstable,
+    nixpkgs-stable,
     nu-mcp,
     nu-mods,
-    mods,
     opencode,
     laio,
     sops-nix,
@@ -70,15 +68,23 @@
     inherit (home-manager.lib) homeManagerConfiguration;
     stateVersion = "25.05";
 
+    # Import stable nixpkgs for specific packages
+    pkgs-stable = import nixpkgs-stable {
+      inherit system;
+      config = {allowUnfree = true;};
+    };
+
     overlays = [
       (final: prev: {
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
         laio = laio.packages.${system}.default;
-        mods = mods.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;
+
+        # Use ollama from stable to avoid build issues in unstable
+        ollama = pkgs-stable.ollama;
 
         # Override Python packages to use Python 3.13
         mitmproxy = final.python313Packages.toPythonApplication final.python313Packages.mitmproxy;
