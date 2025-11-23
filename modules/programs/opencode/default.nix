@@ -13,10 +13,43 @@
       bash = false;
     };
 
-    # Task agent configuration - uses small_model for speed and token efficiency
+    # Custom provider configuration
+    provider = {
+      # Thaura AI - Ethical AI Platform
+      # Pricing: $0.50/M input tokens, $2.00/M output tokens
+      # Dashboard: https://thaura.ai/api-platform
+      thaura = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Thaura AI";
+        options = {
+          baseURL = "https://backend.thaura.ai/v1";
+        };
+        models = {
+          "thaura" = {
+            name = "Thaura";
+          };
+        };
+      };
+    };
+
+    # Task agent configuration
     agent = {
       general = {
         description = "General-purpose agent for research and focused tasks with limited tools";
+        tools = {
+          bash = false;
+          write = true;
+          edit = true;
+          read = true;
+          "nu-mcp_run_nushell" = true;
+          "context7_resolve_library_id" = true;
+          "context7_get_library_docs" = true;
+        };
+      };
+      thaura = {
+        description = "Thaura AI agent for ethical AI research and knowledge management tasks";
+        model = "thaura/thaura";
+        mode = "subagent";
         tools = {
           bash = false;
           write = true;
