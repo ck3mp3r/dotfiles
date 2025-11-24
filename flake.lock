@@ -1529,11 +1529,11 @@
         "topiary-nu": "topiary-nu_2"
       },
       "locked": {
-        "lastModified": 1764019400,
-        "narHash": "sha256-i7HlI1xg7BH0f+t7bM1lmFAR2EpIxkKTTXg5RWTUOeg=",
+        "lastModified": 1764026392,
+        "narHash": "sha256-zDHlwmTz/Yzdmlhd0pKym9hGxEG1tkuwcmjqr7ZFQSA=",
         "owner": "ck3mp3r",
         "repo": "nu-mods",
-        "rev": "64f905520a9ea56c58dc1f44a95cfdcdf27bd37a",
+        "rev": "0178491aa2302c92ab27d4796236e1a275e5299e",
         "type": "github"
       },
       "original": {
@@ -1556,11 +1556,11 @@
       },
       "locked": {
         "dir": "opencode",
-        "lastModified": 1763848984,
-        "narHash": "sha256-5rVB/YnqgsQnHxWQTSdRfyz6Ad48+xRMS+VMtlPq6oE=",
+        "lastModified": 1764025558,
+        "narHash": "sha256-RWi8Kk9oHhhkmMWb4nxyfjNOQbmKti5PKtuvGRh1Ass=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "ac1f9a7a2450914fe7a469bf267e54426bbe764f",
+        "rev": "801287df0d02feceac38ef7256e30f47f1d1e457",
         "type": "github"
       },
       "original": {
