@@ -1,66 +1,51 @@
+
 # Personal Rules
 
-## Research First, Code Second
+## Shell Environment
 
-Before ANY changes:
-1. **Read docs**: `/llms.txt` → `/AGENTS.md` → `/README.md`
-2. **Research libraries**: Use Context7 for API docs and best practices
+This system uses **Nushell**, NOT bash/zsh/sh. Before executing ANY shell commands, **use Context7** to learn Nushell syntax. Never assume bash/sh syntax will work.
+
+## Context Management
+
+Before reaching 80% of context window:
+1. Create `.work-progress.md` documenting changes, next steps, key files, and decisions
+2. Make frequent, descriptive git commits - use git history as memory
+3. For long sessions, ask: "Should I summarize progress before continuing?"
+
+## Safety: Backup Before Destructive Changes
+
+Before refactoring, large-scale changes, or deletions: **stage changes with `git add`** or create backups. Never proceed without a safety net.
+
+## Initial Research
+
+Before making ANY changes:
+1. **Read docs**: `/llms.txt`, `/AGENTS.md`, `/README.md`
+2. **Research dependencies**: Use Context7 for API docs and best practices
 3. **Understand codebase**: Use Task tool to explore structure and patterns
 
-## Git Workflow
+Only after research, proceed with branch creation and changes.
 
-**Protected branches**: NEVER commit to `main` or `master`.
+## Git Branch Management
 
-**Before code changes**:
-1. Check current branch
-2. **Always ask before switching branches** (provide branch name and reason)
-3. After switching to main: `git pull`
-4. Create new branch from main—**ALL branches MUST come from main** (e.g., `feature/add-logging`, `fix/bug`, `refactor/cleanup`)
-5. **Ask permission**: State branch name (from main) and planned changes
-6. Wait for confirmation
-7. **Never auto-commit or auto-merge PRs**
+**NEVER commit to `main`/`master`.**
 
-**PR merges**:
-- Only merge PRs if explicitly requested
-- Default to `--squash` merge unless otherwise instructed
-- Always confirm before executing the merge
+Before ANY code changes:
+1. Check current branch, switch to main if needed
+2. Pull latest: `git pull`
+3. Create feature branch from main (e.g., `feature/add-logging`)
+4. Ask permission: state branch name and planned changes
+5. Never auto-commit - always ask first
 
 Applies to ALL repositories.
 
-## Kubernetes Operations
+## Infrastructure Management (Kubernetes & ArgoCD)
 
-**Read-only**: Use kubectl/k8s_kube_* tools freely (get, describe, logs, explain, etc.)
+**Read-only**: Use kubectl/argocd commands and k8s_kube_*/argocd_* MCP tools freely (get, describe, logs, list, diff, etc.)
 
-**Write/destructive**: ALWAYS ask permission **FOR EACH EXECUTION** before:
-- kubectl: apply, create, delete, patch, scale, rollout, edit, replace
-- k8s_kube_*: apply, create, patch, scale, rollout
+**Write/Destructive**: **ALWAYS ASK permission FOR EACH operation** (apply, create, delete, patch, sync, scale, rollout, etc.)
+- State what changes will be made for THIS specific operation
+- Permission is NEVER implied from previous approvals
+- If applying 3 manifests, ask 3 times
 
-Permission NEVER carries over—ask again for each operation.
+Prefer MCP tools (k8s_kube_*, argocd_*) for better error handling.
 
-Prefer k8s_kube_* MCP tools for better error handling.
-
-## ArgoCD Operations
-
-**Read-only**: Use argocd CLI/argocd_* MCP tools freely (list, get, diff, logs, resources, etc.)
-
-**Write/destructive**: ALWAYS ask permission **FOR EACH EXECUTION** before:
-- CLI: create, delete, sync, set, patch, rollback
-- MCP: argocd_create_application, argocd_update_application, argocd_delete_application, argocd_sync_application, argocd_run_resource_action
-
-Permission NEVER carries over—ask again for each operation.
-
-Prefer argocd_* MCP tools for better error handling.
-
-## File System Operations
-
-**Read-only**: Read, glob, grep, list files freely.
-
-**Destructive/irreversible**: ALWAYS ask permission **FOR EACH EXECUTION** before:
-- Deleting files or directories (rm, rmdir, etc.)
-- Moving/renaming files (mv, rename)
-- Overwriting files with redirects (>, etc.)
-- Recursive operations (rm -r, chmod -R, etc.)
-- Permission changes (chmod, chown)
-- Any command that permanently removes or modifies data
-
-Permission NEVER carries over—ask again for each operation.
