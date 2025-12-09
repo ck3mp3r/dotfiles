@@ -12,13 +12,13 @@
     };
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
+      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nu-mods = {
@@ -80,7 +80,7 @@
         ai = nu-mods.packages.${system}.ai;
         laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
-        nu-mcp = nu-mcp.packages.${system}.default;
+        nu-mcp = nu-mcp.packages.${system}.nu-mcp;
         opencode = opencode.packages.${system}.default;
 
         # Use ollama from stable to avoid build issues in unstable
