@@ -64,7 +64,13 @@
     mcp = {
       nu-mcp = {
         type = "local";
-        command = [nuMcp];
+        command = [
+          nuMcp
+          "--add-path"
+          "/tmp"
+          "--add-path"
+          "/nix/store"
+        ];
         enabled = true;
       };
       weather = {
@@ -134,5 +140,5 @@
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON config;
   home.file.".config/opencode/AGENTS.md".text = agentsRules;
-  home.packages = [pkgs.opencode pkgs.nu-mcp-tools];
+  home.packages = [pkgs.opencode pkgs.nu-mcp pkgs.nu-mcp-tools];
 }

@@ -80,7 +80,7 @@
         ai = nu-mods.packages.${system}.ai;
         laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
-        nu-mcp = nu-mcp.packages.${system}.nu-mcp;
+        nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;
 
         # Use ollama from stable to avoid build issues in unstable
