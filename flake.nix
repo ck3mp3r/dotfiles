@@ -4,7 +4,7 @@
   inputs = {
     base-nixpkgs.url = "github:ck3mp3r/flakes?dir=base-nixpkgs";
     nixpkgs-unstable.follows = "base-nixpkgs/unstable";
-    nixpkgs-stable.follows = "base-nixpkgs/stable";
+    nixpkgs.follows = "base-nixpkgs/stable";
 
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -12,13 +12,13 @@
     };
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin/nix-darwin-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "base-nixpkgs/stable";
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nu-mods = {
@@ -53,7 +53,7 @@
     home-manager,
     nix-darwin,
     nixpkgs-unstable,
-    nixpkgs-stable,
+    nixpkgs,
     nu-mcp,
     nu-mods,
     opencode,
@@ -69,7 +69,7 @@
     stateVersion = "25.05";
 
     # Import stable nixpkgs for specific packages
-    pkgs-stable = import nixpkgs-stable {
+    pkgs-stable = import nixpkgs {
       inherit system;
       config = {allowUnfree = true;};
     };
