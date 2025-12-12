@@ -61,6 +61,10 @@ f = ['layout floating tiling', 'mode main']
 backspace = ['close-all-windows-but-current', 'mode main']
 
 [[on-window-detected]]
+if.app-id = 'com.yourcompany.Isolotto'
+run = 'layout floating'
+
+[[on-window-detected]]
 if.app-id = 'com.apple.systempreferences'
 run = 'layout floating'
 
