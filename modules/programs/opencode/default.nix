@@ -100,6 +100,15 @@
         ];
         enabled = true;
       };
+      c5t = {
+        type = "local";
+        command = [
+          nuMcp
+          "--tools-dir"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c5t"
+        ];
+        enabled = true;
+      };
       context7 = {
         type = "local";
         command = [
