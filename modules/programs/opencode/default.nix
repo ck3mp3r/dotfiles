@@ -8,6 +8,10 @@
     small_model = "anthropic/claude-haiku-4.5";
     autoupdate = false;
 
+    plugin = [
+      "@franlol/opencode-md-table-formatter@latest"
+    ];
+
     # Prefer Nushell over Bash
     tools = {
       bash = false;
