@@ -32,7 +32,7 @@
         conflictstyle = "diff3";
         tool = "nvimdiff";
       };
-      mergetool.nvimdiff.cmd = "nvim -d $LOCAL $REMOTE $MERGED";
+      mergetool.nvimdiff.cmd = "nvim -d $LOCAL $BASE $REMOTE $MERGED -c \"4wincmd w\" -c \"wincmd J\"";
       diff = {colorMoved = "default";};
     };
   };
