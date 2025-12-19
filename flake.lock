@@ -1503,11 +1503,11 @@
         "topiary-nu": "topiary-nu"
       },
       "locked": {
-        "lastModified": 1766058261,
-        "narHash": "sha256-FxCkEhklsQG2avuk808NQUpt1x20LPx0Z4lS6WT+S+w=",
+        "lastModified": 1766168438,
+        "narHash": "sha256-U47zP7TJgKMrVyT4sSiNCYI7AG8XpKNGm8Z5cI0w8KA=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "09c747f2c9e80e73004d4163868158a509f834ed",
+        "rev": "83669d8c47455e230c442edcf3622b57c3771cf1",
         "type": "github"
       },
       "original": {

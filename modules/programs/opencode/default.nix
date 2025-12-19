@@ -12,9 +12,10 @@
       "@franlol/opencode-md-table-formatter@latest"
     ];
 
-    # Prefer Nushell over Bash
     tools = {
       bash = false;
+      todowrite = false;
+      todoread = false;
     };
 
     # Custom provider configuration
