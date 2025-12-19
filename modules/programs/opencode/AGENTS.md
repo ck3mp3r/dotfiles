@@ -1,5 +1,20 @@
 # Personal Rules
 
+## Research Over Guessing
+
+**NEVER guess. ALWAYS research first.**
+
+Before making ANY changes:
+1. **Read docs**: `/llms.txt`, `/AGENTS.md`, `/README.md`
+2. **Research dependencies**: Use Context7 for API docs, syntax, and best practices
+3. **Understand codebase**: Use Task tool to explore structure and patterns
+4. **Look up commands**: Verify syntax before running
+
+Key principles:
+- Admit uncertainty rather than fabricating answers
+- When research is inconclusive, state assumptions clearly
+- Only after research, proceed with branch creation and changes
+
 ## Core Development Philosophy
 
 ### Test-Driven Development (TDD)
@@ -49,21 +64,14 @@ Before ANY code changes:
 4. Ask permission: state branch name and planned changes
 5. Never auto-commit - always ask first
 
-## Research Before Action
-
-Before making ANY changes:
-1. **Read docs**: `/llms.txt`, `/AGENTS.md`, `/README.md`
-2. **Research dependencies**: Use Context7 for API docs and best practices
-3. **Understand codebase**: Use Task tool to explore structure and patterns
-
-Only after research, proceed with branch creation and changes.
-
 ## Context Management
 
-Before reaching 80% of context window:
-1. Create `.work-progress.md` documenting changes, next steps, key files, and decisions
-2. Make frequent, descriptive git commits - use git history as memory
-3. For long sessions, ask: "Should I summarize progress before continuing?"
+Use **c5t tools** for persistent task and knowledge management:
+
+1. **Task tracking**: Use `c5t_upsert_task_list` and `c5t_upsert_task` to track work in progress
+2. **Notes**: Use `c5t_upsert_note` to document decisions, key findings, and context (tag with `session` for cross-compaction persistence)
+3. **Git commits**: Make frequent, descriptive commits - use git history as memory
+4. **At 80% context**: Create a note summarizing progress, then ask: "Should I continue in a new session?"
 
 ## Infrastructure (Kubernetes & ArgoCD)
 
