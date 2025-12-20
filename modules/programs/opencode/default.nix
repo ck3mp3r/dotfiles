@@ -78,24 +78,24 @@
         ];
         enabled = true;
       };
-      weather = {
-        type = "local";
-        command = [
-          nuMcp
-          "--tools-dir"
-          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
-        ];
-        enabled = true;
-      };
-      finance = {
-        type = "local";
-        command = [
-          nuMcp
-          "--tools-dir"
-          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/finance"
-        ];
-        enabled = true;
-      };
+      # weather = {
+      #   type = "local";
+      #   command = [
+      #     nuMcp
+      #     "--tools-dir"
+      #     "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
+      #   ];
+      #   enabled = true;
+      # };
+      # finance = {
+      #   type = "local";
+      #   command = [
+      #     nuMcp
+      #     "--tools-dir"
+      #     "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/finance"
+      #   ];
+      #   enabled = true;
+      # };
       tmux = {
         type = "local";
         command = [
@@ -111,6 +111,15 @@
           nuMcp
           "--tools-dir"
           "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c5t"
+        ];
+        enabled = true;
+      };
+      gh = {
+        type = "local";
+        command = [
+          nuMcp
+          "--tools-dir"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/gh"
         ];
         enabled = true;
       };
