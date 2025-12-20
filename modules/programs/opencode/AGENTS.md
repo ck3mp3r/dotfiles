@@ -71,7 +71,7 @@ Use **c5t tools** for persistent task and knowledge management:
 1. **Task tracking**: Use `c5t_upsert_task_list` and `c5t_upsert_task` to track work in progress
 2. **Notes**: Use `c5t_upsert_note` to document decisions, key findings, and context (tag with `session` for cross-compaction persistence)
 3. **Git commits**: Make frequent, descriptive commits - use git history as memory
-4. **At 80% context**: Create a note summarizing progress, then ask: "Should I continue in a new session?"
+4. **At 80% context**: Create/update session note summarizing progress
 
 ## Infrastructure (Kubernetes & ArgoCD)
 
