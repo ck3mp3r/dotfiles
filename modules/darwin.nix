@@ -49,6 +49,12 @@ in {
   };
 
   nix.enable = false;
+  nix.nixPath = []; # Disable channel lookups
+
+  # Create empty channels directory to prevent nix-path warning
+  system.activationScripts.preActivation.text = ''
+    mkdir -p /nix/var/nix/profiles/per-user/root/channels
+  '';
 
   # Cachix configuration for Determinate Nix via nix.custom.conf
   environment.etc."nix/nix.custom.conf".text = ''
@@ -58,6 +64,9 @@ in {
 
     # Trust users to add additional binary caches
     trusted-users = root ${username}
+
+    # Use XDG base directories for Nix state files
+    use-xdg-base-directories = true
   '';
 
   # services.nix-daemon.enable = true;
