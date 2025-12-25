@@ -1867,11 +1867,11 @@
         "topiary-nu": "topiary-nu_2"
       },
       "locked": {
-        "lastModified": 1766606663,
-        "narHash": "sha256-NZEiKzpcV0KP3H4ZA6fbMTQb/w/+MzKY3jk0gMVD7AI=",
+        "lastModified": 1766612281,
+        "narHash": "sha256-qql9UkaqPBrxlSSqOtPNrkztgGP26xJkg03Ma71/v9U=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "37ce13b009b8eaa78eb36aff3e22412ddaba6089",
+        "rev": "020611f6d81bc628c0b42b14becebf803f5c81aa",
         "type": "github"
       },
       "original": {
@@ -1944,11 +1944,11 @@
       },
       "locked": {
         "dir": "opencode",
-        "lastModified": 1766283320,
-        "narHash": "sha256-6bklIUKo2895ABeLF7Xu2PRwd1oSAMDHKnkj8AVD/do=",
+        "lastModified": 1766658993,
+        "narHash": "sha256-eYCEvD0ZIinGrFgZTlzgtGDrT87CUA21p4oe5+7KJTQ=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "c99fa222addac03f51b8ffcf461bd29d1364c95c",
+        "rev": "d8a2d44246f03f84d043201790e375566f1962fa",
         "type": "github"
       },
       "original": {
@@ -1961,40 +1961,40 @@
     "opencode-darwin-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1765921549,
-        "narHash": "sha256-N/Rgey+4TIfV+rbwGQ0xUf6RO9n18UYH+CyY/4thSzg=",
+        "lastModified": 1766637493,
+        "narHash": "sha256-a8tAjbhpUv6OPHfv82FH7PzKsbmrSBjdlaED7+u2N+s=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-darwin-arm64.zip"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-darwin-arm64.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-darwin-arm64.zip"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-darwin-arm64.zip"
       }
     },
     "opencode-linux-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1765921542,
-        "narHash": "sha256-NaoBwfzAZ6GPHlQLiA+RaYDmbFwJ1XrNeRA4SiFUVDg=",
+        "lastModified": 1766637488,
+        "narHash": "sha256-LwAO85MJp0aamtniKD2JmdWOIehj8W34F9p8lTbFbcI=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-arm64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-arm64.tar.gz"
       }
     },
     "opencode-linux-x64": {
       "flake": false,
       "locked": {
-        "lastModified": 1765921542,
-        "narHash": "sha256-xJFfwT0E+nonwCg6xCRul9582fPjEXbWvC2gcQLsQQg=",
+        "lastModified": 1766637489,
+        "narHash": "sha256-x4tJvdKwBLeMzsGNiOL3Yj3E/2z7NcWg5PbkIWmFeeA=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-linux-x64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-x64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.164/opencode-linux-x64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-x64.tar.gz"
       }
     },
     "root": {
