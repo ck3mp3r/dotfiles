@@ -162,11 +162,11 @@
       },
       "locked": {
         "dir": "base-nixpkgs",
-        "lastModified": 1766278239,
-        "narHash": "sha256-IIIp270EV/7/CB49ZnujdUQF83EOLHEgc2g0Ijh+58g=",
+        "lastModified": 1766883038,
+        "narHash": "sha256-yLuEWYzjYibhPezb0jXJIjgJVvvSClfiJ1zW2gnNxzs=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "2608e27e253fb2cc717e58ec2a40e57451986e22",
+        "rev": "aafe07e41b9bc430c07cea5999896c829d301eb2",
         "type": "github"
       },
       "original": {
@@ -1944,11 +1944,11 @@
       },
       "locked": {
         "dir": "opencode",
-        "lastModified": 1766883038,
-        "narHash": "sha256-yLuEWYzjYibhPezb0jXJIjgJVvvSClfiJ1zW2gnNxzs=",
+        "lastModified": 1767026936,
+        "narHash": "sha256-WInSdomd2+YS4rb+8wefge9Uhk0bYt5A/1iL9mDBwcI=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "aafe07e41b9bc430c07cea5999896c829d301eb2",
+        "rev": "e101dec1ecfed444b2e009d5afe683e4c821dbe1",
         "type": "github"
       },
       "original": {
@@ -1961,40 +1961,40 @@
     "opencode-darwin-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1766637493,
-        "narHash": "sha256-a8tAjbhpUv6OPHfv82FH7PzKsbmrSBjdlaED7+u2N+s=",
+        "lastModified": 1766973383,
+        "narHash": "sha256-rj5LKSv3uU5n+SHuW4sOsfgnvlYwz6f1gaJTAF9C690=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-darwin-arm64.zip"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-darwin-arm64.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-darwin-arm64.zip"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-darwin-arm64.zip"
       }
     },
     "opencode-linux-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1766637488,
-        "narHash": "sha256-LwAO85MJp0aamtniKD2JmdWOIehj8W34F9p8lTbFbcI=",
+        "lastModified": 1766973379,
+        "narHash": "sha256-vBOtCwngMaom9u/BRf3vkwGhyE/3QLvqTk5fHoFVVfE=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-linux-arm64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-linux-arm64.tar.gz"
       }
     },
     "opencode-linux-x64": {
       "flake": false,
       "locked": {
-        "lastModified": 1766637489,
-        "narHash": "sha256-x4tJvdKwBLeMzsGNiOL3Yj3E/2z7NcWg5PbkIWmFeeA=",
+        "lastModified": 1766973379,
+        "narHash": "sha256-lwEpQ+lhJU6Lm9YVNZHclGR3dCPKfWNRrmMqjtPuJjw=",
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-x64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-linux-x64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/sst/opencode/releases/download/v1.0.200/opencode-linux-x64.tar.gz"
+        "url": "https://github.com/sst/opencode/releases/download/v1.0.207/opencode-linux-x64.tar.gz"
       }
     },
     "root": {
@@ -2249,11 +2249,11 @@
     },
     "stable_8": {
       "locked": {
-        "lastModified": 1766269056,
-        "narHash": "sha256-OUsGtWTvSRhflY01KS6yreTLzXlYDo0ivc+tvYedr5s=",
+        "lastModified": 1766879327,
+        "narHash": "sha256-9Kj4MfhtuFwiQdpKmfwo1KSTVdfj/axist8+MCGKVM4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "82733015f2f7bf2534bd92c256305bf80d2e6ef9",
+        "rev": "b260fc3c4249396f1ccfd9392958feb11745c080",
         "type": "github"
       },
       "original": {
@@ -2600,11 +2600,11 @@
     },
     "unstable_8": {
       "locked": {
-        "lastModified": 1766125104,
-        "narHash": "sha256-l/YGrEpLromL4viUo5GmFH3K5M1j0Mb9O+LiaeCPWEM=",
+        "lastModified": 1766840161,
+        "narHash": "sha256-Ss/LHpJJsng8vz1Pe33RSGIWUOcqM1fjrehjUkdrWio=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7d853e518814cca2a657b72eeba67ae20ebf7059",
+        "rev": "3edc4a30ed3903fdf6f90c837f961fa6b49582d1",
         "type": "github"
       },
       "original": {

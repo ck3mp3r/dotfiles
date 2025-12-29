@@ -53,7 +53,6 @@
     home-manager,
     nix-darwin,
     nixpkgs-unstable,
-    nixpkgs,
     nu-mcp,
     nu-mods,
     opencode,
@@ -68,12 +67,6 @@
     inherit (home-manager.lib) homeManagerConfiguration;
     stateVersion = "25.05";
 
-    # Import stable nixpkgs for specific packages
-    pkgs-stable = import nixpkgs {
-      inherit system;
-      config = {allowUnfree = true;};
-    };
-
     overlays = [
       (final: prev: {
         # Custom packages from flake inputs
@@ -82,9 +75,6 @@
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;
-
-        # Use ollama from stable to avoid build issues in unstable
-        ollama = pkgs-stable.ollama;
 
         # Override Python packages to use Python 3.13
         mitmproxy = final.python313Packages.toPythonApplication final.python313Packages.mitmproxy;

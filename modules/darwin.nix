@@ -51,11 +51,6 @@ in {
   nix.enable = false;
   nix.nixPath = []; # Disable channel lookups
 
-  # Create empty channels directory to prevent nix-path warning
-  system.activationScripts.preActivation.text = ''
-    mkdir -p /nix/var/nix/profiles/per-user/root/channels
-  '';
-
   # Cachix configuration for Determinate Nix via nix.custom.conf
   environment.etc."nix/nix.custom.conf".text = ''
     # Cachix binary cache configuration
@@ -162,6 +157,8 @@ in {
       };
     in
       pkgs.lib.mkForce ''
+        mkdir -p /nix/var/nix/profiles/per-user/root/channels
+
         # Set up applications.
         echo "setting up /Applications..." >&2
         rm -rf /Applications/Nix\ Apps

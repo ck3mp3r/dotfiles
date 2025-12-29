@@ -35,6 +35,19 @@
           };
         };
       };
+      ollama = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Ollama";
+        options = {
+          baseURL = "http://127.0.0.1:11434/v1";
+        };
+        models = {
+          "devstral-small-2:24b" = {
+            name = "devstral-small";
+            tools = true;
+          };
+        };
+      };
     };
 
     # Task agent configuration
@@ -67,6 +80,11 @@
       };
     };
     mcp = {
+      c5t = {
+        type = "remote";
+        url = "http://0.0.0.0:3737/mcp";
+        enabled = true;
+      };
       nu-mcp = {
         type = "local";
         command = [
@@ -105,15 +123,15 @@
         ];
         enabled = true;
       };
-      c5t = {
-        type = "local";
-        command = [
-          nuMcp
-          "--tools-dir"
-          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c5t"
-        ];
-        enabled = true;
-      };
+      # c5t = {
+      #   type = "local";
+      #   command = [
+      #     nuMcp
+      #     "--tools-dir"
+      #     "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c5t"
+      #   ];
+      #   enabled = true;
+      # };
       gh = {
         type = "local";
         command = [
