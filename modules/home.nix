@@ -27,6 +27,7 @@
     ./programs/atuin
     ./programs/bat
     ./programs/carapace
+    ./programs/crush
     ./programs/ghostty
     ./programs/goose
     ./programs/git.nix

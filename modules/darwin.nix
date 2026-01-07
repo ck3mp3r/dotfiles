@@ -98,6 +98,9 @@ in {
     enable = true;
     # onActivation.cleanup = "zap";
     casks = casks';
+    brews = [
+      "charmbracelet/tap/crush"
+    ];
   };
 
   # Set Git commit hash for darwin-version.

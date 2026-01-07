@@ -85,6 +85,11 @@
         url = "http://0.0.0.0:3737/mcp";
         enabled = true;
       };
+      # github = {
+      #   type = "remote";
+      #   url = "https://api.githubcopilot.com/mcp/";
+      #   enabled = true;
+      # };
       nu-mcp = {
         type = "local";
         command = [
