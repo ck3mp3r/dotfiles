@@ -9,6 +9,7 @@
     autoupdate = false;
 
     plugin = [
+      "opencode-anthropic-auth@latest"
       "@franlol/opencode-md-table-formatter@latest"
     ];
 
