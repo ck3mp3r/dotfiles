@@ -2081,11 +2081,11 @@
       },
       "locked": {
         "dir": "opencode",
-        "lastModified": 1767960697,
-        "narHash": "sha256-Ij4iz2JXxS+5ZFku7v/OCPlJEU+Ip9+hb2lRqNnNboE=",
+        "lastModified": 1767984157,
+        "narHash": "sha256-qZvibfOUz0zCerd5AaYQNGxD4Du7JGrCkl2t/mnREMc=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "8c99c5f080b852430377855f6daaa4afa83da8e9",
+        "rev": "885d9ae08f0008d0af9dddb812637c45a978a65d",
         "type": "github"
       },
       "original": {
