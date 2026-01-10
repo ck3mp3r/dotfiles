@@ -13,10 +13,34 @@
       "@franlol/opencode-md-table-formatter@latest"
     ];
 
-    tools = {
-      bash = false;
-      todowrite = false;
-      todoread = false;
+    permission = {
+      "*" = "ask";
+      # Disable heavy tools that consume lots of tokens
+      grep = "deny";
+      glob = "deny";
+      # Disable bash/shell tools since we use Nushell via nu-mcp
+      bash = "deny";
+      shell = "deny";
+      # Keep task tool enabled but we'll manage it through agent configuration
+      task = "allow";
+      # You can also disable other context-heavy tools if needed:
+      # read = "deny";  # Uncomment if you want to prevent large file reads
+      # list = "deny";  # Uncomment if you want to prevent directory listings
+
+      todowrite = "deny";
+      todoread = "deny";
+
+      # Configure nu-mcp run_nushell tool permissions
+      nu-mcp_run_nushell = {
+        "*" = "ask";
+        "cat *" = "allow";
+        "git *" = "ask";
+        "k *" = "ask";
+        "kubectl *" = "ask";
+        "ls *" = "allow";
+        "rm *" = "deny";
+        "rm -rf *" = "deny";
+      };
     };
 
     # Custom provider configuration

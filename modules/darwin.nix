@@ -35,6 +35,16 @@ in {
   launchd = {
     user = {
       agents = {
+        c5t-api = {
+          command = "${pkgs.c5t-mcp}/bin/c5t api -vv";
+          serviceConfig = {
+            KeepAlive = true;
+            RunAtLoad = true;
+            StandardOutPath = "/tmp/c5t.out.log";
+            StandardErrorPath = "/tmp/c5t.err.log";
+          };
+        };
+
         ollama-serve = {
           command = "${pkgs.ollama}/bin/ollama serve";
           serviceConfig = {
