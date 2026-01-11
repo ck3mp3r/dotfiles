@@ -16,8 +16,8 @@
     permission = {
       "*" = "ask";
       # Disable heavy tools that consume lots of tokens
-      grep = "deny";
-      glob = "deny";
+      grep = "allow";
+      glob = "allow";
       # Disable bash/shell tools since we use Nushell via nu-mcp
       bash = "deny";
       shell = "deny";
@@ -30,6 +30,10 @@
       todowrite = "deny";
       todoread = "deny";
 
+      "context7*" = "allow";
+
+      "c5t_get*" = "allow";
+      "c5t_list*" = "allow";
       # Configure nu-mcp run_nushell tool permissions
       nu-mcp_run_nushell = {
         "*" = "ask";
@@ -83,7 +87,12 @@
         mode = "subagent";
         permission = {
           "*" = "ask";
+          "c5t_get*" = "allow";
+          "c5t_list*" = "allow";
+          "context7*" = "allow";
           bash = "deny";
+          grep = "allow";
+          glob = "allow";
           read = "allow";
           nu-mcp_run_nushell = "deny";
           "tmux_*" = "deny";
@@ -102,7 +111,12 @@
         mode = "subagent";
         permission = {
           "*" = "ask";
+          "c5t_get*" = "allow";
+          "c5t_list*" = "allow";
+          "context7*" = "allow";
           bash = "deny";
+          grep = "allow";
+          glob = "allow";
           read = "allow";
           nu-mcp_run_nushell = "deny";
           "tmux_*" = "deny";
