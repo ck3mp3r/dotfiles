@@ -79,28 +79,31 @@
     agent = {
       general = {
         description = "General-purpose agent for research and focused tasks with limited tools";
-        tools = {
-          bash = false;
-          write = true;
-          edit = true;
-          read = true;
-          "nu-mcp_run_nushell" = true;
-          "context7_resolve_library_id" = true;
-          "context7_get_library_docs" = true;
+        mode = "subagent";
+        # Modern permission-based configuration (replaces deprecated tools config)
+        permission = {
+          bash = "deny";
+          write = "ask";
+          edit = "ask";
+          read = "allow";
+          nu-mcp_run_nushell = "deny";
+          context7_resolve_library_id = "allow";
+          context7_get_library_docs = "allow";
         };
       };
       thaura = {
         description = "Thaura AI agent for ethical AI research and knowledge management tasks";
         model = "thaura/thaura";
         mode = "subagent";
-        tools = {
-          bash = false;
-          write = true;
-          edit = true;
-          read = true;
-          "nu-mcp_run_nushell" = true;
-          "context7_resolve_library_id" = true;
-          "context7_get_library_docs" = true;
+        # Modern permission-based configuration (replaces deprecated tools config)
+        permission = {
+          bash = "deny";
+          write = "ask";
+          edit = "ask";
+          read = "allow";
+          nu-mcp_run_nushell = "deny";
+          context7_resolve_library_id = "allow";
+          context7_get_library_docs = "allow";
         };
       };
     };
