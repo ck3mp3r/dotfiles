@@ -4,6 +4,7 @@ with pkgs;
     _1password-cli
     bandwhich
     bottom
+    c5t-mcp
     cachix
     delta
     docker
