@@ -77,18 +77,22 @@
 
     # Task agent configuration
     agent = {
+      # Override built-in general subagent to deny nushell access
       general = {
         description = "General-purpose agent for research and focused tasks with limited tools";
         mode = "subagent";
-        # Modern permission-based configuration (replaces deprecated tools config)
         permission = {
           bash = "deny";
-          write = "ask";
-          edit = "ask";
-          read = "allow";
           nu-mcp_run_nushell = "deny";
-          context7_resolve_library_id = "allow";
-          context7_get_library_docs = "allow";
+        };
+      };
+      # Override built-in explore subagent to deny nushell access
+      explore = {
+        description = "Fast agent specialized for exploring codebases";
+        mode = "subagent";
+        permission = {
+          bash = "deny";
+          nu-mcp_run_nushell = "deny";
         };
       };
       thaura = {
