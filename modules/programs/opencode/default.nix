@@ -77,22 +77,42 @@
 
     # Task agent configuration
     agent = {
-      # Override built-in general subagent to deny nushell access
+      # Override built-in general subagent to deny nushell and allow only read-only tmux
       general = {
         description = "General-purpose agent for research and focused tasks with limited tools";
         mode = "subagent";
         permission = {
+          "*" = "ask";
           bash = "deny";
+          read = "allow";
           nu-mcp_run_nushell = "deny";
+          "tmux_*" = "deny";
+          tmux_list_sessions = "allow";
+          tmux_capture_pane = "allow";
+          tmux_get_session_info = "allow";
+          tmux_get_pane_process = "allow";
+          tmux_find_pane_by_name = "allow";
+          tmux_find_pane_by_context = "allow";
+          tmux_list_panes = "allow";
         };
       };
-      # Override built-in explore subagent to deny nushell access
+      # Override built-in explore subagent to deny nushell and allow only read-only tmux
       explore = {
         description = "Fast agent specialized for exploring codebases";
         mode = "subagent";
         permission = {
+          "*" = "ask";
           bash = "deny";
+          read = "allow";
           nu-mcp_run_nushell = "deny";
+          "tmux_*" = "deny";
+          tmux_list_sessions = "allow";
+          tmux_capture_pane = "allow";
+          tmux_get_session_info = "allow";
+          tmux_get_pane_process = "allow";
+          tmux_find_pane_by_name = "allow";
+          tmux_find_pane_by_context = "allow";
+          tmux_list_panes = "allow";
         };
       };
       thaura = {
