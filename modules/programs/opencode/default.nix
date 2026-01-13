@@ -15,7 +15,7 @@
 
     permission = {
       "*" = "ask";
-      # Disable heavy tools that consume lots of tokens
+      read = "allow";
       grep = "allow";
       glob = "allow";
       # Disable bash/shell tools since we use Nushell via nu-mcp
