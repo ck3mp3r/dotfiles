@@ -37,7 +37,8 @@
       # Configure nu-mcp run_nushell tool permissions
       nu-mcp_run_nushell = {
         "*" = "ask";
-        "cargo test*" = "allow";
+        "cargo test" = "allow";
+        "cargo test *" = "allow";
         "cat *" = "allow";
         "git *" = "ask";
         "k *" = "ask";
