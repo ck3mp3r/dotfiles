@@ -52,6 +52,14 @@ in {
             RunAtLoad = true;
             StandardOutPath = "/tmp/ollama.out.log";
             StandardErrorPath = "/tmp/ollama.err.log";
+            EnvironmentVariables = {
+              # Set default context window (correct variable name)
+              OLLAMA_CONTEXT_LENGTH = "131072";  # 128k context
+              # Enable Flash Attention for better memory efficiency
+              OLLAMA_FLASH_ATTENTION = "1";
+              # Increase max loaded models if using multiple models
+              OLLAMA_MAX_LOADED_MODELS = "2";
+            };
           };
         };
       };

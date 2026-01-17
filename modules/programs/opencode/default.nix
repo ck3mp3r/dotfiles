@@ -76,6 +76,7 @@
           "devstral-small-2:24b" = {
             name = "devstral-small";
             tools = true;
+            context_length = 131072;  # 128k context window
           };
         };
       };
