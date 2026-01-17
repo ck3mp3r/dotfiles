@@ -6,6 +6,7 @@ with pkgs;
     bottom
     c5t-mcp
     cachix
+    container
     delta
     docker
     fd
