@@ -63,6 +63,10 @@
         models = {
           "thaura" = {
             name = "Thaura";
+            limit = {
+              context = 131072;
+              output = 65536;
+            };
           };
         };
       };
@@ -76,7 +80,7 @@
           "devstral-small-2:24b" = {
             name = "devstral-small";
             tools = true;
-            context_length = 131072;  # 128k context window
+            context_length = 131072; # 128k context window
           };
         };
       };

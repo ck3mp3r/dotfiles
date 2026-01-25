@@ -13,7 +13,7 @@ with pkgs;
     fh
     fzf
     gh
-    gh-copilot
+    github-copilot-cli
     gum
     jq
     jqp
