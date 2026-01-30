@@ -10,7 +10,7 @@
 
     plugin = [
       "opencode-anthropic-auth@latest"
-      "@franlol/opencode-md-table-formatter@latest"
+      # "@franlol/opencode-md-table-formatter@latest"
     ];
 
     permission = {
