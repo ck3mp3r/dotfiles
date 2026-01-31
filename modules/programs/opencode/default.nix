@@ -34,6 +34,7 @@
 
       "c5t_get*" = "allow";
       "c5t_list*" = "allow";
+      "c5t_search*" = "allow";
       # Configure nu-mcp run_nushell tool permissions
       nu-mcp_run_nushell = {
         "*" = "ask";
