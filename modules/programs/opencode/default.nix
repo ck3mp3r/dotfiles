@@ -1,12 +1,16 @@
-{pkgs, config, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
   agentsRules = builtins.readFile ./AGENTS.md;
   homeDir = config.home.homeDirectory;
 
   opencode-config = {
     "$schema" = "https://opencode.ai/config.json";
-    model = "anthropic/claude-sonnet-4.5";
-    small_model = "anthropic/claude-haiku-4.5";
+    model = "github-copilot/claude-sonnet-4.5";
+    small_model = "github-copilot/claude-haiku-4.5";
     autoupdate = false;
 
     plugin = [
@@ -53,6 +57,23 @@
 
     # Custom provider configuration
     provider = {
+      # GitHub Copilot - Override context limits for Claude models
+      github-copilot = {
+        models = {
+          "claude-sonnet-4.5" = {
+            limit = {
+              context = 200000;
+              output = 8192;
+            };
+          };
+          "claude-haiku-4.5" = {
+            limit = {
+              context = 200000;
+              output = 8192;
+            };
+          };
+        };
+      };
       # Thaura AI - Ethical AI Platform
       # Pricing: $0.50/M input tokens, $2.00/M output tokens
       # Dashboard: https://thaura.ai/api-platform
