@@ -1,8 +1,9 @@
-{pkgs, ...}: let
+{pkgs, config, ...}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
   agentsRules = builtins.readFile ./AGENTS.md;
+  homeDir = config.home.homeDirectory;
 
-  config = {
+  opencode-config = {
     "$schema" = "https://opencode.ai/config.json";
     model = "anthropic/claude-sonnet-4.5";
     small_model = "anthropic/claude-haiku-4.5";
@@ -159,6 +160,11 @@
         url = "http://0.0.0.0:3737/mcp";
         enabled = true;
       };
+      c5t-dev = {
+        type = "remote";
+        url = "http://0.0.0.0:3738/mcp";
+        enabled = false;
+      };
       # github = {
       #   type = "remote";
       #   url = "https://api.githubcopilot.com/mcp/";
@@ -172,6 +178,8 @@
           "/tmp"
           "--add-path"
           "/nix/store"
+          "--add-path"
+          "${homeDir}/.local"
         ];
         enabled = true;
       };
@@ -258,7 +266,7 @@
     };
   };
 in {
-  home.file.".config/opencode/opencode.json".text = builtins.toJSON config;
+  home.file.".config/opencode/opencode.json".text = builtins.toJSON opencode-config;
   home.file.".config/opencode/AGENTS.md".text = agentsRules;
   home.packages = [pkgs.opencode pkgs.nu-mcp pkgs.nu-mcp-tools];
 }
