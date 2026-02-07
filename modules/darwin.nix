@@ -36,7 +36,7 @@ in {
     user = {
       agents = {
         c5t-api = {
-          command = "${pkgs.c5t-mcp}/bin/c5t api -vv";
+          command = "${pkgs.c5t-mcp}/bin/c5t api -vv --skills-dir ~/.agents/skills";
           serviceConfig = {
             KeepAlive = true;
             RunAtLoad = true;
@@ -54,7 +54,7 @@ in {
             StandardErrorPath = "/tmp/ollama.err.log";
             EnvironmentVariables = {
               # Set default context window (correct variable name)
-              OLLAMA_CONTEXT_LENGTH = "131072";  # 128k context
+              OLLAMA_CONTEXT_LENGTH = "131072"; # 128k context
               # Enable Flash Attention for better memory efficiency
               OLLAMA_FLASH_ATTENTION = "1";
               # Increase max loaded models if using multiple models
