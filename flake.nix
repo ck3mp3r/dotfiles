@@ -27,7 +27,7 @@
     };
 
     laio = {
-      url = "github:ck3mp3r/laio-cli";
+      url = "github:ck3mp3r/laio-cli/feature/template-variables";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
@@ -78,7 +78,7 @@
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
         c5t-mcp = c5t-mcp.packages.${system}.default;
-        laio = laio.packages.${system}.default;
+        laio = laio.packages.${system}.laio;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;

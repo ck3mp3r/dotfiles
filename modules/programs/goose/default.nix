@@ -3,7 +3,7 @@
   yamlFormat = pkgs.formats.yaml {};
   config = {
     GOOSE_PROVIDER = "github_copilot";
-    GOOSE_MODEL = "claude-sonnet-4";
+    GOOSE_MODEL = "claude-sonnet-4.5";
     extensions = {
       # github = {
       #   enabled = true;
