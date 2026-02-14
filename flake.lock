@@ -1816,11 +1816,11 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1771091697,
-        "narHash": "sha256-apjnEcWJNtaXupc/MTmMn1SWqHV+IOIrFdjoSnIX9Es=",
+        "lastModified": 1771105277,
+        "narHash": "sha256-5+kiZAqbDU+V1tuv15eNSHsu3Ttf0AO2gmaHdmBJqA4=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "93a2ed547230fc3d2bba2091a692bb28b79cecd5",
+        "rev": "377768df832a406c51a744028aaeb180e749f17d",
         "type": "github"
       },
       "original": {
