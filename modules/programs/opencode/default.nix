@@ -105,6 +105,11 @@
             tools = true;
             context_length = 131072; # 128k context window
           };
+          "qwen2.5-coder:32b" = {
+            name = "qwen2.5";
+            tools = true;
+            context_length = 32768; # 32kb context window
+          };
         };
       };
     };
