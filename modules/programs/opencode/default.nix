@@ -108,7 +108,7 @@
           "qwen3-coder:30b" = {
             name = "qwen3";
             tools = true;
-            context_length = 32768; # 32kb context window
+            context_length = 262144;
           };
         };
       };
