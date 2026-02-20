@@ -118,6 +118,7 @@ in {
     casks = casks';
     brews = [
       "charmbracelet/tap/crush"
+      "protonpass/tap/pass-cli"
     ];
   };
 
