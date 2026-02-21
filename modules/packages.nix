@@ -33,6 +33,7 @@ with pkgs;
     speedtest-cli
     tldr
     tree
+    topiary
     uv
     yazi
   ]
