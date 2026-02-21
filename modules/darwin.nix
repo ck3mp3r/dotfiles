@@ -36,7 +36,7 @@ in {
     user = {
       agents = {
         c5t-api = {
-          command = "${pkgs.c5t-mcp}/bin/c5t api -vv --skills-dir ~/.agents/skills";
+          command = "${pkgs.c5t}/bin/c5t api -vv --skills-dir ~/.agents/skills";
           serviceConfig = {
             KeepAlive = true;
             RunAtLoad = true;

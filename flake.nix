@@ -46,7 +46,7 @@
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
-    c5t-mcp = {
+    c5t = {
       url = "github:ck3mp3r/context";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
@@ -55,7 +55,7 @@
   outputs = {
     self,
     catppuccin,
-    c5t-mcp,
+    c5t,
     home-manager,
     nix-darwin,
     nixpkgs-unstable,
@@ -77,7 +77,7 @@
       (final: prev: {
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
-        c5t-mcp = c5t-mcp.packages.${system}.default;
+        c5t = c5t.packages.${system}.default;
         laio = laio.packages.${system}.laio;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;

@@ -4,7 +4,7 @@ with pkgs;
     _1password-cli
     bandwhich
     bottom
-    c5t-mcp
+    c5t
     cachix
     container
     delta

@@ -220,7 +220,7 @@
         "type": "github"
       }
     },
-    "c5t-mcp": {
+    "c5t": {
       "inputs": {
         "devenv": "devenv",
         "fenix": "fenix",
@@ -232,11 +232,11 @@
         "rustnix": "rustnix"
       },
       "locked": {
-        "lastModified": 1771366652,
-        "narHash": "sha256-qQjgG0bY64q7vyNgfwp+tR94IsqFmtKDGgFlcqt0idQ=",
+        "lastModified": 1771526165,
+        "narHash": "sha256-HajSieCDnSthVWAFkkFOWNaPE5N3IpjlgGk4THAoC6k=",
         "owner": "ck3mp3r",
         "repo": "context",
-        "rev": "19ee5e683e85f0c477e4d2f40970b6d6cc12ae82",
+        "rev": "975e5ce063051c9b21c4e6272cde504d9f49e4ef",
         "type": "github"
       },
       "original": {
@@ -248,21 +248,21 @@
     "cachix": {
       "inputs": {
         "devenv": [
-          "c5t-mcp",
+          "c5t",
           "devenv"
         ],
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "flake-compat"
         ],
         "git-hooks": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "git-hooks"
         ],
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixpkgs"
         ]
@@ -285,24 +285,24 @@
     "cachix_2": {
       "inputs": {
         "devenv": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv"
         ],
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "flake-compat"
         ],
         "git-hooks": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "git-hooks"
         ],
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixpkgs"
@@ -513,7 +513,7 @@
         "nix": "nix",
         "nixd": "nixd",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "nixpkgs"
         ]
       },
@@ -540,7 +540,7 @@
         "nix": "nix_2",
         "nixd": "nixd_2",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "nixpkgs"
         ]
@@ -673,7 +673,7 @@
     "fenix": {
       "inputs": {
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "nixpkgs"
         ],
         "rust-analyzer-src": "rust-analyzer-src"
@@ -1054,7 +1054,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixpkgs"
         ]
@@ -1241,7 +1241,7 @@
     "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
-          "c5t-mcp",
+          "c5t",
           "nixpkgs"
         ]
       },
@@ -1280,7 +1280,7 @@
     "flake-parts_5": {
       "inputs": {
         "nixpkgs-lib": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixpkgs"
@@ -1470,13 +1470,13 @@
     "git-hooks": {
       "inputs": {
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "flake-compat"
         ],
         "gitignore": "gitignore",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixpkgs"
         ]
@@ -1498,14 +1498,14 @@
     "git-hooks_2": {
       "inputs": {
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "flake-compat"
         ],
         "gitignore": "gitignore_2",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixpkgs"
@@ -1646,7 +1646,7 @@
     "gitignore": {
       "inputs": {
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "git-hooks",
           "nixpkgs"
@@ -1669,7 +1669,7 @@
     "gitignore_2": {
       "inputs": {
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "git-hooks",
@@ -1833,31 +1833,31 @@
     "nix": {
       "inputs": {
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "flake-compat"
         ],
         "flake-parts": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "flake-parts"
         ],
         "git-hooks-nix": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "git-hooks"
         ],
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixpkgs"
         ],
         "nixpkgs-23-11": [
-          "c5t-mcp",
+          "c5t",
           "devenv"
         ],
         "nixpkgs-regression": [
-          "c5t-mcp",
+          "c5t",
           "devenv"
         ]
       },
@@ -1900,36 +1900,36 @@
     "nix_2": {
       "inputs": {
         "flake-compat": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "flake-compat"
         ],
         "flake-parts": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "flake-parts"
         ],
         "git-hooks-nix": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "git-hooks"
         ],
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixpkgs"
         ],
         "nixpkgs-23-11": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv"
         ],
         "nixpkgs-regression": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv"
         ]
@@ -2154,13 +2154,13 @@
     "nixd": {
       "inputs": {
         "flake-parts": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "flake-parts"
         ],
         "flake-root": "flake-root",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixpkgs"
         ],
@@ -2183,14 +2183,14 @@
     "nixd_2": {
       "inputs": {
         "flake-parts": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "flake-parts"
         ],
         "flake-root": "flake-root_2",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixpkgs"
@@ -2791,7 +2791,7 @@
     "root": {
       "inputs": {
         "base-nixpkgs": "base-nixpkgs",
-        "c5t-mcp": "c5t-mcp",
+        "c5t": "c5t",
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "laio": "laio",
@@ -2866,12 +2866,12 @@
         "base-nixpkgs": "base-nixpkgs_2",
         "devenv": "devenv_2",
         "fenix": [
-          "c5t-mcp",
+          "c5t",
           "fenix"
         ],
         "flake-parts": "flake-parts_6",
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "nixpkgs"
         ]
       },
@@ -3313,7 +3313,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "devenv",
           "nixd",
           "nixpkgs"
@@ -3336,7 +3336,7 @@
     "treefmt-nix_2": {
       "inputs": {
         "nixpkgs": [
-          "c5t-mcp",
+          "c5t",
           "rustnix",
           "devenv",
           "nixd",
