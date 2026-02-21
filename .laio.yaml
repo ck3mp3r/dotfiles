@@ -2,12 +2,6 @@ name: dotfiles
 
 path: .
 
-startup:
-  - command: sh
-    args:
-      - -c
-      - 'echo "hello again"'
-
 windows:
   - name: code
     panes:
