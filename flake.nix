@@ -27,7 +27,7 @@
     };
 
     laio = {
-      url = "github:ck3mp3r/laio-cli/feature/batch-send-keys";
+      url = "github:ck3mp3r/laio-cli";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 

@@ -1874,16 +1874,15 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1771616710,
-        "narHash": "sha256-v08vXnPLQ83PgdA4s/pLgKJZzYJnQBwxFbnFUWuon1A=",
+        "lastModified": 1771703576,
+        "narHash": "sha256-w3M9aIyFf+L+QKlDPp3E43/FQTLsiLbO5wtrfjS7760=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "32d5a70b20f99420e1834576b4f2100cdda60ab9",
+        "rev": "1a88c5a716fa445a3664467d33e894e03df4b6ce",
         "type": "github"
       },
       "original": {
         "owner": "ck3mp3r",
-        "ref": "feature/batch-send-keys",
         "repo": "laio-cli",
         "type": "github"
       }
