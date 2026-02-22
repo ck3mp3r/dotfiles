@@ -84,7 +84,7 @@
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
         c5t = c5t.packages.${system}.default;
-        laio = laio.packages.${system}.laio;
+        laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         opencode = opencode.packages.${system}.default;
