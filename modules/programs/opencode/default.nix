@@ -110,6 +110,11 @@
             tools = true;
             context_length = 262144;
           };
+          "qwen3-coder-next:latest" = {
+            name = "qwen3-next";
+            tools = true;
+            context_length = 262144;
+          };
         };
       };
     };
@@ -196,7 +201,15 @@
       #   url = "https://api.githubcopilot.com/mcp/";
       #   enabled = true;
       # };
-      nu-mcp = {
+      nushell = {
+        type = "local";
+        command = [
+          "nu"
+          "--mcp"
+        ];
+        enabled = false;
+      };
+      nu = {
         type = "local";
         command = [
           nuMcp
