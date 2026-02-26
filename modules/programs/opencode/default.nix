@@ -108,12 +108,12 @@
           "qwen3-coder:30b" = {
             name = "qwen3";
             tools = true;
-            context_length = 262144;
+            context_length = 32768;
           };
           "qwen3-coder-next:latest" = {
             name = "qwen3-next";
             tools = true;
-            context_length = 262144;
+            context_length = 32768;
           };
         };
       };
