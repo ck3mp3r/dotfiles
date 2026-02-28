@@ -59,6 +59,8 @@ in {
               OLLAMA_FLASH_ATTENTION = "1";
               # Increase max loaded models if using multiple models
               OLLAMA_MAX_LOADED_MODELS = "2";
+              # Allow access from other hosts
+              OLLAMA_HOST = "0.0.0.0";
             };
           };
         };
