@@ -113,7 +113,41 @@
           "qwen3-coder-next:latest" = {
             name = "qwen3-next";
             tools = true;
+            context_length = 262144;
+          };
+          "glm-4.7-flash:q8_0" = {
+            name = "glm-4.7-flash";
+            tools = true;
+            context_length = 202752;
+          };
+        };
+      };
+      ollama-remote = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Ollama-Remote";
+        options = {
+          baseURL = "http://192.168.1.73:11434/v1";
+        };
+        models = {
+          "devstral-small-2:24b" = {
+            name = "devstral-small";
+            tools = true;
+            context_length = 131072; # 128k context window
+          };
+          "qwen3-coder:30b" = {
+            name = "qwen3";
+            tools = true;
             context_length = 32768;
+          };
+          "qwen3-coder-next:latest" = {
+            name = "qwen3-next";
+            tools = true;
+            context_length = 262144;
+          };
+          "glm-4.7-flash:q8_0" = {
+            name = "glm-4.7-flash";
+            tools = true;
+            context_length = 202752;
           };
         };
       };
