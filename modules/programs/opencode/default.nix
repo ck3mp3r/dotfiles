@@ -40,8 +40,8 @@
       "c5t_get*" = "allow";
       "c5t_list*" = "allow";
       "c5t_search*" = "allow";
-      # Configure nu-mcp run_nushell tool permissions
-      nu-mcp_run_nushell = {
+      # Configure nu_run tool permissions
+      nu_run = {
         "*" = "ask";
         "cargo test" = "allow";
         "cargo test *" = "allow";
@@ -168,7 +168,7 @@
           grep = "allow";
           glob = "allow";
           read = "allow";
-          nu-mcp_run_nushell = "deny";
+          nu_run = "deny";
           "tmux_*" = "deny";
           tmux_list_sessions = "allow";
           tmux_capture_pane = "allow";
@@ -192,7 +192,7 @@
           grep = "allow";
           glob = "allow";
           read = "allow";
-          nu-mcp_run_nushell = "deny";
+          nu_run = "deny";
           "tmux_*" = "deny";
           tmux_list_sessions = "allow";
           tmux_capture_pane = "allow";
@@ -213,7 +213,7 @@
           write = "ask";
           edit = "ask";
           read = "allow";
-          nu-mcp_run_nushell = "deny";
+          nu_run = "deny";
           context7_resolve_library_id = "allow";
           context7_get_library_docs = "allow";
         };
