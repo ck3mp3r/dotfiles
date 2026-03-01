@@ -102,23 +102,35 @@
         models = {
           "devstral-small-2:24b" = {
             name = "devstral-small";
-            tools = true;
-            context_length = 131072; # 128k context window
+            tool_call = true;
+            limit = {
+              context = 131072;
+              output = 8192;
+            };
           };
           "qwen3-coder:30b" = {
             name = "qwen3";
-            tools = true;
-            context_length = 32768;
+            tool_call = true;
+            limit = {
+              context = 32768;
+              output = 8192;
+            };
           };
           "qwen3-coder-next:latest" = {
             name = "qwen3-next";
-            tools = true;
-            context_length = 262144;
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
           };
           "glm-4.7-flash:q8_0" = {
             name = "glm-4.7-flash";
-            tools = true;
-            context_length = 202752;
+            tool_call = true;
+            limit = {
+              context = 202752;
+              output = 8192;
+            };
           };
         };
       };
@@ -131,23 +143,35 @@
         models = {
           "devstral-small-2:24b" = {
             name = "devstral-small";
-            tools = true;
-            context_length = 131072; # 128k context window
+            tool_call = true;
+            limit = {
+              context = 131072;
+              output = 8192;
+            };
           };
           "qwen3-coder:30b" = {
             name = "qwen3";
-            tools = true;
-            context_length = 32768;
+            tool_call = true;
+            limit = {
+              context = 32768;
+              output = 8192;
+            };
           };
           "qwen3-coder-next:latest" = {
             name = "qwen3-next";
-            tools = true;
-            context_length = 262144;
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
           };
           "glm-4.7-flash:q8_0" = {
             name = "glm-4.7-flash";
-            tools = true;
-            context_length = 202752;
+            tool_call = true;
+            limit = {
+              context = 202752;
+              output = 8192;
+            };
           };
         };
       };
