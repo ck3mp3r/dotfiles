@@ -2359,11 +2359,11 @@
       },
       "locked": {
         "dir": "opencode",
-        "lastModified": 1772331426,
-        "narHash": "sha256-EGrPH7zQgCXRlt9IkdLummw7AsRffAjV6XZinvLW07g=",
+        "lastModified": 1772904427,
+        "narHash": "sha256-+4q5UiC4BbCKCf96CveRXKl5Q2k6vv8F/fFyE/8z7zg=",
         "owner": "ck3mp3r",
         "repo": "flakes",
-        "rev": "42cf261aa16ff396014ee9a3886e103aa9d1b66a",
+        "rev": "b15fd455014c907a939dd9f0b260e4e7e9f10129",
         "type": "github"
       },
       "original": {
@@ -2376,40 +2376,40 @@
     "opencode-darwin-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1771585503,
-        "narHash": "sha256-moI/A6spup9kcdOX4Jl2v6u9j/k6ipEBy9KVjPhVtXo=",
+        "lastModified": 1772781030,
+        "narHash": "sha256-MMUQclIRO0FiH2phZFbmXB6tN4UupagZM/Rcz+zYcZY=",
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-darwin-arm64.zip"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-darwin-arm64.zip"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-darwin-arm64.zip"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-darwin-arm64.zip"
       }
     },
     "opencode-linux-arm64": {
       "flake": false,
       "locked": {
-        "lastModified": 1771585493,
-        "narHash": "sha256-FNXmuj24wH+s6jDk2atn7aQH47Q+rNb9beJDit5XFdg=",
+        "lastModified": 1772781023,
+        "narHash": "sha256-7Yc+kXzYrXkHeumbem6BKZxmcUuSXdKFWIMPsrAaXAs=",
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-linux-arm64.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-linux-arm64.tar.gz"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-linux-arm64.tar.gz"
       }
     },
     "opencode-linux-x64": {
       "flake": false,
       "locked": {
-        "lastModified": 1771585497,
-        "narHash": "sha256-6fvAp5Ni/C8B6bqKr6BQ3k7R3CL61f5M9nIaitPEJy0=",
+        "lastModified": 1772781025,
+        "narHash": "sha256-RJxJAdRWHDm50OZWWZ2L/jSXYUF375oewM/6McYtzYE=",
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-linux-x64-baseline.tar.gz"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-linux-x64-baseline.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.10/opencode-linux-x64-baseline.tar.gz"
+        "url": "https://github.com/anomalyco/opencode/releases/download/v1.2.20/opencode-linux-x64-baseline.tar.gz"
       }
     },
     "root": {
