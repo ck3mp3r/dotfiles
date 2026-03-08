@@ -53,6 +53,10 @@
         "rm *" = "deny";
         "rm -rf *" = "deny";
       };
+      tmux_capture_pane = "allow";
+      "tmux_list_*" = "allow";
+      "tmux_get_*" = "allow";
+      "tmux_find_*" = "allow";
     };
 
     # Custom provider configuration
@@ -194,13 +198,10 @@
           read = "allow";
           nu_run = "deny";
           "tmux_*" = "deny";
-          tmux_list_sessions = "allow";
           tmux_capture_pane = "allow";
-          tmux_get_session_info = "allow";
-          tmux_get_pane_process = "allow";
-          tmux_find_pane_by_name = "allow";
-          tmux_find_pane_by_context = "allow";
-          tmux_list_panes = "allow";
+          "tmux_list_*" = "allow";
+          "tmux_get_*" = "allow";
+          "tmux_find_*" = "allow";
         };
       };
       # Override built-in explore subagent to deny nushell and allow only read-only tmux
@@ -218,13 +219,10 @@
           read = "allow";
           nu_run = "deny";
           "tmux_*" = "deny";
-          tmux_list_sessions = "allow";
           tmux_capture_pane = "allow";
-          tmux_get_session_info = "allow";
-          tmux_get_pane_process = "allow";
-          tmux_find_pane_by_name = "allow";
-          tmux_find_pane_by_context = "allow";
-          tmux_list_panes = "allow";
+          "tmux_list_*" = "allow";
+          "tmux_get_*" = "allow";
+          "tmux_find_*" = "allow";
         };
       };
       thaura = {
