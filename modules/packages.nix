@@ -19,7 +19,7 @@ with pkgs;
     jqp
     lsd
     mitmproxy
-    neofetch
+    fastfetch
     nerd-fonts.hack
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
