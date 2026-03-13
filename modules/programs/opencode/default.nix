@@ -303,7 +303,7 @@
           "--tools-dir"
           "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/tmux"
         ];
-        enabled = true;
+        enabled = false;
       };
       # c5t = {
       #   type = "local";
@@ -343,7 +343,7 @@
           "MCP_READ_ONLY" = "false";
           "MCP_TOON" = "true";
         };
-        enabled = true;
+        enabled = false;
       };
       k8s = {
         type = "local";
@@ -356,7 +356,7 @@
           "MCP_K8S_MODE" = "non-destructive";
           "MCP_TOON" = "true";
         };
-        enabled = true;
+        enabled = false;
       };
     };
   };
