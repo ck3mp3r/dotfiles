@@ -1,19 +1,16 @@
 # Personal Rules
 
+## 🚨 MANDATORY STARTUP ACTIONS (Run IMMEDIATELY, before anything else)
+
+1. **Load nushell-shell skill** - Run `skill("nushell-shell")` RIGHT NOW before any other action
+2. **After EVERY context compaction** - Reload nushell-shell skill immediately as the first action
+
 ## 🚨 CRITICAL - Non-Negotiable
 
 1. **NEVER commit to `main`/`master`** - Always create feature branch first
 2. **ASK permission for EACH k8s/ArgoCD write operation** (apply, delete, patch, sync, scale, etc.)
-3. **ONLY Nushell syntax** - This system uses Nushell, not bash/zsh. Common mistakes:
-   - ❌ `cmd1 && cmd2` → ✅ `cmd1; cmd2` (Nushell DOES NOT support `&&` operator!)
-   - ❌ `cmd1 || cmd2` → ✅ `cmd1; cmd2` or `try { cmd1 } catch { cmd2 }`
-   - ❌ `command 2>&1` → ✅ `command | complete`
-   - ❌ `command > file 2>&1` → ✅ `command out+err> file`
-   - ❌ `command 2> /dev/null` → ✅ `command err> /dev/null`
-   - ❌ `command | tail -20` → ✅ `command | lines | last 20`
-   - Use Context7 for nushell docs if unsure
-4. **Backup before destructive changes** - Stage with `git add` or create backups before refactoring/deleting
-5. **TDD & SOLID** - Test first (RED → GREEN → REFACTOR), follow SOLID principles
+3. **Backup before destructive changes** - Stage with `git add` or create backups before refactoring/deleting
+4. **TDD & SOLID** - Test first (RED → GREEN → REFACTOR), follow SOLID principles
 
 ## Test-Driven Development
 
