@@ -21,12 +21,55 @@
 - Never commit failing tests
 - Follow SOLID principles during refactoring
 
-## Context Management
+## Context Management with c5t
 
-At 80% context window:
-1. Use c5t to keep a session note up to date (tag with `session`, include: changes, next steps, key files, decisions)
-2. Make frequent descriptive commits
+### Task Management (PARAMOUNT)
+
+**When to Use:**
+- Multi-step features or bug fixes
+- Planning and breaking down complex work
+- Tracking progress across sessions
+- ANY work requiring multiple steps
+
+**Task Workflow:**
+```
+1. Find existing: c5t_list_task_lists(project_id=...) - ALWAYS prefer existing lists
+2. Create list: c5t_create_task_list(...) - only if no suitable list exists
+3. Add tasks: c5t_create_task(list_id=..., title="Fix bug X", priority=1-5)
+4. Subtasks: c5t_create_task(..., parent_id=...) [ONE level ONLY - no nested subtasks]
+5. Update state: c5t_transition_task(...) - CRITICAL: Update in real-time as work progresses
+6. Track: c5t_get_task_list_stats(id=...) to monitor progress
+```
+
+**Task State Management (CRITICAL):**
+- Update task status IMMEDIATELY when starting/completing work
+- backlog → todo → in_progress → review → done
+- NEVER batch status updates - update as each task transitions
+- Real-time tracking ensures accurate progress visibility
+
+**Projects & Organization:**
+- Create project for each major codebase/effort
+- Use `c5t_list_projects` to find existing projects before creating duplicates
+- Link tasks and repos to projects for discoverability
+
+### Session Notes (Optional)
+
+Use only for critical state that must survive context compaction:
+- Complex multi-session work requiring detailed context
+- Tag with `session`, link to project(s)
+- **After context compaction:** Re-read session notes to restore state
+
+### Context Window Management
+
+**At 80% context window:**
+1. Update session note with current state
+2. Make descriptive git commit
 3. Ask: "Should I summarize before continuing?"
+
+**After context compaction:**
+1. Reload nushell-shell skill (MANDATORY)
+2. Re-read session notes tagged with `session`
+3. Verify critical state is restored
 
 ## Safety
 
