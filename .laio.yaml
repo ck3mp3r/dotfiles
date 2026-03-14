@@ -5,8 +5,14 @@ path: .
 windows:
   - name: code
     panes:
-      - commands:
+      - flex: 2
+        commands:
           - command: ^$env.EDITOR
+      - flex: 1
+        commands:
+          - command: ^opencode
+            args:
+              - --port
 
   - name: misc
     panes:
