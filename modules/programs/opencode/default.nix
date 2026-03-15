@@ -39,7 +39,7 @@
 
       "c5t_get*" = "allow";
       "c5t_list*" = "allow";
-      "c5t_search*" = "allow";
+      "c5t_read*" = "allow";
       # Configure nu_run tool permissions
       nu_run = {
         "*" = "ask";
@@ -57,6 +57,16 @@
       "tmux_list_*" = "allow";
       "tmux_get_*" = "allow";
       "tmux_find_*" = "allow";
+
+      # Skill permissions - auto-load mandatory and nushell-related skills
+      skill = {
+        "*" = "ask"; # Ask for other skills by default
+        # MANDATORY startup skills (from AGENTS.md)
+        "nushell-shell" = "allow";
+        "context" = "allow";
+        # Auto-load all nushell-related skills
+        "nushell-*" = "allow";
+      };
     };
 
     # Custom provider configuration
@@ -197,17 +207,26 @@
           "*" = "ask";
           "c5t_get*" = "allow";
           "c5t_list*" = "allow";
+          "c5t_read*" = "allow";
           "context7*" = "allow";
           bash = "deny";
           grep = "allow";
           glob = "allow";
           read = "allow";
           nu_run = "deny";
+          task = "deny";
           "tmux_*" = "deny";
           tmux_capture_pane = "allow";
           "tmux_list_*" = "allow";
           "tmux_get_*" = "allow";
           "tmux_find_*" = "allow";
+          # Auto-load mandatory skills from AGENTS.md
+          skill = {
+            "*" = "ask";
+            "nushell-shell" = "allow";
+            "context" = "allow";
+            "nushell-*" = "allow";
+          };
         };
       };
       # Override built-in explore subagent to deny nushell and allow only read-only tmux
@@ -218,6 +237,7 @@
           "*" = "ask";
           "c5t_get*" = "allow";
           "c5t_list*" = "allow";
+          "c5t_read*" = "allow";
           "context7*" = "allow";
           bash = "deny";
           grep = "allow";
@@ -229,6 +249,13 @@
           "tmux_list_*" = "allow";
           "tmux_get_*" = "allow";
           "tmux_find_*" = "allow";
+          # Auto-load mandatory skills from AGENTS.md
+          skill = {
+            "*" = "ask";
+            "nushell-shell" = "allow";
+            "context" = "allow";
+            "nushell-*" = "allow";
+          };
         };
       };
       thaura = {
