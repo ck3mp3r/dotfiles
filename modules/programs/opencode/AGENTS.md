@@ -3,7 +3,8 @@
 ## 🚨 MANDATORY STARTUP ACTIONS (Run IMMEDIATELY, before anything else)
 
 1. **Load nushell-shell skill** - Run `skill("nushell-shell")` RIGHT NOW before any other action
-2. **After EVERY context compaction** - Reload nushell-shell skill immediately as the first action
+2. **Load context skill** - Run `skill("context")` RIGHT NOW before any other action
+3. **After EVERY context compaction** - Reload both nushell-shell and context skills immediately as the first action
 
 ## 🚨 CRITICAL - Non-Negotiable
 
@@ -23,41 +24,11 @@
 
 ## Context Management with c5t
 
-### Task Management (PARAMOUNT)
+Use tasks for ANY multi-step work. The context skill (loaded at startup) covers the full workflow — key reminders:
 
-**When to Use:**
-- Multi-step features or bug fixes
-- Planning and breaking down complex work
-- Tracking progress across sessions
-- ANY work requiring multiple steps
-
-**Task Workflow:**
-```
-1. Find existing: c5t_list_task_lists(project_id=...) - ALWAYS prefer existing lists
-2. Create list: c5t_create_task_list(...) - only if no suitable list exists
-3. Add tasks: c5t_create_task(list_id=..., title="Fix bug X", priority=1-5)
-4. Subtasks: c5t_create_task(..., parent_id=...) [ONE level ONLY - no nested subtasks]
-5. Update state: c5t_transition_task(...) - CRITICAL: Update in real-time as work progresses
-6. Track: c5t_get_task_list_stats(id=...) to monitor progress
-```
-
-**Task State Management (CRITICAL):**
-- Update task status IMMEDIATELY when starting/completing work
-- backlog → todo → in_progress → review → done
-- NEVER batch status updates - update as each task transitions
-- Real-time tracking ensures accurate progress visibility
-
-**Projects & Organization:**
-- Create project for each major codebase/effort
-- Use `c5t_list_projects` to find existing projects before creating duplicates
-- Link tasks and repos to projects for discoverability
-
-### Session Notes (Optional)
-
-Use only for critical state that must survive context compaction:
-- Complex multi-session work requiring detailed context
-- Tag with `session`, link to project(s)
-- **After context compaction:** Re-read session notes to restore state
+- Use tasks for: multi-step features, bug fixes, planning, tracking across sessions
+- Create a project per major codebase/effort; link tasks and repos to it
+- Use `c5t_list_projects` before creating a new project to avoid duplicates
 
 ### Context Window Management
 
@@ -68,8 +39,9 @@ Use only for critical state that must survive context compaction:
 
 **After context compaction:**
 1. Reload nushell-shell skill (MANDATORY)
-2. Re-read session notes tagged with `session`
-3. Verify critical state is restored
+2. Reload context skill (MANDATORY)
+3. Re-read session notes tagged with `session`
+4. Verify critical state is restored
 
 ## Safety
 
@@ -105,21 +77,4 @@ Before ANY code changes:
 
 Prefer MCP tools (k8s_kube_*, argocd_*) for better error handling.
 
-## Nushell Command Reference
 
-**You MUST use Nushell syntax, NOT bash/zsh.** Check this table before every command:
-
-| Bash/Zsh | Nushell | Purpose |
-|-----------|---------|---------|
-| `cmd1 && cmd2` | `cmd1; cmd2` | **Sequential commands (CRITICAL!)** |
-| `cmd1 \|\| cmd2` | `try { cmd1 } catch { cmd2 }` | **Error fallback (CRITICAL!)** |
-| `cmd 2>&1` | `cmd \| complete` | Capture stdout+stderr |
-| `cmd > file 2>&1` | `cmd out+err> file` | Redirect both to file |
-| `cmd 2> /dev/null` | `cmd err> /dev/null` | Suppress stderr |
-| `cmd \| tail -n 20` | `cmd \| lines \| last 20` | Last 20 lines |
-| `cmd \| head -n 10` | `cmd \| lines \| first 10` | First 10 lines |
-| `cmd \| grep pattern` | `cmd \| lines \| find pattern` | Filter lines |
-| `export VAR=val` | `$env.VAR = val` | Set environment var |
-| `echo $VAR` | `$env.VAR` | Read environment var |
-
-**When unsure:** Use Context7 to fetch Nushell documentation rather than guessing bash syntax.
