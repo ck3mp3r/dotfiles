@@ -154,6 +154,24 @@
           };
         };
       };
+      ollama-mlx = {
+        npm = "@ai-sdk/openai-compatible";
+        name = "Ollama-Mlx";
+        options = {
+          baseURL = "http://192.168.1.73:11435/v1";
+        };
+        models = {
+          "mlx-community/Qwen3-Coder-Next-4bit" = {
+            name = "qwen3-next";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
+        };
+      };
+
       ollama-remote = {
         npm = "@ai-sdk/openai-compatible";
         name = "Ollama-Remote";
