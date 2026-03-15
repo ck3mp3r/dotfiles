@@ -64,6 +64,12 @@
       # GitHub Copilot - Override context limits for Claude models
       github-copilot = {
         models = {
+          "claude-sonnet-4.6" = {
+            limit = {
+              context = 200000;
+              output = 8192;
+            };
+          };
           "claude-sonnet-4.5" = {
             limit = {
               context = 200000;
