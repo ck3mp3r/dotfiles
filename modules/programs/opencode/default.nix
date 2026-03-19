@@ -262,6 +262,7 @@
           glob = "allow";
           read = "allow";
           nu_run = "deny";
+          task = "deny";
           "tmux_*" = "deny";
           tmux_capture_pane = "allow";
           "tmux_list_*" = "allow";
