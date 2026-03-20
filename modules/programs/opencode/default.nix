@@ -329,6 +329,22 @@
         ];
         enabled = false;
       };
+      nu-dev = {
+        type = "local";
+        command = [
+          "${homeDir}/Projects/ck3mp3r/nu-mcp/target/debug/nu-mcp"
+          "--add-path"
+          "/tmp"
+          "--add-path"
+          "/nix/store"
+          "--add-path"
+          "${homeDir}/.local"
+        ];
+        environment = {
+          MCP_PTY_TRACE = "1";
+        };
+        enabled = false;
+      };
       nu = {
         type = "local";
         command = [
@@ -342,15 +358,15 @@
         ];
         enabled = true;
       };
-      # weather = {
-      #   type = "local";
-      #   command = [
-      #     nuMcp
-      #     "--tools-dir"
-      #     "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
-      #   ];
-      #   enabled = true;
-      # };
+      weather = {
+        type = "local";
+        command = [
+          "${homeDir}/Projects/ck3mp3r/nu-mcp/target/debug/nu-mcp"
+          "--tools-dir"
+          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/weather"
+        ];
+        enabled = false;
+      };
       # finance = {
       #   type = "local";
       #   command = [
