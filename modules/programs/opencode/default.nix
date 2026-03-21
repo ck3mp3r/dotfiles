@@ -355,6 +355,8 @@
           "/nix/store"
           "--add-path"
           "${homeDir}/.local"
+          "--add-path"
+          "${homeDir}/Projects"
         ];
         enabled = true;
       };
