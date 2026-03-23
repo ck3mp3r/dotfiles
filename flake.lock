@@ -3712,11 +3712,11 @@
         "topiary-nu": "topiary-nu_2"
       },
       "locked": {
-        "lastModified": 1774181229,
-        "narHash": "sha256-eEd5R2RQ9CR0UVceHN1b+b+XHMvF7DoIYgL0f4rhlzY=",
+        "lastModified": 1774293294,
+        "narHash": "sha256-aQU0cC0YyNf+wn53WVbb0jms+cFPbSbacDklUdXqRzU=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "0d219d19263814d95283b4973ff3632dcbc8de38",
+        "rev": "326c70cabb5681ad010adacb0413b0bcce1e714a",
         "type": "github"
       },
       "original": {
