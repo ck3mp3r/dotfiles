@@ -358,6 +358,9 @@
           "--add-path"
           "${homeDir}/Projects"
         ];
+        environment = {
+          "GIT_PAGER" = "";
+        };
         enabled = true;
       };
       weather = {
