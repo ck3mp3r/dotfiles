@@ -156,11 +156,11 @@
               output = 8192;
             };
           };
-          "glm-4.7-flash:q8_0" = {
-            name = "glm-4.7-flash";
+          "qwen3.5:35b" = {
+            name = "qwen3.5";
             tool_call = true;
             limit = {
-              context = 202752;
+              context = 262144;
               output = 8192;
             };
           };
@@ -215,11 +215,11 @@
               output = 8192;
             };
           };
-          "glm-4.7-flash:q8_0" = {
-            name = "glm-4.7-flash";
+          "qwen3.5:35b" = {
+            name = "qwen3.5";
             tool_call = true;
             limit = {
-              context = 202752;
+              context = 262144;
               output = 8192;
             };
           };
