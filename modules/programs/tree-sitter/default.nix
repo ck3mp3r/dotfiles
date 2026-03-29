@@ -1,7 +1,21 @@
 {pkgs, ...}: let
+  grammars = with pkgs.tree-sitter-grammars; [
+    tree-sitter-javascript
+    tree-sitter-rust
+    tree-sitter-go
+    tree-sitter-java
+    tree-sitter-kotlin
+    tree-sitter-typescript
+  ];
+  grammarDir = pkgs.linkFarm "tree-sitter-grammars" (map (g: {
+      name = g.pname or g.name;
+      path = g;
+    })
+    grammars);
   config = {
-    # parser-directories only needed for grammar development, not for installed grammars
-    # Grammars from tree-sitter.withPlugins are found automatically via Nix
+    parser-directories = [
+      "${grammarDir}"
+    ];
     theme = {
       attribute = {
         color = 124;
@@ -65,14 +79,5 @@ in {
   home.file.".config/tree-sitter/config.json".text = builtins.toJSON config;
   home.packages = with pkgs; [
     tree-sitter
-    (tree-sitter.withPlugins (p: [
-      # p.tree-sitter-nushell
-      p.tree-sitter-rust
-      p.tree-sitter-go
-      p.tree-sitter-java
-      p.tree-sitter-kotlin
-      p.tree-sitter-typescript
-      p.tree-sitter-javascript
-    ]))
   ];
 }
