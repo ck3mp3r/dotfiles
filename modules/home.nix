@@ -38,6 +38,7 @@
     ./programs/opencode
     ./programs/starship.nix
     ./programs/tmux
+    ./programs/tree-sitter
     ./programs/zellij
     ./programs/zsh
   ];
