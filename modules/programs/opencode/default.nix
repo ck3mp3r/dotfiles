@@ -170,7 +170,7 @@
         npm = "@ai-sdk/openai-compatible";
         name = "Ollama-Mlx";
         options = {
-          baseURL = "http://192.168.1.73:11435/v1";
+          baseURL = "http://192.168.1.73:8080/v1";
         };
         models = {
           "mlx-community/Qwen3-Coder-Next-4bit" = {
