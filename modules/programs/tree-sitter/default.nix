@@ -1,10 +1,10 @@
 {pkgs, ...}: let
   grammars = with pkgs.tree-sitter-grammars; [
-    tree-sitter-javascript
-    tree-sitter-rust
     tree-sitter-go
     tree-sitter-java
+    tree-sitter-javascript
     tree-sitter-kotlin
+    tree-sitter-rust
     tree-sitter-typescript
   ];
   grammarDir = pkgs.linkFarm "tree-sitter-grammars" (map (g: {
