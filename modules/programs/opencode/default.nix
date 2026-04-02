@@ -13,6 +13,9 @@
     small_model = "github-copilot/claude-haiku-4.5";
     autoupdate = false;
 
+    # Disable LSP support globally
+    lsp = false;
+
     plugin = [
       "opencode-anthropic-auth@latest"
       # "@franlol/opencode-md-table-formatter@latest"
@@ -23,6 +26,7 @@
       read = "allow";
       grep = "allow";
       glob = "allow";
+      webfetch = "allow";
       # Disable bash/shell tools since we use Nushell via nu-mcp
       bash = "deny";
       shell = "deny";
