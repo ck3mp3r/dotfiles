@@ -72,14 +72,18 @@
       nu-mcp = {
         enabled = true;
         type = "stdio";
-        name = "nu-mcp";
+        name = "nu";
         description = "Run nushell commands";
         cmd = nuMcp;
         args = [
           "--add-path=/tmp"
           "--add-path=/nix/store"
+          "--add-path=$HOME/.local"
+          "--add-path=$HOME/Projects"
         ];
-        envs = {};
+        envs = {
+          GIT_PAGER = "";
+        };
         env_keys = [];
         timeout = 300;
         bundled = null;
@@ -89,11 +93,35 @@
         enabled = true;
         type = "builtin";
         name = "developer";
-        description = "Code editing and shell access";
+        description = "Code editing and shell access (shell/bash disabled - use nu)";
         display_name = "Developer Tools";
         timeout = 300;
         bundled = true;
-        available_tools = [];
+        available_tools = [
+          # File operations
+          "read"
+          "write"
+          "edit"
+          "create_file"
+          "str_replace"
+          "text_editor"
+          "list_dir"
+          "list_files"
+          "grep"
+          "file_str_replace"
+          "insert_text_after_context"
+
+          # Git operations (safe, read-only or interactive)
+          "git_status"
+          "git_diff"
+          "git_log"
+          "git_show"
+          "git_branch"
+
+          # Explicitly exclude:
+          # - shell (use nu instead)
+          # - bash (use nu instead)
+        ];
       };
       autovisualiser = {
         enabled = true;
@@ -198,7 +226,7 @@ in {
 
   # Symlink OpenCode AGENTS.md into Goose config directory
   home.file.".config/goose/AGENTS.md".source = ../opencode/AGENTS.md;
-  
+
   # Install subagent recipes
   home.file.".config/goose/recipes/research-assistant.yaml".source = ./recipes/research-assistant.yaml;
   home.file.".config/goose/recipes/code-reviewer.yaml".source = ./recipes/code-reviewer.yaml;
