@@ -8,6 +8,8 @@
     GOOSE_PROVIDER = "github_copilot";
     GOOSE_MODEL = "claude-sonnet-4.5";
     CONTEXT_FILE_NAMES = ''["AGENTS.md"]'';
+    GOOSE_RECIPE_PATH = "$HOME/.config/goose/recipes";
+    GOOSE_TELEMETRY_ENABLED = false;
     extensions = {
       # github = {
       #   enabled = true;
@@ -196,4 +198,12 @@ in {
 
   # Symlink OpenCode AGENTS.md into Goose config directory
   home.file.".config/goose/AGENTS.md".source = ../opencode/AGENTS.md;
+  
+  # Install subagent recipes
+  home.file.".config/goose/recipes/research-assistant.yaml".source = ./recipes/research-assistant.yaml;
+  home.file.".config/goose/recipes/code-reviewer.yaml".source = ./recipes/code-reviewer.yaml;
+  home.file.".config/goose/recipes/documentation-writer.yaml".source = ./recipes/documentation-writer.yaml;
+  home.file.".config/goose/recipes/testing-assistant.yaml".source = ./recipes/testing-assistant.yaml;
+  home.file.".config/goose/recipes/refactoring-assistant.yaml".source = ./recipes/refactoring-assistant.yaml;
+  home.file.".config/goose/recipes/README.md".source = ./recipes/README.md;
 }
