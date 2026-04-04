@@ -46,7 +46,7 @@
         available_tools = [];
       };
       extensionmanager = {
-        enabled = false;
+        enabled = true;
         type = "platform";
         name = "Extension Manager";
         description = "Enable extension management tools for discovering, enabling, and disabling extensions";
@@ -62,7 +62,7 @@
         available_tools = [];
       };
       chatrecall = {
-        enabled = false;
+        enabled = true;
         type = "platform";
         name = "chatrecall";
         description = "Search past conversations and load session summaries for contextual memory";
@@ -124,7 +124,7 @@
         ];
       };
       autovisualiser = {
-        enabled = true;
+        enabled = false;
         type = "builtin";
         name = "autovisualiser";
         description = "Data visualisation and UI generation tools";
@@ -134,7 +134,7 @@
         available_tools = [];
       };
       tmux = {
-        enabled = true;
+        enabled = false;
         type = "stdio";
         name = "tmux";
         description = "Tmux session management";
@@ -150,7 +150,7 @@
         available_tools = [];
       };
       context7 = {
-        enabled = true;
+        enabled = false;
         type = "stdio";
         name = "context7";
         description = "Context7 documentation access";
@@ -166,7 +166,7 @@
         available_tools = [];
       };
       gh = {
-        enabled = true;
+        enabled = false;
         type = "stdio";
         name = "github";
         description = "Github MCP";
