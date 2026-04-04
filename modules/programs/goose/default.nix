@@ -10,6 +10,11 @@
     CONTEXT_FILE_NAMES = ''["AGENTS.md"]'';
     GOOSE_RECIPE_PATH = "$HOME/.config/goose/recipes";
     GOOSE_TELEMETRY_ENABLED = false;
+
+    # Permission mode: "auto", "approve", "chat", "smart_approve"
+    # Using "smart_approve" to match OpenCode's ask-by-default behavior
+    GOOSE_MODE = "smart_approve";
+
     extensions = {
       # github = {
       #   enabled = true;
@@ -93,7 +98,7 @@
         enabled = true;
         type = "builtin";
         name = "developer";
-        description = "Code editing and shell access (shell/bash disabled - use nu)";
+        description = "Code editing and shell access (shell/bash disabled - use nu-mcp)";
         display_name = "Developer Tools";
         timeout = 300;
         bundled = true;
