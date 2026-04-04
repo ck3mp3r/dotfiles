@@ -7,6 +7,7 @@
   config = {
     GOOSE_PROVIDER = "github_copilot";
     GOOSE_MODEL = "claude-sonnet-4.5";
+    CONTEXT_FILE_NAMES = ''["AGENTS.md"]'';
     extensions = {
       # github = {
       #   enabled = true;
@@ -51,7 +52,7 @@
         available_tools = [];
       };
       skills = {
-        enabled = false;
+        enabled = true;
         type = "platform";
         name = "skills";
         description = "Load and use skills from .claude/skills or .goose/skills directories";
@@ -192,4 +193,7 @@ in {
   ];
   home.file.".config/goose/config.yaml".source = yamlFormat.generate "goose-config" config;
   home.file.".config/goose/config.yaml".force = true;
+
+  # Symlink OpenCode AGENTS.md into Goose config directory
+  home.file.".config/goose/AGENTS.md".source = ../opencode/AGENTS.md;
 }

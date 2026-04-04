@@ -4,7 +4,6 @@
   ...
 }: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
-  agentsRules = builtins.readFile ./AGENTS.md;
   homeDir = config.home.homeDirectory;
 
   opencode-config = {
@@ -451,6 +450,6 @@
   };
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON opencode-config;
-  home.file.".config/opencode/AGENTS.md".text = agentsRules;
+  home.file.".config/opencode/AGENTS.md".source = ./AGENTS.md;
   home.packages = [pkgs.opencode pkgs.nu-mcp pkgs.nu-mcp-tools];
 }
