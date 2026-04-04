@@ -36,6 +36,7 @@ Use tasks for ANY multi-step work. The context skill (loaded at startup) covers 
 1. Update session note with current state
 2. Make descriptive git commit
 3. Ask: "Should I summarize before continuing?"
+4. Keep session notes in c5t, tag with `session`
 
 **After context compaction:**
 1. Reload nushell-shell skill (MANDATORY)
@@ -46,6 +47,13 @@ Use tasks for ANY multi-step work. The context skill (loaded at startup) covers 
 ## Safety
 
 Before refactoring, large changes, or deletions: stage with `git add` or create backups. Never proceed without a safety net.
+
+## Running commands
+
+1. Don't cd unless you have to
+2. Store results in variables so you can query in subsequent tool calls
+   - let r = (cargo test | complete)
+   - $r.stdout | from json | get foo
 
 ## Research First
 

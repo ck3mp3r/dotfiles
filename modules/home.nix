@@ -29,7 +29,7 @@
     ./programs/carapace
     ./programs/crush
     ./programs/ghostty
-    # ./programs/goose
+    ./programs/goose
     ./programs/git.nix
     ./programs/idea
     ./programs/k9s

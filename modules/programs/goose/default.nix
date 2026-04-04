@@ -1,6 +1,9 @@
 {pkgs, ...}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
   yamlFormat = pkgs.formats.yaml {};
+  goose-cli-nocheck = pkgs.goose-cli.overrideAttrs (oldAttrs: {
+    doCheck = false;
+  });
   config = {
     GOOSE_PROVIDER = "github_copilot";
     GOOSE_MODEL = "claude-sonnet-4.5";
@@ -183,7 +186,7 @@
   };
 in {
   home.packages = [
-    pkgs.goose-cli
+    goose-cli-nocheck
     pkgs.nu-mcp
     pkgs.nu-mcp-tools
   ];
