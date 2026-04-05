@@ -32,7 +32,7 @@ Use tasks for ANY multi-step work. The context skill (loaded at startup) covers 
 
 ### Context Window Management
 
-**At 80% context window:**
+**At 90% context window:**
 1. Update session note with current state
 2. Make descriptive git commit
 3. Ask: "Should I summarize before continuing?"
