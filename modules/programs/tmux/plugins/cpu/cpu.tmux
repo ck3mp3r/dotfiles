@@ -13,6 +13,7 @@ cpu_interpolation=(
   "\#{ram_icon}"
   "\#{ram_bg_color}"
   "\#{ram_fg_color}"
+  "\#{gpu_percentage}"
 )
 cpu_commands=(
   "#($CURRENT_DIR/scripts/cpu_percentage.sh)"
@@ -23,6 +24,7 @@ cpu_commands=(
   "#($CURRENT_DIR/scripts/ram_icon.sh)"
   "#($CURRENT_DIR/scripts/ram_bg_color.sh)"
   "#($CURRENT_DIR/scripts/ram_fg_color.sh)"
+  "#($CURRENT_DIR/scripts/gpu_percentage.sh)"
 )
 
 set_tmux_option() {

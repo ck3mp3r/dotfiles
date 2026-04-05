@@ -64,6 +64,7 @@ in {
 
           set -g status-left "#{E:@catppuccin_status_session} "
           set -g status-right ""
+          set -agF status-right "#{E:@catppuccin_status_gpu}"
           set -agF status-right "#{E:@catppuccin_status_cpu}"
           set -agF status-right "#{E:@catppuccin_status_ram}"
           set -agF status-right "#{E:@catppuccin_status_battery}"
@@ -75,6 +76,7 @@ in {
         plugin = tmux-cpu;
         extraConfig = ''
           source -F "${tmux-catppuccin}/share/tmux-plugins/catppuccin/status/ram.conf"
+          source -F "${tmux-catppuccin}/share/tmux-plugins/catppuccin/status/gpu.conf"
         '';
       }
     ];
