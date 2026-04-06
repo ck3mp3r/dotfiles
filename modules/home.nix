@@ -37,7 +37,7 @@
     ./programs/leader-key
     ./programs/opencode
     ./programs/starship.nix
-    ./programs/tmux
+    # ./programs/tmux
     ./programs/tree-sitter
     ./programs/zellij
     ./programs/zsh
