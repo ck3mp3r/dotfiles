@@ -35,6 +35,7 @@ with pkgs;
     tree
     topiary
     uv
+    worktrunk
     yazi
   ]
   ++ lib.optionals stdenv.isDarwin [m-cli]
