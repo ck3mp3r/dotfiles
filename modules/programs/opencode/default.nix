@@ -451,5 +451,5 @@
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON opencode-config;
   home.file.".config/opencode/AGENTS.md".source = ./AGENTS.md;
-  home.packages = [pkgs.opencode pkgs.nu-mcp pkgs.nu-mcp-tools];
+  home.packages = [pkgs.nu-mcp pkgs.nu-mcp-tools];
 }

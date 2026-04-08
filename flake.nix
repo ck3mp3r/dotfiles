@@ -36,11 +36,6 @@
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
-    opencode = {
-      url = "github:ck3mp3r/flakes?dir=opencode";
-      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
-    };
-
     topiary-nu = {
       url = "github:ck3mp3r/flakes?dir=topiary-nu";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
@@ -66,7 +61,6 @@
     nixpkgs-unstable,
     nu-mcp,
     nu-mods,
-    opencode,
     laio,
     sops-nix,
     topiary-nu,
@@ -87,7 +81,6 @@
         laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
-        opencode = opencode.packages.${system}.default;
         topiary = topiary-nu.packages.${system}.default;
 
         # Override Python packages to use Python 3.13
