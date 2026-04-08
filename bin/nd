@@ -1,5 +1,7 @@
 #!/usr/bin/env nu
 
+use std/help
+
 # run nix-darwin switch
 def 'main switch' [] {
   let user = ($env.USER | str replace "." "_")
@@ -39,6 +41,11 @@ def 'main fix-store' [] {
 def 'main backup-zsh' [] {
   sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
   sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
+}
+
+# upgrade installed profiles
+def 'main profile upgrade' [] {
+  nix profile upgrade --refresh ...(nix profile list --json | from json | get elements | transpose name items | get name)
 }
 
 def main [] {
