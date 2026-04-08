@@ -48,6 +48,11 @@ def 'main profile upgrade' [] {
   nix profile upgrade --refresh ...(nix profile list --json | from json | get elements | transpose name items | get name)
 }
 
+# list profiles
+def 'main profile list' [] {
+  nix profile list --json | from json | get elements | transpose name items | get name
+}
+
 def main [] {
   help main
 }
