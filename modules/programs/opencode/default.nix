@@ -246,7 +246,7 @@
           grep = "allow";
           glob = "allow";
           read = "allow";
-          nu_run = "deny";
+          nu_run = "ask";
           task = "deny";
           "tmux_*" = "deny";
           tmux_capture_pane = "allow";
@@ -276,7 +276,7 @@
           grep = "allow";
           glob = "allow";
           read = "allow";
-          nu_run = "deny";
+          nu_run = "ask";
           task = "deny";
           "tmux_*" = "deny";
           tmux_capture_pane = "allow";
