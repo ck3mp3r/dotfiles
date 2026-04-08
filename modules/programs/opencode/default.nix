@@ -230,82 +230,15 @@
       };
     };
 
-    # Task agent configuration
+    # Agent configuration - markdown files are preferred
+    # Place agent markdown files in ~/.config/opencode/agents/
     agent = {
-      # Override built-in general subagent to deny nushell and allow only read-only tmux
+      # Disable built-in agents we're replacing with custom markdown versions
       general = {
-        description = "General-purpose agent for research and focused tasks with limited tools";
-        mode = "subagent";
-        permission = {
-          "*" = "ask";
-          "c5t_get*" = "allow";
-          "c5t_list*" = "allow";
-          "c5t_read*" = "allow";
-          "context7*" = "allow";
-          bash = "deny";
-          grep = "allow";
-          glob = "allow";
-          read = "allow";
-          nu_run = "ask";
-          task = "deny";
-          "tmux_*" = "deny";
-          tmux_capture_pane = "allow";
-          "tmux_list_*" = "allow";
-          "tmux_get_*" = "allow";
-          "tmux_find_*" = "allow";
-          # Auto-load mandatory skills from AGENTS.md
-          skill = {
-            "*" = "ask";
-            "nushell-shell" = "allow";
-            "context" = "allow";
-            "nushell-*" = "allow";
-          };
-        };
+        disable = true;
       };
-      # Override built-in explore subagent to deny nushell and allow only read-only tmux
       explore = {
-        description = "Fast agent specialized for exploring codebases";
-        mode = "subagent";
-        permission = {
-          "*" = "ask";
-          "c5t_get*" = "allow";
-          "c5t_list*" = "allow";
-          "c5t_read*" = "allow";
-          "context7*" = "allow";
-          bash = "deny";
-          grep = "allow";
-          glob = "allow";
-          read = "allow";
-          nu_run = "ask";
-          task = "deny";
-          "tmux_*" = "deny";
-          tmux_capture_pane = "allow";
-          "tmux_list_*" = "allow";
-          "tmux_get_*" = "allow";
-          "tmux_find_*" = "allow";
-          # Auto-load mandatory skills from AGENTS.md
-          skill = {
-            "*" = "ask";
-            "nushell-shell" = "allow";
-            "context" = "allow";
-            "nushell-*" = "allow";
-          };
-        };
-      };
-      thaura = {
-        description = "Thaura AI agent for ethical AI research and knowledge management tasks";
-        model = "thaura/thaura";
-        mode = "subagent";
-        # Modern permission-based configuration (replaces deprecated tools config)
-        permission = {
-          bash = "deny";
-          write = "ask";
-          edit = "ask";
-          read = "allow";
-          nu_run = "deny";
-          context7_resolve_library_id = "allow";
-          context7_get_library_docs = "allow";
-        };
+        disable = true;
       };
     };
     mcp = {
@@ -451,5 +384,19 @@
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON opencode-config;
   home.file.".config/opencode/AGENTS.md".source = ./AGENTS.md;
+
+  # Agent markdown templates with Nix substitutions
+  home.file.".config/opencode/agents/developer.md".text =
+    builtins.replaceStrings
+    ["@homeDir@"]
+    [homeDir]
+    (builtins.readFile ./agents/developer.md);
+
+  home.file.".config/opencode/agents/research.md".text =
+    builtins.replaceStrings
+    ["@homeDir@"]
+    [homeDir]
+    (builtins.readFile ./agents/research.md);
+
   home.packages = [pkgs.nu-mcp pkgs.nu-mcp-tools];
 }
