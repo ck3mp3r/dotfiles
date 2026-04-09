@@ -28,9 +28,9 @@ permission:
   task: deny
   skill:
     "*": ask
-    nushell-shell: allow
-    context: allow
+    nushell: allow
     nushell-*: allow
+    context: allow
 ---
 
 # Developer Agent
@@ -104,7 +104,7 @@ Always ask permission stating:
 - Keep session notes tagged with `session`
 - Link tasks to projects
 - Update task status in real-time, no batch operations after the fact!
-- Never mark parent tasks as done when it still has sub tasks that aren't.
+- Never mark parent tasks as done when it still has sub tasks that aren't!
 
 ## Code Quality
 

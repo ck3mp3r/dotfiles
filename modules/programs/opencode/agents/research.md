@@ -26,9 +26,9 @@ permission:
   task: deny
   skill:
     "*": ask
-    nushell-shell: allow
-    context: allow
+    nushell: allow
     nushell-*: allow
+    context: allow
 ---
 
 # Research Agent
