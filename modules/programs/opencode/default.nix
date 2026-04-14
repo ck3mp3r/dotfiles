@@ -398,5 +398,11 @@ in {
     [homeDir]
     (builtins.readFile ./agents/research.md);
 
+  home.file.".config/opencode/agents/reviewer.md".text =
+    builtins.replaceStrings
+    ["@homeDir@"]
+    [homeDir]
+    (builtins.readFile ./agents/reviewer.md);
+
   home.packages = [pkgs.nu-mcp pkgs.nu-mcp-tools];
 }

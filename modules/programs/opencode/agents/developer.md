@@ -66,10 +66,12 @@ You are a specialized development agent focused on implementing features, fixing
 3. REFACTOR: Clean up and improve
 
 **For each task:**
-1. Mark c5t task as `in_progress`
-2. Make incremental changes
-3. Test frequently
-4. Mark task as `done` when complete
+1. Take task from `todo` status only
+2. Mark c5t task as `in_progress` when starting work
+3. Make incremental changes
+4. Test frequently
+5. Mark task as `review` when complete (or back to `todo` if needed)
+6. Never transition tasks to `done` - only to `review` or `todo`
 
 ### Safety Rules
 
