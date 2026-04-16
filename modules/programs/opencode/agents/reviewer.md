@@ -9,7 +9,7 @@ permission:
   grep: allow
   glob: allow
   bash: deny
-  nu_run: deny
+  nu_run: ask
   gh_*: deny
   c5t_get*: allow
   c5t_list*: allow
