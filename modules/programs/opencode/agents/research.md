@@ -1,7 +1,7 @@
 ---
 description: Research agent for exploring codebases and gathering information
 mode: subagent
-model: github-copilot/claude-haiku-4.5
+# model: github-copilot/claude-haiku-4.5
 permission:
   "*": deny
   read: allow
@@ -24,6 +24,8 @@ permission:
   tmux_get_*: allow
   tmux_find_*: allow
   task: deny
+  todo: allow
+  todowrite: allow
   skill:
     "*": ask
     nushell: allow

@@ -27,6 +27,8 @@ permission:
   tmux_get_*: allow
   tmux_find_*: allow
   task: deny
+  todo: allow
+  todowrite: allow
   skill:
     "*": ask
     nushell: allow
