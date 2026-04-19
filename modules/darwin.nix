@@ -9,10 +9,28 @@
   casks,
   ...
 } @ inputs: let
+  # Wrapper script for ollama that creates the MLX lib directory structure
+  ollamaWrapper = pkgs.writeShellScript "ollama-serve-wrapper" ''
+    # Get the actual ollama binary location (follows symlink)
+    OLLAMA_REAL_BIN="$(readlink -f /opt/homebrew/bin/ollama)"
+    OLLAMA_BIN_DIR="$(dirname "$OLLAMA_REAL_BIN")"
+    OLLAMA_LIB_DIR="$OLLAMA_BIN_DIR/lib/ollama"
+    
+    # Create the directory structure ollama expects
+    mkdir -p "$OLLAMA_LIB_DIR"
+    
+    # Symlink MLX library if it exists and isn't already linked
+    if [ -f /opt/homebrew/lib/libmlxc.dylib ] && [ ! -f "$OLLAMA_LIB_DIR/libmlxc.dylib" ]; then
+      ln -sf /opt/homebrew/lib/libmlxc.dylib "$OLLAMA_LIB_DIR/libmlxc.dylib"
+    fi
+    
+    # Run ollama serve
+    exec /opt/homebrew/bin/ollama serve
+  '';
+
   packages' = with pkgs; [
     mkalias
     nushell
-    ollama
   ];
 
   casks' =
@@ -46,7 +64,7 @@ in {
         };
 
         ollama-serve = {
-          command = "${pkgs.ollama}/bin/ollama serve";
+          command = "${ollamaWrapper}";
           serviceConfig = {
             KeepAlive = true;
             RunAtLoad = true;
@@ -121,6 +139,7 @@ in {
     brews = [
       "charmbracelet/tap/crush"
       "protonpass/tap/pass-cli"
+      "ollama"
     ];
   };
 
