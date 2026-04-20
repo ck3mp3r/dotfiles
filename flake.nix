@@ -53,15 +53,16 @@
   };
 
   outputs = {
-    self,
-    catppuccin,
+    base-nixpkgs,
     c5t,
+    catppuccin,
     home-manager,
+    laio,
     nix-darwin,
     nixpkgs-unstable,
     nu-mcp,
     nu-mods,
-    laio,
+    self,
     sops-nix,
     topiary-nu,
     ...
@@ -74,6 +75,7 @@
     stateVersion = "25.05";
 
     overlays = [
+      base-nixpkgs.overlays.default
       (final: prev: {
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
@@ -82,36 +84,6 @@
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         topiary = topiary-nu.packages.${system}.default;
-
-        # Override nushell to skip broken SHLVL tests in 0.112.1
-        nushell = prev.nushell.overrideAttrs (oldAttrs: {
-          checkPhase = let
-            skippedTests =
-              [
-                "repl::test_config_path::test_default_config_path"
-                "repl::test_config_path::test_xdg_config_bad"
-                "repl::test_config_path::test_xdg_config_empty"
-                # Add the failing SHLVL tests
-                "shell::environment::env::env_shlvl_in_repl"
-                "shell::environment::env::env_shlvl_in_exec_repl"
-              ]
-              ++ prev.lib.optionals prev.stdenv.hostPlatform.isDarwin [
-                "plugins::config::some"
-                "plugins::stress_internals::test_exit_early_local_socket"
-                "plugins::stress_internals::test_failing_local_socket_fallback"
-                "plugins::stress_internals::test_local_socket"
-                "shell::environment::env::path_is_a_list_in_repl"
-              ];
-            skippedTestsStr = prev.lib.concatStringsSep " " (prev.lib.map (testId: "--skip=\${testId}") skippedTests);
-          in ''
-            runHook preCheck
-
-            cargo test -j $NIX_BUILD_CORES --offline -- \
-              --test-threads=$NIX_BUILD_CORES ${skippedTestsStr}
-
-            runHook postCheck
-          '';
-        });
 
         # Override Python packages to use Python 3.13
         mitmproxy = final.python313Packages.toPythonApplication final.python313Packages.mitmproxy;
