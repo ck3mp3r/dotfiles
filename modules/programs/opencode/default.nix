@@ -135,19 +135,11 @@
           baseURL = "http://127.0.0.1:11434/v1";
         };
         models = {
-          "devstral-small-2:24b" = {
-            name = "devstral-small";
+          "gemma4:31b" = {
+            name = "gemma4";
             tool_call = true;
             limit = {
-              context = 131072;
-              output = 8192;
-            };
-          };
-          "qwen3-coder:30b" = {
-            name = "qwen3";
-            tool_call = true;
-            limit = {
-              context = 32768;
+              context = 262144;
               output = 8192;
             };
           };
@@ -159,7 +151,7 @@
               output = 8192;
             };
           };
-          "qwen3.5:35b" = {
+          "qwen3.6:35b-a3b-mxfp8" = {
             name = "qwen3.5";
             tool_call = true;
             limit = {
@@ -176,8 +168,24 @@
           baseURL = "http://192.168.1.73:8080/v1";
         };
         models = {
-          "mlx-community/Qwen3-Coder-Next-4bit" = {
+          "gemma4:31b" = {
+            name = "gemma4";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
+          "qwen3-coder-next:latest" = {
             name = "qwen3-next";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
+          "qwen3.6:35b-a3b-mxfp8" = {
+            name = "qwen3.5";
             tool_call = true;
             limit = {
               context = 262144;
