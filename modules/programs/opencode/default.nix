@@ -72,6 +72,13 @@
       };
     };
 
+    # Compaction configuration - control when context window triggers compaction
+    compaction = {
+      auto = true;    # Automatically compact when context is full
+      prune = true;   # Remove old tool outputs to save tokens
+      reserved = 20000; # Token buffer for compaction (leaves room before hitting 200k limit)
+    };
+
     # Custom provider configuration
     provider = {
       # GitHub Copilot - Override context limits for Claude models
