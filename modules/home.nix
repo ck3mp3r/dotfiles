@@ -22,7 +22,6 @@
 
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix
-    ./programs/aerospace
     ./programs/alacritty
     ./programs/atuin
     ./programs/bat
@@ -34,7 +33,6 @@
     ./programs/idea
     ./programs/k9s
     ./programs/laio
-    ./programs/leader-key
     ./programs/opencode
     ./programs/starship.nix
     # ./programs/tmux

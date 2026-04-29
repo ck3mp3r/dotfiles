@@ -16,7 +16,7 @@
       {
         TERM = "xterm-256color";
         EDITOR = "nvim";
-        TESTCONTAINERS_RYUK_DISABLED = true;
+        TESTCONTAINERS_RYUK_DISABLED = "true";
         ZVM_VI_INSERT_ESCAPE_BINDKEY = "jk";
         ZVM_INIT_MODE = "sourcing";
       }

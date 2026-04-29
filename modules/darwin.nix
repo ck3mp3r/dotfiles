@@ -15,15 +15,15 @@
     OLLAMA_REAL_BIN="$(readlink -f /opt/homebrew/bin/ollama)"
     OLLAMA_BIN_DIR="$(dirname "$OLLAMA_REAL_BIN")"
     OLLAMA_LIB_DIR="$OLLAMA_BIN_DIR/lib/ollama"
-    
+
     # Create the directory structure ollama expects
     mkdir -p "$OLLAMA_LIB_DIR"
-    
+
     # Symlink MLX library if it exists and isn't already linked
     if [ -f /opt/homebrew/lib/libmlxc.dylib ] && [ ! -f "$OLLAMA_LIB_DIR/libmlxc.dylib" ]; then
       ln -sf /opt/homebrew/lib/libmlxc.dylib "$OLLAMA_LIB_DIR/libmlxc.dylib"
     fi
-    
+
     # Run ollama serve
     exec /opt/homebrew/bin/ollama serve
   '';
@@ -39,12 +39,7 @@
       "alacritty"
       "arc"
       "claude-code"
-      "cleanshot"
       "ghostty"
-      "leader-key"
-      "nikitabobko/tap/aerospace"
-      "obsidian"
-      "pop-app"
       "zen"
     ]
     ++ casks;
@@ -179,7 +174,7 @@ in {
           "/Applications/Arc.app"
           "/Applications/Ghostty.app"
           # "${pkgs.utm}/Applications/UTM.app"
-          "/Applications/Obsidian.app"
+          # "/Applications/Obsidian.app"
           # "/Applications/Parallels Desktop.app"
           "/System/Applications/Mail.app"
           "/System/Applications/Calendar.app"

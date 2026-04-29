@@ -1,6 +1,7 @@
-{pkgs, ...}: let
+{pkgs, lib, ...}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
   yamlFormat = pkgs.formats.yaml {};
+  gooseConfigFile = yamlFormat.generate "goose-config" config;
   goose-cli-nocheck = pkgs.goose-cli.overrideAttrs (oldAttrs: {
     doCheck = false;
   });
@@ -226,8 +227,9 @@ in {
     pkgs.nu-mcp
     pkgs.nu-mcp-tools
   ];
-  home.file.".config/goose/config.yaml".source = yamlFormat.generate "goose-config" config;
-  home.file.".config/goose/config.yaml".force = true;
+  home.activation.gooseConfigCopy = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    install -Dm644 ${gooseConfigFile} "$HOME/.config/goose/config.yaml"
+  '';
 
   # Symlink OpenCode AGENTS.md into Goose config directory
   home.file.".config/goose/AGENTS.md".source = ../opencode/AGENTS.md;

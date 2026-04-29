@@ -32,3 +32,4 @@ source ~/.config/nushell/git.nu
 source ~/.config/nushell/direnv.nu
 source ~/.config/nushell/laio.nu
 source ~/.config/nushell/carapace.nu
+source ~/.config/nushell/nu-agent.nu
