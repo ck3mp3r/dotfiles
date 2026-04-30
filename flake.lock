@@ -811,11 +811,11 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1777270999,
-        "narHash": "sha256-sfBrFRjcmYtwUidvaruYSkpiLvObNq+yU6QjXa1m6aI=",
+        "lastModified": 1777582514,
+        "narHash": "sha256-7zmBWUmjcBaONaHVXD5m0jC63vuSEcbXoRWr4aut5gw=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "3583fc57e8e53518d9c3be105f00e31befbd790e",
+        "rev": "fcab6af2ea2340f43169fd31bde91aad320d9968",
         "type": "github"
       },
       "original": {
