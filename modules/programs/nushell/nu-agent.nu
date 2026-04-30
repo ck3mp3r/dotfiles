@@ -1,8 +1,25 @@
 $env.config.plugins.agent = {
+  mcp: {
+    c5t: {
+      transport: "sse"
+      url: "http://0.0.0.0:3737/mcp"
+    }
+    nu: {
+      transport: "stdio"
+      command: "nu-mcp"
+      args: [
+        "--add-path"
+        "/tmp"
+        "--add-path"
+        "/nix/store"
+      ]
+      env: {GIT_PAGER: ""}
+    }
+  }
   model: "github-copilot/anthropic/claude-sonnet-4.5"
   providers: {
     "ollama": {
-      base_url: "http://192.168.1.73:11434/v1"
+      # base_url: "http://192.168.1.73:11434/v1"
       models: {
         "gemma4:31b": {}
         "qwen3.6:27b-coding-mxfp8": {}
