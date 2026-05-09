@@ -74,8 +74,8 @@
 
     # Compaction configuration - control when context window triggers compaction
     compaction = {
-      auto = true;    # Automatically compact when context is full
-      prune = true;   # Remove old tool outputs to save tokens
+      auto = true; # Automatically compact when context is full
+      prune = true; # Remove old tool outputs to save tokens
       reserved = 20000; # Token buffer for compaction (leaves room before hitting 200k limit)
     };
 
@@ -357,6 +357,7 @@
 in {
   home.file.".config/opencode/opencode.json".text = builtins.toJSON opencode-config;
   home.file.".config/opencode/AGENTS.md".source = ./AGENTS.md;
+  home.file.".agents/AGENTS.md".source = ./AGENTS.md;
 
   # Agent markdown templates with Nix substitutions
   home.file.".config/opencode/agents/developer.md".text =
