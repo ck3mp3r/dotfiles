@@ -1,7 +1,14 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
+  nuMcpTools = "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools";
+in {
   home.file.".config/nushell/git.nu".source = ./git.nu;
   home.file.".config/nushell/direnv.nu".source = ./direnv.nu;
-  home.file.".config/nushell/nu-agent.nu".source = ./nu-agent.nu;
+  home.file.".config/nushell/nu-agent.nu".text = 
+    builtins.replaceStrings
+      ["NU_MCP_PATH" "NU_MCP_TOOLS_PATH"]
+      [nuMcp nuMcpTools]
+      (builtins.readFile ./nu-agent.nu);
 
   # home. activation. registerNushellPlugins = ''
   #   ${pkgs.nushell}/bin/nu —no-config-file -c 'plugin add --plugin-config $"($env.HOME)/.config/nushell/plugin-msgpackz" ${pkgs.nu-agent}/bin/nu_plugin_agent'
