@@ -11,7 +11,8 @@ $env.config.plugins.agent = {
     "github-copilot": {
       # ✅ Separate provider entry
       api_key: (open ~/.local/share/opencode/auth.json | get github-copilot.access)
-      base_url: "https://api.individual.githubcopilot.com"
+      # base_url: "https://api.individual.githubcopilot.com"
+      base_url: "https://api.githubcopilot.com"
       models: {
         "openai/gpt-5.3-codex": {
           limit: {
@@ -26,6 +27,12 @@ $env.config.plugins.agent = {
           }
         }
         "anthropic/claude-opus-4.5": {
+          limit: {
+            context: 200000
+            output: 8192
+          }
+        }
+        "anthropic/claude-opus-4.6": {
           limit: {
             context: 200000
             output: 8192
