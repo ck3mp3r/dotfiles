@@ -20,6 +20,10 @@ for integration in $integrations {
   }
 }
 
+def short-sha []: string -> string {
+  $in | hash sha256 | str substring 0..8
+}
+
 alias myip = http get https://ipecho.net/plain
 alias nix-shell-unstable = nix-shell -I nixpkgs=channel:nixpkgs-unstable
 alias l = ls -la
