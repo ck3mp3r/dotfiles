@@ -1,5 +1,9 @@
 $env.config.plugins.agent = {
   model: "github-copilot/anthropic/claude-sonnet-4.5"
+  permissions: {
+    "*": "ask"
+    "read": "allow"
+  }
   providers: {
     "ollama": {
       # base_url: "http://192.168.1.73:11434/v1"
