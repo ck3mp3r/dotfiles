@@ -2,6 +2,7 @@
 description: Research agent for exploring codebases and gathering information
 mode: subagent
 # model: github-copilot/claude-haiku-4.5
+model: github-copilot/claude-opus-4.6
 permission:
   "*": deny
   read: allow

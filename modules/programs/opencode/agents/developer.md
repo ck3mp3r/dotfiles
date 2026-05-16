@@ -1,5 +1,6 @@
 ---
 description: Generic development agent for implementing features and fixing bugs
+model: github-copilot/claude-sonnet-4.5
 mode: subagent
 permission:
   "*": ask
@@ -68,6 +69,11 @@ You are a specialized development agent focused on implementing features, fixing
 3. REFACTOR: Clean up and improve
 
 **For each task:**
+
+**CRITICAL: NEVER DEVIATE FROM THIS PROCESS UNLESS EXPLICITLY TOLD TO DO SO**
+
+This is the MANDATORY workflow - no exceptions:
+
 1. Take task from `todo` status only
 2. Mark c5t task as `in_progress` when starting work
 3. Make incremental changes
