@@ -16,6 +16,7 @@ load-env {
   PATH: (
     $env.PATH | prepend [
       $"($env.HOME)/.nix-profile/bin"
+      $"($env.HOME)/.local/state/nix/profiles/profile/bin"
       $"($env.HOME)/.local/bin"
       $"($env.HOME)/.config/dotfiles/bin"
       $"/etc/profiles/per-user/($env.USER)/bin"

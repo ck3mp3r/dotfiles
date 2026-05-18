@@ -138,12 +138,7 @@
       "christian" = makeDarwinConfiguration {
         username = "christian";
         casks = [
-          "parallels"
         ];
-      };
-      "christian_kemper" = makeDarwinConfiguration {
-        username = "christian.kemper";
-        casks = ["utm"];
       };
     };
 
