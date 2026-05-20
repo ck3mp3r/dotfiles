@@ -6,7 +6,6 @@ temperature: 0.2
 permission:
   "*": ask
   read: allow
-  write: deny
   edit: deny
   grep: allow
   glob: allow

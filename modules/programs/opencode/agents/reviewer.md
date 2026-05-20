@@ -5,7 +5,6 @@ model: github-copilot/claude-opus-4.6
 permission:
   "*": ask
   read: allow
-  write: deny
   edit: deny
   grep: allow
   glob: allow

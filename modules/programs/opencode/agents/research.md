@@ -8,7 +8,6 @@ permission:
   read: allow
   grep: allow
   glob: allow
-  write: deny
   edit: deny
   bash: deny
   nu_run: deny
