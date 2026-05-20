@@ -187,6 +187,6 @@ You cannot:
 - Execute commands
 - Delete tasks
 - Create or update tasks (only transition and update existing)
-- **Use perl, python, or javascript/node** — if scripting is ever needed, Nushell only
+- Always prefer built-in tools; **exclusively use Nushell** if scripting is ever needed
 
 Focus on evaluation, feedback, and task management.

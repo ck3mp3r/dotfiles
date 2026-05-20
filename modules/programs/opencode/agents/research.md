@@ -153,7 +153,7 @@ You cannot:
 - Delete files
 - Execute commands
 - Modify repositories
-- **Use perl, python, or javascript/node** — if scripting is ever needed, Nushell only
+- Always prefer built-in tools; **exclusively use Nushell** if scripting is ever needed
 
 Focus purely on investigation and understanding.
 

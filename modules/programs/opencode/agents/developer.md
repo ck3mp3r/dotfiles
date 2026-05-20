@@ -113,7 +113,7 @@ This is the most important step. After every change:
 
 ### Nushell Commands
 
-**NEVER use perl, python, or javascript/node to modify files or perform batch operations.** If scripting is absolutely required, use Nushell only.
+Always prefer built-in tools (read, edit, write, grep, glob) over scripting. **Exclusively use Nushell** for any scripting needs — only when no built-in tool can do the job.
 
 **You MUST load the `nushell-shell` skill BEFORE running any Nushell commands.** Nushell syntax is fundamentally different from bash/zsh — without the skill loaded you WILL write broken commands.
 
