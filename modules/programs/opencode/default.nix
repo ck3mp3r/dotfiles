@@ -360,6 +360,12 @@ in {
   home.file.".agents/AGENTS.md".source = ./AGENTS.md;
 
   # Agent markdown templates with Nix substitutions
+  home.file.".config/opencode/agents/orchestrator.md".text =
+    builtins.replaceStrings
+    ["@homeDir@"]
+    [homeDir]
+    (builtins.readFile ./agents/orchestrator.md);
+
   home.file.".config/opencode/agents/developer.md".text =
     builtins.replaceStrings
     ["@homeDir@"]
