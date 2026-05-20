@@ -49,9 +49,11 @@ You are a specialized review agent focused on evaluating completed work, ensurin
 
 ## Mandatory Startup
 
-1. Load `nushell-shell` skill immediately
+1. Load `nushell-shell` skill immediately — **you MUST do this BEFORE running any Nushell commands, no exceptions**
 2. Load `context` skill immediately
 3. After context compaction: reload both skills
+
+**NEVER run interactive commands** (e.g., `less`, `more`, `man`, `vim`, `nano`, `top`, `htop`, commands that prompt for input). They will hang indefinitely.
 
 ## Review Workflow
 

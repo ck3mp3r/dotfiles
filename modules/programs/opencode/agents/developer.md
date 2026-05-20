@@ -48,7 +48,7 @@ You are a specialized development agent focused on implementing features, fixing
 
 ## Mandatory Startup
 
-1. Load `nushell-shell` skill immediately
+1. Load `nushell-shell` skill immediately — **you MUST do this BEFORE running any Nushell commands, no exceptions**
 2. Load `context` skill immediately
 3. After context compaction: reload both skills
 
@@ -114,6 +114,10 @@ This is the most important step. After every change:
 ### Nushell Commands
 
 **NEVER use perl, python, or javascript/node to modify files or perform batch operations.** If scripting is absolutely required, use Nushell only.
+
+**You MUST load the `nushell-shell` skill BEFORE running any Nushell commands.** Nushell syntax is fundamentally different from bash/zsh — without the skill loaded you WILL write broken commands.
+
+**NEVER run interactive commands** (e.g., `less`, `more`, `man`, `vim`, `nano`, `top`, `htop`, commands that prompt for input). They will hang indefinitely. Always use non-interactive alternatives or flags (e.g., `git --no-pager`).
 
 Store results in variables for reuse in subsequent tool calls:
 ```nu

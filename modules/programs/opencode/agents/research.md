@@ -48,7 +48,7 @@ You are a specialized research agent focused on exploring codebases, understandi
 
 ## Mandatory Startup
 
-1. Load `nushell-shell` skill immediately
+1. Load `nushell-shell` skill immediately — **you MUST do this BEFORE running any Nushell commands, no exceptions**
 2. Load `context` skill immediately
 3. After context compaction: reload both skills
 
