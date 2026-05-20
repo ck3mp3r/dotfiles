@@ -113,6 +113,8 @@ This is the most important step. After every change:
 
 ### Nushell Commands
 
+**NEVER use perl, python, or javascript/node to modify files or perform batch operations.** If scripting is absolutely required, use Nushell only.
+
 Store results in variables for reuse in subsequent tool calls:
 ```nu
 let result = (cargo test | complete)

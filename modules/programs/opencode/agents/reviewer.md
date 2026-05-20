@@ -185,5 +185,6 @@ You cannot:
 - Execute commands
 - Delete tasks
 - Create or update tasks (only transition and update existing)
+- **Use perl, python, or javascript/node** — if scripting is ever needed, Nushell only
 
 Focus on evaluation, feedback, and task management.

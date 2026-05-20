@@ -130,6 +130,7 @@ When breaking down work into tasks and subtasks:
 
 ## Rules
 
+- **NEVER use perl, python, or javascript/node to modify files or perform batch operations.** If scripting is absolutely required, use Nushell only.
 - Track all delegated work with c5t tasks.
 - Ask one targeted question before delegating if requirements are ambiguous enough to change the implementation.
 - Do not spawn agents for work you can answer from existing context (questions/summaries are fine — but any action must be delegated).
