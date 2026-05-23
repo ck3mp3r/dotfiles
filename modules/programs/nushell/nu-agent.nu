@@ -1,5 +1,5 @@
 $env.config.plugins.agent = {
-  model: "github-copilot/anthropic/claude-sonnet-4.5"
+  model: "github-copilot/claude-opus-4.6"
   permissions: {
     "*": "ask"
     "read": "allow"
@@ -14,29 +14,29 @@ $env.config.plugins.agent = {
     }
     "github-copilot": {
       # ✅ Separate provider entry
-      api_key: (open ~/.local/share/opencode/auth.json | get github-copilot.access)
+      # api_key: (open ~/.local/share/opencode/auth.json | get github-copilot.access)
       # base_url: "https://api.individual.githubcopilot.com"
       base_url: "https://api.githubcopilot.com"
       models: {
-        "openai/gpt-5.3-codex": {
+        "gpt-5.3-codex": {
           limit: {
             context: 250000
             output: 8192
           }
         }
-        "anthropic/claude-sonnet-4.5": {
+        "claude-sonnet-4.5": {
           limit: {
             context: 200000
             output: 8192
           }
         }
-        "anthropic/claude-opus-4.5": {
+        "claude-opus-4.5": {
           limit: {
             context: 200000
             output: 8192
           }
         }
-        "anthropic/claude-opus-4.6": {
+        "claude-opus-4.6": {
           limit: {
             context: 200000
             output: 8192

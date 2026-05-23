@@ -6,7 +6,7 @@ temperature: 0.2
 permission:
   "*": ask
   read: allow
-  edit: allow
+  edit: deny
   grep: allow
   glob: allow
   bash: deny
@@ -102,6 +102,17 @@ Do not silently retry the same delegation. Each retry must change something.
 
 ## Context Management with c5t
 
+### ⚠️ C5T TASKS ARE MANDATORY
+
+**You MUST create c5t tasks BEFORE delegating ANY work to subagents.** Never delegate work without a corresponding c5t task. The process is:
+
+1. Break down the work into tasks
+2. Create them in c5t (they start in `backlog`)
+3. Transition to `todo` when ready
+4. THEN delegate to a subagent, referencing the task ID
+
+If you delegate without creating a task first, the developer has nothing to transition and the entire workflow breaks.
+
 ### Task Lists
 
 - **Always check for existing task lists first** — use `c5t_list_task_lists` before creating new ones
@@ -125,7 +136,7 @@ When breaking down work into tasks and subtasks:
 - When ready for delegation, orchestrator transitions them to `todo`
 - **NEVER mark tasks `in_progress`** — only the developer does that when they pick up the task
 - **NEVER mark tasks `review`** — only the developer does that when they finish
-- Use reviewer agent to transition tasks to `done`
+- **NEVER mark tasks `done`** — only the reviewer does that after passing review
 - Create projects per major effort; link tasks and repos
 - Keep session notes tagged with `session`
 
