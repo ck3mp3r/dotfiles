@@ -16,7 +16,7 @@ $env.config.plugins.agent = {
       # ✅ Separate provider entry
       # api_key: (open ~/.local/share/opencode/auth.json | get github-copilot.access)
       # base_url: "https://api.individual.githubcopilot.com"
-      base_url: "https://api.githubcopilot.com"
+      # base_url: "https://api.githubcopilot.com"
       models: {
         "gpt-5.3-codex": {
           limit: {
