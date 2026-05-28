@@ -18,7 +18,7 @@ permission:
   c5t_create*: ask
   c5t_update*: ask
   c5t_edit*: ask
-  c5t_transition*: allow
+   c5t_transition*: allow
   c5t_delete*: ask
   context7*: allow
   tmux_*: deny
