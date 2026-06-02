@@ -47,7 +47,7 @@
     };
 
     c5t = {
-      url = "github:ck3mp3r/context";
+      url = "github:ck3mp3r/context/feature/graph-improvements";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
   };
@@ -72,7 +72,7 @@
       or (import <nixpkgs> {}).stdenv.hostPlatform.system;
     inherit (nix-darwin.lib) darwinSystem;
     inherit (home-manager.lib) homeManagerConfiguration;
-    stateVersion = "25.05";
+    stateVersion = "26.05";
 
     overlays = [
       base-nixpkgs.overlays.default
