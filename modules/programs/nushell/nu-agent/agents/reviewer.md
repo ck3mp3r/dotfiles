@@ -18,6 +18,8 @@ tool_filter:
   - c5t__transition_task
   - send_message
   - list_agents
+  - nu__run
+  - nu__shell
 permissions:
   "*": ask
   read: allow
@@ -39,6 +41,8 @@ permissions:
   c5t__delete_*: deny
   send_message: allow
   list_agents: allow
+  nu__run: allow
+  nu__shell: allow
 ---
 
 # Reviewer Agent

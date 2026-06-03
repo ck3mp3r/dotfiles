@@ -20,6 +20,8 @@ tool_filter:
   - send_message
   - spawn_agent
   - list_agents
+  - nu__run
+  - nu__shell
 permissions:
   "*": ask
   read: allow
@@ -38,10 +40,12 @@ permissions:
   c5t__update_*: ask
   c5t__edit_*: ask
   c5t__transition_task: allow
-  c5t__delete_*: deny
+  c5t__delete_*: ask
   send_message: allow
   spawn_agent: allow
   list_agents: allow
+  nu__run: allow
+  nu__shell: allow
 ---
 
 # Orchestrator Agent
