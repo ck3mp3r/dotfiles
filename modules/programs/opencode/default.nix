@@ -8,8 +8,8 @@
 
   opencode-config = {
     "$schema" = "https://opencode.ai/config.json";
-    model = "github-copilot/claude-sonnet-4.5";
-    small_model = "github-copilot/claude-haiku-4.5";
+    model = "github-copilot/claude-sonnet-4.6";
+    small_model = "github-copilot/claude-haiku-4.6";
     autoupdate = false;
 
     # Disable LSP support globally
