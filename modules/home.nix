@@ -41,6 +41,12 @@
     ./programs/zsh
   ];
 
+  # Catppuccin theme configuration
+  catppuccin = {
+    enable = true;
+    autoEnable = false;
+  };
+
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
