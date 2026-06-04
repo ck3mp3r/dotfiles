@@ -8,8 +8,8 @@ $env.config.plugins.agent = {
     "ollama": {
       # base_url: "http://192.168.1.73:11434/v1"
       models: {
-        "gemma4:31b": {}
-        "qwen3.6:27b-coding-mxfp8": {}
+        "gemma4:31b-mlx": {}
+        "qwen3.6:27b-mlx": {}
       }
     }
     "github-copilot": {
