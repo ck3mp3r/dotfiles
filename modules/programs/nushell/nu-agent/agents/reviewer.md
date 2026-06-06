@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
-model: github-copilot/claude-opus-4.6
+model: github-copilot/claude-opus-4.5
 tool_filter:
   - read
   - glob

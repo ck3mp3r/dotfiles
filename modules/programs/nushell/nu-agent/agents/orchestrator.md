@@ -1,7 +1,7 @@
 ---
 name: orchestrator
 description: Decomposes complex tasks and delegates to specialized agents in parallel
-model: github-copilot/claude-opus-4.6
+model: github-copilot/claude-opus-4.5
 tool_filter:
   - read
   - glob

@@ -1,5 +1,5 @@
 $env.config.plugins.agent = {
-  model: "github-copilot/claude-opus-4.6"
+  model: "github-copilot/claude-opus-4.5"
   permissions: {
     "*": "ask"
     "read": "allow"
@@ -10,6 +10,7 @@ $env.config.plugins.agent = {
       models: {
         "gemma4:31b-mlx": {}
         "qwen3.6:27b-mlx": {}
+        "qwen3.6:27b-coding-mxfp8": {}
       }
     }
     "github-copilot": {
@@ -25,6 +26,12 @@ $env.config.plugins.agent = {
           }
         }
         "claude-sonnet-4.6": {
+          limit: {
+            context: 168000
+            output: 8192
+          }
+        }
+        "claude-opus-4.5": {
           limit: {
             context: 168000
             output: 8192
