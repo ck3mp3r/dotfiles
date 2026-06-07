@@ -9,6 +9,7 @@ $env.config.plugins.agent = {
       # base_url: "http://192.168.1.73:11434/v1"
       models: {
         "gemma4:31b-mlx": {}
+        "gemma4:26b-mlx": {}
         "qwen3.6:27b-mlx": {}
         "qwen3.6:27b-coding-mxfp8": {}
       }
