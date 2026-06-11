@@ -1,25 +1,7 @@
 ---
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
-model: github-copilot/claude-opus-4.5
-tool_filter:
-  - read
-  - glob
-  - grep
-  - skill
-  - nu__*
-  - context7__*
-  - c5t__get_*
-  - c5t__list_*
-  - c5t__read_note
-  - c5t__create_note
-  - c5t__edit_note
-  - c5t__update_task
-  - c5t__transition_task
-  - send_message
-  - list_agents
-  - nu__run
-  - nu__shell
+model: github-copilot/claude-opus-4.7
 permissions:
   "*": ask
   read: allow

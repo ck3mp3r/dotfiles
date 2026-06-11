@@ -1,27 +1,7 @@
 ---
 name: orchestrator
 description: Decomposes complex tasks and delegates to specialized agents in parallel
-model: github-copilot/claude-opus-4.5
-tool_filter:
-  - read
-  - glob
-  - grep
-  - skill
-  - nu__*
-  - context7__*
-  - c5t__get_*
-  - c5t__list_*
-  - c5t__read_note
-  - c5t__create_*
-  - c5t__update_*
-  - c5t__edit_*
-  - c5t__transition_task
-  - c5t__delete_*
-  - send_message
-  - spawn_agent
-  - list_agents
-  - nu__run
-  - nu__shell
+model: github-copilot/claude-opus-4.7
 permissions:
   "*": ask
   read: allow

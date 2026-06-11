@@ -2,27 +2,6 @@
 name: developer
 description: Generic development agent for implementing features and fixing bugs
 model: github-copilot/claude-sonnet-4.6
-tool_filter:
-  - read
-  - edit
-  - patch
-  - glob
-  - grep
-  - skill
-  - nu__*
-  - context7__*
-  - c5t__get_*
-  - c5t__list_*
-  - c5t__read_note
-  - c5t__create_*
-  - c5t__update_*
-  - c5t__edit_*
-  - c5t__transition_task
-  - c5t__delete_*
-  - send_message
-  - list_agents
-  - nu__run
-  - nu__shell
 permissions:
   "*": ask
   read: allow

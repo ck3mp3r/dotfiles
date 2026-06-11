@@ -1,5 +1,5 @@
 $env.config.plugins.agent = {
-  model: "github-copilot/claude-opus-4.5"
+  model: "github-copilot/claude-opus-4.7"
   permissions: {
     "*": "ask"
     "read": "allow"

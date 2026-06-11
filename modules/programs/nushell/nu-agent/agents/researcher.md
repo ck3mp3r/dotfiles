@@ -2,23 +2,6 @@
 name: researcher
 description: Research agent for exploring codebases and gathering information
 model: github-copilot/claude-sonnet-4.6
-tool_filter:
-  - read
-  - glob
-  - grep
-  - skill
-  - context7__*
-  - c5t__get_*
-  - c5t__list_*
-  - c5t__read_note
-  - c5t__create_note
-  - c5t__edit_note
-  - c5t__update_task
-  - c5t__transition_task
-  - send_message
-  - list_agents
-  - nu__run
-  - nu__shell
 permissions:
   "*": deny
   read: allow
