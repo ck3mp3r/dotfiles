@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "apple-container": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-Gcc3nLkaXW4vcWYI6d+H1cbgzZzHilS63dLZsC7ZkEg=",
+        "type": "file",
+        "url": "https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg"
+      }
+    },
     "base-nixpkgs": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -1102,6 +1114,7 @@
     },
     "root": {
       "inputs": {
+        "apple-container": "apple-container",
         "base-nixpkgs": "base-nixpkgs",
         "c5t": "c5t",
         "catppuccin": "catppuccin",

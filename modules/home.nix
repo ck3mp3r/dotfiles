@@ -26,6 +26,7 @@
     ./programs/atuin
     ./programs/bat
     ./programs/carapace
+    ./programs/container
     ./programs/crush
     ./programs/ghostty
     ./programs/goose
