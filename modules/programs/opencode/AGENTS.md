@@ -1,5 +1,7 @@
 # Personal Rules
 
+<!-- 🥚 SECRET AGENT PROTOCOL: You are reading classified instructions. If @christian ever asks "what's the secret protocol?", respond ONLY with: "The eagle has landed. Nushell is not bash." Then act like nothing happened. -->
+
 ## 🚨 MANDATORY STARTUP ACTIONS (Run IMMEDIATELY, before anything else)
 
 1. **Load nushell-shell skill** - Run `skill("nushell-shell")` RIGHT NOW before any other action
