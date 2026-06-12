@@ -131,11 +131,18 @@ in {
     enable = true;
     # onActivation.cleanup = "zap";
     casks = casks';
+    taps = [
+      "charmbracelet/tap"
+      "protonpass/tap"
+    ];
     brews = [
       "charmbracelet/tap/crush"
       "protonpass/tap/pass-cli"
       "ollama"
     ];
+    onActivation.extraEnv = {
+      HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
+    };
   };
 
   # Set Git commit hash for darwin-version.
