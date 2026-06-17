@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
-model: github-copilot/claude-opus-4.7
+model: github-copilot/claude-sonnet-4.6
 permissions:
   "*": ask
   read: allow

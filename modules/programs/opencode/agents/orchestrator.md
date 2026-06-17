@@ -1,7 +1,7 @@
 ---
 description: Decomposes complex tasks and delegates to specialized agents in parallel
 mode: primary
-model: github-copilot/claude-opus-4.6
+model: github-copilot/claude-sonnet-4.6
 temperature: 0.2
 permission:
   "*": ask

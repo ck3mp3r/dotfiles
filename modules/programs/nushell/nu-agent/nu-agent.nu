@@ -3,6 +3,12 @@ $env.config.plugins.agent = {
   permissions: {
     "*": "ask"
     "read": "allow"
+    "nu__run": {
+      "command": {
+        "echo \"bar\"": allow
+        "echo \"foo\"": deny
+      }
+    }
   }
   providers: {
     "ollama": {
