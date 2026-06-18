@@ -90,19 +90,13 @@
               output = 8192;
             };
           };
+          "claude-opus-4.7" = {
+            limit = {
+              context = 200000;
+              output = 8192;
+            };
+          };
           "claude-sonnet-4.6" = {
-            limit = {
-              context = 200000;
-              output = 8192;
-            };
-          };
-          "claude-opus-4.5" = {
-            limit = {
-              context = 200000;
-              output = 8192;
-            };
-          };
-          "claude-sonnet-4.5" = {
             limit = {
               context = 200000;
               output = 8192;
@@ -142,7 +136,7 @@
           baseURL = "http://127.0.0.1:11434/v1";
         };
         models = {
-          "gemma4:31b" = {
+          "gemma4:31b-mlx" = {
             name = "gemma4";
             tool_call = true;
             limit = {
@@ -150,15 +144,7 @@
               output = 8192;
             };
           };
-          "qwen3-coder-next:latest" = {
-            name = "qwen3-next";
-            tool_call = true;
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "qwen3.6:35b-a3b-mxfp8" = {
+          "qwen3.6:35b-mlx" = {
             name = "qwen3.6";
             tool_call = true;
             limit = {
@@ -175,7 +161,7 @@
           baseURL = "http://192.168.1.73:11434/v1";
         };
         models = {
-          "gemma4:31b" = {
+          "gemma4:31b-mlx" = {
             name = "gemma4";
             tool_call = true;
             limit = {
@@ -183,15 +169,7 @@
               output = 8192;
             };
           };
-          "qwen3-coder-next:latest" = {
-            name = "qwen3-next";
-            tool_call = true;
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "qwen3.6:35b-a3b-mxfp8" = {
+          "qwen3.6:35b-mlx" = {
             name = "qwen3.6";
             tool_call = true;
             limit = {
