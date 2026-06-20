@@ -31,6 +31,15 @@ alias lg = lazygit
 alias k = kubectl
 alias kx = kubectx
 
+def ollama-restart [] {
+  launchctl kickstart -k gui/(id -u)/org.nixos.ollama-serve
+}
+
+def ollama-clean-restart [] {
+  launchctl unload ~/Library/LaunchAgents/org.nixos.ollama-serve.plist
+  launchctl load ~/Library/LaunchAgents/org.nixos.ollama-serve.plist
+}
+
 source ~/.config/nushell/atuin.nu
 source ~/.config/nushell/git.nu
 source ~/.config/nushell/direnv.nu
