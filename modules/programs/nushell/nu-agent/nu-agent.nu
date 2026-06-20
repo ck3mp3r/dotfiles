@@ -43,7 +43,19 @@ $env.config.plugins.agent = {
       provider: "ollama"
       base_url: "http://192.168.1.73:11434"
       models: {
+        "gemma4:26b-mlx": {
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
         "gemma4:31b-mlx": {
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
+        "qwen3.6:27b-mlx": {
           limit: {
             context: 262144
             output: 8192

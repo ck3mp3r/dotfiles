@@ -136,8 +136,24 @@
           baseURL = "http://127.0.0.1:11434/v1";
         };
         models = {
+          "gemma4:26b-mlx" = {
+            name = "gemma4:26b";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
           "gemma4:31b-mlx" = {
-            name = "gemma4";
+            name = "gemma4:31b";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
+          "qwen3.6:27b-mlx" = {
+            name = "qwen3.6:27b";
             tool_call = true;
             limit = {
               context = 262144;
@@ -145,7 +161,7 @@
             };
           };
           "qwen3.6:35b-mlx" = {
-            name = "qwen3.6";
+            name = "qwen3.6:35b";
             tool_call = true;
             limit = {
               context = 262144;
@@ -161,8 +177,24 @@
           baseURL = "http://192.168.1.73:11434/v1";
         };
         models = {
+          "gemma4:26b-mlx" = {
+            name = "gemma4:26b";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
           "gemma4:31b-mlx" = {
-            name = "gemma4";
+            name = "gemma4:31b";
+            tool_call = true;
+            limit = {
+              context = 262144;
+              output = 8192;
+            };
+          };
+          "qwen3.6:27b-mlx" = {
+            name = "qwen3.6:27b";
             tool_call = true;
             limit = {
               context = 262144;
@@ -170,7 +202,7 @@
             };
           };
           "qwen3.6:35b-mlx" = {
-            name = "qwen3.6";
+            name = "qwen3.6:35b";
             tool_call = true;
             limit = {
               context = 262144;
