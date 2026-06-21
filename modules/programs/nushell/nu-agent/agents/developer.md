@@ -7,6 +7,7 @@ permissions:
   read: allow
   edit: allow
   patch: allow
+  http: allow
   glob: allow
   grep: allow
   skill: allow

@@ -11,7 +11,22 @@ $env.config.plugins.agent = {
     }
   }
   providers: {
-    "ollama": {
+    thaura: {
+      name: "Thaura AI"
+      provider: "openai"
+      api_key: (^security find-generic-password -s "THAURA_KEY" -w | str trim)
+      base_url: "https://backend.thaura.ai/v1"
+      models: {
+        thaura: {
+          name : "Thaura"
+          limit: {
+            context: 131072
+            output: 65536
+          }
+        }
+      }
+    }
+    ollama: {
       models: {
         "gemma4:26b-mlx": {
           limit: {

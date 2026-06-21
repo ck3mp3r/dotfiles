@@ -8,8 +8,8 @@
 
   opencode-config = {
     "$schema" = "https://opencode.ai/config.json";
-    model = "github-copilot/claude-sonnet-4.6";
-    small_model = "github-copilot/claude-haiku-4.6";
+    # model = "github-copilot/claude-sonnet-4.6";
+    # small_model = "github-copilot/claude-haiku-4.6";
     autoupdate = false;
 
     # Disable LSP support globally
@@ -139,6 +139,16 @@
           "gemma4:26b-mlx" = {
             name = "gemma4:26b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -147,6 +157,16 @@
           "gemma4:31b-mlx" = {
             name = "gemma4:31b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -155,6 +175,16 @@
           "qwen3.6:27b-mlx" = {
             name = "qwen3.6:27b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -163,6 +193,16 @@
           "qwen3.6:35b-mlx" = {
             name = "qwen3.6:35b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -180,6 +220,16 @@
           "gemma4:26b-mlx" = {
             name = "gemma4:26b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -188,6 +238,16 @@
           "gemma4:31b-mlx" = {
             name = "gemma4:31b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -196,6 +256,16 @@
           "qwen3.6:27b-mlx" = {
             name = "qwen3.6:27b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -204,6 +274,16 @@
           "qwen3.6:35b-mlx" = {
             name = "qwen3.6:35b";
             tool_call = true;
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
