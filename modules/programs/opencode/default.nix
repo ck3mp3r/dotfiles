@@ -408,12 +408,8 @@
         enabled = true;
       };
       context7 = {
-        type = "local";
-        command = [
-          nuMcp
-          "--tools-dir"
-          "${pkgs.nu-mcp-tools}/share/nushell/mcp-tools/c67"
-        ];
+        type = "remote";
+        url = "https://mcp.context7.com/mcp";
         enabled = true;
       };
       argocd = {

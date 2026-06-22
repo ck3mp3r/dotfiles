@@ -153,12 +153,8 @@ $env.config.plugins.agent = {
       ]
     }
     context7: {
-      transport: "stdio"
-      command: "NU_MCP_PATH"
-      args: [
-        "--tools-dir"
-        "NU_MCP_TOOLS_PATH/c67"
-      ]
+      transport: "sse"
+      url: "https://mcp.context7.com/mcp"
     }
   }
 }
