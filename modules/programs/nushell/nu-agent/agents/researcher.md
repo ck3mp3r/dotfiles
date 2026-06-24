@@ -12,6 +12,7 @@ permissions:
   grep: allow
   skill: allow
   context7__*: allow
+  c5t_dev__*: allow
   c5t__get_*: allow
   c5t__list_*: allow
   c5t__read_note: allow

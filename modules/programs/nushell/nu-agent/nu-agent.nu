@@ -122,6 +122,11 @@ $env.config.plugins.agent = {
       transport: "sse"
       url: "http://0.0.0.0:3737/mcp"
     }
+    c5t_dev: {
+      enabled: false
+      transport: "sse"
+      url: "http://0.0.0.0:3738/mcp"
+    }
     nu: {
       transport: "stdio"
       command: "NU_MCP_PATH" # Will be replaced with full store path by Nix
