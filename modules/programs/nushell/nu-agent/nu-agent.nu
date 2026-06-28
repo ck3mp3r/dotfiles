@@ -167,13 +167,11 @@ $env.config.plugins.agent = {
 # Start an agent with optional session name and agent type
 export def dave [
   --agent (-a): string = "orchestrator" # Agent type to use (default: orchestrator)
-  --session (-s): string # Session name (default: current directory name)
+  --session (-s): string # Session name (optional)
 ] {
-  let session_name = if ($session | is-empty) {
-    $env.PWD | path basename
+  if ($session | is-empty) {
+    agent --name dave --agent $agent
   } else {
-    $session
+    agent --name dave --agent $agent --session $session
   }
-
-  agent --name dave --agent $agent --session $session_name
 }
