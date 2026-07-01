@@ -40,6 +40,12 @@ $env.config.plugins.agent = {
             output: 8192
           }
         }
+        "ornith:35b": {
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
         "qwen3.6:27b-mlx": {
           limit: {
             context: 262144
@@ -65,6 +71,12 @@ $env.config.plugins.agent = {
           }
         }
         "gemma4:31b-mlx": {
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
+        "ornith:35b": {
           limit: {
             context: 262144
             output: 8192
