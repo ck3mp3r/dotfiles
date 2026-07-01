@@ -20,8 +20,8 @@ $env.config.plugins.agent = {
         thaura: {
           name : "Thaura"
           limit: {
-            context: 131072
-            output: 65536
+            context: 256000
+            output: 8192
           }
         }
       }
