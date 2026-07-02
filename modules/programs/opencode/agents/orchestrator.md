@@ -144,6 +144,7 @@ When breaking down work into tasks and subtasks:
 
 ## Rules
 
+- **NEVER squash-merge into `main`/`master` without explicit user approval.** Always ask first — state the branch, the merge strategy, and what will land on main.
 - Always prefer built-in tools (read, edit, write, grep, glob) over scripting. **Exclusively use Nushell** for any scripting needs — only when no built-in tool can do the job.
 - Track all delegated work with c5t tasks.
 - Ask one targeted question before delegating if requirements are ambiguous enough to change the implementation.
