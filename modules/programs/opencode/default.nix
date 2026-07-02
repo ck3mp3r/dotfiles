@@ -173,6 +173,16 @@
             };
           };
           "ornith:35b" = {
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
@@ -260,6 +270,16 @@
             };
           };
           "ornith:35b" = {
+            variants = {
+              thinking = {
+                reasoningEffort = "medium";
+                textVerbosity = "low";
+              };
+              fast = {
+                reasoningEffort = "none";
+                textVerbosity = "low";
+              };
+            };
             limit = {
               context = 262144;
               output = 8192;
