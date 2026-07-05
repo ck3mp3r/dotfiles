@@ -109,18 +109,27 @@ $env.config.plugins.agent = {
           }
         }
         "claude-sonnet-4.6": {
+          additional_params: {
+            thinking: {type: "disabled"}
+          }
           limit: {
             context: 168000
             output: 8192
           }
         }
         "claude-opus-4.5": {
+          additional_params: {
+            thinking: {type: "disabled"}
+          }
           limit: {
             context: 168000
             output: 8192
           }
         }
         "claude-opus-4.6": {
+          additional_params: {
+            thinking: {type: "disabled"}
+          }
           limit: {
             context: 168000
             output: 8192
