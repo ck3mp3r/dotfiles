@@ -1,7 +1,6 @@
 ---
 name: researcher
 description: Research agent for exploring codebases and gathering information
-model: github-copilot/claude-sonnet-4.6
 permissions:
   "*": deny
   read: allow

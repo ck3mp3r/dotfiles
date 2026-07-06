@@ -12,7 +12,11 @@
     });
   };
 
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    historyWidget.command = "";
+  };
+
   programs.helix.enable = true;
 
   programs.htop = {

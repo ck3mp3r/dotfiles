@@ -1,7 +1,6 @@
 ---
 name: developer
 description: Generic development agent for implementing features and fixing bugs
-model: github-copilot/claude-sonnet-4.6
 permissions:
   "*": ask
   read: allow

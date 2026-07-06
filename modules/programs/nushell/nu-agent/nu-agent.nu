@@ -1,5 +1,5 @@
 $env.config.plugins.agent = {
-  model: "github-copilot/claude-opus-4.7"
+  model: "github-copilot/claude-sonnet-4.6"
   permissions: {
     "*": "ask"
     "read": "allow"
@@ -110,7 +110,7 @@ $env.config.plugins.agent = {
         }
         "claude-sonnet-4.6": {
           additional_params: {
-            thinking: {type: "disabled"}
+            output_config: {effort: "medium"}
           }
           limit: {
             context: 168000
@@ -119,7 +119,7 @@ $env.config.plugins.agent = {
         }
         "claude-opus-4.5": {
           additional_params: {
-            thinking: {type: "disabled"}
+            output_config: {effort: "medium"}
           }
           limit: {
             context: 168000
@@ -128,7 +128,7 @@ $env.config.plugins.agent = {
         }
         "claude-opus-4.6": {
           additional_params: {
-            thinking: {type: "disabled"}
+            output_config: {effort: "medium"}
           }
           limit: {
             context: 168000
@@ -185,14 +185,19 @@ $env.config.plugins.agent = {
   }
 }
 
-# Start an agent with optional session name and agent type
+# Start an agent with optional session name, agent type, and model
 export def dave [
   --agent (-a): string = "orchestrator" # Agent type to use (default: orchestrator)
   --session (-s): string # Session name (optional)
+  --model (-m): string # Model override (optional, e.g. 'openai/gpt-4o')
 ] {
-  if ($session | is-empty) {
-    agent --name dave --agent $agent
-  } else {
-    agent --name dave --agent $agent --session $session
+  let has_session = not ($session | is-empty)
+  let has_model = not ($model | is-empty)
+
+  match [$has_session $has_model] {
+    [true true] => { agent --name dave --agent $agent --session $session --model $model }
+    [true false] => { agent --name dave --agent $agent --session $session }
+    [false true] => { agent --name dave --agent $agent --model $model }
+    _ => { agent --name dave --agent $agent }
   }
 }

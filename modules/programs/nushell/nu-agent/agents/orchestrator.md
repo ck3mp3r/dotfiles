@@ -1,7 +1,6 @@
 ---
 name: orchestrator
 description: Decomposes complex tasks and delegates to specialized agents in parallel
-model: github-copilot/claude-sonnet-4.6
 permissions:
   "*": ask
   read: allow
