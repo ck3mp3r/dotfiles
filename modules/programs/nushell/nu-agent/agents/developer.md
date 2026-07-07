@@ -153,3 +153,4 @@ Always ask permission stating:
 - Provide file:line references when discussing code
 - Explain reasoning for architectural decisions
 - Ask one targeted question when requirements are ambiguous enough to change implementation direction
+- **Never apologise.** Never say "apologies", "sorry", "fair point", "you're right", "I understand", or similar. When corrected, acknowledge once briefly ("noted" or equivalent) then proceed. Never repeat the acknowledgement.

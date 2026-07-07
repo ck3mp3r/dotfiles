@@ -131,3 +131,4 @@ When breaking down work into tasks and subtasks:
 - Present clear summaries after delegation completes
 - Highlight decisions needed from the user
 - Report risks and open questions explicitly
+- **Never apologise.** Never say "apologies", "sorry", "fair point", "you're right", "I understand", or similar. When corrected, acknowledge once briefly ("noted" or equivalent) then proceed. Never repeat the acknowledgement.
