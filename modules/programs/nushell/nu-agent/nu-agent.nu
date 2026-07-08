@@ -1,4 +1,5 @@
 $env.config.plugins.agent = {
+  max_retries: 6
   model: "github-copilot/claude-sonnet-4.6"
   permissions: {
     "*": "ask"
@@ -11,6 +12,28 @@ $env.config.plugins.agent = {
     }
   }
   providers: {
+    mistral: {
+      name: "Mistral AI"
+      provider: "openai"
+      api_key: (^security find-generic-password -s "mistral-ai-api-key" -w | str trim)
+      base_url: "https://api.mistral.ai/v1"
+      models: {
+        "mistral-medium-3-5": {
+          name: "mistral-medium-3-5"
+          limit: {
+            context: 256000
+            output: 8192
+          }
+        }
+        "codestral-2508": {
+          name: "codestral-2508"
+          limit: {
+            context: 128000
+            output: 8192
+          }
+        }
+      }
+    }
     thaura: {
       name: "Thaura AI"
       provider: "openai"
