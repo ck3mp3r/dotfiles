@@ -140,15 +140,6 @@ $env.config.plugins.agent = {
             output: 8192
           }
         }
-        "claude-opus-4.5": {
-          additional_params: {
-            output_config: {effort: "medium"}
-          }
-          limit: {
-            context: 168000
-            output: 8192
-          }
-        }
         "claude-opus-4.6": {
           additional_params: {
             output_config: {effort: "medium"}
@@ -164,12 +155,12 @@ $env.config.plugins.agent = {
   mcp: {
     c5t: {
       transport: "sse"
-      url: "http://0.0.0.0:3737/mcp"
+      url: "http://127.0.0.1:3737/mcp"
     }
     c5t_dev: {
       enabled: false
       transport: "sse"
-      url: "http://0.0.0.0:3738/mcp"
+      url: "http://127.0.0.1:3738/mcp"
     }
     nu: {
       transport: "stdio"
