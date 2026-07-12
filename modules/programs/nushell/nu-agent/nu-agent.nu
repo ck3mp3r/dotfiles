@@ -1,6 +1,6 @@
 $env.config.plugins.agent = {
   max_retries: 6
-  model: "github-copilot/claude-sonnet-4.6"
+  model: "opencode/deepseek-v4-flash"
   permissions: {
     "*": "ask"
     "read": "allow"
@@ -12,6 +12,19 @@ $env.config.plugins.agent = {
     }
   }
   providers: {
+    opencode: {
+      provider: "openai"
+      base_url: "https://opencode.ai/zen/v1"
+      api_key: (^security find-generic-password -s "OPENCODE_GO_KEY" -w | str trim)
+      models: {
+        "deepseek-v4-flash": {
+          limit: {
+            context: 256000
+            output: 8192
+          }
+        }
+      }
+    }
     mistral: {
       name: "Mistral AI"
       provider: "openai"

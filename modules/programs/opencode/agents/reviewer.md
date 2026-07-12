@@ -1,7 +1,7 @@
 ---
 description: Code review agent for evaluating completed work and transitioning tasks
 mode: subagent
-model: github-copilot/claude-sonnet-4.6
+# model: github-copilot/claude-sonnet-4.6
 permission:
   "*": ask
   read: allow

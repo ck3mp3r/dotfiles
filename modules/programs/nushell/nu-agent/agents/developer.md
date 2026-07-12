@@ -10,6 +10,13 @@ permissions:
   glob: allow
   grep: allow
   skill: allow
+  agent.list: allow
+  agent.getCard: allow
+  tasks.send: allow
+  tasks.get: allow
+  tasks.cancel: allow
+  tasks.complete: allow
+  tasks.list: allow
   nu__run: ask
   nu__shell: ask
   context7__*: allow
