@@ -31,8 +31,6 @@ permissions:
   c5t__delete_*: ask
   send_message: allow
   list_agents: allow
-  nu__run: allow
-  nu__shell: allow
 ---
 
 # Developer Agent

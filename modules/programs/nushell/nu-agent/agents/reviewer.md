@@ -29,10 +29,6 @@ permissions:
   c5t__update_task: allow
   c5t__transition_task: allow
   c5t__delete_*: deny
-  send_message: allow
-  list_agents: allow
-  nu__run: allow
-  nu__shell: allow
 ---
 
 # Reviewer Agent
