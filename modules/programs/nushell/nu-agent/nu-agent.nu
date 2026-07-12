@@ -19,8 +19,8 @@ $env.config.plugins.agent = {
       models: {
         "deepseek-v4-flash": {
           limit: {
-            context: 256000
-            output: 8192
+            context: 1000000
+            output: 384000
           }
         }
       }
