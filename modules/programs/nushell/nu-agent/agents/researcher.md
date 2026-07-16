@@ -10,13 +10,13 @@ permissions:
   glob: allow
   grep: allow
   skill: allow
-  agent.list: allow
-  agent.getCard: allow
-  tasks.send: allow
-  tasks.get: allow
-  tasks.cancel: allow
-  tasks.complete: allow
-  tasks.list: allow
+  agent_list: allow
+  agent_getCard: allow
+  tasks_send: allow
+  tasks_get: allow
+  tasks_cancel: allow
+  tasks_complete: allow
+  tasks_list: allow
   context7__*: allow
   c5t_dev__*: allow
   c5t__get_*: allow

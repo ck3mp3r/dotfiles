@@ -215,6 +215,7 @@ $env.config.plugins.agent = {
 # Start an agent with optional session name, agent type, and model
 export def dave [
   --agent (-a): string = "orchestrator" # Agent type to use (default: orchestrator)
+  --name (-n): string = "dave" # Agent name
   --session (-s): string # Session name (optional)
   --model (-m): string # Model override (optional, e.g. 'openai/gpt-4o')
 ] {
@@ -222,9 +223,9 @@ export def dave [
   let has_model = not ($model | is-empty)
 
   match [$has_session $has_model] {
-    [true true] => { agent --name dave --agent $agent --session $session --model $model }
-    [true false] => { agent --name dave --agent $agent --session $session }
-    [false true] => { agent --name dave --agent $agent --model $model }
-    _ => { agent --name dave --agent $agent }
+    [true true] => { agent --name $name --agent $agent --a2a-port 0 --session $session --model $model }
+    [true false] => { agent --name $name --agent $agent --a2a-port 0 --session $session }
+    [false true] => { agent --name $name --agent $agent --a2a-port 0 --model $model }
+    _ => { agent --name $name --agent $agent --a2a-port 0 }
   }
 }
