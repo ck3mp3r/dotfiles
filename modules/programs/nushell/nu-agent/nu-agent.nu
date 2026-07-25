@@ -1,6 +1,6 @@
 $env.config.plugins.agent = {
   max_retries: 6
-  model: "opencode/deepseek-v4-flash"
+  model: "ollama-cloud/deepseek-v4-flash"
   permissions: {
     "*": "ask"
     "read": "allow"
@@ -18,6 +18,18 @@ $env.config.plugins.agent = {
       api_key: (^security find-generic-password -s "OPENCODE_GO_KEY" -w | str trim)
       models: {
         "deepseek-v4-flash": {
+          limit: {
+            context: 1000000
+            output: 384000
+          }
+        }
+        "deepseek-v4-pro": {
+          limit: {
+            context: 1000000
+            output: 384000
+          }
+        }
+        "glm-5.2": {
           limit: {
             context: 1000000
             output: 384000
@@ -127,6 +139,61 @@ $env.config.plugins.agent = {
         "qwen3.6:35b-mlx": {
           limit: {
             context: 262144
+            output: 8192
+          }
+        }
+      }
+    }
+    "ollama-cloud": {
+      provider: "openai"
+      base_url: "https://ollama.com/v1"
+      api_key: (^security find-generic-password -s "OLLAMA_CLOUD_KEY" -w | str trim)
+      models: {
+        "gemma4:26b": {
+          name: "gemma4:26b"
+          tool_call: true
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
+        "gemma4:31b": {
+          name: "gemma4:31b"
+          tool_call: true
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
+        "qwen3.5:cloud": {
+          name: "qwen3.5:cloud"
+          tool_call: true
+          limit: {
+            context: 256000
+            output: 8192
+          }
+        }
+        "qwen3.5:397b-cloud": {
+          name: "qwen3.5:397b-cloud"
+          tool_call: true
+          limit: {
+            context: 256000
+            output: 8192
+          }
+        }
+        "deepseek-v4-flash": {
+          name: "deepseek-v4-flash"
+          tool_call: true
+          limit: {
+            context: 1000000
+            output: 8192
+          }
+        }
+        "deepseek-v4-pro": {
+          name: "deepseek-v4-pro"
+          tool_call: true
+          limit: {
+            context: 1000000
             output: 8192
           }
         }

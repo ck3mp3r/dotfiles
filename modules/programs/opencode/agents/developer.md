@@ -1,6 +1,7 @@
 ---
 description: Generic development agent for implementing features and fixing bugs
-# model: github-copilot/claude-sonnet-4.6
+model: ollama-cloud/deepseek-v4-flash
+#model: opencode-go/deepseek-v4-flash
 mode: subagent
 permission:
   "*": ask
@@ -18,7 +19,7 @@ permission:
   c5t_create*: ask
   c5t_update*: ask
   c5t_edit*: ask
-   c5t_transition*: allow
+  c5t_transition*: allow
   c5t_delete*: ask
   context7*: allow
   tmux_*: deny
