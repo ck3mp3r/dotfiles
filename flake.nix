@@ -47,7 +47,7 @@
     };
 
     c5t = {
-      url = "github:ck3mp3r/context/feature/graph-improvements";
+      url = "github:ck3mp3r/context";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
