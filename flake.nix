@@ -6,11 +6,6 @@
     nixpkgs-unstable.follows = "base-nixpkgs/unstable";
     nixpkgs.follows = "base-nixpkgs/stable";
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
-    };
-
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "base-nixpkgs/stable";
@@ -61,7 +56,6 @@
     apple-container,
     base-nixpkgs,
     c5t,
-    catppuccin,
     home-manager,
     laio,
     nix-darwin,
@@ -114,7 +108,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           (import ./modules/darwin.nix {
-            inherit system pkgs stateVersion catppuccin sops-nix;
+            inherit system pkgs stateVersion sops-nix;
             inherit (config) username casks;
             revision = self.rev or self.dirtyRev or null;
           })
@@ -131,7 +125,7 @@
         inherit pkgs;
         modules = [
           (import ./modules/home.nix {
-            inherit pkgs stateVersion system catppuccin sops-nix;
+            inherit pkgs stateVersion system sops-nix;
             inherit (config) username;
             homeDirectory =
               if pkgs.stdenv.isLinux

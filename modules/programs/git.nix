@@ -1,4 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  catppuccinSources = lib.listToAttrs (map (s: lib.nameValuePair s.name s) pkgs.catppuccin.srcs);
+  catppuccinLazygitTheme = "${catppuccinSources.lazygit}/themes/mocha/mauve.yml";
+in {
   home.packages = with pkgs; [
     mergiraf
   ];
@@ -37,18 +44,10 @@
     };
   };
 
-  catppuccin.lazygit = {
-    enable = true;
-    flavor = "mocha";
-  };
+  home.sessionVariables.LG_CONFIG_FILE = catppuccinLazygitTheme;
 
   programs.lazygit = {
     enable = true;
-  };
-
-  catppuccin.delta = {
-    enable = true;
-    flavor = "mocha";
   };
 
   programs.delta = {
@@ -60,6 +59,11 @@
       side-by-side = true;
       line-numbers = true;
       true-color = "always";
+      features = "catppuccin-mocha";
     };
   };
+
+  programs.git.includes = [
+    {path = "${catppuccinSources.delta}/catppuccin.gitconfig";}
+  ];
 }

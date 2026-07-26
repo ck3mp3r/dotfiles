@@ -4,7 +4,6 @@
   homeDirectory,
   stateVersion,
   sops-nix,
-  catppuccin,
   ...
 }: {
   # fix for manuals not compiling...
@@ -18,7 +17,6 @@
   };
   imports = [
     sops-nix.homeManagerModules.sops
-    catppuccin.homeModules.catppuccin
 
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix
@@ -41,12 +39,6 @@
     ./programs/zellij
     ./programs/zsh
   ];
-
-  # Catppuccin theme configuration
-  catppuccin = {
-    enable = true;
-    autoEnable = false;
-  };
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";

@@ -281,27 +281,6 @@
         "type": "github"
       }
     },
-    "catppuccin": {
-      "inputs": {
-        "nixpkgs": [
-          "base-nixpkgs",
-          "unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1784366307,
-        "narHash": "sha256-VKatYOZwLQ+MuNkWH6/gZYxrNeSK1Mqb7mC0H1WSu+M=",
-        "owner": "catppuccin",
-        "repo": "nix",
-        "rev": "673f730d0fc8db3468c51575f1d3d777cc55e51f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "nix",
-        "type": "github"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -1116,7 +1095,6 @@
         "apple-container": "apple-container",
         "base-nixpkgs": "base-nixpkgs",
         "c5t": "c5t",
-        "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "laio": "laio",
         "nix-darwin": "nix-darwin",

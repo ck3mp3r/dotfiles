@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   nuMcp = "${pkgs.nu-mcp}/bin/nu-mcp";
   yamlFormat = pkgs.formats.yaml {};
   gooseConfigFile = yamlFormat.generate "goose-config" config;

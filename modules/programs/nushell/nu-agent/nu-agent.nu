@@ -149,6 +149,22 @@ $env.config.plugins.agent = {
       base_url: "https://ollama.com/v1"
       api_key: (^security find-generic-password -s "OLLAMA_CLOUD_KEY" -w | str trim)
       models: {
+        "kimi-k2.7-code": {
+          name: "kimi-k2.7-code"
+          tool_call: true
+          limit: {
+            context: 262144
+            output: 8192
+          }
+        }
+        "glm-5.2": {
+          name: "glm-5.2"
+          tool_call: true
+          limit: {
+            context: 1000000
+            output: 384000
+          }
+        }
         "gemma4:26b": {
           name: "gemma4:26b"
           tool_call: true
