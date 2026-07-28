@@ -1,6 +1,7 @@
 ---
 name: orchestrator
 description: Decomposes complex tasks and delegates to specialized agents in parallel
+model: heavy
 permissions:
   "*": ask
   read: allow
@@ -17,8 +18,8 @@ permissions:
   tasks_cancel: allow
   tasks_complete: allow
   tasks_list: allow
-  nu__run: ask
-  nu__shell: ask
+  nu__run: allow
+  nu__shell: allow
   context7__*: allow
   c5t_dev__*: allow
   c5t__get_*: allow
@@ -32,8 +33,6 @@ permissions:
   send_message: allow
   spawn_agent: allow
   list_agents: allow
-  nu__run: allow
-  nu__shell: allow
 ---
 
 # Orchestrator Agent

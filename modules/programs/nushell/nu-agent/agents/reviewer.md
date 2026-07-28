@@ -1,6 +1,7 @@
 ---
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
+model: heavy
 permissions:
   "*": ask
   read: allow

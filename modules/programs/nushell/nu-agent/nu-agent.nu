@@ -1,6 +1,11 @@
 $env.config.plugins.agent = {
   max_retries: 6
-  model: "ollama-cloud/deepseek-v4-flash"
+  max_context_tokens: 1000000
+  models: {
+    default: "ollama-cloud/deepseek-v4-flash"
+    heavy: "ollama-cloud/glm-5.2"
+    light: "ollama-cloud/gemma4:26b"
+  }
   permissions: {
     "*": "ask"
     "read": "allow"

@@ -1,6 +1,7 @@
 ---
 name: developer
 description: Generic development agent for implementing features and fixing bugs
+model: default
 permissions:
   "*": ask
   read: allow
