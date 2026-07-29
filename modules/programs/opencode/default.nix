@@ -441,7 +441,7 @@
       };
       context7 = {
         type = "remote";
-        url = "https://mcp.context7.com/mcp";
+        url = "https://mcp.context7.com/mcp/oauth";
         enabled = true;
       };
       argocd = {
