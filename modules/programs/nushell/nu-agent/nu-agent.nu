@@ -295,7 +295,10 @@ $env.config.plugins.agent = {
     }
     context7: {
       transport: "sse"
-      url: "https://mcp.context7.com/mcp"
+      url: "https://mcp.context7.com/mcp/oauth"
+      auth: {
+        type: "oauth"
+      }
     }
   }
 }
