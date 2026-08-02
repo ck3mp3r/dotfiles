@@ -23,53 +23,53 @@ $env.config.plugins.agent = {
     }
   }
   providers: {
-    opencode: {
-      provider: "openai"
-      base_url: "https://opencode.ai/zen/v1"
-      api_key: (^security find-generic-password -s "OPENCODE_GO_KEY" -w | str trim)
-      models: {
-        "deepseek-v4-flash": {
-          limit: {
-            context: 1000000
-            output: 384000
-          }
-        }
-        "deepseek-v4-pro": {
-          limit: {
-            context: 1000000
-            output: 384000
-          }
-        }
-        "glm-5.2": {
-          limit: {
-            context: 1000000
-            output: 384000
-          }
-        }
-      }
-    }
-    mistral: {
-      name: "Mistral AI"
-      provider: "openai"
-      api_key: (^security find-generic-password -s "mistral-ai-api-key" -w | str trim)
-      base_url: "https://api.mistral.ai/v1"
-      models: {
-        "mistral-medium-3-5": {
-          name: "mistral-medium-3-5"
-          limit: {
-            context: 256000
-            output: 8192
-          }
-        }
-        "codestral-2508": {
-          name: "codestral-2508"
-          limit: {
-            context: 128000
-            output: 8192
-          }
-        }
-      }
-    }
+    # opencode: {
+    #   provider: "openai"
+    #   base_url: "https://opencode.ai/zen/v1"
+    #   api_key: (^security find-generic-password -s "OPENCODE_GO_KEY" -w | str trim)
+    #   models: {
+    #     "deepseek-v4-flash": {
+    #       limit: {
+    #         context: 1000000
+    #         output: 384000
+    #       }
+    #     }
+    #     "deepseek-v4-pro": {
+    #       limit: {
+    #         context: 1000000
+    #         output: 384000
+    #       }
+    #     }
+    #     "glm-5.2": {
+    #       limit: {
+    #         context: 1000000
+    #         output: 384000
+    #       }
+    #     }
+    #   }
+    # }
+    # mistral: {
+    #   name: "Mistral AI"
+    #   provider: "openai"
+    #   api_key: (^security find-generic-password -s "mistral-ai-api-key" -w | str trim)
+    #   base_url: "https://api.mistral.ai/v1"
+    #   models: {
+    #     "mistral-medium-3-5": {
+    #       name: "mistral-medium-3-5"
+    #       limit: {
+    #         context: 256000
+    #         output: 8192
+    #       }
+    #     }
+    #     "codestral-2508": {
+    #       name: "codestral-2508"
+    #       limit: {
+    #         context: 128000
+    #         output: 8192
+    #       }
+    #     }
+    #   }
+    # }
     thaura: {
       name: "Thaura AI"
       provider: "openai"
