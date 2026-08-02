@@ -8,6 +8,10 @@ load-env {
   XDG_CONFIG_HOME: $"($env.HOME)/.config"
   XDG_CACHE_HOME: $"($env.HOME)/.cache"
   XDG_DATA_HOME: $"($env.HOME)/.local/share"
+  # Atuin owns Ctrl+R in nushell. programs.fzf.historyWidget.command = ""
+  # only affects home-manager-managed shells (enableNushellIntegration = false),
+  # so mirror it here for the fzf --nushell script (fzf.nu:__fzf_binding_enabled).
+  FZF_CTRL_R_COMMAND: ""
   STARSHIP_SHELL: "nu"
   DOCKER_HOST: $"unix://($env.HOME)/.config/colima/default/docker.sock"
   TERM: "xterm-256color"
