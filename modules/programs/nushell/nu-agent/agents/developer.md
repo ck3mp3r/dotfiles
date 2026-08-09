@@ -6,7 +6,7 @@ permissions:
   "*": ask
   read: allow
   edit: allow
-  patch: allow
+  patch: deny
   http: allow
   glob: allow
   grep: allow
