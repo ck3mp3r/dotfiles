@@ -4,6 +4,7 @@
     tree-sitter-java
     tree-sitter-javascript
     tree-sitter-kotlin
+    tree-sitter-nix
     tree-sitter-rust
     tree-sitter-typescript
   ];
