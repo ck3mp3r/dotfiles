@@ -7,9 +7,15 @@
     tree-sitter-rust
     tree-sitter-typescript
   ];
+  # tree-sitter CLI compiles parsers from source on first use. The nixpkgs
+  # grammar packages only ship the pre-compiled shared library, queries, and
+  # tree-sitter.json manifest — but NOT src/parser.c or src/grammar.json.
+  # Pointing parser-directories at the compiled outputs makes the CLI fail
+  # with "No such file or directory ... src/grammar.json".
+  # Use the grammar sources instead so the CLI can build them.
   grammarDir = pkgs.linkFarm "tree-sitter-grammars" (map (g: {
       name = g.pname or g.name;
-      path = g;
+      path = g.src;
     })
     grammars);
   config = {
