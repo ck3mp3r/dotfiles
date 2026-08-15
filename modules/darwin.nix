@@ -45,6 +45,17 @@
 in {
   environment.systemPackages = packages';
   launchd = {
+    daemons = {
+      tailscaled = {
+        command = "${pkgs.tailscale}/bin/tailscaled";
+        serviceConfig = {
+          KeepAlive = true;
+          RunAtLoad = true;
+          StandardOutPath = "/tmp/tailscaled.out.log";
+          StandardErrorPath = "/tmp/tailscaled.err.log";
+        };
+      };
+    };
     user = {
       agents = {
         c5t-api = {

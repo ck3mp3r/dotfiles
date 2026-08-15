@@ -30,6 +30,7 @@ with pkgs;
     rsync
     sops
     speedtest-cli
+    tailscale
     tldr
     tree
     topiary
