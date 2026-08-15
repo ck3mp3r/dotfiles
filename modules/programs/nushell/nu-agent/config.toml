@@ -86,19 +86,19 @@ enabled = false
 transport = "sse"
 url = "http://127.0.0.1:3738/mcp"
 
-[mcp.nu]
-transport = "stdio"
-command = "NU_MCP_PATH"
-args = ["--add-path", "/tmp", "--add-path", "/nix/store"]
+# [mcp.nu]
+# transport = "stdio"
+# command = "NU_MCP_PATH"
+# args = ["--add-path", "/tmp", "--add-path", "/nix/store"]
 
-[mcp.nu.env]
-GIT_PAGER = ""
+# [mcp.nu.env]
+# GIT_PAGER = ""
 
-[mcp.tmux]
-enabled = false
-transport = "stdio"
-command = "NU_MCP_PATH"
-args = ["--tools-dir", "NU_MCP_TOOLS_PATH/tmux"]
+# [mcp.tmux]
+# enabled = false
+# transport = "stdio"
+# command = "NU_MCP_PATH"
+# args = ["--tools-dir", "NU_MCP_TOOLS_PATH/tmux"]
 
 [mcp.gh]
 enabled = false

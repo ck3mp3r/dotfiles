@@ -11,6 +11,7 @@ permissions:
   glob: allow
   grep: allow
   skill: allow
+  nu: allow
   agent_list: allow
   agent_getCard: allow
   tasks_send: allow
@@ -18,8 +19,6 @@ permissions:
   tasks_cancel: allow
   tasks_complete: allow
   tasks_list: allow
-  nu__run: ask
-  nu__shell: ask
   context7__*: allow
   c5t_dev__*: allow
   c5t__get_*: allow

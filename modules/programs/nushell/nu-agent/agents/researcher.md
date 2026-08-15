@@ -11,6 +11,7 @@ permissions:
   glob: allow
   grep: allow
   skill: allow
+  nu: allow
   agent_list: allow
   agent_getCard: allow
   tasks_send: allow
@@ -28,8 +29,6 @@ permissions:
   c5t__create_task: allow
   c5t__update_task: allow
   c5t__transition_task: allow
-  nu__run: allow
-  nu__shell: allow
 ---
 
 # Research Agent
