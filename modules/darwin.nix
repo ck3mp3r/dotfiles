@@ -130,7 +130,7 @@ in {
 
   users.users.${username} = {
     home =
-      if pkgs.stdenv.isLinux
+      if pkgs.stdenv.hostPlatform.isLinux
       then "/home/${username}"
       else "/Users/${username}";
   };
@@ -238,7 +238,7 @@ in {
       inherit stateVersion pkgs username sops-nix system;
       nixvim = inputs.nixvim;
       homeDirectory =
-        if pkgs.stdenv.isLinux
+        if pkgs.stdenv.hostPlatform.isLinux
         then "/home/${username}"
         else "/Users/${username}";
     };

@@ -20,7 +20,7 @@
         ZVM_VI_INSERT_ESCAPE_BINDKEY = "jk";
         ZVM_INIT_MODE = "sourcing";
       }
-      // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+      // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
         DOCKER_HOST = "unix://$HOME/.config/colima/default/docker.sock";
       };
 
@@ -31,10 +31,10 @@
     };
 
     shellAliases =
-      pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
+      pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
         nd = "~/.config/dotfiles/bin/nd";
       }
-      // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
+      // pkgs.lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
         hm = "~/.config/dotfiles/bin/hm";
       };
 

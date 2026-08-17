@@ -4,6 +4,7 @@ description: Generic development agent for implementing features and fixing bugs
 model: default
 permissions:
   "*": ask
+  ast_*: allow
   read: allow
   edit: allow
   patch: deny

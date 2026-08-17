@@ -5,7 +5,7 @@
 
 # Edit this to set your default model:
 [models.default]
-model = "ollama-cloud/deepseek-v4-flash:0731"
+model = "ollama-cloud/deepseek-v4-flash"
 
 [models.heavy]
 model = "ollama-cloud/glm-5.2"
@@ -40,12 +40,11 @@ api_key = "store:ollama-cloud"  # run: agent provider auth login ollama-cloud
 provider = "ollama"
 base_url = "http://localhost:11434"
 
-[providers.ollama.models."gemma4:31b-mlx"]
-[providers.ollama.models."qwen3.6:35b-mlx"]
-[providers.ollama.models."ornith:35b"]
 [providers.ollama.models."gemma4:26b-mlx"]
-[providers.ollama.models."qwen3.6:27b-mlx"]
+[providers.ollama.models."gemma4:31b-mlx"]
 [providers.ollama.models."muse-glimmer:30b-mlx"]
+[providers.ollama.models."ornith:35b"]
+[providers.ollama.models."qwen3.8:27b-mlx"]
 
 # ─── Permissions ──────────────────────────────────────────
 # Tool permission defaults. "*" = global policy for all tools.

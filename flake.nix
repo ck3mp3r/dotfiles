@@ -128,7 +128,7 @@
             inherit pkgs stateVersion system sops-nix;
             inherit (config) username;
             homeDirectory =
-              if pkgs.stdenv.isLinux
+              if pkgs.stdenv.hostPlatform.isLinux
               then "/home/${config.username}"
               else "/Users/${config.username}";
           })

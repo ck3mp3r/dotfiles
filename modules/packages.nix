@@ -38,4 +38,4 @@ with pkgs;
     worktrunk
     yazi
   ]
-  ++ lib.optionals stdenv.isDarwin [m-cli]
+  ++ lib.optionals stdenv.hostPlatform.isDarwin [m-cli]

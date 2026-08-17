@@ -4,6 +4,7 @@ description: Research agent for exploring codebases and gathering information
 model: light
 permissions:
   "*": deny
+  ast_*: allow
   read: allow
   edit: deny
   patch: deny

@@ -22,7 +22,7 @@ in {
       };
       "gpg \"ssh\"" = {
         program =
-          if pkgs.stdenv.isLinux
+          if pkgs.stdenv.hostPlatform.isLinux
           then "TODO:define this"
           else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };

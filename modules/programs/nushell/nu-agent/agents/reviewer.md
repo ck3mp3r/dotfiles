@@ -4,6 +4,7 @@ description: Code review agent for evaluating completed work and transitioning t
 model: heavy
 permissions:
   "*": ask
+  ast_*: allow
   read: allow
   edit: deny
   patch: deny

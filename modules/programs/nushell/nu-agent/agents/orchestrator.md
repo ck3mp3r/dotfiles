@@ -4,6 +4,7 @@ description: Decomposes complex tasks and delegates to specialized agents in par
 model: heavy
 permissions:
   "*": ask
+  ast_*: allow
   read: allow
   edit: deny
   patch: deny
