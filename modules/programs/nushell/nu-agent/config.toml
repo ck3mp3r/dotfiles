@@ -7,6 +7,9 @@
 [models.default]
 model = "ollama-cloud/deepseek-v4-flash"
 
+[models.mid]
+model = "ollama-cloud/qwen3.5:397b"
+
 [models.heavy]
 model = "ollama-cloud/glm-5.2"
 
@@ -45,6 +48,7 @@ base_url = "http://localhost:11434"
 [providers.ollama.models."muse-glimmer:30b-mlx"]
 [providers.ollama.models."ornith:35b"]
 [providers.ollama.models."qwen3.8:27b-mlx"]
+limit = { context = 262144 }
 
 # ─── Permissions ──────────────────────────────────────────
 # Tool permission defaults. "*" = global policy for all tools.
