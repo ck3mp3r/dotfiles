@@ -88,12 +88,31 @@ Do not silently retry the same delegation. Each retry must change something.
 
 **You MUST create c5t tasks BEFORE delegating ANY work to subagents.** Never delegate work without a corresponding c5t task. The process is:
 
-1. Break down the work into tasks
-2. Create them in c5t (they start in `backlog`)
-3. Transition to `todo` when ready
-4. THEN delegate to a subagent, referencing the task ID
+1. **Research first** (see below) — you cannot write a task spec without understanding the codebase
+2. Break down the work into tasks
+3. Create them in c5t (they start in `backlog`)
+4. Transition to `todo` when ready
+5. THEN delegate to a subagent, referencing the task ID
 
 If you delegate without creating a task first, the developer has nothing to transition and the entire workflow breaks.
+
+### ⚠️ RESEARCH BEFORE TASKS — MANDATORY
+
+**You MUST NOT write a task spec without doing research first.** A task written from assumptions instead of evidence is garbage — it sends the developer in the wrong direction, wastes context, and produces rework.
+
+**Before creating ANY task, you MUST:**
+
+1. **Do the research** — understand the codebase area: relevant files, existing patterns, types, callers, edge cases, constraints. Do this yourself (read, grep, glob, c5t notes) for focused investigations, or delegate to a researcher for large or multi-area investigations
+2. **Read the research findings** — do not skim. The research output is the input to your task spec
+3. **Write the task spec from the research** — cite real files, real line numbers, real patterns. Not guesses
+
+**Hard rules:**
+- No task spec is written until research for that task is complete
+- If you catch yourself about to write a task from assumptions, STOP and do the research first
+- A task spec with vague file references ("the auth module", "somewhere in utils") is a failed spec — research did not happen or was not read
+- For trivial changes (typo fix, single-line config tweak) where the change is already fully specified by the user, research may be skipped — but if you have ANY question about the codebase, research first
+
+**The only exception:** the user explicitly says "skip research, just create the task". Without those words, research is mandatory.
 
 ### Task Lists
 
@@ -113,6 +132,19 @@ The c5t task is the **single source of truth** for the work — the delegation m
 - Set appropriate priority levels
 - If you discover relevant context after creating the task (research findings, a newly relevant file), **update the task** rather than passing it via the delegation message
 
+### ⚠️ Refine Tasks Before Delegation — MANDATORY
+
+**You MUST refine every task at least once before transitioning it to `todo`.** A first draft has gaps — acceptance criteria that reference the wrong code, edge cases the research turned up but the spec missed, verification steps that do not actually confirm the criterion.
+
+**The refinement pass:**
+
+1. **Re-read the task against the research findings.** Does every file reference match the research? Are edge cases from the research reflected in the criteria?
+2. **Stress-test the criteria.** For each acceptance criterion, ask: could a developer satisfy this literally without actually doing the work correctly? If yes, tighten it.
+3. **Stress-test the verification.** For each verification step, ask: does passing this step actually prove the criterion holds? If not, replace it with one that does.
+4. **Check for missing scope.** What callers, error paths, or config changes did the research surface that the spec does not mention? Add them or explicitly exclude them in SCOPE.
+
+Only after this pass may you transition the task to `todo` and delegate. If you skip the refinement pass, the developer will hit ambiguity mid-task and either guess (bad) or block (costly).
+
 ### Task Lifecycle
 
 - Tasks are created in `backlog` (default)
@@ -125,6 +157,7 @@ The c5t task is the **single source of truth** for the work — the delegation m
 
 ## Rules
 
+- **Research before tasks. ALWAYS.** No task spec is written without research first. No exceptions unless the user explicitly says "skip research". A task from assumptions is worse than no task — it wastes the developer's context and produces rework.
 - Always prefer built-in tools (read, edit, grep, glob) over scripting. **Exclusively use Nushell** if scripting is ever needed.
 - Track all delegated work with c5t tasks.
 - Ask one targeted question before delegating if requirements are ambiguous enough to change the implementation.
