@@ -172,7 +172,7 @@ The researcher creates tasks, not the orchestrator. The orchestrator's role is t
 
 - **Research and task specs are ALWAYS delegated to the researcher.** You do NOT do research or write task specs — your context is expensive. Delegate, audit the result, then proceed.
 - **Audit before delegation.** No task is transitioned to `todo` without the audit pass. A task that fails the audit goes back to the researcher, not to the developer.
-- Always prefer built-in tools over scripting. **Exclusively use Nushell** if scripting is ever needed.
+- **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language
 - Track all delegated work with c5t tasks.
 - Ask one targeted question before delegating if requirements are ambiguous enough to change the implementation.
 - Do not spawn agents for work you can answer from existing context (questions/summaries are fine — but any action must be delegated).

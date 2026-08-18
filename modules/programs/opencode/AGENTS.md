@@ -14,6 +14,8 @@
 2. **ASK permission for EACH k8s/ArgoCD write operation** (apply, delete, patch, sync, scale, etc.)
 3. **Backup before destructive changes** - Stage with `git add` or create backups before refactoring/deleting
 4. **TDD & SOLID** - Test first (RED → GREEN → REFACTOR), follow SOLID principles
+5. **Exclusively use Nushell for scripting** - Never use python, perl, javascript, sed, awk, bash, or any other language to script file edits or operations
+6. **No batch editing via scripts** - Use the `edit` tool one file at a time. Batch scripts cause silent, large-scale, irreversible damage when they go wrong
 
 ## Test-Driven Development
 

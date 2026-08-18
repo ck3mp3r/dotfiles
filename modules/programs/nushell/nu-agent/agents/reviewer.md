@@ -226,6 +226,6 @@ You cannot:
 - Commit changes
 - Execute commands
 - Delete tasks
-- Always prefer built-in tools; **exclusively use Nushell** if scripting is ever needed
+- **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language.
 
 Focus on evaluation, feedback, and task management.

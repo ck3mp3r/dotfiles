@@ -144,6 +144,11 @@ You cannot:
 
 Focus purely on investigation and understanding.
 
+## Scripting Rules
+
+- **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language
+- Prefer built-in tools (read, grep, glob) over scripting whenever possible
+
 ## Communication Style
 
 - Present findings clearly and concisely
