@@ -12,7 +12,7 @@ permissions:
   glob: deny
   grep: deny
   skill: allow
-  nu: deny
+  nu: ask
   agent_list: allow
   agent_getCard: allow
   tasks_send: allow
