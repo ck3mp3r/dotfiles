@@ -120,7 +120,11 @@ This is the most important step. After every change:
 
 ### Nushell Commands
 
-Always prefer built-in tools (read, edit, write, grep, glob) over scripting. **Exclusively use Nushell** for any scripting needs — never use python, perl, javascript, sed, or awk to edit files or perform batch operations.
+Always prefer built-in tools (read, edit, write, grep, glob) over scripting.
+
+**Exclusively use Nushell** for any scripting needs — never use python, perl, javascript, sed, awk, bash, or any other language to script file edits or batch operations.
+
+**No batch editing via scripts.** Do not write scripts to apply changes across multiple files in one pass. Use the `edit` tool one file at a time. This is non-negotiable — batch scripts cause silent, large-scale, irreversible damage when they go wrong.
 
 **You MUST load the `nushell-shell` skill BEFORE running any Nushell commands.** Nushell syntax is fundamentally different from bash/zsh — without the skill loaded you WILL write broken commands.
 

@@ -254,6 +254,10 @@ You cannot:
 - Execute commands
 - Delete tasks
 - Create or update tasks (only transition and update existing)
-- Always prefer built-in tools; **exclusively use Nushell** if scripting is ever needed
 
 Focus on evaluation, feedback, and task management.
+
+## Scripting Rules
+
+- **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language
+- Prefer built-in tools (read, grep, glob) over scripting whenever possible
