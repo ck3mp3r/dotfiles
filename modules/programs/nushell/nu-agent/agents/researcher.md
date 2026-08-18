@@ -1,7 +1,7 @@
 ---
 name: researcher
 description: Research agent for exploring codebases and gathering information
-model: light
+model: medium
 permissions:
   "*": deny
   ast_*: allow

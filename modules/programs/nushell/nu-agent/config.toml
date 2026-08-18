@@ -7,7 +7,7 @@
 [models.default]
 model = "ollama-cloud/deepseek-v4-flash"
 
-[models.mid]
+[models.medium]
 model = "ollama-cloud/qwen3.5:397b"
 
 [models.heavy]
