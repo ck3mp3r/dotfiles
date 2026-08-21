@@ -8,28 +8,26 @@
   casks,
   ...
 } @ inputs: let
-  # Wrapper script for ollama that creates the MLX lib directory structure
-  ollamaWrapper = pkgs.writeShellScript "ollama-serve-wrapper" ''
-    # Get the actual ollama binary location (follows symlink)
+  # Wrapper that sets up MLX lib directory before delegating to the brew ollama.
+  # Placed on PATH ahead of /opt/homebrew/bin so `ollama serve` uses it automatically.
+  ollama = pkgs.writeShellScriptBin "ollama" ''
     OLLAMA_REAL_BIN="$(readlink -f /opt/homebrew/bin/ollama)"
     OLLAMA_BIN_DIR="$(dirname "$OLLAMA_REAL_BIN")"
     OLLAMA_LIB_DIR="$OLLAMA_BIN_DIR/lib/ollama"
 
-    # Create the directory structure ollama expects
     mkdir -p "$OLLAMA_LIB_DIR"
 
-    # Symlink MLX library if it exists and isn't already linked
     if [ -f /opt/homebrew/lib/libmlxc.dylib ] && [ ! -f "$OLLAMA_LIB_DIR/libmlxc.dylib" ]; then
       ln -sf /opt/homebrew/lib/libmlxc.dylib "$OLLAMA_LIB_DIR/libmlxc.dylib"
     fi
 
-    # Run ollama serve
-    exec /opt/homebrew/bin/ollama serve
+    exec /opt/homebrew/bin/ollama "$@"
   '';
 
   packages' = with pkgs; [
     mkalias
     nushell
+    ollama
   ];
 
   casks' =
@@ -68,27 +66,6 @@ in {
           };
         };
 
-        ollama-serve = {
-          command = "${ollamaWrapper}";
-          serviceConfig = {
-            KeepAlive = true;
-            RunAtLoad = true;
-            StandardOutPath = "/tmp/ollama.out.log";
-            StandardErrorPath = "/tmp/ollama.err.log";
-            EnvironmentVariables = {
-              # Set default context window (correct variable name)
-              OLLAMA_CONTEXT_LENGTH = "131072"; # 128k context
-              # Enable Flash Attention for better memory efficiency
-              OLLAMA_FLASH_ATTENTION = "1";
-              # Increase max loaded models if using multiple models
-              OLLAMA_MAX_LOADED_MODELS = "2";
-              # Keep models loaded for 30 minutes after last request
-              OLLAMA_KEEP_ALIVE = "30m";
-              # Allow access from other hosts
-              OLLAMA_HOST = "0.0.0.0";
-            };
-          };
-        };
       };
     };
   };

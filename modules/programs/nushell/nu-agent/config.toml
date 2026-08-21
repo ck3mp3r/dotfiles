@@ -46,8 +46,10 @@ base_url = "http://localhost:11434"
 [providers.ollama.models."gemma4:26b-mlx"]
 [providers.ollama.models."gemma4:31b-mlx"]
 [providers.ollama.models."muse-glimmer:30b-mlx"]
+[providers.ollama.models."nemotron-3.5-lightning:30b-mlx"]
 [providers.ollama.models."ornith:35b"]
 [providers.ollama.models."qwen3.8:27b-mlx"]
+
 limit = { context = 262144 }
 
 # ─── Permissions ──────────────────────────────────────────

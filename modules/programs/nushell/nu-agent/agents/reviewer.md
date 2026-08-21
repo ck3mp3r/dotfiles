@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
-model: heavy
+model: medium
 permissions:
   "*": ask
   ast_*: allow
