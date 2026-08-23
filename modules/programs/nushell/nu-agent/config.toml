@@ -52,6 +52,19 @@ base_url = "http://localhost:11434"
 
 limit = { context = 262144 }
 
+[providers.openrouter]
+provider = "openai"
+base_url = "https://openrouter.ai/api/v1"
+api_key = "store:openrouter"
+
+[providers.lmstudio]
+provider = "openai"
+base_url = "http://localhost:1234/v1"
+api_key = ""
+
+[providers.lmstudio.models."qwen/qwen3.8-27b"]
+limit = { context = 262144 }
+
 # ─── Permissions ──────────────────────────────────────────
 # Tool permission defaults. "*" = global policy for all tools.
 # Individual tools can override: read, edit, glob, grep, http, skill, etc.
@@ -81,6 +94,7 @@ skill = "allow"
 transport = "sse"
 url = "https://mcp.context7.com/mcp/oauth"
 auth = { type = "oauth" }
+enabled = false
 
 [mcp.c5t]
 transport = "sse"
