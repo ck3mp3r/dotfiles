@@ -18,6 +18,8 @@
     envFile.source = ./env.nu;
 
     extraConfig = ''
+      $env.config.show_banner = false
+
       const NU_LIB_DIRS = [
           "${pkgs.ai}/share/nushell/modules"
       ]
