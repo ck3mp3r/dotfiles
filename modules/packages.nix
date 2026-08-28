@@ -14,6 +14,7 @@ with pkgs;
     gh
     github-copilot-cli
     gum
+    helix
     jq
     jqp
     lsd

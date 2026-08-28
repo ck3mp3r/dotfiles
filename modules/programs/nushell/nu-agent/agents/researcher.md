@@ -2,6 +2,7 @@
 name: researcher
 description: Research agent for exploring codebases and gathering information
 model: medium
+temperature: 0.1
 permissions:
   "*": deny
   ast_*: allow

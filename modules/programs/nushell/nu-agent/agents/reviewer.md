@@ -2,6 +2,7 @@
 name: reviewer
 description: Code review agent for evaluating completed work and transitioning tasks
 model: medium
+temperature: 0.2
 permissions:
   "*": ask
   ast_*: allow

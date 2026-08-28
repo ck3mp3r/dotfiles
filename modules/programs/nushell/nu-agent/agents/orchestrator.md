@@ -2,6 +2,7 @@
 name: orchestrator
 description: Decomposes complex tasks and delegates to specialized agents in parallel
 model: heavy
+temperature: 0.2
 permissions:
   "*": ask
   ast_*: allow

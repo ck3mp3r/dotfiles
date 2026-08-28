@@ -1,6 +1,7 @@
 ---
 description: Code review agent for evaluating completed work and transitioning tasks
 mode: subagent
+temperature: 0.2
 # model: github-copilot/claude-sonnet-4.6
 model: ollama-cloud/kimi-k2.7-code
 #model: opencode-go/deepseek-v4-pro

@@ -2,6 +2,7 @@
 name: developer
 description: Generic development agent for implementing features and fixing bugs
 model: default
+temperature: 0.3
 permissions:
   "*": ask
   ast_*: allow

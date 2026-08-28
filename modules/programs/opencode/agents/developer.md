@@ -3,6 +3,7 @@ description: Generic development agent for implementing features and fixing bugs
 model: ollama-cloud/deepseek-v4-flash
 #model: opencode-go/deepseek-v4-flash
 mode: subagent
+temperature: 0.3
 permission:
   "*": ask
   read: allow
