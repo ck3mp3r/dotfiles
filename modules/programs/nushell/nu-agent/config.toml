@@ -33,7 +33,13 @@ model = "ollama-cloud/gemma4:31b"
 provider = "openai"
 base_url = "https://ollama.com/v1"
 api_key = "store:ollama-cloud"  # run: agent provider auth login ollama-cloud
- 
+
+# opencode (OpenAI-compatible)
+[providers.opencode]
+provider = "openai"
+base_url = "https://opencode.ai/zen/v1"
+api_key = "store:opencode"  # run: agent provider auth login opencode-go
+
 # GitHub Copilot (OAuth — no api_key needed)
 # [providers.github-copilot]
 # # run: agent provider auth login github-copilot
@@ -43,19 +49,15 @@ api_key = "store:ollama-cloud"  # run: agent provider auth login ollama-cloud
 provider = "ollama"
 base_url = "http://localhost:11434"
 
-[providers.ollama.models."gemma4:26b-mlx"]
-[providers.ollama.models."gemma4:31b-mlx"]
-[providers.ollama.models."muse-glimmer:30b-mlx"]
 [providers.ollama.models."nemotron-3.5-lightning:30b-mlx"]
 [providers.ollama.models."ornith:35b"]
 [providers.ollama.models."qwen3.8:27b-mlx"]
-
 limit = { context = 262144 }
 
-[providers.openrouter]
-provider = "openai"
-base_url = "https://openrouter.ai/api/v1"
-api_key = "store:openrouter"
+# [providers.openrouter]
+# provider = "openai"
+# base_url = "https://openrouter.ai/api/v1"
+# api_key = "store:openrouter"
 
 [providers.lmstudio]
 provider = "openai"
