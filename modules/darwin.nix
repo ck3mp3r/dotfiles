@@ -20,6 +20,7 @@
       "arc"
       "claude-code"
       "ghostty"
+      "ollama-app"
       "zen"
     ]
     ++ casks;

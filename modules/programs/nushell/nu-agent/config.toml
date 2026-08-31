@@ -54,6 +54,16 @@ base_url = "http://localhost:11434"
 [providers.ollama.models."qwen3.8:27b-mlx"]
 limit = { context = 262144 }
 
+# Local Ollama (no auth)
+[providers.ollama-mbp14]
+provider = "ollama"
+base_url = "http://192.168.1.73:11434"
+
+[providers.ollama-mbp14.models."nemotron-3.5-lightning:30b-mlx"]
+[providers.ollama-mbp14.models."ornith:35b"]
+[providers.ollama-mbp14.models."qwen3.8:27b-mlx"]
+limit = { context = 262144 }
+
 # [providers.openrouter]
 # provider = "openai"
 # base_url = "https://openrouter.ai/api/v1"
