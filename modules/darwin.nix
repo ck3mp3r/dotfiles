@@ -8,26 +8,9 @@
   casks,
   ...
 } @ inputs: let
-  # Wrapper that sets up MLX lib directory before delegating to the brew ollama.
-  # Placed on PATH ahead of /opt/homebrew/bin so `ollama serve` uses it automatically.
-  ollama = pkgs.writeShellScriptBin "ollama" ''
-    OLLAMA_REAL_BIN="$(readlink -f /opt/homebrew/bin/ollama)"
-    OLLAMA_BIN_DIR="$(dirname "$OLLAMA_REAL_BIN")"
-    OLLAMA_LIB_DIR="$OLLAMA_BIN_DIR/lib/ollama"
-
-    mkdir -p "$OLLAMA_LIB_DIR"
-
-    if [ -f /opt/homebrew/lib/libmlxc.dylib ] && [ ! -f "$OLLAMA_LIB_DIR/libmlxc.dylib" ]; then
-      ln -sf /opt/homebrew/lib/libmlxc.dylib "$OLLAMA_LIB_DIR/libmlxc.dylib"
-    fi
-
-    exec /opt/homebrew/bin/ollama "$@"
-  '';
-
   packages' = with pkgs; [
     mkalias
     nushell
-    ollama
   ];
 
   casks' =
@@ -65,7 +48,6 @@ in {
             StandardErrorPath = "/tmp/c5t.err.log";
           };
         };
-
       };
     };
   };
