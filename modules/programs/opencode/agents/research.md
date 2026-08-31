@@ -2,9 +2,12 @@
 description: Research agent for exploring codebases and gathering information
 mode: subagent
 temperature: 0.1
-model: ollama-cloud/kimi-k2.7-code
+model: ollama-cloud/glm-5.3-flash
+# model: ollama-cloud/kimi-k2.7-code
 # model: github-copilot/claude-haiku-4.5
 # model: github-copilot/claude-sonnet-4.6
+reasoningEffort: medium
+textVerbosity: high
 permission:
   "*": deny
   read: allow

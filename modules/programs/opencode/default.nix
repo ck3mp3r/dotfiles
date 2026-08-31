@@ -136,42 +136,6 @@
           baseURL = "http://127.0.0.1:11434/v1";
         };
         models = {
-          "gemma4:26b-mlx" = {
-            name = "gemma4:26b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "gemma4:31b-mlx" = {
-            name = "gemma4:31b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
           "ornith:35b" = {
             variants = {
               thinking = {
@@ -188,26 +152,8 @@
               output = 8192;
             };
           };
-          "qwen3.6:27b-mlx" = {
-            name = "qwen3.6:27b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "qwen3.6:35b-mlx" = {
-            name = "qwen3.6:35b";
+          "qwen3.8:27b-mlx" = {
+            name = "qwen3.8:27b-mlx";
             tool_call = true;
             variants = {
               thinking = {
@@ -233,42 +179,6 @@
           baseURL = "http://192.168.1.73:11434/v1";
         };
         models = {
-          "gemma4:26b-mlx" = {
-            name = "gemma4:26b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "gemma4:31b-mlx" = {
-            name = "gemma4:31b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
           "ornith:35b" = {
             variants = {
               thinking = {
@@ -285,26 +195,8 @@
               output = 8192;
             };
           };
-          "qwen3.6:27b-mlx" = {
-            name = "qwen3.6:27b";
-            tool_call = true;
-            variants = {
-              thinking = {
-                reasoningEffort = "medium";
-                textVerbosity = "low";
-              };
-              fast = {
-                reasoningEffort = "none";
-                textVerbosity = "low";
-              };
-            };
-            limit = {
-              context = 262144;
-              output = 8192;
-            };
-          };
-          "qwen3.6:35b-mlx" = {
-            name = "qwen3.6:35b";
+          "qwen3.8:27b-mlx" = {
+            name = "qwen3.8:27b-mlx";
             tool_call = true;
             variants = {
               thinking = {

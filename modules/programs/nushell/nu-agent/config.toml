@@ -8,7 +8,7 @@
 model = "ollama-cloud/deepseek-v4-flash"
 
 [models.medium]
-model = "ollama-cloud/kimi-k2.7-code"
+model = "ollama-cloud/glm-5.3-flash"
 
 [models.heavy]
 model = "ollama-cloud/glm-5.2"

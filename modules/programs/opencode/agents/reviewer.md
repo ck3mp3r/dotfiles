@@ -3,8 +3,10 @@ description: Code review agent for evaluating completed work and transitioning t
 mode: subagent
 temperature: 0.2
 # model: github-copilot/claude-sonnet-4.6
-model: ollama-cloud/kimi-k2.7-code
+model: ollama-cloud/glm-5.3-flash
 #model: opencode-go/deepseek-v4-pro
+reasoningEffort: high
+textVerbosity: low
 permission:
   "*": ask
   read: allow
