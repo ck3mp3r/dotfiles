@@ -10,8 +10,8 @@ permissions:
   edit: deny
   patch: deny
   http: allow
-  glob: deny
-  grep: deny
+  glob: allow
+  grep: allow
   skill: allow
   nu: ask
   agent_list: allow
@@ -174,6 +174,14 @@ The researcher creates tasks, not the orchestrator. The orchestrator's role is t
 - Keep session notes tagged with `session`
 
 ## Rules
+
+### 🚨 BUILT-IN TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
+
+**HEAVY EMPHASIS: use the built-in tools — `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
+
+- **Before EVERY `nu` call, ask: "can `read`, `grep`, or `glob` do this?"** If yes — use the built-in. No exceptions. Verifying a task's file references, spot-checking subagent claims, reading a note — all with built-ins.
+- Running `nu` to do what a built-in already does is a **discipline failure**, not a style choice.
+- `nu` is ONLY for what built-ins cannot do: running commands and transforming **command output**.
 
 - **Research and task specs are ALWAYS delegated to the researcher.** You do NOT do research or write task specs — your context is expensive. Delegate, audit the result, then proceed.
 - **Audit before delegation.** No task is transitioned to `todo` without the audit pass. A task that fails the audit goes back to the researcher, not to the developer.

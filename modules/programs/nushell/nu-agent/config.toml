@@ -5,7 +5,8 @@
 
 # Edit this to set your default model:
 [models.default]
-model = "ollama-cloud/deepseek-v4-flash"
+model = "ollama-cloud/glm-5.3-flash"
+# model = "ollama-cloud/deepseek-v4-flash"
 
 [models.medium]
 model = "ollama-cloud/glm-5.3-flash"
@@ -33,6 +34,11 @@ model = "ollama-cloud/gemma4:31b"
 provider = "openai"
 base_url = "https://ollama.com/v1"
 api_key = "store:ollama-cloud"  # run: agent provider auth login ollama-cloud
+# Per-model override — THIS is the fix for the wrong cache data:
+[providers.ollama-cloud.models.deepseek-v4-flash.additional_params]
+think = false
+[providers.ollama-cloud.models.deepseek-v4-flash.limit]
+output = 65536
 
 # opencode (OpenAI-compatible)
 [providers.opencode]

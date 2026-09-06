@@ -108,9 +108,24 @@ This is the most important step. After every change:
 
 ## Tool Usage
 
-### Nushell Commands
+### 🚨 BUILT-IN TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-Always prefer built-in tools (read, edit, patch, grep, glob) over scripting.
+**HEAVY EMPHASIS: use the built-in tools — `read`, `grep`, `glob`, `edit`, `patch` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
+
+| Task | Use the built-in tool | NEVER do via `nu` |
+|------|----------------------|-------------------|
+| Read a file (or line range) | `read` | `open`, `cat`, scripted reads |
+| Search file contents | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
+| Find files by name/pattern | `glob` | `ls` + filters, `find` |
+| Edit a file | `edit` | `open`/`save` round-trips, scripted rewrites |
+| Apply a patch | `patch` | scripted diffs |
+
+- **Before EVERY `nu` call, ask: "can `read`, `grep`, `glob`, `edit`, or `patch` do this?"** If yes — use the built-in. No exceptions.
+- Running `nu` to do what a built-in already does is a **discipline failure**, not a style choice. Built-ins are structured, sandboxed, context-efficient, and auditable. Shell equivalents burn context, are slower, and fail in silent, far-reaching ways.
+- `nu` is ONLY for what built-ins cannot do: running tests/builds, git operations, process/system inspection, transforming **command output**.
+- Never chain scripts to batch-edit files. One `edit` per file, every time.
+
+### Nushell Scripting
 
 **Exclusively use Nushell** for any scripting needs — never use python, perl, javascript, sed, awk, bash, or any other language to script file edits or batch operations.
 
