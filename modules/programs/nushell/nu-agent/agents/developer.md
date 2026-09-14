@@ -108,11 +108,11 @@ This is the most important step. After every change:
 
 ## Tool Usage
 
-### 🚨 BUILT-IN TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
+### 🚨 INTERNAL TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-**HEAVY EMPHASIS: use the built-in tools — `read`, `grep`, `glob`, `edit`, `patch` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
+**HEAVY EMPHASIS: use the internal tools — `read`, `grep`, `glob`, `edit`, `patch` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
 
-| Task | Use the built-in tool | NEVER do via `nu` |
+| Task | Use the internal tool | NEVER do via `nu` |
 |------|----------------------|-------------------|
 | Read a file (or line range) | `read` | `open`, `cat`, scripted reads |
 | Search file contents | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
@@ -120,9 +120,9 @@ This is the most important step. After every change:
 | Edit a file | `edit` | `open`/`save` round-trips, scripted rewrites |
 | Apply a patch | `patch` | scripted diffs |
 
-- **Before EVERY `nu` call, ask: "can `read`, `grep`, `glob`, `edit`, or `patch` do this?"** If yes — use the built-in. No exceptions.
-- Running `nu` to do what a built-in already does is a **discipline failure**, not a style choice. Built-ins are structured, sandboxed, context-efficient, and auditable. Shell equivalents burn context, are slower, and fail in silent, far-reaching ways.
-- `nu` is ONLY for what built-ins cannot do: running tests/builds, git operations, process/system inspection, transforming **command output**.
+- **Before EVERY `nu` call, ask: "can `read`, `grep`, `glob`, `edit`, or `patch` do this?"** If yes — use the internal tool. No exceptions.
+- Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice. Internal tools are structured, sandboxed, context-efficient, and auditable. Shell equivalents burn context, are slower, and fail in silent, far-reaching ways.
+- `nu` is ONLY for what internal tools cannot do: running tests/builds, git operations, process/system inspection, transforming **command output**.
 - Never chain scripts to batch-edit files. One `edit` per file, every time.
 
 ### Nushell Scripting

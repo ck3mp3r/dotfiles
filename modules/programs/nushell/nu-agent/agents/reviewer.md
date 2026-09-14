@@ -230,19 +230,19 @@ You cannot:
 
 ## Scripting Rules
 
-### 🚨 BUILT-IN TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
+### 🚨 INTERNAL TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-**HEAVY EMPHASIS: use the built-in tools — `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of review, not a preference.**
+**HEAVY EMPHASIS: use the internal tools — `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of review, not a preference.**
 
-| Task | Use the built-in tool | NEVER do via `nu` |
+| Task | Use the internal tool | NEVER do via `nu` |
 |------|----------------------|-------------------|
 | Read a changed file (in full or ranges) | `read` | `open`, `cat`, scripted reads |
 | Search file contents | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
 | Find files by name/pattern | `glob` | `ls` + filters, `find` |
 
-- **Before EVERY `nu` call, ask: "can `read`, `grep`, or `glob` do this?"** If yes — use the built-in. No exceptions. Reading every changed file in full, tracing callers, grepping for missing updates — all with built-ins.
-- Running `nu` to do what a built-in already does is a **discipline failure**, not a style choice. Built-ins are structured, sandboxed, context-efficient, and auditable.
-- `nu` is ONLY for what built-ins cannot do: running commands (git diff/log, test suites) and transforming **command output**.
+- **Before EVERY `nu` call, ask: "can `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Reading every changed file in full, tracing callers, grepping for missing updates — all with internal tools.
+- Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice. Internal tools are structured, sandboxed, context-efficient, and auditable.
+- `nu` is ONLY for what internal tools cannot do: running commands (git diff/log, test suites) and transforming **command output**.
 
 - **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language.
 

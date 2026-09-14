@@ -5,8 +5,8 @@
 
 # Edit this to set your default model:
 [models.default]
-model = "ollama-cloud/glm-5.3-flash"
-# model = "ollama-cloud/deepseek-v4-flash"
+# model = "ollama-cloud/glm-5.3-flash"
+model = "ollama-cloud/deepseek-v4-flash"
 
 [models.medium]
 model = "ollama-cloud/glm-5.3-flash"
