@@ -6,7 +6,7 @@
 # Edit this to set your default model:
 [models.default]
 # model = "ollama-cloud/glm-5.3-flash"
-model = "ollama-cloud/deepseek-v4-flash"
+model = "ollama-cloud/deepseek-v4.1-flash"
 
 [models.medium]
 model = "ollama-cloud/glm-5.3-flash"
@@ -78,7 +78,6 @@ limit = { context = 262144 }
 [providers.lmstudio]
 provider = "openai"
 base_url = "http://localhost:1234/v1"
-api_key = ""
 
 [providers.lmstudio.models."qwen/qwen3.8-27b"]
 limit = { context = 262144 }
