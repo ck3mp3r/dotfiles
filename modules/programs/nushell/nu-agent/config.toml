@@ -61,9 +61,19 @@ base_url = "http://localhost:11434"
 limit = { context = 262144 }
 
 # Local Ollama (no auth)
+[providers.ollama-mini]
+provider = "ollama"
+base_url = "http://christians-mini:11434"
+
+[providers.ollama-mini.models."nemotron-3.5-lightning:30b-mlx"]
+[providers.ollama-mini.models."ornith:35b"]
+[providers.ollama-mini.models."qwen3.8:27b-mlx"]
+limit = { context = 262144 }
+
+# Local Ollama (no auth)
 [providers.ollama-mbp14]
 provider = "ollama"
-base_url = "http://192.168.1.73:11434"
+base_url = "http://christians-mbp14:11434"
 
 [providers.ollama-mbp14.models."nemotron-3.5-lightning:30b-mlx"]
 [providers.ollama-mbp14.models."ornith:35b"]
