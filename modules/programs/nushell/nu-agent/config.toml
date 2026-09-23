@@ -34,10 +34,11 @@ model = "ollama-cloud/gemma4:31b"
 provider = "openai"
 base_url = "https://ollama.com/v1"
 api_key = "store:ollama-cloud"  # run: agent provider auth login ollama-cloud
-# Per-model override — THIS is the fix for the wrong cache data:
-[providers.ollama-cloud.models.deepseek-v4-flash.additional_params]
+
+[providers.ollama-cloud.models."deepseek-v4.1-flash".additional_params]
 think = false
-[providers.ollama-cloud.models.deepseek-v4-flash.limit]
+
+[providers.ollama-cloud.models."deepseek-v4.1-flash".limit]
 output = 65536
 
 # opencode (OpenAI-compatible)
@@ -54,19 +55,26 @@ api_key = "store:opencode"  # run: agent provider auth login opencode-go
 [providers.ollama]
 provider = "ollama"
 base_url = "http://localhost:11434"
-
 [providers.ollama.models."nemotron-3.5-lightning:30b-mlx"]
+limit = { context = 262144 }
+
 [providers.ollama.models."ornith:35b"]
+limit = { context = 262144 }
+
 [providers.ollama.models."qwen3.8:27b-mlx"]
 limit = { context = 262144 }
 
 # Local Ollama (no auth)
 [providers.ollama-mini]
 provider = "ollama"
-base_url = "http://christians-mini:11434"
+base_url = "http://christians-mini.tail.kemper.wtf:11434"
 
 [providers.ollama-mini.models."nemotron-3.5-lightning:30b-mlx"]
+limit = { context = 262144 }
+
 [providers.ollama-mini.models."ornith:35b"]
+limit = { context = 262144 }
+
 [providers.ollama-mini.models."qwen3.8:27b-mlx"]
 limit = { context = 262144 }
 
@@ -76,7 +84,11 @@ provider = "ollama"
 base_url = "http://christians-mbp14:11434"
 
 [providers.ollama-mbp14.models."nemotron-3.5-lightning:30b-mlx"]
+limit = { context = 262144 }
+
 [providers.ollama-mbp14.models."ornith:35b"]
+limit = { context = 262144 }
+
 [providers.ollama-mbp14.models."qwen3.8:27b-mlx"]
 limit = { context = 262144 }
 
