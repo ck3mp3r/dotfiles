@@ -16,7 +16,6 @@
   casks' =
     [
       "1password"
-      "alacritty"
       "arc"
       "claude-code"
       "ghostty"

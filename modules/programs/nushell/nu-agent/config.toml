@@ -64,6 +64,18 @@ limit = { context = 262144 }
 [providers.ollama.models."qwen3.8:27b-mlx"]
 limit = { context = 262144 }
 
+# Local oMLX (no auth)
+[providers.omlx-mini]
+provider = "openai"
+base_url = "http://christians-mini.tail.kemper.wtf:8000/v1"
+api_key = "store:omlx-mini"  # run: agent provider auth login ollama-cloud
+
+[providers.omlx-mini.models."ornith-ai/Ornith-1.5-35B-A3B-MLX-8bit"]
+limit = { context = 262144 }
+
+[providers.omlx-mini.models."lmstudio-community/Qwen3.8-27B-MLX-8bit"]
+limit = { context = 262144 }
+
 # Local Ollama (no auth)
 [providers.ollama-mini]
 provider = "ollama"
