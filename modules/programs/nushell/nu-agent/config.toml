@@ -70,9 +70,6 @@ provider = "openai"
 base_url = "http://christians-mac-mini.tail.kemper.wtf:8000/v1"
 api_key = "store:omlx-mini"  # run: agent provider auth login ollama-cloud
 
-[providers.omlx-mini.models."mlx-community/Kimi-Dev-72B-4bit-DWQ"]
-limit = { context = 262144 }
-
 [providers.omlx-mini.models."ornith-ai/Ornith-1.5-35B-A3B-MLX-8bit"]
 limit = { context = 262144 }
 
