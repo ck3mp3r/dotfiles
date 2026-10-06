@@ -76,6 +76,9 @@ limit = { context = 262144 }
 [providers.omlx-mini.models."lmstudio-community/Qwen3.8-27B-MLX-8bit"]
 limit = { context = 262144 }
 
+[providers.omlx-mini.models."mlx-community/Qwen3.8-27B-4bit"]
+limit = { context = 262144 }
+
 # Local Ollama (no auth)
 [providers.ollama-mini]
 provider = "ollama"
