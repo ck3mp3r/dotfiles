@@ -8,7 +8,6 @@ permissions:
   ast_*: allow
   read: allow
   edit: allow
-  patch: deny
   http: allow
   glob: allow
   grep: allow
@@ -21,6 +20,7 @@ permissions:
   tasks_cancel: allow
   tasks_complete: allow
   tasks_list: allow
+  tmux_*: deny
   context7__*: allow
   c5t_dev__*: allow
   c5t__get_*: allow

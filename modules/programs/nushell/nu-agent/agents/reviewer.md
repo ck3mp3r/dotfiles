@@ -8,7 +8,6 @@ permissions:
   ast_*: allow
   read: allow
   edit: deny
-  patch: deny
   http: allow
   glob: allow
   grep: allow
