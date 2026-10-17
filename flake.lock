@@ -1029,11 +1029,11 @@
         "topiary-nu": "topiary-nu_2"
       },
       "locked": {
-        "lastModified": 1792247510,
-        "narHash": "sha256-snjjrqNmGr7ceW7IKgIz80ei0VKM67yCbOSEBTcplYU=",
+        "lastModified": 1792270187,
+        "narHash": "sha256-9YTyGXE9/DfDz2OfMlsWD8tJkmv/ieWueJSQY4Wfc2I=",
         "owner": "ck3mp3r",
         "repo": "nu-mcp",
-        "rev": "3d813b3fc008b8f3b08c18bd55ccf4d8e8b7fb00",
+        "rev": "277900f87f16c474f4301f5e8f7060beffa24c06",
         "type": "github"
       },
       "original": {

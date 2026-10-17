@@ -177,16 +177,23 @@ url = "http://127.0.0.1:3738/mcp"
 enabled = false
 transport = "stdio"
 command = "NU_MCP_PATH"
-args = ["--tools-dir", "NU_MCP_TOOLS_PATH/gh"]
+args = [
+  "--tools-dir", "NU_MCP_TOOLS_PATH/gh",
+  "--add-read-path", "~/.config/gh",
+  "--add-read-path", "~/.config/git"
+]
+# [mcp.gh.env]
+# GITHUB_TOKEN = "(gh auth token)"
 
 [mcp.nu]
 enabled = false
 transport = "stdio"
-command = "nu-mcp"
+command = "NU_MCP_PATH"
 args = [ 
   "--add-path", "/tmp", 
-  "--add-path", "/nix/store"
 ]
+# [mcp.nu.env]
+# GITHUB_TOKEN = "(gh auth token)"
 #
 # [mcp.nu.env]
 # GIT_PAGER = ""

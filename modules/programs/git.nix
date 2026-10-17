@@ -41,6 +41,14 @@ in {
       };
       mergetool.nvimdiff.cmd = "nvim -d $LOCAL $BASE $REMOTE $MERGED -c \"4wincmd w\" -c \"wincmd J\"";
       diff = {colorMoved = "default";};
+      user = {
+        name = "Christian Kemper";
+        email = "christian.kemper@me.com";
+        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOONq7p/lLv9WyXZqnNcxm8xMUcXM0hG4Rer9ACEQChj";
+      };
+      commit = {
+        gpgsign = true;
+      };
     };
   };
 

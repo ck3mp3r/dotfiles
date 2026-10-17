@@ -83,7 +83,7 @@
         c5t = c5t.packages.${system}.default;
         laio = laio.packages.${system}.laio;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
-        nu-mcp = nu-mcp.packages.${system}.default;
+        nu-mcp = nu-mcp.packages.${system}.nu-mcp;
         topiary = topiary-nu.packages.${system}.default;
 
         # Override Python packages to use Python 3.13
