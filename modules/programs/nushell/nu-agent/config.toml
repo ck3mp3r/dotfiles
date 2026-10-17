@@ -182,8 +182,8 @@ args = [
   "--add-read-path", "~/.config/gh",
   "--add-read-path", "~/.config/git"
 ]
-# [mcp.gh.env]
-# GITHUB_TOKEN = "(gh auth token)"
+[mcp.gh.env]
+GITHUB_TOKEN = "cmd:gh auth token"
 
 [mcp.nu]
 enabled = false
@@ -192,8 +192,8 @@ command = "NU_MCP_PATH"
 args = [ 
   "--add-path", "/tmp", 
 ]
-# [mcp.nu.env]
-# GITHUB_TOKEN = "(gh auth token)"
+[mcp.nu.env]
+GITHUB_TOKEN = "cmd:gh auth token"
 #
 # [mcp.nu.env]
 # GIT_PAGER = ""
