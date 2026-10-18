@@ -80,7 +80,7 @@
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
         apple-container-src = apple-container;
-        c5t = c5t.packages.${system}.default;
+        c5t = c5t.packages.${system}.context;
         laio = laio.packages.${system}.laio;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.nu-mcp;
