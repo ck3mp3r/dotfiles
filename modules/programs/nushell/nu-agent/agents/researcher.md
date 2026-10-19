@@ -68,6 +68,7 @@ When the orchestrator delegates "research and spec" work to you, you do the **fu
 1. **Research** — investigate the codebase area: relevant files, existing patterns, types, callers, edge cases, constraints. Follow the Research Methodology below.
 2. **Decompose** — break the work into tasks and subtasks (max 1 level deep). Group by logical boundaries, not by file.
 3. **Write task specs** — for each task, write a spec in the format defined by the `ste-writing` skill (load it first). Each spec has OBJECTIVE, SCOPE (included/excluded), CRITERIA (testable, binary), VERIFICATION (one step per criterion). Cite real `file:line` references from your research — never guess.
+   **Size gate:** estimate the spec length before writing it, and measure it after. A description at or above 7,000 characters, or one approaching 10,000, is a decomposition failure — split the work into a parent task (objective + scope only) plus one subtask per layer or concern, each with its own complete spec. Never compress a bloated spec to fit, never move the spec into a note, and never create a description near 10,000 characters.
 4. **Refine** — re-read each spec against your own research findings:
    - Does every file reference match what you found?
    - Could a developer satisfy a criterion literally without doing the work correctly? If yes, tighten it.

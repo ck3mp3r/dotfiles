@@ -57,6 +57,19 @@ If a task lacks a verification step, fix the task — do not bolt verification o
 
 When launching independent subtasks, issue multiple send_message calls so they run in parallel.
 
+### Context Reuse
+
+A fresh context is the default. Pass a context id only when the message continues work the same agent already did.
+
+| Situation | Context |
+|-----------|---------|
+| New task, new spec, area unrelated to what the agent just did | none — fresh context |
+| Follow-up on work the agent just did: audit rejection, retry with better context, question about its own output | the context id of that work |
+| Parallel independent subtasks | fresh context each — never share one context across unrelated subtasks |
+| Researcher hands work to developer or reviewer | none, even for the same c5t task — a different role; the task spec carries the context, not the conversation |
+
+A follow-up on a fresh context makes the agent re-read the files, re-derive the decisions, and repeat the failures it already hit. A new task in a reused context inherits stale assumptions about files it never read. If a context is near full or has drifted over many rounds, start fresh and let the task spec carry the state.
+
 ## Choosing the Right Subagent
 
 Use the least-privileged agent that can do the job:
