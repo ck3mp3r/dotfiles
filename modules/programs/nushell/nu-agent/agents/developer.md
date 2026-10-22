@@ -28,6 +28,7 @@ permissions:
   c5t__read_note: allow
   c5t__create_*: ask
   c5t__update_*: ask
+  c5t__update_task: allow
   c5t__edit_*: ask
   c5t__transition_task: allow
   c5t__delete_*: ask
