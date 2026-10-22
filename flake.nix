@@ -42,7 +42,7 @@
     };
 
     c5t = {
-      url = "github:ck3mp3r/context";
+      url = "github:ck3mp3r/context/feature/sync-full-replica-export";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
