@@ -29,6 +29,15 @@ model = "ollama-cloud/gemma4:31b"
 # [providers.anthropic]
 # api_key = "store:anthropic"  # run: agent provider auth login anthropic
 
+# foundation models
+[providers.fm]
+provider = "openai"
+base_url = "http://127.0.0.1:1976/v1"
+api_key = "store:fm"
+
+[providers.fm.models.system]
+limit = { context = 262144 }
+
 # Ollama Cloud
 [providers.ollama-cloud]
 provider = "openai"

@@ -8,6 +8,14 @@
 }: {
   # fix for manuals not compiling...
   manual.manpages.enable = false;
+
+  # Determinate Nix sets use-xdg-base-directories globally (see `nix config show`)
+  # and HM does not manage nix.conf. Tell HM so its default-profile detection
+  # (installPackages, CLI) probes the real XDG default profile
+  # (~/.local/state/nix/profile -> profiles/profile) instead of the nonexistent
+  # ~/.nix-profile. The installPackages command itself (probe + `nix profile
+  # add`) is overridden in ./nix-profile.nix — HM#4593 and HM#9598.
+  nix.assumeXdg = true;
   xdg.enable = true;
   fonts.fontconfig.enable = true;
   home = {
@@ -17,6 +25,10 @@
   };
   imports = [
     sops-nix.homeManagerModules.sops
+
+    # HM nix profile activation: probe the real XDG default profile (HM#4593)
+    # and use `nix profile add` instead of the deprecated `install` (HM#9598)
+    ./nix-profile.nix
 
     (import ./programs/nushell {inherit pkgs homeDirectory;})
     ./programs.nix

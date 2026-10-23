@@ -1,62 +1,114 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nu
 
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export ZDOTDIR=$XDG_CONFIG_HOME/zsh
-
-##
-# run home-manager switch
-#
-_switch() {
-  nix run home-manager \
-    --extra-experimental-features nix-command \
-    --extra-experimental-features flakes -- \
-    switch --flake ~/.config/dotfiles#"$USER"
+def main [] {
+  use std [ help ]
+  help main
 }
 
-##
-# run home-manager prune
-#
-_prune() {
-  nix run home-manager -- expire-generations "-1day" && nix-collect-garbage
+# run switch: home-manager by default (no sudo), or full nix-darwin system switch with --system
+def 'main switch' [
+  --system (-s) # run the full nix-darwin system switch (requires sudo)
+] {
+  let user = ($env.USER | str replace "." "_")
+  if $system {
+    (
+      sudo nix run nix-darwin
+      --extra-access-tokens github.com=(gh auth token)
+      --extra-experimental-features nix-command
+      --extra-experimental-features flakes --
+      switch --impure --flake $"($env.HOME)/.config/dotfiles#($user)"
+    )
+  } else {
+    (
+      nix run home-manager
+      --extra-experimental-features nix-command
+      --extra-experimental-features flakes --
+      switch --impure --flake $"($env.HOME)/.config/dotfiles#($user)" -b bak
+    )
+  }
 }
 
-##
-# help
-#
-_print_help() {
-  cat <<EOF
-Usage: hm switch        # run home-manager switch
-       hm prune         # run home-manager expire-generations "-1day"
-                        #   and nix-collect-garbage
-       hm flake-update  # update flake lock
-       hm nix-upgrade   # upgrade to latest nix version
-       hm nix-fix-store # use this to fix a corrupted nix store
-       hm -h|help       # print this help message.
-EOF
+# prune unused derivations; with --system also runs home-manager generation expiry
+def 'main prune' [
+  --system (-s) # also expire old home-manager generations before collecting garbage
+] {
+  if not $system {
+    nix run home-manager -- expire-generations "-1day"
+  }
+  nix-collect-garbage
 }
 
-# determine script base path
-BASE_PATH=$(dirname "$(dirname "$0")")
+# update flake lock
+def 'main flake-update' [] {
+  cd ($env.FILE_PWD | path dirname)
+  nix flake update
+  cd -
+}
 
-if [[ "$#" -eq 0 ]]; then
-  _print_help
-fi
+# update dotfiles
+def 'main update' [] {
+  cd ($env.FILE_PWD | path dirname)
+  git pull origin main
+  cd -
+}
 
-# figure out what needs to be run
-while [[ "$#" -gt 0 ]]; do
-  case $1 in
-  switch) _switch ;;
-  prune) _prune ;;
-  update) pushd "$BASE_PATH" && git pull origin main && popd || exit ;;
-  flake-update) pushd "$BASE_PATH" && nix flake update && popd || exit ;;
-  nix-fix-store) sudo nix-store --repair --verify --check-contents ;;
-  -h | help) _print_help ;;
-  *)
-    _print_help
-    exit 1
-    ;;
-  esac
-  shift
-done
+# use this to update all the profile packages
+def 'main profile upgrade' [] {
+  nix profile upgrade --refresh ...(nix profile list --json | from json | get elements | transpose name | get name)
+}
+
+# use this to fix a corrupted nix store
+def 'main fix-store' [] {
+  sudo nix-store --repair --verify --check-contents
+}
+
+# backup existing zsh config files before nix-darwin setup
+def 'main backup-zsh' [] {
+  sudo mv /etc/zshrc /etc/zshrc.before-nix-darwin
+  sudo mv /etc/zprofile /etc/zprofile.before-nix-darwin
+}
+
+# show flake info for a profile's original URL
+def 'main profile show' [
+  profile_name: string # name of the profile to show flake info for
+] {
+  let profiles = (nix profile list --json | from json | get elements | transpose name)
+  let profile = ($profiles | where name == $profile_name | first)
+
+  if ($profile | is-empty) {
+    error make {
+      msg: $"Profile '($profile_name)' not found"
+      label: {
+        text: "Available profiles:"
+        span: (metadata $profile_name).span
+      }
+      help: ($profiles | get name | str join ", ")
+    }
+  }
+
+  let url = ($profile | get column1.originalUrl)
+  print $"Showing flake info for: ($url)\n"
+
+  let system = $"($nu.os-info.arch)-(if $nu.os-info.name == 'macos' { 'darwin' } else { $nu.os-info.name })"
+  let data = (^nix flake show $url --json | from json | get inventory)
+
+  let packages = ($data.packages.output.children | get $system | get children | transpose name info)
+  if not ($packages | is-empty) {
+    print "Packages:"
+    $packages | each {|item| print $"  - ($item.name)" }
+  }
+
+  let apps = ($data.apps.output.children | get $system | get children | transpose name info)
+  if not ($apps | is-empty) {
+    if not ($packages | is-empty) { print "" }
+    print "Apps:"
+    $apps | each {|item| print $"  - ($item.name)" }
+  }
+
+  null
+}
+
+# list profiles
+def 'main profile list' [] {
+  nix profile list --json | from json | get elements | transpose name items | get name
+}
