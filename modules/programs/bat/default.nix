@@ -10,7 +10,8 @@ in {
     config.theme = "Catppuccin Mocha";
     themes."Catppuccin Mocha" = {
       src = catppuccinSources.bat;
-      file = "Catppuccin Mocha.tmTheme";
+      # catppuccin/bat keeps its .tmTheme files under themes/ (upstream layout change)
+      file = "themes/Catppuccin Mocha.tmTheme";
     };
   };
 }
