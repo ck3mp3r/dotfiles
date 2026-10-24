@@ -5,24 +5,12 @@
   username,
   stateVersion,
   sops-nix,
-  casks,
   ...
 } @ inputs: let
   packages' = with pkgs; [
     mkalias
     nushell
   ];
-
-  casks' =
-    [
-      "1password"
-      "arc"
-      "claude-code"
-      "ghostty"
-      "ollama-app"
-      "zen"
-    ]
-    ++ casks;
 in {
   environment.systemPackages = packages';
   launchd = {
@@ -98,24 +86,6 @@ in {
   programs.zsh.enable = true; # default shell on catalina
   # programs.fish.enable = true;
 
-  homebrew = {
-    enable = true;
-    # onActivation.cleanup = "zap";
-    casks = casks';
-    taps = [
-      "charmbracelet/tap"
-      "protonpass/tap"
-    ];
-    brews = [
-      "charmbracelet/tap/crush"
-      "protonpass/tap/pass-cli"
-      "ollama"
-    ];
-    onActivation.extraEnv = {
-      HOMEBREW_NO_REQUIRE_TAP_TRUST = "1";
-    };
-  };
-
   # Set Git commit hash for darwin-version.
   system = {
     primaryUser = username;
@@ -149,8 +119,9 @@ in {
         tilesize = 16;
         largesize = 34;
         persistent-apps = [
-          "/Applications/Arc.app"
           "/Applications/Ghostty.app"
+          "/Applications/Zen.app"
+          "/Applications/Rex Beta.app"
           # "${pkgs.utm}/Applications/UTM.app"
           # "/Applications/Obsidian.app"
           # "/Applications/Parallels Desktop.app"
