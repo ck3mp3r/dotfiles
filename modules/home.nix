@@ -41,6 +41,7 @@
     ./programs/ghostty
     # ./programs/goose
     ./programs/git.nix
+    ./programs/herdr
     ./programs/homebrew
     ./programs/idea
     ./programs/k9s
