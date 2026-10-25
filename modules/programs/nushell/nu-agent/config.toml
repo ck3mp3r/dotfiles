@@ -222,3 +222,11 @@ GITHUB_TOKEN = "cmd:gh auth token"
 # # run: agent mcp auth login my-api
 
 # Run `agent models sync` then `agent models list` to see all available providers.
+
+# ─── Hooks ────────────────────────────────────────────────
+# Relative `script` resolves against this file's directory.
+[[hooks]]
+name = "herdr"
+events = ["agent_started", "turn_started", "turn_completed", "agent_shutdown"]
+script = "hooks/herdr.nu"
+timeout_ms = 5000

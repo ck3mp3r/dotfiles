@@ -10,4 +10,6 @@ in {
   home.file.".config/nu-agent/agents/developer.md".source = ./agents/developer.md;
   home.file.".config/nu-agent/agents/orchestrator.md".source = ./agents/orchestrator.md;
   home.file.".config/nu-agent/agents/reviewer.md".source = ./agents/reviewer.md;
+
+  home.file.".config/nu-agent/hooks/herdr.nu".source = ./hooks/herdr.nu;
 }
