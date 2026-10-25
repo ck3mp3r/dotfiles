@@ -22,7 +22,7 @@
     };
 
     laio = {
-      url = "github:ck3mp3r/laio-cli";
+      url = "github:ck3mp3r/laio-cli/feature/herdr-muxer";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
@@ -72,7 +72,7 @@
       or (import <nixpkgs> {}).stdenv.hostPlatform.system;
     inherit (nix-darwin.lib) darwinSystem;
     inherit (home-manager.lib) homeManagerConfiguration;
-    stateVersion = "26.05";
+    stateVersion = "26.11";
 
     overlays = [
       base-nixpkgs.overlays.default

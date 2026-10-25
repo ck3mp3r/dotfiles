@@ -1,17 +1,4 @@
 load-env {
-  config: {
-    show_banner: false
-    completions: {
-      algorithm: "fuzzy"
-    }
-  }
-  XDG_CONFIG_HOME: $"($env.HOME)/.config"
-  XDG_CACHE_HOME: $"($env.HOME)/.cache"
-  XDG_DATA_HOME: $"($env.HOME)/.local/share"
-  # Atuin owns Ctrl+R in nushell. programs.fzf.historyWidget.command = ""
-  # only affects home-manager-managed shells (enableNushellIntegration = false),
-  # so mirror it here for the fzf --nushell script (fzf.nu:__fzf_binding_enabled).
-  FZF_CTRL_R_COMMAND: ""
   STARSHIP_SHELL: "nu"
   DOCKER_HOST: $"unix://($env.HOME)/.config/colima/default/docker.sock"
   TERM: "xterm-256color"
@@ -21,7 +8,6 @@ load-env {
     $env.PATH | prepend [
       $"($env.HOME)/.nix-profile/bin"
       $"($env.HOME)/.local/state/nix/profiles/profile/bin"
-      $"($env.HOME)/.local/bin"
       $"($env.HOME)/.config/dotfiles/bin"
       $"/etc/profiles/per-user/($env.USER)/bin"
       "/run/current-system/sw/bin"
@@ -33,7 +19,19 @@ load-env {
   PROMPT_COMMAND: {|| starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)' }
   PROMPT_COMMAND_RIGHT: ""
   PROMPT_INDICATOR: ""
-  PROMPT_INDICATOR_VI_INSERT: "❯ "
-  PROMPT_INDICATOR_VI_NORMAL: "❮ "
+  PROMPT_INDICATOR_VI_INSERT: {||
+    if $env.LAST_EXIT_CODE == 0 {
+      $"(ansi green_bold)❯ (ansi reset)"
+    } else {
+      $"(ansi red_bold)❯ (ansi reset)"
+    }
+  }
+  PROMPT_INDICATOR_VI_NORMAL: {||
+    if $env.LAST_EXIT_CODE == 0 {
+      $"(ansi green_bold)❮ (ansi reset)"
+    } else {
+      $"(ansi red_bold)❮ (ansi reset)"
+    }
+  }
   PROMPT_MULTILINE_INDICATOR: "❯❯ "
 }

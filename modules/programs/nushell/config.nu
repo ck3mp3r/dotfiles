@@ -1,3 +1,7 @@
+$env.config.show_banner = false
+$env.config.edit_mode = "vi"
+$env.config.completions.algorithm = "fuzzy"
+
 ulimit --file-descriptor-count 8192
 
 let integrations = ["laio" "carapace"]

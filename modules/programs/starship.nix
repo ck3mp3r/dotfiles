@@ -5,6 +5,7 @@
 }: let
   catppuccinSources = lib.listToAttrs (map (s: lib.nameValuePair s.name s) pkgs.catppuccin.srcs);
   catppuccinStarship = lib.importTOML "${catppuccinSources.starship}/themes/mocha.toml";
+  zeroWidth = builtins.fromJSON "\"\\u200b\"";
 in {
   programs.starship = {
     enable = true;
@@ -20,6 +21,15 @@ in {
         docker_context.disabled = true;
         openstack.disabled = true;
       }
-      // catppuccinStarship;
+      // catppuccinStarship
+      // {
+        # nushell draws the vi-mode prompt indicators itself
+        palette = "catppuccin_mocha";
+        character = {
+          format = "$symbol";
+          success_symbol = zeroWidth;
+          error_symbol = zeroWidth;
+        };
+      };
   };
 }
