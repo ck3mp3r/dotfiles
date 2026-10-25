@@ -22,7 +22,7 @@
     };
 
     laio = {
-      url = "github:ck3mp3r/laio-cli/feature/herdr-muxer";
+      url = "github:ck3mp3r/laio-cli";
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 

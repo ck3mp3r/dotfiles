@@ -757,16 +757,15 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1792943221,
+        "lastModified": 1792950252,
         "narHash": "sha256-gxmlAcuDZiOroLv6sA98Yec0LypiWEd4yrXpkRIUFT4=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "77686c37dad2901da0d20831813bb747ce8cfe5a",
+        "rev": "2ef399cb3c09eb98cbd3b72e841d8548eddceb45",
         "type": "github"
       },
       "original": {
         "owner": "ck3mp3r",
-        "ref": "feature/herdr-muxer",
         "repo": "laio-cli",
         "type": "github"
       }
