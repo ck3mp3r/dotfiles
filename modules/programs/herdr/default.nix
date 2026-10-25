@@ -4,6 +4,7 @@
     package = pkgs.herdr;
     settings = {
       onboarding = false;
+      terminal.default_shell = "/run/current-system/sw/bin/nu";
       keys = {
         prefix = "ctrl+a";
 
