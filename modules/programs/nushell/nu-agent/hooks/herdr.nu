@@ -20,6 +20,14 @@ def turn_started [event: record] { report working $event.payload.prompt }
 
 def turn_completed [event: record] { report idle }
 
+def permission_requested [event: record] { report blocked }
+
+def permission_decision_timed_out [event: record] { report working }
+
+def permission_decision_submitted [event: record] { report working }
+
+def permission_request_cancelled [event: record] { report idle }
+
 def agent_shutdown [event: record] {
     let pane = $env.HERDR_PANE_ID?
     if $pane == null { return }

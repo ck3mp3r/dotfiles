@@ -14,6 +14,9 @@
     "claude-code"
     "ghostty"
     "ollama-app"
+    "proton-drive"
+    "proton-pass"
+    "protonvpn"
     "zen"
   ];
 
