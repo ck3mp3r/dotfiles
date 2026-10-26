@@ -1,5 +1,4 @@
-{pkgs, ...}:
-let
+{pkgs, ...}: let
   # Status commands mirror the monitor plugin in the installed ck3mp3r/flakes
   # tmux profile. Herdr schedules these itself; no tmux server or cache needed.
   mkStatus = metric:
@@ -31,10 +30,10 @@ in {
         split_vertical = ["prefix+backslash" "prefix+shift+backslash"];
         split_horizontal = ["prefix+minus" "prefix+shift+minus"];
 
-        focus_pane_left = ["prefix+h" "ctrl+h"];
-        focus_pane_down = ["prefix+j" "ctrl+j"];
-        focus_pane_up = ["prefix+k" "ctrl+k"];
-        focus_pane_right = ["prefix+l" "ctrl+l"];
+        focus_pane_left = ["prefix+h"];
+        focus_pane_down = ["prefix+j"];
+        focus_pane_up = ["prefix+k"];
+        focus_pane_right = ["prefix+l"];
 
         navigate_workspace_down = "j";
         navigate_workspace_up = "k";
