@@ -10,9 +10,10 @@ windows:
           - command: ^$env.EDITOR
       - flex: 1
         commands:
-          - command: ^opencode
+          - command: ^agent
             args:
-              - --port
+              - --agent
+              - maker
 
   - name: misc
     panes:
