@@ -7,7 +7,7 @@ def report [state: string message?: any agent?: any] {
   let pane = $env.HERDR_PANE_ID?
   if $pane == null { return }
   let bin = ($env.HERDR_BIN_PATH? | default 'herdr')
-  let label = (if $agent == null { $AGENT_ID } else { $"($AGENT_ID) \(($agent)\)" })
+  let label = (if $agent == null { $AGENT_ID } else { $"($AGENT_ID): ($agent)" })
   let args = (
     [
       pane
@@ -46,5 +46,5 @@ def agent_shutdown [event: record] {
   let pane = $env.HERDR_PANE_ID?
   if $pane == null { return }
   let bin = ($env.HERDR_BIN_PATH? | default 'herdr')
-  try { ^$bin pane release-agent $pane --source nu-agent --agent (if $event.agent? == null { $AGENT_ID } else { $"($AGENT_ID) \(($event.agent)\)" }) }
+  try { ^$bin pane release-agent $pane --source nu-agent --agent (if $event.agent? == null { $AGENT_ID } else { $"($AGENT_ID): ($event.agent)" }) }
 }
