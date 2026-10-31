@@ -23,7 +23,6 @@
   brews = [
     "charmbracelet/tap/crush"
     "protonpass/tap/pass-cli"
-    "ollama"
   ];
 
   brewfile = pkgs.writeText "Brewfile" (
