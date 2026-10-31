@@ -50,6 +50,11 @@
       url = "https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg";
       flake = false;
     };
+
+    omlx = {
+      url = "https://github.com/jundot/omlx/releases/download/v0.7.3rc1/oMLX-0.7.3rc1-macos26-27.dmg";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -62,11 +67,17 @@
     nixpkgs-unstable,
     nu-mcp,
     nu-mods,
+    omlx,
     self,
     sops-nix,
     topiary-nu,
     ...
   }: let
+    hosts = import ./hosts.nix;
+    # bin/hm exports this from `scutil --get LocalHostName`; empty under pure eval,
+    # so an unlisted or manually-evaluated host resolves to no roles.
+    host = hosts.${builtins.getEnv "DARWIN_HOST"} or {};
+
     system =
       builtins.currentSystem
       or (import <nixpkgs> {}).stdenv.hostPlatform.system;
@@ -84,6 +95,7 @@
         laio = laio.packages.${system}.laio;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
+        omlx-src = omlx;
         topiary = topiary-nu.packages.${system}.default;
 
         # Override Python packages to use Python 3.13
@@ -100,6 +112,7 @@
     makeDarwinConfiguration = args: let
       defaults = {
         casks = [];
+        roles = host.roles or [];
       };
       config = defaults // args;
     in
@@ -109,7 +122,8 @@
           home-manager.darwinModules.home-manager
           (import ./modules/darwin.nix {
             inherit system pkgs stateVersion sops-nix;
-            inherit (config) username casks;
+            inherit (config) username casks roles;
+            hostConfig = host;
             revision = self.rev or self.dirtyRev or null;
           })
         ];
@@ -118,6 +132,7 @@
     makeHomemanagerConfiguration = args: let
       defaults = {
         casks = [];
+        roles = host.roles or [];
       };
       config = defaults // args;
     in
@@ -126,7 +141,8 @@
         modules = [
           (import ./modules/home.nix {
             inherit pkgs stateVersion system sops-nix;
-            inherit (config) username;
+            inherit (config) username roles;
+            hostConfig = host;
             homeDirectory =
               if pkgs.stdenv.hostPlatform.isLinux
               then "/home/${config.username}"
@@ -146,7 +162,7 @@
     formatter.${system} = pkgs.alejandra;
 
     homeConfigurations = {
-      christian = makeHomemanagerConfiguration {username = "christian";};
+      christian = makeHomemanagerConfiguration { username = "christian"; };
     };
   };
 }

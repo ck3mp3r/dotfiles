@@ -10,20 +10,26 @@ def 'main switch' [
   --system (-s) # run the full nix-darwin system switch (requires sudo)
 ] {
   let user = ($env.USER | str replace "." "_")
+  let host = (^/usr/sbin/scutil --get LocalHostName | str lowercase)
+  let flake = $"($env.HOME)/.config/dotfiles#($user)"
   if $system {
     (
-      sudo nix run nix-darwin
+      sudo env $'DARWIN_HOST=($host)' nix run nix-darwin
       --extra-access-tokens github.com=(gh auth token)
       --extra-experimental-features nix-command
       --extra-experimental-features flakes --
-      switch --impure --flake $"($env.HOME)/.config/dotfiles#($user)"
+      switch --impure --flake $flake
     )
   } else {
     (
-      nix run home-manager
-      --extra-experimental-features nix-command
-      --extra-experimental-features flakes --
-      switch --impure --flake $"($env.HOME)/.config/dotfiles#($user)" -b bak
+      with-env {DARWIN_HOST: $host} {
+        (
+          nix run home-manager
+          --extra-experimental-features nix-command
+          --extra-experimental-features flakes --
+          switch --impure --flake $flake -b bak
+        )
+      }
     )
   }
 }

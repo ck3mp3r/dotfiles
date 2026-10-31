@@ -4,6 +4,8 @@
   homeDirectory,
   stateVersion,
   sops-nix,
+  roles ? [],
+  hostConfig ? {},
   ...
 }: {
   # fix for manuals not compiling...
@@ -30,7 +32,7 @@
     # and use `nix profile add` instead of the deprecated `install` (HM#9598)
     ./nix-profile.nix
 
-    (import ./programs/nushell {inherit pkgs homeDirectory;})
+    ./programs/nushell
     ./programs.nix
     ./programs/alacritty
     ./programs/atuin
@@ -52,9 +54,14 @@
     ./programs/tree-sitter
     ./programs/zellij
     ./programs/zsh
-  ];
+  ]
+  ++ pkgs.lib.optional (builtins.elem "inference" roles) ./programs/omlx;
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "${homeDirectory}/.config/sops/age/keys.txt";
+}
+// pkgs.lib.optionalAttrs (builtins.elem "inference" roles) {
+  # Machine-specific knobs from hosts.nix, consumed by the omlx module.
+  omlx.guardCeilingGb = hostConfig.omlx.guardCeilingGb or 48;
 }

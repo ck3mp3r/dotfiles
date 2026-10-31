@@ -5,6 +5,8 @@
   username,
   stateVersion,
   sops-nix,
+  roles ? [],
+  hostConfig ? {},
   ...
 } @ inputs: let
   packages' = with pkgs; [
@@ -165,7 +167,7 @@ in {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.${username} = import ./home.nix {
-      inherit stateVersion pkgs username sops-nix system;
+      inherit stateVersion pkgs username sops-nix system roles hostConfig;
       nixvim = inputs.nixvim;
       homeDirectory =
         if pkgs.stdenv.hostPlatform.isLinux

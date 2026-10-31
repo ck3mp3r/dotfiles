@@ -80,13 +80,22 @@ base_url = "http://christians-mac-mini.tail.kemper.wtf:8000/v1"
 api_key = "store:omlx-mini"  # run: agent provider auth login ollama-cloud
 
 [providers.omlx-mini.models."ornith-ai/Ornith-1.5-35B-A3B-MLX-8bit"]
-limit = { context = 262144 }
+limit = { context = 250000 }
+
+[providers.omlx-mini.models."ornith-ai/Ornith-1.5-35B-A3B-MLX-8bit".additional_params]
+thinking_budget = 0
 
 [providers.omlx-mini.models."lmstudio-community/Qwen3.8-27B-MLX-8bit"]
-limit = { context = 262144 }
+limit = { context = 250000 }
+
+[providers.omlx-mini.models."lmstudio-community/Qwen3.8-27B-MLX-8bit".additional_params]
+thinking_budget = 0
 
 [providers.omlx-mini.models."mlx-community/Qwen3.8-27B-4bit"]
-limit = { context = 262144 }
+limit = { context = 250000 }
+
+[providers.omlx-mini.models."mlx-community/Qwen3.8-27B-4bit".additional_params]
+thinking_budget = 0
 
 # Local Ollama (no auth)
 [providers.ollama-mini]
