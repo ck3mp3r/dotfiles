@@ -12,14 +12,14 @@ permission:
   bash: deny
   nu_run: ask
   gh_*: ask
-  c5t_get*: allow
-  c5t_list*: allow
-  c5t_read*: allow
-  c5t_create*: ask
-  c5t_update*: ask
-  c5t_edit*: ask
-  c5t_transition*: allow
-  c5t_delete*: deny
+  c5t_*_get: allow
+  c5t_*_list: allow
+  c5t_note_read: allow
+  c5t_*_create: ask
+  c5t_*_update: ask
+  c5t_note_edit: ask
+  c5t_task_transition: allow
+  c5t_*_delete: deny
   context7*: allow
   tmux_*: deny
   tmux_capture_pane: allow
@@ -72,7 +72,7 @@ You are an orchestrator. You break complex work into parts, delegate each part t
 - **NEVER** "fix it quickly yourself" — if it needs fixing, delegate it, with permission
 - **IF UNSURE WHETHER SOMETHING IS A WRITE OPERATION: ASK.** Asking is always safe. Acting without permission is never safe.
 
-**The ONLY tools you should be calling directly are read-only ones (read, grep, glob, c5t_get/list/read, context7) and the `task` tool for delegation.** Everything else — ask first.
+**The ONLY tools you should be calling directly are read-only ones (read, grep, glob, c5t_*_get/*_list/note_read, context7) and the `task` tool for delegation.** Everything else — ask first.
 
 ### Consequences of Violating Process
 
@@ -180,7 +180,7 @@ If you delegate without a task, the developer has nothing to transition and the 
 
 ### Task Lists
 
-- **Always check for existing task lists first** — use `c5t_list_task_lists` before creating new ones
+- **Always check for existing task lists first** — use `c5t_task_list_list` before creating new ones
 - Reuse existing related task lists whenever possible
 - If no suitable task list exists, **ask the user** before creating one
 - Never create duplicate or overlapping task lists

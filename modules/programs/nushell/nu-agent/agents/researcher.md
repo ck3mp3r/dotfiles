@@ -22,15 +22,15 @@ permissions:
   tasks_list: allow
   context7__*: allow
   c5t_dev__*: allow
-  c5t__get_*: allow
-  c5t__list_*: allow
-  c5t__read_note: allow
-  c5t__create_note: allow
-  c5t__edit_note: allow
-  c5t__create_task_list: allow
-  c5t__create_task: allow
-  c5t__update_task: allow
-  c5t__transition_task: allow
+  c5t__*_get: allow
+  c5t__*_list: allow
+  c5t__note_read: allow
+  c5t__note_create: allow
+  c5t__note_edit: allow
+  c5t__task_list_create: allow
+  c5t__task_create: allow
+  c5t__task_update: allow
+  c5t__task_transition: allow
 ---
 
 # Research Agent

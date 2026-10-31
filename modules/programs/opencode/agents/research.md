@@ -17,15 +17,14 @@ permission:
   bash: deny
   nu_run: deny
   webfetch: allow
-  c5t_get*: allow
-  c5t_list*: allow
-  c5t_read*: allow
-  c5t_create_note: allow
-  c5t_edit_note: allow
-  c5t_update_note: allow
-  c5t_create_task: allow
-  c5t_update_task: allow
-  c5t_transition*: allow
+  c5t_*_get: allow
+  c5t_*_list: allow
+  c5t_note_read: allow
+  c5t_note_create: allow
+  c5t_note_edit: allow
+  c5t_task_create: allow
+  c5t_task_update: allow
+  c5t_task_transition: allow
   context7*: allow
   tmux_capture_pane: allow
   tmux_list_*: allow

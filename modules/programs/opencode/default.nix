@@ -40,9 +40,9 @@
 
       "context7*" = "allow";
 
-      "c5t_get*" = "allow";
-      "c5t_list*" = "allow";
-      "c5t_read*" = "allow";
+      "c5t_*_get" = "allow";
+      "c5t_*_list" = "allow";
+      "c5t_note_read" = "allow";
       # Configure nu_run tool permissions
       nu_run = {
         "*" = "ask";

@@ -14,14 +14,14 @@ permission:
   bash: deny
   nu_run: ask
   gh_*: ask
-  c5t_get*: allow
-  c5t_list*: allow
-  c5t_read*: allow
-  c5t_create*: ask
-  c5t_update*: ask
-  c5t_edit*: ask
-  c5t_transition*: allow
-  c5t_delete*: ask
+  c5t_*_get: allow
+  c5t_*_list: allow
+  c5t_note_read: allow
+  c5t_*_create: ask
+  c5t_*_update: ask
+  c5t_note_edit: ask
+  c5t_task_transition: allow
+  c5t_*_delete: ask
   context7*: allow
   tmux_*: deny
   tmux_capture_pane: allow

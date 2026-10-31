@@ -22,14 +22,14 @@ permissions:
   tasks_list: allow
   context7__*: allow
   c5t_dev__*: allow
-  c5t__get_*: allow
-  c5t__list_*: allow
-  c5t__read_note: allow
-  c5t__create_*: deny
-  c5t__update_*: deny
-  c5t__edit_*: deny
-  c5t__transition_task: allow
-  c5t__delete_*: ask
+  c5t__*_get: allow
+  c5t__*_list: allow
+  c5t__note_read: allow
+  c5t__*_create: deny
+  c5t__*_update: deny
+  c5t__note_edit: deny
+  c5t__task_transition: allow
+  c5t__*_delete: ask
   send_message: allow
   spawn_agent: allow
   list_agents: allow
@@ -139,7 +139,7 @@ If you delegate without a task, the developer has nothing to transition and the 
 
 ### Task Lists
 
-- **Always check for existing task lists first** — use `c5t__list_task_lists` before creating new ones
+- **Always check for existing task lists first** — use `c5t__task_list_list` before creating new ones
 - Reuse existing related task lists whenever possible
 - If no suitable task list exists, **ask the user** before creating one
 - Never create duplicate or overlapping task lists

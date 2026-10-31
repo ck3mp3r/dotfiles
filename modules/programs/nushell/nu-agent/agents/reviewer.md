@@ -22,15 +22,15 @@ permissions:
   tasks_list: allow
   context7__*: allow
   c5t_dev__*: allow
-  c5t__get_*: allow
-  c5t__list_*: allow
-  c5t__read_note: allow
-  c5t__create_note: allow
-  c5t__edit_note: allow
-  c5t__create_task: allow
-  c5t__update_task: allow
-  c5t__transition_task: allow
-  c5t__delete_*: deny
+  c5t__*_get: allow
+  c5t__*_list: allow
+  c5t__note_read: allow
+  c5t__note_create: allow
+  c5t__note_edit: allow
+  c5t__task_create: allow
+  c5t__task_update: allow
+  c5t__task_transition: allow
+  c5t__*_delete: deny
 ---
 
 # Reviewer Agent
@@ -47,7 +47,7 @@ You are a specialized review agent focused on evaluating completed work, ensurin
 
 ## ⚠️ C5T Task Workflow — MANDATORY
 
-**You MUST work from c5t tasks in `review` status.** Check for tasks awaiting review using `c5t__list_tasks` filtered by `review` status. If no tasks are in `review`, report that to the orchestrator — do not review work that has no corresponding task.
+**You MUST work from c5t tasks in `review` status.** Check for tasks awaiting review using `c5t__task_list` filtered by `review` status. If no tasks are in `review`, report that to the orchestrator — do not review work that has no corresponding task.
 
 ## Review Workflow
 

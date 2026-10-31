@@ -23,15 +23,15 @@ permissions:
   tmux_*: deny
   context7__*: allow
   c5t_dev__*: allow
-  c5t__get_*: allow
-  c5t__list_*: allow
-  c5t__read_note: allow
-  c5t__create_*: ask
-  c5t__update_*: ask
-  c5t__update_task: allow
-  c5t__edit_*: ask
-  c5t__transition_task: allow
-  c5t__delete_*: ask
+  c5t__*_get: allow
+  c5t__*_list: allow
+  c5t__note_read: allow
+  c5t__*_create: ask
+  c5t__*_update: ask
+  c5t__task_update: allow
+  c5t__note_edit: ask
+  c5t__task_transition: allow
+  c5t__*_delete: ask
   send_message: allow
   list_agents: allow
 ---

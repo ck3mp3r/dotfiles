@@ -32,7 +32,7 @@ Use tasks for ANY multi-step work. The context skill (loaded at startup) covers 
 
 - Use tasks for: multi-step features, bug fixes, planning, tracking across sessions
 - Create a project per major codebase/effort; link tasks and repos to it
-- Use `c5t_list_projects` before creating a new project to avoid duplicates
+- Use `c5t_project_list` before creating a new project to avoid duplicates
 
 ### Context Window Management
 

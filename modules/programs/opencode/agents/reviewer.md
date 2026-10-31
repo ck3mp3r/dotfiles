@@ -16,15 +16,14 @@ permission:
   bash: deny
   nu_run: ask
   gh_*: deny
-  c5t_get*: allow
-  c5t_list*: allow
-  c5t_read*: allow
-  c5t_create_note: allow
-  c5t_edit_note: allow
-  c5t_update_note: allow
-  c5t_update_task: allow
-  c5t_transition_task: allow
-  c5t_delete*: deny
+  c5t_*_get: allow
+  c5t_*_list: allow
+  c5t_note_read: allow
+  c5t_note_create: allow
+  c5t_note_edit: allow
+  c5t_task_update: allow
+  c5t_task_transition: allow
+  c5t_*_delete: deny
   context7*: allow
   tmux_*: deny
   tmux_capture_pane: allow
@@ -63,7 +62,7 @@ You are the last line of defense before code lands. Your job is to **find reason
 
 ## ⚠️ C5T Task Workflow — MANDATORY
 
-**You MUST work from c5t tasks in `review` status.** Check for tasks awaiting review using `c5t_list_tasks` filtered by `review` status. If no tasks are in `review`, report that to the orchestrator — do not review work that has no corresponding task.
+**You MUST work from c5t tasks in `review` status.** Check for tasks awaiting review using `c5t_task_list` filtered by `review` status. If no tasks are in `review`, report that to the orchestrator — do not review work that has no corresponding task.
 
 ### Task Transitions
 
