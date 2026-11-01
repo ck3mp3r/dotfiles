@@ -232,6 +232,58 @@ GITHUB_TOKEN = "cmd:gh auth token"
 
 # Run `agent models sync` then `agent models list` to see all available providers.
 
+# ─── Compaction ────────────────────────────────────────────
+# Real rig-memory CompactionPolicy tunables. Any field unset = the rig default.
+# Auto compaction triggers at proactive_threshold_pct of the context window.
+# The /compact command keeps keep_asked tokens (0 = summarize everything).
+
+[compaction]
+# Auto compaction fires when the conversation reaches this fraction of the
+# model's context window (0.80 = 80%). Consumed by the host trigger, not rig.
+proactive_threshold_pct = 0.80
+
+# Tokens of the newest messages kept VERBATIM when auto compaction runs
+# (rig caps this at 1/4 of the model window). Tokens, not message rows.
+keep_recent = 20000
+
+# Tokens kept verbatim when the USER asks for compaction via /compact.
+# 0 = the whole session summarizes (rig's default).
+keep_asked = 0
+
+# Tokens left free below the model's context window — the space reserved
+# for the continuation after a compaction.
+reserve = 16384
+
+# The longest compaction summary the LLM is asked to produce (token budget).
+summary_tokens = 12000
+
+# Per-item character budget the summarizer sees (each tool output/args
+# snippet is truncated to this many chars before summarizing).
+snippet_chars = 2000
+
+# When the model's context-window size is unknown, this many characters
+# get sent to the summarizer at once instead.
+unknown_window_chars = 400000
+
+# Tool-output clearing during compaction: keep_tokens = the newest tokens
+# of tool OUTPUTS kept verbatim; keep_under = outputs smaller than this are
+# never cleared. Error results are never cleared (rig's rule).
+clearing = { keep_tokens = 20000, keep_under = 500 }
+
+# Tracked facts carried into summaries: which tool arguments to track
+# verbatim so re-read files survive compaction as context.
+# tracked = [{ tool = "read", argument = "path", set = "files_read" }]
+
+# Compaction prompt texts, one per summarizer stage. Each key optional;
+# unset = rig's built-in prompt verbatim.
+# [compaction.prompts]
+# system    = "..."   # the summarizer's system prompt
+# initial   = "..."   # the first chunk's prompt
+# update    = "..."   # subsequent chunks' prompt
+# format    = "..."   # the final format instruction
+# in_place  = "..."   # the in-place edit prompt
+# notes     = "..."   # the notes-style prompt
+
 # ─── Hooks ────────────────────────────────────────────────
 # Relative `script` resolves against this file's directory.
 [[hooks]]
