@@ -41,8 +41,13 @@ in {
 
   home.file.".config/nushell/git.nu".source = ./git.nu;
   home.file.".config/nushell/direnv.nu".source = ./direnv.nu;
+  # fzf still emits external completers that take the legacy positional `spans`
+  # argument. Nushell hands a completer one record (token, place, buffer) and
+  # deprecates positional `spans`, so bind the record and read the token list
+  # from it.
   home.file.".config/nushell/fzf.nu".source = pkgs.runCommand "fzf-nushell.nu" {} ''
     ${pkgs.fzf}/bin/fzf --nushell | ${pkgs.gnused}/bin/sed 's/str downcase/str lowercase/g' > $out
+    ${pkgs.gnused}/bin/sed -i 's/do [$]fzf_external_completer [$]spans/do $fzf_external_completer $place/; s/do [$]previous_external_completer [$]spans/do $previous_external_completer $place/; s/^let fzf_external_completer = {|spans|$/let fzf_external_completer = {|place|/; s/^  let fzf_wrapper_completer = {|spans|$/  let fzf_wrapper_completer = {|place|/; s/[$]spans/$place.command/g' $out
   '';
   # home. activation. registerNushellPlugins = ''
   #   ${pkgs.nushell}/bin/nu —no-config-file -c 'plugin add --plugin-config $"($env.HOME)/.config/nushell/plugin-msgpackz" ${pkgs.nu-agent}/bin/nu_plugin_agent'
