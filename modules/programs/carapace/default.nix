@@ -5,6 +5,10 @@
     mkdir -p $out
     ${pkgs.carapace}/bin/carapace _carapace nushell > $out/init.nu
     sed -i 's/get -i/get -o/g' $out/init.nu
+    # carapace bakes its own bin dir using the build-time HOME, which nix then
+    # prepends on every config load. PATH is nix-managed, so drop that assignment
+    # and nothing else.
+    sed -i '/^\$env\.PATH = .*carapace\/bin/d' $out/init.nu
   '';
 in {
   home.file.".config/nushell/carapace.nu".source = "${carapaceConfig}/init.nu";

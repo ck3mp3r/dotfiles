@@ -4,18 +4,6 @@ load-env {
   TERM: "xterm-256color"
   EDITOR: "nvim"
   TESTCONTAINERS_RYUK_DISABLED: "true"
-  PATH: (
-    $env.PATH | prepend [
-      $"($env.HOME)/.nix-profile/bin"
-      $"($env.HOME)/.local/state/nix/profiles/profile/bin"
-      $"($env.HOME)/.config/dotfiles/bin"
-      $"/etc/profiles/per-user/($env.USER)/bin"
-      "/run/current-system/sw/bin"
-      "/nix/var/nix/profiles/default/bin"
-      "/opt/homebrew/bin"
-      "/usr/local/bin"
-    ]
-  )
   PROMPT_COMMAND: {|| starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)' }
   PROMPT_COMMAND_RIGHT: ""
   PROMPT_INDICATOR: ""
