@@ -61,13 +61,13 @@ def herdr_release [agent?: any] {
 
 # ─── rex ───────────────────────────────────────────────────────────────────
 
-# The report belongs to the terminal the agent runs in, not to our stdout, which
-# the hook runner captures.
+# The report belongs to the terminal the agent runs in. Its stdout is captured by
+# the hook runner and its stdin carries the event, so neither is usable there —
+# but the controlling terminal is: /dev/tty needs no probe, because a hook that
+# runs in a terminal always has one.
 def rex_emit [body: string] {
-  let tty = (try { ^tty | str trim } catch { '' })
-  if not ($tty | str starts-with '/dev/tty') { return }
   let esc = (char -u '1b')
-  try { ^printf '%s' $"($esc)]7501;($body)($esc)\\" out> $tty }
+  try { ^printf '%s' $"($esc)]7501;($body)($esc)\\" out> /dev/tty }
 }
 
 # Every report replaces its record, so app travels with each one.
