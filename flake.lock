@@ -757,11 +757,11 @@
         "rustnix": "rustnix_2"
       },
       "locked": {
-        "lastModified": 1793494328,
-        "narHash": "sha256-hZIh4ZAXcMykTcblyEuAVrmWQTQYjomQ1z7Q4Yri6rE=",
+        "lastModified": 1793910138,
+        "narHash": "sha256-gaIPKhM3fmEm2u01CvOzrywoEFrW3qluAUBgmpdth+s=",
         "owner": "ck3mp3r",
         "repo": "laio-cli",
-        "rev": "9719a802648ff55482373d9c7476257a9a12ba33",
+        "rev": "fd1814115dbb1f2262c45e749e91049edb1320b6",
         "type": "github"
       },
       "original": {
