@@ -37,8 +37,8 @@ def herdr_report [state: string message?: any agent?: any] {
   if $pane == null { return }
   let bin = ($env.HERDR_BIN_PATH? | default 'herdr')
   let args = ([
-    $pane
-    report-agent
+    "pane"
+    "report-agent"
     $pane
     --source
     nu-agent
