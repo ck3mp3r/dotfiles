@@ -45,5 +45,30 @@ rex.bind("ctrl+a>space", "pane.balance")
 -- Sessions
 rex.bind("ctrl+a>s", "session.switch")
 
+-- laio picker in a floating layer, as modules/programs/herdr binds its popup.
+-- Rex has no popup key type: a floating layer is the nearest equivalent.
+rex.action{
+  name = "laio_picker",
+  title = "Open laio Picker",
+  description = "Choose a laio configuration and open it in a floating layer.",
+  keywords = "laio session layout picker popup",
+  run = function(ctx, args)
+    local _, err = rex.session.new_layer{
+      bounds = {0.25, 0.25, 0.5, 0.4},
+      focus = true,
+      layout = rex.layout.block{
+        flavor = "com.superlogical.terminal.shell",
+        label = "laio",
+        options = {
+          command = {"@laio@", "start", "--muxer", "rex", "--show-picker"},
+        },
+      },
+    }
+    if err ~= nil then error(err, 0) end
+  end,
+}
+
+rex.bind("ctrl+a>alt+l", "laio_picker")
+
 -- A prefix starts a sequence, so it no longer reaches the terminal by itself
 rex.bind("ctrl+a>ctrl+a", "pane.send_key", { key = "ctrl+a" })
