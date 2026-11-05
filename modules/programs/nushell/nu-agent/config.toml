@@ -287,7 +287,7 @@ clearing = { keep_tokens = 20000, keep_under = 500 }
 # ─── Hooks ────────────────────────────────────────────────
 # Relative `script` resolves against this file's directory.
 [[hooks]]
-name = "herdr"
+name = "lifecycle"
 events = ["agent_started", "turn_started", "turn_completed", "agent_shutdown", "permission_requested", "permission_decision_timed_out", "permission_decision_submitted", "permission_request_cancelled", "agent_switched"]
-script = "hooks/herdr.nu"
+script = "hooks/lifecycle.nu"
 timeout_ms = 5000

@@ -11,7 +11,7 @@ in {
   home.file.".config/nu-agent/agents/orchestrator.md".source = ./agents/orchestrator.md;
   home.file.".config/nu-agent/agents/reviewer.md".source = ./agents/reviewer.md;
 
-  home.file.".config/nu-agent/hooks/herdr.nu".source = ./hooks/herdr.nu;
+  home.file.".config/nu-agent/hooks/lifecycle.nu".source = ./hooks/lifecycle.nu;
 
   # dev agent
   home.file.".config/nu-agent-dev/config.toml".text =
@@ -22,5 +22,5 @@ in {
   home.file.".config/nu-agent-dev/agents/orchestrator.md".source = ./agents/orchestrator.md;
   home.file.".config/nu-agent-dev/agents/reviewer.md".source = ./agents/reviewer.md;
 
-  home.file.".config/nu-agent-dev/hooks/herdr.nu".source = ./hooks/herdr.nu;
+  home.file.".config/nu-agent-dev/hooks/lifecycle.nu".source = ./hooks/lifecycle.nu;
 }
