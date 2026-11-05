@@ -3,6 +3,9 @@
 -- sequence, so `bind X` in tmux is `ctrl+a>X` here and `bind -n X` is X alone.
 -- Apply changes with `rex config reload`, inspect them with `rex keymap`.
 
+-- Hosts this machine reaches by a forwarded socket, generated from hosts.nix.
+@hosts@
+
 -- Tabs (tmux windows)
 rex.bind("ctrl+a>c", "client.tab.new")
 rex.bind("ctrl+a>n", "client.tab.next")

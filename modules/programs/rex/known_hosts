@@ -1,0 +1,4 @@
+# Host key of the machine hosts.nix names in rex.sshForward, pinned so the
+# tunnel never trusts a key it meets for the first time. The name matches that
+# entry's label, which is also the HostKeyAlias the agent's ssh_config uses.
+mini ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOZs6EeD5sT1GUM6yUiWL8iweGRhPhRr4IXoKnMtdMnb

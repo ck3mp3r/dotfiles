@@ -16,5 +16,11 @@
   # example: a machine that only runs the normal desktop config
   "christians-mbp16" = {
     roles = [];
+    # Reach the mac-mini's Rex server through an ssh -L forward of its socket.
+    # The label names the host in Rex, so `rex -S mini session ls` works.
+    rex.sshForward = {
+      label = "mini";
+      host = "christians-mac-mini.tail.kemper.wtf";
+    };
   };
 }

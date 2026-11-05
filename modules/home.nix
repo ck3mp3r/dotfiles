@@ -49,7 +49,7 @@
     ./programs/k9s
     ./programs/laio
     ./programs/opencode
-    ./programs/rex
+    (import ./programs/rex {inherit homeDirectory hostConfig pkgs;})
     ./programs/starship.nix
     # ./programs/tmux
     ./programs/tree-sitter

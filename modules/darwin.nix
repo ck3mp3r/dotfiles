@@ -9,6 +9,54 @@
   hostConfig ? {},
   ...
 } @ inputs: let
+  homeDirectory =
+    if pkgs.stdenv.hostPlatform.isLinux
+    then "/home/${username}"
+    else "/Users/${username}";
+
+  # hosts.nix names a Rex server on another machine, reached by forwarding its
+  # Unix socket over ssh. That socket is the only way in: a Rex server listens
+  # on no TCP port unless it is told to.
+  rexForward = hostConfig.rex.sshForward or null;
+  rexLocalSocket =
+    if rexForward == null
+    then ""
+    else "${homeDirectory}/Library/Application Support/rex/ssh/${rexForward.label}.sock";
+
+  # The tunnel's ssh options, kept out of the user's ~/.ssh/config so nothing
+  # there can change what the agent does, and strict about every trust decision:
+  # the host key is the one pinned in modules/programs/rex/known_hosts, no other
+  # key file or agent is consulted, and no prompt is possible.
+  rexSshConfig =
+    if rexForward == null
+    then ""
+    else
+      pkgs.writeText "rex-ssh-config" ''
+        Host ${rexForward.label}
+          HostName ${rexForward.host}
+          HostKeyAlias ${rexForward.label}
+          UserKnownHostsFile ${./programs/rex/known_hosts}
+          GlobalKnownHostsFile /dev/null
+          StrictHostKeyChecking yes
+          UpdateHostKeys no
+          IdentityAgent "${homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+          # No IdentitiesOnly: it also hides the agent's keys, and the agent above
+          # already narrows them to the ones 1Password holds.
+          BatchMode yes
+          PasswordAuthentication no
+          KbdInteractiveAuthentication no
+          HostbasedAuthentication no
+          ForwardAgent no
+          ForwardX11 no
+          ClearAllForwardings no
+          ControlMaster no
+          ExitOnForwardFailure yes
+          StreamLocalBindUnlink yes
+          ServerAliveInterval 15
+          ServerAliveCountMax 3
+          LogLevel ERROR
+      '';
+
   packages' = with pkgs; [
     mkalias
     nushell
@@ -28,17 +76,36 @@ in {
       };
     };
     user = {
-      agents = {
-        c5t-api = {
-          command = "${pkgs.c5t}/bin/c5t api -vv --skills-dir ~/.agents/skills";
-          serviceConfig = {
-            KeepAlive = true;
-            RunAtLoad = true;
-            StandardOutPath = "/tmp/c5t.out.log";
-            StandardErrorPath = "/tmp/c5t.err.log";
+      agents =
+        {
+          c5t-api = {
+            command = "${pkgs.c5t}/bin/c5t api -vv --skills-dir ~/.agents/skills";
+            serviceConfig = {
+              KeepAlive = true;
+              RunAtLoad = true;
+              StandardOutPath = "/tmp/c5t.out.log";
+              StandardErrorPath = "/tmp/c5t.err.log";
+            };
+          };
+        }
+        // pkgs.lib.optionalAttrs (rexForward != null) {
+          rex-ssh-forward = {
+            # 1Password holds the key; the config names its agent explicitly, and
+            # no key material lives in this repo.
+            script = ''
+              mkdir -p "$(dirname "${rexLocalSocket}")"
+              exec ${pkgs.openssh}/bin/ssh -F ${rexSshConfig} -N \
+                -L "${rexLocalSocket}:${homeDirectory}/Library/Application Support/rex/server.sock" \
+                ${rexForward.label}
+            '';
+            serviceConfig = {
+              KeepAlive = true;
+              RunAtLoad = true;
+              StandardOutPath = "/tmp/rex-ssh-forward.out.log";
+              StandardErrorPath = "/tmp/rex-ssh-forward.err.log";
+            };
           };
         };
-      };
     };
   };
 
@@ -78,10 +145,7 @@ in {
   # };
 
   users.users.${username} = {
-    home =
-      if pkgs.stdenv.hostPlatform.isLinux
-      then "/home/${username}"
-      else "/Users/${username}";
+    home = homeDirectory;
   };
 
   # Create /etc/zshrc that loads the nix-darwin environment.
