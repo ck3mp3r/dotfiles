@@ -47,6 +47,9 @@ rex.bind("ctrl+a>space", "pane.balance")
 
 -- Sessions
 rex.bind("ctrl+a>s", "session.switch")
+-- tmux's prefix+w lists windows; Rex's nearest is the session picker, and
+-- pane.go_to is its choose-tree over panes, tabs and sessions.
+rex.bind("ctrl+a>w", "session.switch")
 
 -- laio picker in a floating layer, as modules/programs/herdr binds its popup.
 -- Rex has no popup key type: a floating layer is the nearest equivalent.
