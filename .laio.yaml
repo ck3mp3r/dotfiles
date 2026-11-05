@@ -6,6 +6,7 @@ windows:
   - name: code
     panes:
       - flex: 2
+        focus: true
         commands:
           - command: ^$env.EDITOR
       - flex: 1

@@ -49,6 +49,7 @@
     ./programs/k9s
     ./programs/laio
     ./programs/opencode
+    ./programs/rex
     ./programs/starship.nix
     # ./programs/tmux
     ./programs/tree-sitter
