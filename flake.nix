@@ -92,7 +92,7 @@
         ai = nu-mods.packages.${system}.ai;
         apple-container-src = apple-container;
         c5t = c5t.packages.${system}.context;
-        laio = laio.packages.${system}.laio;
+        laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;
         omlx-src = omlx;
@@ -162,7 +162,7 @@
     formatter.${system} = pkgs.alejandra;
 
     homeConfigurations = {
-      christian = makeHomemanagerConfiguration { username = "christian"; };
+      christian = makeHomemanagerConfiguration {username = "christian";};
     };
   };
 }
