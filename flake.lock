@@ -268,11 +268,11 @@
         "rustnix": "rustnix"
       },
       "locked": {
-        "lastModified": 1793614772,
-        "narHash": "sha256-CkkauSzFs7SJemxEcP/FTh3PekOTqTR8WF0bhVpXrwY=",
+        "lastModified": 1794004364,
+        "narHash": "sha256-07PEfk8JV7nzwlhA3PLAz48gnbxvFXZyd+MBsSFcKyI=",
         "owner": "ck3mp3r",
         "repo": "context",
-        "rev": "c8d6f170fbf71277ae496becae24e07702fd0824",
+        "rev": "1a76afcdb3e3e193899a4f9cd21fbe4c1a51eda8",
         "type": "github"
       },
       "original": {
