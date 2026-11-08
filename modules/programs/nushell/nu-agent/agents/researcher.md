@@ -20,6 +20,7 @@ permissions:
   tasks_cancel: allow
   tasks_complete: allow
   tasks_list: allow
+  tmux_*: deny
   context7__*: allow
   c5t_dev__*: allow
   c5t__*_get: allow
@@ -27,6 +28,7 @@ permissions:
   c5t__note_read: allow
   c5t__note_create: allow
   c5t__note_edit: allow
+  c5t__note_delete: allow
   c5t__task_list_create: allow
   c5t__task_create: allow
   c5t__task_update: allow

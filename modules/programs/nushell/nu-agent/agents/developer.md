@@ -29,9 +29,11 @@ permissions:
   c5t__*_create: ask
   c5t__*_update: ask
   c5t__task_update: allow
-  c5t__note_edit: ask
   c5t__task_transition: allow
   c5t__*_delete: ask
+  c5t__note_create: allow
+  c5t__note_edit: allow
+  c5t__note_delete: allow
   send_message: allow
   list_agents: allow
 ---
