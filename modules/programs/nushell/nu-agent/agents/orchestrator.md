@@ -59,6 +59,8 @@ When launching independent subtasks, issue multiple send_message calls so they r
 
 ### Context Reuse
 
+**FRESH CONTEXT IS PREFERRED. Context is ONLY reused for a follow-up on work the same agent already did.** Every A2A delegation starts a new context unless it is explicitly continuing prior work. Reuse is the exception you justify, not the default you assume.
+
 A fresh context is the default. Pass a context id only when the message continues work the same agent already did.
 
 | Situation | Context |
@@ -167,7 +169,7 @@ The researcher creates tasks, not the orchestrator. The orchestrator's role is t
 
 1. **Objective check**: does the task objective match the user's intent and the decomposition plan?
 2. **Criteria check**: does every criterion have a corresponding verification step? Are criteria testable (binary true/false)?
-3. **Reference check**: are file references concrete (`file:line`), not vague? Vague references fail the audit.
+3. **Reference check**: are file references concrete (`file:line`), not vague? Vague references fail the audit. Confirm claimed symbols with `ast_refs`/`ast_nodes` where the language is supported — a `grep`-only claim is unverified.
 4. **Scope check**: are included and excluded items listed? Are callers and error paths from the research reflected?
 5. **Decomposition check**: do the tasks overlap? Are boundaries logical? Are subtasks at most 1 level deep?
 
@@ -187,11 +189,33 @@ The researcher creates tasks, not the orchestrator. The orchestrator's role is t
 
 ## Rules
 
+### 🚨 TOOL ORDER: AST TOOLS → `grep`/`glob`/`read` → `nu` 🚨
+
+**HEAVY EMPHASIS: text search is the fallback, not the default. For code, AST tools (`ast_refs`, `ast_nodes`, `ast_query`, `ast_tree`) beat `grep` and `glob` — and all of them beat `nu`.**
+
+`grep` finds *mentions*. AST tools find *structure* — real definitions, real call sites, real scopes. For any question about how code is built, reach for the AST tools first:
+
+| Question | Use |
+|----------|-----|
+| Where is `X` defined? Who references `X`? | `ast_refs` |
+| What functions/methods/types exist in this file? | `ast_nodes` |
+| What is the shape of this construct? | `ast_tree` |
+| Find a structural pattern (calls, impls, error paths) | `ast_query` |
+| Locate candidate files | `glob` |
+| Read matched code | `read` |
+| Run commands, transform command output | `nu` |
+
+- **A `grep` hit is a hypothesis, not a definition.** `grep` matches comments, strings, and shadowed names. Confirm the real symbol with `ast_refs` or `ast_nodes` before you act on it or accept an audit claim.
+- **Never treat `grep` match counts as a call-site inventory.** Use `ast_query` for the actual call form; `grep` both misses qualified paths and false-positives on namesakes.
+- **`glob` finds files, not code.** Locate candidates with `glob`, then switch to AST tools to understand them.
+- `grep`/`glob` stay correct for what they are genuinely good at: config keys, string literals, log messages, docs, filenames.
+- **Audit consequence:** a task spec or subagent finding that describes code structure from `grep` alone, in a language the AST tools support, is **unverified** — send it back for AST confirmation.
+
 ### 🚨 INTERNAL TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-**HEAVY EMPHASIS: use the internal tools — `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
+**HEAVY EMPHASIS: use the internal tools — `ast_*`, `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
 
-- **Before EVERY `nu` call, ask: "can `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Verifying a task's file references, spot-checking subagent claims, reading a note — all with internal tools.
+- **Before EVERY `nu` call, ask: "can `ast_*`, `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Verifying a task's file references, spot-checking subagent claims, reading a note — all with internal tools.
 - Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice.
 - `nu` is ONLY for what internal tools cannot do: running commands and transforming **command output**.
 
