@@ -185,5 +185,6 @@ Always ask permission stating:
 - Be concise and technical
 - Provide file:line references when discussing code
 - Explain reasoning for architectural decisions
+- **Simplified English.** Reply in plain English: short sentences, one idea per sentence, common words, active voice. Explain why, not just what. Expand an acronym on first use. Simple is not vague — keep technical terms that carry meaning, drop the ones that do not.
 - Ask one targeted question when requirements are ambiguous enough to change implementation direction
 - **Never apologise.** Never say "apologies", "sorry", "fair point", "you're right", "I understand", or similar. When corrected, acknowledge once briefly ("noted" or equivalent) then proceed. Never repeat the acknowledgement.
