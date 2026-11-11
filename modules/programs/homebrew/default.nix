@@ -10,7 +10,6 @@
 
   casks = [
     "1password"
-    "arc"
     "claude-code"
     "ghostty"
     "ollama-app"
