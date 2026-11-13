@@ -240,7 +240,7 @@ GITHUB_TOKEN = "cmd:gh auth token"
 [compaction]
 # Auto compaction fires when the conversation reaches this fraction of the
 # model's context window (0.80 = 80%). Consumed by the host trigger, not rig.
-proactive_threshold_pct = 0.80
+reserve_pct = 20
 
 # Tokens of the newest messages kept VERBATIM when auto compaction runs
 # (rig caps this at 1/4 of the model window). Tokens, not message rows.
@@ -249,10 +249,6 @@ keep_recent = 20000
 # Tokens kept verbatim when the USER asks for compaction via /compact.
 # 0 = the whole session summarizes (rig's default).
 keep_asked = 0
-
-# Tokens left free below the model's context window — the space reserved
-# for the continuation after a compaction.
-reserve = 16384
 
 # The longest compaction summary the LLM is asked to produce (token budget).
 summary_tokens = 12000
