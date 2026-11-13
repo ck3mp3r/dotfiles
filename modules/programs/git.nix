@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -21,10 +22,7 @@ in {
         format = "ssh";
       };
       "gpg \"ssh\"" = {
-        program =
-          if pkgs.stdenv.hostPlatform.isLinux
-          then "TODO:define this"
-          else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        program = "${pkgs.openssh}/bin/ssh-keygen";
       };
       "credential \"https://github.com\"" = {
         helper = ["" "${pkgs.gh}/bin/gh auth git-credential"];
@@ -44,7 +42,7 @@ in {
       user = {
         name = "Christian Kemper";
         email = "christian.kemper@me.com";
-        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOONq7p/lLv9WyXZqnNcxm8xMUcXM0hG4Rer9ACEQChj";
+        signingkey = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOONq7p/lLv9WyXZqnNcxm8xMUcXM0hG4Rer9ACEQChj";
       };
       commit = {
         gpgsign = true;
@@ -52,7 +50,10 @@ in {
     };
   };
 
-  home.sessionVariables.LG_CONFIG_FILE = catppuccinLazygitTheme;
+  home.sessionVariables = {
+    LG_CONFIG_FILE = catppuccinLazygitTheme;
+    SSH_AUTH_SOCK = "${config.home.homeDirectory}/.local/share/bogita/agent.sock";
+  };
 
   programs.lazygit = {
     enable = true;

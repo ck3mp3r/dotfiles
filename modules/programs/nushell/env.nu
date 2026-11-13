@@ -1,6 +1,7 @@
 load-env {
   STARSHIP_SHELL: "nu"
   DOCKER_HOST: $"unix://($env.HOME)/.config/colima/default/docker.sock"
+  SSH_AUTH_SOCK: $"($env.HOME)/.local/share/bogita/agent.sock"
   TERM: "xterm-256color"
   EDITOR: "nvim"
   TESTCONTAINERS_RYUK_DISABLED: "true"
