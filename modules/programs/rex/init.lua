@@ -51,6 +51,10 @@ rex.bind("ctrl+a>s", "session.switch")
 -- pane.go_to is its choose-tree over panes, tabs and sessions.
 rex.bind("ctrl+a>w", "session.switch")
 
+-- tmux's prefix+b breaks a pane, which Rex has no action for; b toggles the
+-- sidebar, the panel that lists sessions and, with vertical tabs, their tabs.
+rex.bind("ctrl+a>b", "client.sidebar.toggle")
+
 -- laio picker in a floating layer, as modules/programs/herdr binds its popup.
 -- Rex has no popup key type: a floating layer is the nearest equivalent.
 rex.action{
