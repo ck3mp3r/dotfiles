@@ -56,8 +56,12 @@ Before refactoring, large changes, or deletions: stage with `git add` or create 
 
 1. Don't cd unless you have to
 2. Store results in variables so you can query in subsequent tool calls
-   - let r = (cargo test | complete)
-   - $r.stdout | from json | get foo
+   - `let r = (^cargo test | complete)`
+   - `$r.stdout | from json | get foo`
+3. **Run a test suite once, query the saved output many times.** A run costs minutes; reading its output is free. Save the run to files, then grep or read those files instead of running the suite again.
+   - `let r = (^cargo test | complete); $r.stdout | save --force /tmp/test-run.log; $r.stderr | save --force /tmp/test-run.err.log`
+   - Query: `open /tmp/test-run.log | lines | find --ignore-case "fail" | first 20`, or use the `grep` tool with `path: /tmp/test-run.log`
+   - Re-run only when the code changed, when you need a narrower target for more detail, or when the saved files are gone.
 
 ## Research First
 

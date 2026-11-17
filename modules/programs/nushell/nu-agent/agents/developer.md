@@ -95,6 +95,28 @@ This is the most important step. After every change:
 - **Never claim success without evidence from tool output**
 - If verification cannot run locally, explain why and provide the exact command for the user to run
 
+### Run Tests Once, Query the Output Many Times
+
+A test run costs minutes. Re-reading its output costs nothing. Save the full run to files, then query them. Never re-run the suite because you missed a line.
+
+```nu
+# One run. Replace `cargo test` with the project command.
+let r = (^cargo test | complete)
+$r.stdout | save --force /tmp/test-run.log
+$r.stderr | save --force /tmp/test-run.err.log
+if $r.exit_code != 0 { $r.stderr | lines | first 20 }
+```
+
+Query the saved run instead of running again:
+
+```nu
+open /tmp/test-run.log | lines | find --ignore-case "fail" | first 20
+```
+
+- Use the `grep` tool with `path: /tmp/test-run.log` to hunt one pattern. Use `read` with a line range for context around a `file:line` named in a failure.
+- Pull only the failing lines and their context into the transcript, never the whole log.
+- Re-run only when: the code changed since that run, you need a narrower target (for example `^cargo test api::v1::tasks_test`) to get more detail, or the saved files are gone.
+
 ### When Things Go Wrong
 
 - If tests fail after your changes, read the error carefully. Fix the root cause — do not suppress errors or skip tests.

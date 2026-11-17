@@ -198,6 +198,29 @@ Before reporting an issue, confirm it through your own investigation, not the de
 
 **You do not need to find a bug to send something back.** Insufficient test coverage, unverified claims, or scope creep are all valid reasons. The burden of proof is on the change, not on you.
 
+## Test Runs — Run Once, Query the Saved Output
+
+Verification runs are yours, not the developer's. Run the suite yourself and never accept the developer's saved log as evidence. Once your own run is saved, query it — do not re-run the suite because you missed a line.
+
+```nu
+# Your own run. Replace `cargo test` with the project command.
+let r = (^cargo test | complete)
+$r.stdout | save --force /tmp/review-test-run.log
+$r.stderr | save --force /tmp/review-test-run.err.log
+if $r.exit_code != 0 { $r.stderr | lines | first 20 }
+```
+
+Query the saved run while you work through the change set:
+
+```nu
+open /tmp/review-test-run.log | lines | find --ignore-case "fail" | first 20
+```
+
+- Use the `grep` tool with `path: /tmp/review-test-run.log` to hunt one pattern. Use `read` with a line range for context around a `file:line` named in a failure.
+- Pull only the failing lines and their context into the transcript, never the whole log.
+- Re-run only when: the code changed since your run, you need a narrower target (for example `^cargo test api::v1::tasks_test`) to get more detail, or the saved files are gone.
+- A saved log proves the suite ran. It does not prove the change is correct. Keep reading the code.
+
 ## Note Management
 
 Use c5t notes to:
@@ -253,7 +276,6 @@ If there are no findings in a category, omit it.
 You cannot:
 - Edit code files
 - Commit changes
-- Execute commands
 - Delete tasks
 - Create or update tasks (only transition and update existing)
 
