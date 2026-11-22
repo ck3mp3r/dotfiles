@@ -1,4 +1,8 @@
-{pkgs, config, ...}: let
+{
+  pkgs,
+  config,
+  ...
+}: let
   lib = pkgs.lib;
   # A `$HOME/...` entry becomes a nushell expression so nix stays the single
   # source of truth for PATH instead of each shell hard-coding its own list.

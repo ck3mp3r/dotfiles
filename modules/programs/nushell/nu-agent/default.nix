@@ -15,7 +15,7 @@ in {
 
   # dev agent
   home.file.".config/nu-agent-dev/config.toml".text =
-    replaceMcpPaths (builtins.readFile ./config.toml);
+    replaceMcpPaths (builtins.readFile ./config.dev.toml);
 
   home.file.".config/nu-agent-dev/agents/researcher.md".source = ./agents/researcher.md;
   home.file.".config/nu-agent-dev/agents/developer.md".source = ./agents/developer.md;

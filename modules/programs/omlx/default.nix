@@ -1,4 +1,9 @@
-{pkgs, lib, config, ...}: let
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
   src = pkgs.omlx-src;
   app = "/Applications/oMLX.app";
 
@@ -79,64 +84,64 @@ in {
   };
 
   config = {
-  launchd.agents.omlx-watchdog = {
-    enable = true;
-    config = {
-      ProgramArguments = ["${watchdog}/bin/omlx-watchdog"];
-      StartInterval = 60;
-      RunAtLoad = true;
-      StandardOutPath = "${config.home.homeDirectory}/.local/state/omlx/watchdog.out.log";
-      StandardErrorPath = "${config.home.homeDirectory}/.local/state/omlx/watchdog.err.log";
+    launchd.agents.omlx-watchdog = {
+      enable = true;
+      config = {
+        ProgramArguments = ["${watchdog}/bin/omlx-watchdog"];
+        StartInterval = 60;
+        RunAtLoad = true;
+        StandardOutPath = "${config.home.homeDirectory}/.local/state/omlx/watchdog.out.log";
+        StandardErrorPath = "${config.home.homeDirectory}/.local/state/omlx/watchdog.err.log";
+      };
     };
-  };
-  # oMLX ships as a notarized app bundle inside a DMG. The DMG is pinned as a
-  # flake input (flake = false), so flake.lock carries the hash and
-  # `nix flake update omlx` is the only bump. Install is keyed on the store
-  # path: unchanged path means no work, changed path means reinstall.
-  home.activation.omlxApp = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    app="${app}"
-    stamp="$HOME/.local/state/omlx/app-source"
-    current="$(cat "$stamp" 2>/dev/null || true)"
-    if [ "$current" != "${src}" ] || [ ! -d "$app" ]; then
-      echo "omlx: installing from ${src}" >&2
-      mnt="$(mktemp -d /tmp/omlx-dmg.XXXXXX)"
-      if /usr/sbin/diskutil image attach --readOnly --mountOptions nobrowse --mountPoint "$mnt" ${src} >/dev/null; then
-        rm -rf "$app"
-        /usr/bin/ditto "$mnt/oMLX.app" "$app"
-        /usr/sbin/diskutil eject "$mnt" >/dev/null || true
-        mkdir -p "$(dirname "$stamp")"
-        printf '%s\n' "${src}" > "$stamp"
-      else
-        echo "omlx: failed to mount ${src}" >&2
+    # oMLX ships as a notarized app bundle inside a DMG. The DMG is pinned as a
+    # flake input (flake = false), so flake.lock carries the hash and
+    # `nix flake update omlx` is the only bump. Install is keyed on the store
+    # path: unchanged path means no work, changed path means reinstall.
+    home.activation.omlxApp = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      app="${app}"
+      stamp="$HOME/.local/state/omlx/app-source"
+      current="$(cat "$stamp" 2>/dev/null || true)"
+      if [ "$current" != "${src}" ] || [ ! -d "$app" ]; then
+        echo "omlx: installing from ${src}" >&2
+        mnt="$(mktemp -d /tmp/omlx-dmg.XXXXXX)"
+        if /usr/sbin/diskutil image attach --readOnly --mountOptions nobrowse --mountPoint "$mnt" ${src} >/dev/null; then
+          rm -rf "$app"
+          /usr/bin/ditto "$mnt/oMLX.app" "$app"
+          /usr/sbin/diskutil eject "$mnt" >/dev/null || true
+          mkdir -p "$(dirname "$stamp")"
+          printf '%s\n' "${src}" > "$stamp"
+        else
+          echo "omlx: failed to mount ${src}" >&2
+        fi
+        rmdir "$mnt" 2>/dev/null || true
       fi
-      rmdir "$mnt" 2>/dev/null || true
-    fi
-  '';
+    '';
 
-  # The app installs its own `omlx` shim here (it execs omlx-cli and exports
-  # OMLX_BASE_PATH). Adding the directory is all that is needed; do not put
-  # Contents/MacOS on PATH, where `omlx` resolves to the GUI `oMLX` binary.
-  home.sessionPath = ["$HOME/.omlx/bin"];
+    # The app installs its own `omlx` shim here (it execs omlx-cli and exports
+    # OMLX_BASE_PATH). Adding the directory is all that is needed; do not put
+    # Contents/MacOS on PATH, where `omlx` resolves to the GUI `oMLX` binary.
+    home.sessionPath = ["$HOME/.omlx/bin"];
 
-  # Re-assert the keys we care about on every switch. The app owns these files,
-  # so we merge instead of linking, and back up on change. Takes effect on the
-  # next server restart; hm switch does not restart the app-managed server.
-  home.activation.omlxConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    merge_json() {
-      target="$1"
-      patch="$2"
-      [ -f "$target" ] || return 0
-      tmp_a="$(mktemp)"
-      tmp_b="$(mktemp)"
-      jq -S . "$target" > "$tmp_a"
-      jq -S --slurpfile p "$patch" '. * $p[0]' "$target" > "$tmp_b"
-      if ! cmp -s "$tmp_a" "$tmp_b"; then
-        cp -p "$target" "$target.bak-$(date +%Y%m%d%H%M%S)"
-        cp "$tmp_b" "$target"
-      fi
-      rm -f "$tmp_a" "$tmp_b"
-    }
-    merge_json "$HOME/.omlx/settings.json" ${settingsPatch}
-  '';
+    # Re-assert the keys we care about on every switch. The app owns these files,
+    # so we merge instead of linking, and back up on change. Takes effect on the
+    # next server restart; hm switch does not restart the app-managed server.
+    home.activation.omlxConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      merge_json() {
+        target="$1"
+        patch="$2"
+        [ -f "$target" ] || return 0
+        tmp_a="$(mktemp)"
+        tmp_b="$(mktemp)"
+        jq -S . "$target" > "$tmp_a"
+        jq -S --slurpfile p "$patch" '. * $p[0]' "$target" > "$tmp_b"
+        if ! cmp -s "$tmp_a" "$tmp_b"; then
+          cp -p "$target" "$target.bak-$(date +%Y%m%d%H%M%S)"
+          cp "$tmp_b" "$target"
+        fi
+        rm -f "$tmp_a" "$tmp_b"
+      }
+      merge_json "$HOME/.omlx/settings.json" ${settingsPatch}
+    '';
   };
 }

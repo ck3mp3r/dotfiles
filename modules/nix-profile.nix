@@ -13,7 +13,11 @@
 # The legacy fallback (`nix-env -i`) keeps upstream behavior for
 # nix-env-managed profiles. Requires nix.assumeXdg = true in home.nix so the
 # remaining HM references (home.profileDirectory, CLI detection) agree.
-{lib, config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   home.activation.installPackages = lib.mkForce (
     lib.hm.dag.entryAfter ["writeBoundary"] ''
       stateNix="''${XDG_STATE_HOME:-''$HOME/.local/state}/nix"

@@ -7,7 +7,8 @@
   roles ? [],
   hostConfig ? {},
   ...
-}: {
+}:
+{
   # fix for manuals not compiling...
   manual.manpages.enable = false;
 
@@ -25,38 +26,39 @@
     sessionPath = ["$HOME/.local/bin"];
     packages = import ./packages.nix {inherit pkgs;};
   };
-  imports = [
-    sops-nix.homeManagerModules.sops
+  imports =
+    [
+      sops-nix.homeManagerModules.sops
 
-    # HM nix profile activation: probe the real XDG default profile (HM#4593)
-    # and use `nix profile add` instead of the deprecated `install` (HM#9598)
-    ./nix-profile.nix
+      # HM nix profile activation: probe the real XDG default profile (HM#4593)
+      # and use `nix profile add` instead of the deprecated `install` (HM#9598)
+      ./nix-profile.nix
 
-    ./programs/nushell
-    ./programs.nix
-    ./programs/alacritty
-    ./programs/atuin
-    ./programs/bat
-    ./programs/carapace
-    ./programs/container
-    ./programs/crush
-    ./programs/ghostty
-    # ./programs/goose
-    ./programs/git.nix
-    ./programs/herdr
-    ./programs/homebrew
-    ./programs/idea
-    ./programs/k9s
-    ./programs/laio
-    ./programs/opencode
-    (import ./programs/rex {inherit homeDirectory hostConfig pkgs;})
-    ./programs/starship.nix
-    # ./programs/tmux
-    ./programs/tree-sitter
-    ./programs/zellij
-    ./programs/zsh
-  ]
-  ++ pkgs.lib.optional (builtins.elem "inference" roles) ./programs/omlx;
+      ./programs/nushell
+      ./programs.nix
+      ./programs/alacritty
+      ./programs/atuin
+      ./programs/bat
+      ./programs/carapace
+      ./programs/container
+      ./programs/crush
+      ./programs/ghostty
+      # ./programs/goose
+      ./programs/git.nix
+      ./programs/herdr
+      ./programs/homebrew
+      ./programs/idea
+      ./programs/k9s
+      ./programs/laio
+      ./programs/opencode
+      (import ./programs/rex {inherit homeDirectory hostConfig pkgs;})
+      ./programs/starship.nix
+      # ./programs/tmux
+      ./programs/tree-sitter
+      ./programs/zellij
+      ./programs/zsh
+    ]
+    ++ pkgs.lib.optional (builtins.elem "inference" roles) ./programs/omlx;
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.defaultSopsFormat = "yaml";

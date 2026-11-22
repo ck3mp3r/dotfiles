@@ -21,52 +21,54 @@
   # tree-sitter-typescript which exports typescript, tsx, and flow) only
   # have one compiled parser. This derivation compiles ALL sub-grammars from
   # source so every language is available pre-compiled.
-  compileGrammars = pkgs.runCommand "tree-sitter-compiled-grammars" {
-    nativeBuildInputs = with pkgs; [gcc jq];
-  } ''
-    mkdir -p $out/lib
-    ${pkgs.lib.concatMapStrings (g: let
-      src = g.src;
-      libExt = pkgs.stdenv.hostPlatform.extensions.sharedLibrary;
-    in ''
-      echo "Processing ${g.pname or g.name}..."
-      if [[ -f ${src}/tree-sitter.json ]]; then
-        # Multi-language grammar: compile each sub-grammar
-        lang_paths=$(jq -r '.grammars[] | "\(.name)\t\(.path // ".")"' ${src}/tree-sitter.json)
-        while IFS=$'\t' read -r lang path; do
-          echo "  Compiling $lang from $path"
-          grammar_dir="${src}/$path"
-          if [[ -f "$grammar_dir/src/parser.c" ]]; then
+  compileGrammars =
+    pkgs.runCommand "tree-sitter-compiled-grammars" {
+      nativeBuildInputs = with pkgs; [gcc jq];
+    } ''
+      mkdir -p $out/lib
+      ${pkgs.lib.concatMapStrings (g: let
+          src = g.src;
+          libExt = pkgs.stdenv.hostPlatform.extensions.sharedLibrary;
+        in ''
+          echo "Processing ${g.pname or g.name}..."
+          if [[ -f ${src}/tree-sitter.json ]]; then
+            # Multi-language grammar: compile each sub-grammar
+            lang_paths=$(jq -r '.grammars[] | "\(.name)\t\(.path // ".")"' ${src}/tree-sitter.json)
+            while IFS=$'\t' read -r lang path; do
+              echo "  Compiling $lang from $path"
+              grammar_dir="${src}/$path"
+              if [[ -f "$grammar_dir/src/parser.c" ]]; then
+                objs=""
+                if [[ -f "$grammar_dir/src/scanner.c" ]]; then
+                  $CC -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/scanner.c" -o scanner.o
+                  objs="scanner.o"
+                elif [[ -f "$grammar_dir/src/scanner.cc" ]]; then
+                  $CXX -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/scanner.cc" -o scanner.o
+                  objs="scanner.o"
+                fi
+                $CC -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/parser.c" -o parser.o
+                $CXX -shared -o "$out/lib/$lang${libExt}" parser.o $objs
+              fi
+            done <<< "$lang_paths"
+          elif [[ -f ${src}/src/parser.c ]]; then
+            # Single-language grammar without tree-sitter.json
+            lang="${g.pname or g.name}"
+            lang="''${lang#tree-sitter-}"
+            echo "  Compiling $lang"
             objs=""
-            if [[ -f "$grammar_dir/src/scanner.c" ]]; then
-              $CC -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/scanner.c" -o scanner.o
+            if [[ -f "${src}/src/scanner.c" ]]; then
+              $CC -fPIC -c -I"${src}/src" "${src}/src/scanner.c" -o scanner.o
               objs="scanner.o"
-            elif [[ -f "$grammar_dir/src/scanner.cc" ]]; then
-              $CXX -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/scanner.cc" -o scanner.o
+            elif [[ -f "${src}/src/scanner.cc" ]]; then
+              $CXX -fPIC -c -I"${src}/src" "${src}/src/scanner.cc" -o scanner.o
               objs="scanner.o"
             fi
-            $CC -fPIC -c -I"$grammar_dir/src" "$grammar_dir/src/parser.c" -o parser.o
+            $CC -fPIC -c -I"${src}/src" "${src}/src/parser.c" -o parser.o
             $CXX -shared -o "$out/lib/$lang${libExt}" parser.o $objs
           fi
-        done <<< "$lang_paths"
-      elif [[ -f ${src}/src/parser.c ]]; then
-        # Single-language grammar without tree-sitter.json
-        lang="${g.pname or g.name}"
-        lang="''${lang#tree-sitter-}"
-        echo "  Compiling $lang"
-        objs=""
-        if [[ -f "${src}/src/scanner.c" ]]; then
-          $CC -fPIC -c -I"${src}/src" "${src}/src/scanner.c" -o scanner.o
-          objs="scanner.o"
-        elif [[ -f "${src}/src/scanner.cc" ]]; then
-          $CXX -fPIC -c -I"${src}/src" "${src}/src/scanner.cc" -o scanner.o
-          objs="scanner.o"
-        fi
-        $CC -fPIC -c -I"${src}/src" "${src}/src/parser.c" -o parser.o
-        $CXX -shared -o "$out/lib/$lang${libExt}" parser.o $objs
-      fi
-    '') grammars}
-  '';
+        '')
+        grammars}
+    '';
 
   # tree-sitter CLI needs parser-directories pointing at grammar sources for
   # query files (highlights.scm, etc.) and language discovery.
