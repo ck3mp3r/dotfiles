@@ -41,11 +41,6 @@
       inputs.nixpkgs.follows = "base-nixpkgs/unstable";
     };
 
-    c5t = {
-      url = "github:ck3mp3r/context";
-      inputs.nixpkgs.follows = "base-nixpkgs/unstable";
-    };
-
     apple-container = {
       url = "https://github.com/apple/container/releases/download/1.0.0/container-1.0.0-installer-signed.pkg";
       flake = false;
@@ -60,7 +55,6 @@
   outputs = {
     apple-container,
     base-nixpkgs,
-    c5t,
     home-manager,
     laio,
     nix-darwin,
@@ -91,7 +85,7 @@
         # Custom packages from flake inputs
         ai = nu-mods.packages.${system}.ai;
         apple-container-src = apple-container;
-        c5t = c5t.packages.${system}.context;
+        # c5t = c5t.packages.${system}.context;
         laio = laio.packages.${system}.default;
         nu-mcp-tools = nu-mcp.packages.${system}.mcp-tools;
         nu-mcp = nu-mcp.packages.${system}.default;

@@ -78,15 +78,15 @@ in {
     user = {
       agents =
         {
-          c5t-api = {
-            command = "${pkgs.c5t}/bin/c5t api -vv --skills-dir ~/.agents/skills";
-            serviceConfig = {
-              KeepAlive = true;
-              RunAtLoad = true;
-              StandardOutPath = "/tmp/c5t.out.log";
-              StandardErrorPath = "/tmp/c5t.err.log";
-            };
-          };
+          # c5t-api = {
+          #   command = "${pkgs.c5t}/bin/c5t api -vv --skills-dir ~/.agents/skills";
+          #   serviceConfig = {
+          #     KeepAlive = true;
+          #     RunAtLoad = true;
+          #     StandardOutPath = "/tmp/c5t.out.log";
+          #     StandardErrorPath = "/tmp/c5t.err.log";
+          #   };
+          # };
         }
         // pkgs.lib.optionalAttrs (rexForward != null) {
           rex-ssh-forward = {
