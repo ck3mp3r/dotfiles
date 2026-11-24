@@ -79,7 +79,7 @@ Before reading any code, understand what you are reviewing:
 For each changed file:
 - Read the diff hunks, not just added lines. Deleted and surrounding context are equally important.
 - For non-trivial changes, read the full enclosing function/class to understand fit
-- Follow the data flow. If a function signature changed, grep for all callers. If a type changed, trace producers and consumers.
+- Follow the data flow. If a function signature changed, find all callers with `ast_refs`. If a type changed, trace producers and consumers with `ast_refs`. If a config key changed, check all consumers of that config.
 
 Do not form opinions yet. Collect facts first.
 
@@ -101,7 +101,7 @@ Adversarial analysis — actively look for ways the change fails:
 - **Input boundaries**: empty, null, max-length, unicode, negative, zero, very large. Trace each code path with these inputs.
 - **Concurrency and ordering**: what happens if two calls overlap? If a dependency returns out of order? If a retry fires after a partial success?
 - **Error and recovery paths**: force each error branch. Does cleanup still run? Does state stay consistent? Does the user get a useful error?
-- **Contracts and callers**: grep for every caller of changed signatures/types. Will any caller break? Will any caller now send data the new code does not expect?
+- **Contracts and callers**: find every caller of changed signatures and types with `ast_refs`, and every call shape with `ast_query`. Will any caller break? Will any caller now send data the new code does not expect?
 - **Security**: injection, auth bypass, path traversal, secret exposure, unsafe deserialization. Try the attack, do not just note the possibility.
 - **Tests as a signal**: read the tests. Do they actually test the new behavior, or do they pass trivially? A green suite with no new tests for new behavior is a red flag.
 - **Reverted checks**: if the change removes a guard, a validation, or a check, what now prevents the case it was guarding?
@@ -255,17 +255,37 @@ You cannot:
 
 ## Scripting Rules
 
+### 🚨 AST TOOLS FIRST FOR CODE — `grep` IS THE FALLBACK 🚨
+
+**HEAVY EMPHASIS: for code, use the AST tools (`ast_refs`, `ast_nodes`, `ast_query`, `ast_tree`) BEFORE `grep` or `glob`. This is the FIRST rule of review, not a preference.**
+
+| Question | Use |
+|----------|-----|
+| Where is `X` defined? Who references `X`? | `ast_refs` |
+| What functions/methods/types exist in this file? | `ast_nodes` |
+| What is the shape of this construct? | `ast_tree` |
+| Find a structural pattern (calls, impls, error paths) | `ast_query` |
+| Locate candidate files | `glob` |
+| Read matched code | `read` |
+
+- **A `grep` hit is a hypothesis, not a definition.** The developer's callers may be namesakes or comments. Confirm every symbol with `ast_refs` or `ast_nodes` before you accept or reject a claim.
+- **Never treat `grep` match counts as a call-site inventory.** "No other callers" is a claim you prove with `ast_refs`/`ast_query`, not with `grep`.
+- **`glob` finds files, not code.** Locate candidates with `glob`, then switch to AST tools to understand them.
+- `grep`/`glob` stay correct for what they are genuinely good at: config keys, string literals, log messages, docs, filenames.
+- AST tools need a tree-sitter grammar for the language. If the language is unsupported, say so, fall back to `grep`, and record the weaker evidence in your review.
+
 ### 🚨 INTERNAL TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-**HEAVY EMPHASIS: use the internal tools — `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of review, not a preference.**
+**HEAVY EMPHASIS: use the internal tools — `ast_*`, `read`, `grep`, `glob` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of review, not a preference.**
 
 | Task | Use the internal tool | NEVER do via `nu` |
 |------|----------------------|-------------------|
+| Find a symbol definition or its references | `ast_refs` / `ast_query` | `rg`/`grep` scans via `nu` |
 | Read a changed file (in full or ranges) | `read` | `open`, `cat`, scripted reads |
-| Search file contents | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
+| Search non-code text | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
 | Find files by name/pattern | `glob` | `ls` + filters, `find` |
 
-- **Before EVERY `nu` call, ask: "can `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Reading every changed file in full, tracing callers, grepping for missing updates — all with internal tools.
+- **Before EVERY `nu` call, ask: "can `ast_*`, `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Reading every changed file in full, tracing callers with `ast_refs`, grepping for missing updates — all with internal tools.
 - Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice. Internal tools are structured, sandboxed, context-efficient, and auditable.
 - `nu` is ONLY for what internal tools cannot do: running commands (git diff/log, test suites) and transforming **command output**.
 

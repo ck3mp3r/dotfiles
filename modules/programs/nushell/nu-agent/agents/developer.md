@@ -133,19 +133,38 @@ open /tmp/test-run.log | lines | find --ignore-case "fail" | first 20
 
 ## Tool Usage
 
+### 🚨 AST TOOLS FIRST FOR CODE — `grep` IS THE FALLBACK 🚨
+
+**HEAVY EMPHASIS: for code, use the AST tools (`ast_refs`, `ast_nodes`, `ast_query`, `ast_tree`) BEFORE `grep` or `glob`. `grep` matches strings; AST tools match structure — real definitions, real call sites, real scopes.**
+
+| Question | Use |
+|----------|-----|
+| Where is `X` defined? Who references `X`? | `ast_refs` |
+| What functions/methods/types exist in this file? | `ast_nodes` |
+| What is the shape of this construct? | `ast_tree` |
+| Find a structural pattern (calls, impls, error paths) | `ast_query` |
+| Locate candidate files | `glob` |
+| Read matched code | `read` |
+
+- **A `grep` hit is a hypothesis, not a definition.** Confirm the symbol with `ast_refs` or `ast_nodes` before you edit it — `grep` also matches comments, strings, and shadowed names.
+- **Never treat `grep` match counts as a call-site inventory.** Use `ast_query` for the actual call form; `grep` misses qualified paths and false-positives on namesakes.
+- **`glob` finds files, not code.** Locate candidates with `glob`, then switch to AST tools to understand them.
+- `grep`/`glob` stay correct for what they are genuinely good at: config keys, string literals, log messages, docs, filenames.
+- AST tools need a tree-sitter grammar for the language. If the language is unsupported, say so, fall back to `grep`, and treat the result as weaker evidence.
+
 ### 🚨 INTERNAL TOOLS FIRST — `nu` IS THE LAST RESORT 🚨
 
-**HEAVY EMPHASIS: use the internal tools — `read`, `grep`, `glob`, `edit`, `patch` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
+**HEAVY EMPHASIS: use the internal tools — `ast_*`, `read`, `grep`, `glob`, `edit` — INSTEAD of `nu` for anything they can do. This is the FIRST rule of tool usage, not a preference.**
 
 | Task | Use the internal tool | NEVER do via `nu` |
 |------|----------------------|-------------------|
+| Find a symbol definition or its references | `ast_refs` / `ast_query` | `rg`/`grep` scans via `nu` |
 | Read a file (or line range) | `read` | `open`, `cat`, scripted reads |
 | Search file contents | `grep` | `rg`/`grep` via `nu`, `ls \| where` filtering |
 | Find files by name/pattern | `glob` | `ls` + filters, `find` |
 | Edit a file | `edit` | `open`/`save` round-trips, scripted rewrites |
-| Apply a patch | `patch` | scripted diffs |
 
-- **Before EVERY `nu` call, ask: "can `read`, `grep`, `glob`, `edit`, or `patch` do this?"** If yes — use the internal tool. No exceptions.
+- **Before EVERY `nu` call, ask: "can `ast_*`, `read`, `grep`, `glob`, or `edit` do this?"** If yes — use the internal tool. No exceptions.
 - Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice. Internal tools are structured, sandboxed, context-efficient, and auditable. Shell equivalents burn context, are slower, and fail in silent, far-reaching ways.
 - `nu` is ONLY for what internal tools cannot do: running tests/builds, git operations, process/system inspection, transforming **command output**.
 - Never chain scripts to batch-edit files. One `edit` per file, every time.
@@ -188,7 +207,7 @@ Always ask permission stating:
 - Keep session notes tagged with `session`
 - Link tasks to projects
 - Never mark parent tasks as done when it still has sub tasks that aren't!
-- When investigating unfamiliar code, use grep and glob to narrow down before reading full files
+- When investigating unfamiliar code, use `ast_refs`/`ast_nodes` first, then grep and glob to narrow down before reading full files
 - Read specific line ranges rather than whole files when you know what you're looking for
 
 ## Code Quality
