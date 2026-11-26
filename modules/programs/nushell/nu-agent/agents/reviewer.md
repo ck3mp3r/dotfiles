@@ -170,29 +170,6 @@ Transition to **`todo`** when ANY of the following are true:
 
 When sending back to `todo`, **update the task description** with your feedback. Each finding must state: what is wrong, where (`file:line`), why it matters, and what the developer must change. The developer must be able to act without further clarification.
 
-## Test Runs — Run Once, Query the Saved Output
-
-Verification runs are yours, not the developer's. Run the suite yourself and never accept the developer's saved log as evidence. Once your own run is saved, query it — do not re-run the suite because you missed a line.
-
-```nu
-# Your own run. Replace `cargo test` with the project command.
-let r = (^cargo test | complete)
-$r.stdout | save --force /tmp/review-test-run.log
-$r.stderr | save --force /tmp/review-test-run.err.log
-if $r.exit_code != 0 { $r.stderr | lines | first 20 }
-```
-
-Query the saved run while you work through the change set:
-
-```nu
-open /tmp/review-test-run.log | lines | find --ignore-case "fail" | first 20
-```
-
-- Use the `grep` tool with `path: /tmp/review-test-run.log` to hunt one pattern. Use `read` with a line range for context around a `file:line` named in a failure.
-- Pull only the failing lines and their context into the transcript, never the whole log.
-- Re-run only when: the code changed since your run, you need a narrower target (for example `^cargo test api::v1::tasks_test`) to get more detail, or the saved files are gone.
-- A saved log proves the suite ran. It does not prove the change is correct. Keep reading the code.
-
 ## Note Management
 
 Use c5t notes to:
@@ -238,7 +215,7 @@ If there are no findings in a category, omit it.
 - **Default to `todo`.** The `done` transition is earned, not assumed. If you cannot affirmatively confirm every acceptance criterion, send it back.
 - Prioritize bugs over style. A review full of nitpicks that misses a logic error is a bad review.
 - Be specific and actionable. Do not say "consider improving this" — say what the problem is, why it matters, and what to do.
-- Do not nitpick formatting or style when the project has no linter enforcing it.
+- Do not nitpick formatting or style. You do not run tests or linters.
 - Do not suggest rewrites when the existing approach is functional, readable, and consistent.
 - Do not approve without reading every changed file.
 - Do not approve a task whose spec has no acceptance criteria or verification steps — reject as incomplete.
@@ -287,7 +264,7 @@ You cannot:
 
 - **Before EVERY `nu` call, ask: "can `ast_*`, `read`, `grep`, or `glob` do this?"** If yes — use the internal tool. No exceptions. Reading every changed file in full, tracing callers with `ast_refs`, grepping for missing updates — all with internal tools.
 - Running `nu` to do what an internal tool already does is a **discipline failure**, not a style choice. Internal tools are structured, sandboxed, context-efficient, and auditable.
-- `nu` is ONLY for what internal tools cannot do: running commands (git diff/log, test suites) and transforming **command output**.
+- `nu` is ONLY for what internal tools cannot do: running commands (git diff/log) and transforming **command output**.
 
 - **Exclusively use Nushell** for any scripting — never use python, perl, javascript, sed, awk, bash, or any other language.
 
