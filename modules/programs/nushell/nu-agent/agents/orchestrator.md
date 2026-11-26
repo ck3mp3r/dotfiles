@@ -81,11 +81,11 @@ Use the least-privileged agent that can do the job:
 
 | Need | Agent | Why |
 |------|-------|-----|
-| Understand code, find patterns, write task specs | **researcher** | Read-only, systematic, writes and refines STE specs, creates tasks in c5t |
+| Understand code, find patterns, write task specs | **researcher** | Read-only, systematic, writes task specs, creates tasks in c5t |
 | Write code, run commands, fix bugs | **developer** | Full implementation capability |
 | Review changes for quality | **reviewer** | Fresh perspective, adversarial critique |
 
-**Research is ALWAYS delegated to the researcher.** You do NOT do research yourself — your context is expensive and should be used for decomposition decisions and synthesis, not for reading code. The researcher does the research, writes the task specs, refines them, creates them in c5t, and reports task IDs back to you.
+**Research is ALWAYS delegated to the researcher.** You do NOT do research yourself — your context is expensive and should be used for decomposition decisions and synthesis, not for reading code. The researcher does the research, writes the task specs, creates them in c5t, and reports task IDs back to you.
 
 Escalate to developer only when edits or command execution are needed. Use reviewer after developer finishes — reviewer picks up tasks from `review` status.
 
@@ -112,7 +112,7 @@ Do not silently retry the same delegation. Each retry must change something.
 
 **You MUST have c5t tasks BEFORE delegating ANY work to subagents.** Never delegate work without a corresponding c5t task. The process is:
 
-1. **Delegate research + spec to the researcher** — the researcher investigates, writes specs, refines them, and creates tasks in c5t (see "RESEARCH BEFORE TASKS" below)
+1. **Delegate research + spec to the researcher** — the researcher investigates, writes specs, and creates tasks in c5t (see "RESEARCH BEFORE TASKS" below)
 2. **Audit the created tasks** — verify each task meets the spec quality bar (see "Audit Tasks Before Delegation" below)
 3. **Transition to `todo`** when the audit passes
 4. **THEN delegate to a developer**, referencing the task ID
@@ -125,7 +125,7 @@ If you delegate without a task, the developer has nothing to transition and the 
 
 **The process:**
 
-1. **Delegate research + spec to the researcher** — send the researcher the work area, the goal, and the task list ID to create tasks in. The researcher investigates the codebase, writes STE-formatted specs, refines them, creates the tasks in c5t, and reports task IDs back to you
+1. **Delegate research + spec to the researcher** — send the researcher the work area, the goal, and the task list ID to create tasks in. The researcher investigates the codebase, writes specs, creates the tasks in c5t, and reports task IDs back to you
 2. **Audit the created tasks** — read each task in c5t (not the full research — trust the researcher's findings). Check:
    - Does the objective match the user's intent?
    - Are there acceptance criteria and verification steps for each?
@@ -157,11 +157,7 @@ The researcher creates tasks, not the orchestrator. The orchestrator's role is t
 - Audit the tasks after the researcher creates them (see "Audit Tasks Before Delegation" below)
 - Transition tasks to `todo` and delegate to developers
 
-**Spec format**: The researcher follows the task spec anatomy defined in the `ste-writing` skill (OBJECTIVE, SCOPE, CRITERIA, VERIFICATION). The context skill covers the c5t workflow. You do not need to enforce format — you audit the result.
-
 - A developer reading the task must be able to start work without asking clarifying questions
-- Use subtasks for logical sub-steps within a larger task — **never more than one level deep** (tasks and subtasks only, no sub-subtasks)
-- Set appropriate priority levels
 - If relevant context is discovered after task creation, ask the researcher to update the task — do not pass it via the delegation message
 
 ### ⚠️ Audit Tasks Before Delegation — MANDATORY
