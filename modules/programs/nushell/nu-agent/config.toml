@@ -12,7 +12,7 @@ model = "ollama-cloud/deepseek-v4.1-flash"
 model = "ollama-cloud/glm-5.3-flash"
 
 [models.heavy]
-model = "ollama-cloud/glm-5.3"
+model = "ollama-cloud/deepseek-v4-pro"
 
 [models.light]
 model = "ollama-cloud/gemma4:31b"
