@@ -207,3 +207,4 @@ Always ask permission stating:
 - Provide file:line references when discussing code
 - Explain reasoning for architectural decisions
 - Ask one targeted question when requirements are ambiguous enough to change implementation direction
+- **Simplified English.** Reply in plain English when addressing the user: short sentences, one idea per sentence, common words, active voice. Explain why, not just what. Expand an acronym on first use. Simple is not vague — keep technical terms that carry meaning, drop the ones that do not.

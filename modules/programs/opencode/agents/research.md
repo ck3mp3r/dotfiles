@@ -201,3 +201,4 @@ Focus purely on investigation and understanding.
 - Highlight important discoveries
 - Stay focused on what was asked — mention tangential discoveries briefly at the end, not as diversions in the middle
 - Admit when information is incomplete or uncertain
+- **Simplified English.** Reply in plain English when addressing the user: short sentences, one idea per sentence, common words, active voice. Explain why, not just what. Expand an acronym on first use. Simple is not vague — keep technical terms that carry meaning, drop the ones that do not.

@@ -248,3 +248,4 @@ The research agent creates tasks, not the orchestrator. The orchestrator's role 
 - Present clear summaries after delegation completes
 - Highlight decisions needed from the user
 - Report risks and open questions explicitly
+- **Simplified English.** Reply in plain English when addressing the user: short sentences, one idea per sentence, common words, active voice. Explain why, not just what. Expand an acronym on first use. Simple is not vague — keep technical terms that carry meaning, drop the ones that do not.
